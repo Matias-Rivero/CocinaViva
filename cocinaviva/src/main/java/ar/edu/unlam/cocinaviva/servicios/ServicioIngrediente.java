@@ -6,7 +6,9 @@ import ar.edu.unlam.cocinaviva.modelo.Ingrediente;
 
 public interface ServicioIngrediente {
 
-	void guardarIngrediente(Ingrediente ingrediente);
+	void guardarIngredienteEnInventario(Ingrediente ingrediente);
+	
+	void guardarIngredienteEnUsuario(Ingrediente ingrediente);
 
 	List<Ingrediente> traerTodosLosIngredientes();
 	
@@ -31,5 +33,9 @@ public interface ServicioIngrediente {
 	List<Ingrediente> traerLosIngredientesOfrecidosEnPescado(List<Ingrediente> listaDeTodosLosIngredientesOfrecidos);
 
 	List<Ingrediente> traerLosIngredientesOfrecidosEnCondimento(List<Ingrediente> listaDeTodosLosIngredientesOfrecidos);
+
+	Ingrediente traerUnIngredientePorSuId(Long id);
+
+	List<Ingrediente> traerIngredientesSeleccionados(Integer[] seleccionados);
 	
 }

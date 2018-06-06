@@ -44,4 +44,16 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		session.save(admin);		
 	}
 
+	@Override
+	public Usuario traerUnUsuarioPorSuId(Long id) {
+		return (Usuario) (sessionFactory.getCurrentSession().createCriteria(Usuario.class).add(Restrictions.eq("id", id))
+				.uniqueResult());
+	}
+
+	@Override
+	public void actualizarUsuario(Usuario usuario) {
+		final Session session = sessionFactory.getCurrentSession();
+		session.saveOrUpdate(usuario);
+	}
+
 }

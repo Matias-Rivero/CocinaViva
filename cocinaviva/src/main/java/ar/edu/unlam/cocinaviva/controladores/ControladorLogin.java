@@ -1,5 +1,6 @@
 package ar.edu.unlam.cocinaviva.controladores;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -36,32 +37,29 @@ public class ControladorLogin {
 		ModelMap modelo = new ModelMap();
 
 		if (request.getSession().getAttribute("usuariologueado") != null) {
-
-			Usuario usuariologueado = (Usuario) request.getSession().getAttribute("usuariologueado");
-
+			
+			Usuario usuariologueado = (Usuario) request.getSession().getAttribute("usuariologueado");	
+			
+			modelo.put("tieneingredienteselusuario",usuariologueado.getlistaIngrediente());	
+	
+			if(usuariologueado.getlistaIngrediente().isEmpty()){
+				return new ModelAndView("redirect:/ingredientes");
+			}
+						
 			modelo.put("ingredienteslacteosdelusuario",
-					servicioIngrediente.traerLosIngredientesLacteosDeUnUsuario(usuariologueado.getListaIngrediente()));
+					servicioIngrediente.traerLosIngredientesLacteosDeUnUsuario(usuariologueado.getlistaIngrediente()));			
 			modelo.put("ingredientesvegetalesdelusuario", servicioIngrediente
-					.traerLosIngredientesVegetalesDeUnUsuario(usuariologueado.getListaIngrediente()));
+					.traerLosIngredientesVegetalesDeUnUsuario(usuariologueado.getlistaIngrediente()));		
 			modelo.put("ingredientescarnesdelusuario",
-					servicioIngrediente.traerLosIngredientesCarnesDeUnUsuario(usuariologueado.getListaIngrediente()));
+					servicioIngrediente.traerLosIngredientesCarnesDeUnUsuario(usuariologueado.getlistaIngrediente()));
 			modelo.put("ingredientespescadodelusuario",
-					servicioIngrediente.traerLosIngredientesPescadoDeUnUsuario(usuariologueado.getListaIngrediente()));
+					servicioIngrediente.traerLosIngredientesPescadoDeUnUsuario(usuariologueado.getlistaIngrediente()));
 			modelo.put("ingredientescondimentodelusuario", servicioIngrediente
-					.traerLosIngredientesCondimentoDeUnUsuario(usuariologueado.getListaIngrediente()));
-
-			List<Ingrediente> listaDeTodosLosIngredientesOfrecidos = servicioIngrediente.traerTodosLosIngredientes();
-			modelo.put("ingredientesofrecidosenlacteos",
-					servicioIngrediente.traerLosIngredientesOfrecidosEnLacteos(listaDeTodosLosIngredientesOfrecidos));
-			modelo.put("ingredientesofrecidosenvegetales",
-					servicioIngrediente.traerLosIngredientesOfrecidosEnVegetales(listaDeTodosLosIngredientesOfrecidos));
-			modelo.put("ingredientesofrecidosencarnes",
-					servicioIngrediente.traerLosIngredientesOfrecidosEnCarnes(listaDeTodosLosIngredientesOfrecidos));
-			modelo.put("ingredientesofrecidosenpescado",
-					servicioIngrediente.traerLosIngredientesOfrecidosEnPescado(listaDeTodosLosIngredientesOfrecidos));
-			modelo.put("ingredientesofrecidosencondimento", servicioIngrediente
-					.traerLosIngredientesOfrecidosEnCondimento(listaDeTodosLosIngredientesOfrecidos));
-
+					.traerLosIngredientesCondimentoDeUnUsuario(usuariologueado.getlistaIngrediente()));
+			
+			Ingrediente checkingredientes = new Ingrediente();
+			modelo.put("checkingredientes", checkingredientes);
+			
 		} else {
 			Usuario usuario = new Usuario();
 			modelo.put("usuario", usuario);
@@ -144,5 +142,92 @@ public class ControladorLogin {
 			return new ModelAndView("perfilcliente", modelo);
 		}
 	}
+	
+	@RequestMapping(path = "/recetas", method = RequestMethod.POST)
+	public ModelAndView buscarRecetas(@ModelAttribute("checkingredientes") Ingrediente checkingredientes,
+			HttpServletRequest request) {
+			
+		List<Ingrediente> Ingredientes = servicioIngrediente.traerIngredientesSeleccionados(checkingredientes.getSeleccionados());
+		
+		ModelMap modelo = new ModelMap();	
+		
+		modelo.put("ingredinetesseleccionados", Ingredientes);
+		
+		return new ModelAndView("recetas", modelo);
+	}
+	
+	@RequestMapping("/ingredientes")
+	public ModelAndView ingredientes(HttpServletRequest request) {
 
+		ModelMap modelo = new ModelMap();
+
+		if (request.getSession().getAttribute("usuariologueado") != null) {
+			
+			Usuario usuariologueado = (Usuario) request.getSession().getAttribute("usuariologueado");	
+			
+			modelo.put("tieneingredienteselusuario",usuariologueado.getlistaIngrediente());	
+				
+				List<Ingrediente> listaDeTodosLosIngredientesOfrecidos = servicioIngrediente.traerTodosLosIngredientes();
+				modelo.put("ingredientesofrecidosenlacteos",
+						servicioIngrediente.traerLosIngredientesOfrecidosEnLacteos(listaDeTodosLosIngredientesOfrecidos));
+				modelo.put("ingredientesofrecidosenvegetales",
+						servicioIngrediente.traerLosIngredientesOfrecidosEnVegetales(listaDeTodosLosIngredientesOfrecidos));
+				modelo.put("ingredientesofrecidosencarnes",
+						servicioIngrediente.traerLosIngredientesOfrecidosEnCarnes(listaDeTodosLosIngredientesOfrecidos));
+				modelo.put("ingredientesofrecidosenpescado",
+						servicioIngrediente.traerLosIngredientesOfrecidosEnPescado(listaDeTodosLosIngredientesOfrecidos));
+				modelo.put("ingredientesofrecidosencondimento", servicioIngrediente
+						.traerLosIngredientesOfrecidosEnCondimento(listaDeTodosLosIngredientesOfrecidos));
+				
+				Ingrediente checkingrediente = new Ingrediente();
+				modelo.put("checkingredientes", checkingrediente);
+			
+		}else{
+			return new ModelAndView("redirect:/home");
+		}
+		return new ModelAndView("agregaringredientes", modelo);
+	}
+
+	@RequestMapping(path = "/agregarIngredientes", method = RequestMethod.POST)
+	public ModelAndView agregarIngredientes(@ModelAttribute("checkingredientes") Ingrediente checkingredientes,
+			HttpServletRequest request) {
+		
+		ModelMap modelo = new ModelMap();
+		
+		if (request.getSession().getAttribute("usuariologueado") != null || checkingredientes == null) {
+			
+			Usuario usuariologueado = (Usuario) request.getSession().getAttribute("usuariologueado");
+			
+			modelo.put("tieneingredienteselusuario",usuariologueado.getlistaIngrediente());	
+			
+
+			
+			List<Ingrediente> listaDeTodosLosIngredientesOfrecidos = servicioIngrediente.traerTodosLosIngredientes();
+			modelo.put("ingredientesofrecidosenlacteos",
+					servicioIngrediente.traerLosIngredientesOfrecidosEnLacteos(listaDeTodosLosIngredientesOfrecidos));
+			modelo.put("ingredientesofrecidosenvegetales",
+					servicioIngrediente.traerLosIngredientesOfrecidosEnVegetales(listaDeTodosLosIngredientesOfrecidos));
+			modelo.put("ingredientesofrecidosencarnes",
+					servicioIngrediente.traerLosIngredientesOfrecidosEnCarnes(listaDeTodosLosIngredientesOfrecidos));
+			modelo.put("ingredientesofrecidosenpescado",
+					servicioIngrediente.traerLosIngredientesOfrecidosEnPescado(listaDeTodosLosIngredientesOfrecidos));
+			modelo.put("ingredientesofrecidosencondimento", servicioIngrediente
+					.traerLosIngredientesOfrecidosEnCondimento(listaDeTodosLosIngredientesOfrecidos));
+			
+			
+			
+		
+		
+		
+		List<Ingrediente> Ingredientes = servicioIngrediente.traerIngredientesSeleccionados(checkingredientes.getSeleccionados());
+			
+		// Estos ingredientes deben persistirse
+		modelo.put("ingredinetesseleccionados", Ingredientes);
+		
+		
+		}else{
+			return new ModelAndView("redirect:/home");
+		}
+		return new ModelAndView("agregaringredientes", modelo);
+	}
 }

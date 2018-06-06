@@ -14,9 +14,14 @@ public class Ingrediente {
 	@Column(name = "id_Ingrediente")
 	private Long id;
 	private String nombre;
+	private Integer [] seleccionados;
 	private Integer cantidad;
 	private Integer gramos;
 	private String tipo;
+	private Integer fvencimiento;
+	private Integer fcompra;
+	private String uso;
+	private String estado;
 	
 	public Long getId() {
 		return id;
@@ -48,6 +53,36 @@ public class Ingrediente {
 	}
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+	public Integer [] getSeleccionados() {
+		return seleccionados;
+	}
+	public void setSeleccionados(Integer [] seleccionados) {
+		this.seleccionados = seleccionados;
+	}
+	public Integer getFvencimiento() {
+		return fvencimiento;
+	}
+	public void setFvencimiento(Integer fvencimiento) {
+		this.fvencimiento = fvencimiento;
+	}
+	public Integer getFcompra() {
+		return fcompra;
+	}
+	public void setFcompra(Integer fcompra) {
+		this.fcompra = fcompra;
+	}
+	public String getUso() {
+		return uso;
+	}
+	public void setUso(String uso) {
+		this.uso = uso;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 }

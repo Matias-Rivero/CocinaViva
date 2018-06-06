@@ -14,4 +14,8 @@ public interface UsuarioDao {
 	List<Usuario> traerTodosLosUsuarios();
 
 	void guardarAdministrador(Usuario admin);
+
+	Usuario traerUnUsuarioPorSuId(Long id);
+
+	void actualizarUsuario(Usuario usuario);
 }

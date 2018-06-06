@@ -34,11 +34,11 @@ public class Usuario {
 			@JoinColumn(name = "id_Ingrediente") })
 	private List<Ingrediente> listaIngrediente = new LinkedList<Ingrediente>();
 	
-	public List<Ingrediente> getListaIngrediente() {
+	public List<Ingrediente> getlistaIngrediente() {
 		return listaIngrediente;
 	}
 
-	public void setListaIngrediente(List<Ingrediente> listaIngrediente) {
+	public void setlistaIngrediente(List<Ingrediente> listaIngrediente) {
 		this.listaIngrediente = listaIngrediente;
 	}
 	

@@ -12,4 +12,8 @@ public interface ServicioUsuario {
 
 	void guardarAdministrador(Usuario admin);
 
+	Usuario traerUnUsuarioPorSuId(Long id);
+
+	void actualizarUsuario(Usuario matias);
+
 }

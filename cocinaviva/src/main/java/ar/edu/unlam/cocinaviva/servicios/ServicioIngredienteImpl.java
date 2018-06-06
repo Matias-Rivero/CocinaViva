@@ -1,6 +1,7 @@
 package ar.edu.unlam.cocinaviva.servicios;
 
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,9 +22,20 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 	private IngredienteDao servicioIngredienteDao;
 
 	@Override
-	public void guardarIngrediente (Ingrediente ingrediente) {
-//		ingrediente.setRol("Usuario");
-		 servicioIngredienteDao.guardarIngrediente(ingrediente);
+	public void guardarIngredienteEnInventario(Ingrediente ingrediente) {
+		ingrediente.setUso("INVENTARIO");
+		ingrediente.setCantidad(0);
+		ingrediente.setGramos(0);
+		ingrediente.setFcompra(0);
+		ingrediente.setFvencimiento(0);
+		ingrediente.setEstado("NOVENCIDO"); // VENCIDO // ADVERTENCIA
+		 servicioIngredienteDao.guardarIngredienteEnInventario(ingrediente);
+	}
+	
+	@Override
+	public void guardarIngredienteEnUsuario(Ingrediente ingrediente) {
+		ingrediente.setUso("USUARIO");
+		 servicioIngredienteDao.guardarIngredienteEnUsuario(ingrediente);
 	}
 
 	@Override
@@ -54,6 +66,7 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 
 	@Override
 	public List<Ingrediente> traerLosIngredientesVegetalesDeUnUsuario(List<Ingrediente> listaIngredientesUs) {
+		
 		List<Ingrediente> ingredientesVegetales = new LinkedList<Ingrediente>();
 		for (Ingrediente vegetales : listaIngredientesUs) {
 			if (vegetales.getTipo().equals("VEGETALES")) {
@@ -62,7 +75,7 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 		}
 		return ingredientesVegetales;
 	}
-
+	
 	@Override
 	public List<Ingrediente> traerLosIngredientesCarnesDeUnUsuario(List<Ingrediente> listaIngredientesUs) {
 		List<Ingrediente> ingredientesCarnes = new LinkedList<Ingrediente>();
@@ -154,6 +167,22 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 			}
 		}
 		return ingredientesCondimento;
+	}
+
+	@Override
+	public Ingrediente traerUnIngredientePorSuId(Long id) {
+		return servicioIngredienteDao.traerUnIngredientePorSuId(id);
+	}
+
+	@Override
+	public List<Ingrediente> traerIngredientesSeleccionados(Integer[] seleccionados) {
+			Ingrediente i;
+			List<Ingrediente> ingredientesSeleccionados = new LinkedList<Ingrediente>();
+			for (Integer id : seleccionados) {
+				i = traerUnIngredientePorSuId((long) id);
+				ingredientesSeleccionados.add(i);
+			}
+			return ingredientesSeleccionados;
 	}
 
 }

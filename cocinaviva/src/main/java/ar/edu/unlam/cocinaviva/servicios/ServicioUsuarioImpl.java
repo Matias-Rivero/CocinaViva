@@ -34,5 +34,15 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
 		admin.setRol("Administrador");
 		 servicioUsuarioDao.guardarAdministrador(admin);		
 	}
+
+	@Override
+	public Usuario traerUnUsuarioPorSuId(Long id) {
+		return servicioUsuarioDao.traerUnUsuarioPorSuId(id);
+	}
+
+	@Override
+	public void actualizarUsuario(Usuario usuario) {
+		servicioUsuarioDao.actualizarUsuario(usuario);		
+	}
 		
 }
