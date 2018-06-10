@@ -16,4 +16,6 @@ public interface IngredienteDao {
 
 	Ingrediente traerUnIngredientePorSuId(Long id);
 
+	void eliminarIngrediente(Ingrediente ingrediente);
+
 }

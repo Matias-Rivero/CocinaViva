@@ -70,15 +70,13 @@
 }
 </style>
 
-
-
 </head>
+
 <body>
 
 	<div class="gtco-loader"></div>
 
 	<div id="page">
-
 
 		<!-- <div class="page-inner"> -->
 		<nav class="gtco-nav" role="navigation">
@@ -107,15 +105,10 @@
 			</div>
 		</nav>
 
-
-
 		<c:choose>
 			<c:when test="${usuariologueado != null}">
 
-				<header id="gtco-header" class="gtco-cover gtco-cover-sm">
-
-				</header>
-
+				<header id="gtco-header" class="gtco-cover gtco-cover-sm"></header>
 
 				<c:choose>
 					<c:when test="${not empty tieneingredienteselusuario}">
@@ -129,8 +122,20 @@
 								<h1>Cocina con tus ingredientes!</h1>
 							</div>
 							<div class="row">
-								<div class="col-md-9 order-md-9 mb-9">
+								<div class="col-md-12 order-md-12 mb-12">
+									<ul class="list-group mb-3">
+										<li
+											class="list-group-item d-flex justify-content-between lh-condensed">
 
+											<div class="input-group">
+												<span class="input-group-addon">Buscar</span> <input
+													type="text" id="filtrar" class="form-control"
+													placeholder="pure de tomate">
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="col-md-9 order-md-9 mb-9">
 									<h4
 										class="d-flex justify-content-between align-items-center mb-3">
 										<span class="text-muted">Selecciona los ingredientes de
@@ -143,34 +148,32 @@
 												<c:when test="${not empty ingredienteslacteosdelusuario}">
 													<li
 														class="list-group-item d-flex justify-content-between lh-condensed">
-
 														<div class="table-responsive">
-															<h2 class="my-0">Lacteos</h2>
 															<table class="table table-hover">
 																<thead>
 																	<tr>
-																		<th><span class="lead">Nombre</span></th>
-																		<th><span class="lead">Cantidad</span></th>
-																		<th><span class="lead">Gramos</span></th>
+																		<th><span class="lead"><strong>Lacteos</strong></span></th>
 																		<th><span class="lead">Fecha de Compra</span></th>
 																		<th><span class="lead">Fecha de
 																				Vencimiento</span></th>
+																		<th><span class="lead">Cantidad</span></th>
 																	</tr>
 																</thead>
 																<tbody class="buscar">
-
 																	<c:forEach items="${ingredienteslacteosdelusuario}"
 																		var="ingredienteslacteosdelusuario">
 																		<tr align="left">
-
+																			<th><span class="lead">${ingredienteslacteosdelusuario.nombre}</span></th>
+																			<th><span class="lead">${ingredienteslacteosdelusuario.fcompra}</span></th>
+																			<th><span class="lead">${ingredienteslacteosdelusuario.fvencimiento}</span></th>
+																			<th><span class="lead">${ingredienteslacteosdelusuario.cantidad}</span></th>
 																			<th><span class="lead"><form:checkbox
 																						path="seleccionados"
 																						value="${ingredienteslacteosdelusuario.id}" />&nbsp
-																					${ingredienteslacteosdelusuario.nombre}</span></th>
-																			<th><span class="lead">${ingredienteslacteosdelusuario.cantidad}</span></th>
-																			<th><span class="lead">${ingredienteslacteosdelusuario.gramos}</span></th>
-																			<th><span class="lead">${ingredienteslacteosdelusuario.fcompra}</span></th>
-																			<th><span class="lead">${ingredienteslacteosdelusuario.fvencimiento}</span></th>
+																					Usar</span></th>
+																			<td><a
+																				href="eliminar-ingrediente?id=${ingredienteslacteosdelusuario.id}"><span
+																					class="lead glyphicon glyphicon-trash"></span></a></td>
 																		</tr>
 																	</c:forEach>
 																</tbody>
@@ -184,34 +187,32 @@
 												<c:when test="${not empty ingredientesvegetalesdelusuario}">
 													<li
 														class="list-group-item d-flex justify-content-between lh-condensed">
-
 														<div class="table-responsive">
-															<h2 class="my-0">Vegetales</h2>
 															<table class="table table-hover">
 																<thead>
 																	<tr>
-																		<th><span class="lead">Nombre</span></th>
-																		<th><span class="lead">Cantidad</span></th>
-																		<th><span class="lead">Gramos</span></th>
+																		<th><span class="lead"><strong>Vegetales</strong></span></th>
 																		<th><span class="lead">Fecha de Compra</span></th>
 																		<th><span class="lead">Fecha de
 																				Vencimiento</span></th>
+																		<th><span class="lead">Cantidad</span></th>
 																	</tr>
 																</thead>
 																<tbody class="buscar">
-
 																	<c:forEach items="${ingredientesvegetalesdelusuario}"
 																		var="ingredientesvegetalesdelusuario">
 																		<tr align="left">
-
+																			<th><span class="lead">${ingredientesvegetalesdelusuario.nombre}</span></th>
+																			<th><span class="lead">${ingredientesvegetalesdelusuario.fcompra}</span></th>
+																			<th><span class="lead">${ingredientesvegetalesdelusuario.fvencimiento}</span></th>
+																			<th><span class="lead">${ingredientesvegetalesdelusuario.cantidad}</span></th>
 																			<th><span class="lead"><form:checkbox
 																						path="seleccionados"
 																						value="${ingredientesvegetalesdelusuario.id}" />&nbsp
-																					${ingredientesvegetalesdelusuario.nombre}</span></th>
-																			<th><span class="lead">${ingredientesvegetalesdelusuario.cantidad}</span></th>
-																			<th><span class="lead">${ingredientesvegetalesdelusuario.gramos}</span></th>
-																			<th><span class="lead">${ingredientesvegetalesdelusuario.fcompra}</span></th>
-																			<th><span class="lead">${ingredientesvegetalesdelusuario.fvencimiento}</span></th>
+																					Usar</span></th>
+																			<td><a
+																				href="eliminar-ingrediente?id=${ingredientesvegetalesdelusuario.id}"><span
+																					class="lead glyphicon glyphicon-trash"></span></a></td>
 																		</tr>
 																	</c:forEach>
 																</tbody>
@@ -225,34 +226,32 @@
 												<c:when test="${not empty ingredientescarnesdelusuario}">
 													<li
 														class="list-group-item d-flex justify-content-between lh-condensed">
-
 														<div class="table-responsive">
-															<h2 class="my-0">Carnes</h2>
 															<table class="table table-hover">
 																<thead>
 																	<tr>
-																		<th><span class="lead">Nombre</span></th>
-																		<th><span class="lead">Cantidad</span></th>
-																		<th><span class="lead">Gramos</span></th>
+																		<th><span class="lead"><strong>Carnes</strong></span></th>
 																		<th><span class="lead">Fecha de Compra</span></th>
 																		<th><span class="lead">Fecha de
 																				Vencimiento</span></th>
+																		<th><span class="lead">Cantidad</span></th>
 																	</tr>
 																</thead>
 																<tbody class="buscar">
-
 																	<c:forEach items="${ingredientescarnesdelusuario}"
 																		var="ingredientescarnesdelusuario">
 																		<tr align="left">
-
+																			<th><span class="lead">${ingredientescarnesdelusuario.nombre}</span></th>
+																			<th><span class="lead">${ingredientescarnesdelusuario.fcompra}</span></th>
+																			<th><span class="lead">${ingredientescarnesdelusuario.fvencimiento}</span></th>
+																			<th><span class="lead">${ingredientescarnesdelusuario.cantidad}</span></th>
 																			<th><span class="lead"><form:checkbox
 																						path="seleccionados"
 																						value="${ingredientescarnesdelusuario.id}" />&nbsp
-																					${ingredientescarnesdelusuario.nombre}</span></th>
-																			<th><span class="lead">${ingredientescarnesdelusuario.cantidad}</span></th>
-																			<th><span class="lead">${ingredientescarnesdelusuario.gramos}</span></th>
-																			<th><span class="lead">${ingredientescarnesdelusuario.fcompra}</span></th>
-																			<th><span class="lead">${ingredientescarnesdelusuario.fvencimiento}</span></th>
+																					Usar</span></th>
+																			<td><a
+																				href="eliminar-ingrediente?id=${ingredientescarnesdelusuario.id}"><span
+																					class="lead glyphicon glyphicon-trash"></span></a></td>
 																		</tr>
 																	</c:forEach>
 																</tbody>
@@ -266,34 +265,32 @@
 												<c:when test="${not empty ingredientespescadodelusuario}">
 													<li
 														class="list-group-item d-flex justify-content-between lh-condensed">
-
 														<div class="table-responsive">
-															<h2 class="my-0">Pescado</h2>
 															<table class="table table-hover">
 																<thead>
 																	<tr>
-																		<th><span class="lead">Nombre</span></th>
-																		<th><span class="lead">Cantidad</span></th>
-																		<th><span class="lead">Gramos</span></th>
+																		<th><span class="lead"><strong>Pescado</strong></span></th>
 																		<th><span class="lead">Fecha de Compra</span></th>
 																		<th><span class="lead">Fecha de
 																				Vencimiento</span></th>
+																		<th><span class="lead">Cantidad</span></th>
 																	</tr>
 																</thead>
 																<tbody class="buscar">
-
 																	<c:forEach items="${ingredientespescadodelusuario}"
 																		var="ingredientespescadodelusuario">
 																		<tr align="left">
-
+																			<th><span class="lead">${ingredientespescadodelusuario.nombre}</span></th>
+																			<th><span class="lead">${ingredientespescadodelusuario.fcompra}</span></th>
+																			<th><span class="lead">${ingredientespescadodelusuario.fvencimiento}</span></th>
+																			<th><span class="lead">${ingredientespescadodelusuario.cantidad}</span></th>
 																			<th><span class="lead"><form:checkbox
 																						path="seleccionados"
 																						value="${ingredientespescadodelusuario.id}" />&nbsp
-																					${ingredientespescadodelusuario.nombre}</span></th>
-																			<th><span class="lead">${ingredientespescadodelusuario.cantidad}</span></th>
-																			<th><span class="lead">${ingredientespescadodelusuario.gramos}</span></th>
-																			<th><span class="lead">${ingredientespescadodelusuario.fcompra}</span></th>
-																			<th><span class="lead">${ingredientespescadodelusuario.fvencimiento}</span></th>
+																					Usar</span></th>
+																			<td><a
+																				href="eliminar-ingrediente?id=${ingredientespescadodelusuario.id}"><span
+																					class="lead glyphicon glyphicon-trash"></span></a></td>
 																		</tr>
 																	</c:forEach>
 																</tbody>
@@ -307,34 +304,32 @@
 												<c:when test="${not empty ingredientescondimentodelusuario}">
 													<li
 														class="list-group-item d-flex justify-content-between lh-condensed">
-
 														<div class="table-responsive">
-															<h2 class="my-0">Condimento</h2>
 															<table class="table table-hover">
 																<thead>
 																	<tr>
-																		<th><span class="lead">Nombre</span></th>
-																		<th><span class="lead">Cantidad</span></th>
-																		<th><span class="lead">Gramos</span></th>
+																		<th><span class="lead"><strong>Condimento</strong></span></th>
 																		<th><span class="lead">Fecha de Compra</span></th>
 																		<th><span class="lead">Fecha de
 																				Vencimiento</span></th>
+																		<th><span class="lead">Cantidad</span></th>
 																	</tr>
 																</thead>
 																<tbody class="buscar">
-
 																	<c:forEach items="${ingredientescondimentodelusuario}"
 																		var="ingredientescondimentodelusuario">
 																		<tr align="left">
-
+																			<th><span class="lead">${ingredientescondimentodelusuario.nombre}</span></th>
+																			<th><span class="lead">${ingredientescondimentodelusuario.fcompra}</span></th>
+																			<th><span class="lead">${ingredientescondimentodelusuario.fvencimiento}</span></th>
+																			<th><span class="lead">${ingredientescondimentodelusuario.cantidad}</span></th>
 																			<th><span class="lead"><form:checkbox
 																						path="seleccionados"
 																						value="${ingredientescondimentodelusuario.id}" />&nbsp
-																					${ingredientescondimentodelusuario.nombre}</span></th>
-																			<th><span class="lead">${ingredientescondimentodelusuario.cantidad}</span></th>
-																			<th><span class="lead">${ingredientescondimentodelusuario.gramos}</span></th>
-																			<th><span class="lead">${ingredientescondimentodelusuario.fcompra}</span></th>
-																			<th><span class="lead">${ingredientescondimentodelusuario.fvencimiento}</span></th>
+																					Usar</span></th>
+																			<td><a
+																				href="eliminar-ingrediente?id=${ingredientescondimentodelusuario.id}"><span
+																					class="lead glyphicon glyphicon-trash"></span></a></td>
 																		</tr>
 																	</c:forEach>
 																</tbody>
@@ -350,52 +345,30 @@
 										</form:form>
 									</ul>
 
-
-
-
 								</div>
 
 								<div class="col-md-3 order-md-3">
 
 									<h4
 										class="d-flex justify-content-between align-items-center mb-3">
-										<!-- 										<span class="text-muted">Buscar Ingrediente</span> -->
 										<span class="text-muted">¿Tienes mas ingredientes?</span>
 									</h4>
-									<!-- 									<ul class="list-group mb-3"> -->
-									<!-- 										<li -->
-									<!-- 											class="list-group-item d-flex justify-content-between lh-condensed"> -->
-									<!-- 											<div class="input-group"> -->
-									<!-- 												<span class="input-group-addon">Buscar</span> <input -->
-									<!-- 													type="text" id="filtrar" class="form-control" -->
-									<!-- 													placeholder="Ingrediente"> -->
-
-									<!-- 											</div> -->
-									<!-- 										</li> -->
-									<!-- 									</ul> -->
 
 									<ul class="list-group mb-3">
 										<li
 											class="list-group-item d-flex justify-content-between lh-condensed">
-
 											<a href="ingredientes"
 											class="btn btn-primary btn-lg btn-block" role="button">Agregar
 												Ingredientes</a>
-
 										</li>
 									</ul>
 
 									<ul class="list-group mb-3">
-
-
 										<li
 											class="list-group-item d-flex justify-content-between lh-condensed">
-
-											<a onclick="buscarreceta();"> <span class="text-muted">
-													<input type=image src="images/flecha.jpg"
-													alt="BUSCAR RECETA" class="img-rounded img-responsive">
-
-											</span>
+											<a onclick="buscarreceta();"> <span class="text-muted"><input
+													type=image src="images/flecha.jpg" alt="BUSCAR RECETA"
+													class="img-rounded img-responsive"></span>
 												<h2
 													class="d-flex justify-content-between align-items-center mb-3">
 													<span class="text-muted">BUSCAR RECETAS</span>
@@ -408,15 +381,10 @@
 
 							</div>
 
-
 						</div>
 
-
-
 					</c:when>
-
 				</c:choose>
-
 
 			</c:when>
 			<c:otherwise>
@@ -483,15 +451,11 @@
 															<a href="registro">Regístrate</a>
 														</h2>
 													</div>
-
-
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-
-
 							</div>
 						</div>
 					</div>
@@ -540,11 +504,8 @@
 
 				</div>
 
-
-
 			</div>
 		</footer>
-		<!-- </div> -->
 
 	</div>
 
@@ -611,5 +572,6 @@
 	</script>
 
 </body>
+
 </html>
 

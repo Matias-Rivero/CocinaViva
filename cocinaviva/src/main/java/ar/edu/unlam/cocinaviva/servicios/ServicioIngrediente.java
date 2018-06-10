@@ -3,6 +3,7 @@ package ar.edu.unlam.cocinaviva.servicios;
 import java.util.List;
 
 import ar.edu.unlam.cocinaviva.modelo.Ingrediente;
+import ar.edu.unlam.cocinaviva.modelo.Usuario;
 
 public interface ServicioIngrediente {
 
@@ -37,5 +38,8 @@ public interface ServicioIngrediente {
 	Ingrediente traerUnIngredientePorSuId(Long id);
 
 	List<Ingrediente> traerIngredientesSeleccionados(Integer[] seleccionados);
+
+	void eliminarIngredienteAUsuario(Long idu, Long id);
 	
+	void eliminarIngrediente(Ingrediente ingrediente);
 }

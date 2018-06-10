@@ -30,6 +30,12 @@ public class IngredienteDaoImpl implements IngredienteDao {
 		final Session session = sessionFactory.getCurrentSession();
 		session.save(ingrediente);
 	}
+	
+	@Override
+	public void eliminarIngrediente(Ingrediente ingrediente) {
+		final Session session = sessionFactory.getCurrentSession();
+		session.delete(ingrediente);
+	}
 
 	@Override
 	public List<Ingrediente> traerTodosLosIngredientes() {

@@ -727,17 +727,42 @@ public class ControladorInsertar {
 		
 		Ingrediente cebollarojamatias = new Ingrediente();
 		cebollarojamatias.setNombre("cebolla roja");
+		cebollarojamatias.setFcompra(0105201);
+		cebollarojamatias.setFvencimiento(0105202);
 		cebollarojamatias.setCantidad(4);
-		cebollarojamatias.setGramos(250);
 		cebollarojamatias.setTipo("VEGETALES");
-		cebollarojamatias.setFcompra(01);
-		cebollarojamatias.setFvencimiento(01);
+	
+		Ingrediente manteca = new Ingrediente();
+		manteca.setNombre("manteca");
+		manteca.setFcompra(0105201);
+		manteca.setFvencimiento(0105202);
+		manteca.setCantidad(2);
+		manteca.setTipo("LACTEOS");
+		
+		Ingrediente quesofresco = new Ingrediente();
+		quesofresco.setNombre("queso fresco");
+		quesofresco.setFcompra(0105201);
+		quesofresco.setFvencimiento(0105202);
+		quesofresco.setCantidad(250);
+		quesofresco.setTipo("LACTEOS");
+
+		Ingrediente huevos = new Ingrediente();
+		huevos.setNombre("huevos");
+		huevos.setFcompra(0105201);
+		huevos.setFvencimiento(0105202);
+		huevos.setCantidad(6);
+		huevos.setTipo("LACTEOS");
 
 		List<Ingrediente> ingredientesdematias  = matias.getlistaIngrediente();
 		ingredientesdematias.add(cebollarojamatias);
-		
+		ingredientesdematias.add(manteca);
+		ingredientesdematias.add(quesofresco);
+		ingredientesdematias.add(huevos);
 		
 		servicioIngrediente.guardarIngredienteEnUsuario(cebollarojamatias);		
+		servicioIngrediente.guardarIngredienteEnUsuario(manteca);		
+		servicioIngrediente.guardarIngredienteEnUsuario(quesofresco);		
+		servicioIngrediente.guardarIngredienteEnUsuario(huevos);		
 		matias.setlistaIngrediente(ingredientesdematias);
 		servicioUsuario.actualizarUsuario(matias);		
 			
@@ -746,7 +771,6 @@ public class ControladorInsertar {
 		Ingrediente cebollarojajuanpi = new Ingrediente();
 		cebollarojajuanpi.setNombre("cebolla roja");
 		cebollarojajuanpi.setCantidad(1);
-		cebollarojajuanpi.setGramos(750);
 		cebollarojajuanpi.setTipo("VEGETALES");
 		cebollarojajuanpi.setFcompra(03);
 		cebollarojajuanpi.setFvencimiento(07);
@@ -763,8 +787,7 @@ public class ControladorInsertar {
 		Ingrediente cebollarojaflor = servicioIngrediente.traerUnIngredientePorSuId((long) 44);
 		cebollarojaflor.setCantidad(3);
 		cebollarojaflor.setFcompra(12);
-		cebollarojaflor.setFvencimiento(13);
-		cebollarojaflor.setGramos(4);
+		cebollarojaflor.setFvencimiento(13);;
 		
 		List<Ingrediente> ingredientesdeflor = flor.getlistaIngrediente();
 		ingredientesdeflor.add(cebollarojaflor);

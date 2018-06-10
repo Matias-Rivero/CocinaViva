@@ -1,8 +1,5 @@
 package ar.edu.unlam.cocinaviva.servicios;
 
-
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,7 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.cocinaviva.dao.IngredienteDao;
+import ar.edu.unlam.cocinaviva.dao.UsuarioDao;
 import ar.edu.unlam.cocinaviva.modelo.Ingrediente;
+import ar.edu.unlam.cocinaviva.modelo.Usuario;
 
 @Service("servicioIngrediente")
 @Transactional
@@ -20,12 +19,14 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 
 	@Inject
 	private IngredienteDao servicioIngredienteDao;
+	
+	@Inject
+	private UsuarioDao servicioUsuarioDao;
 
 	@Override
 	public void guardarIngredienteEnInventario(Ingrediente ingrediente) {
 		ingrediente.setUso("INVENTARIO");
 		ingrediente.setCantidad(0);
-		ingrediente.setGramos(0);
 		ingrediente.setFcompra(0);
 		ingrediente.setFvencimiento(0);
 		ingrediente.setEstado("NOVENCIDO"); // VENCIDO // ADVERTENCIA
@@ -183,6 +184,28 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 				ingredientesSeleccionados.add(i);
 			}
 			return ingredientesSeleccionados;
+	}
+
+	@Override
+	public void eliminarIngredienteAUsuario(Long idu, Long id) {
+	
+		Usuario usuario = servicioUsuarioDao.traerUnUsuarioPorSuId(idu);
+		Ingrediente ingrediente = traerUnIngredientePorSuId(id);
+			
+		List<Ingrediente> ingredientesquetiene = usuario.getlistaIngrediente();
+		
+		ingredientesquetiene.remove(ingrediente);
+		
+		usuario.setlistaIngrediente(ingredientesquetiene);
+				
+		servicioUsuarioDao.actualizarUsuario(usuario);	
+		
+		eliminarIngrediente(ingrediente);
+	}
+
+	@Override
+	public void eliminarIngrediente(Ingrediente ingrediente) {
+		 servicioIngredienteDao.eliminarIngrediente(ingrediente);
 	}
 
 }

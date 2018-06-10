@@ -138,10 +138,9 @@
 											<thead>
 												<tr>
 													<th><span class="lead">Nombre</span></th>
-													<th><span class="lead">Cantidad</span></th>
-													<th><span class="lead">Gramos</span></th>
-													<th><span class="lead">Fecha de Compra</span></th>
 													<th><span class="lead">Fecha de Vencimiento</span></th>
+													<th><span class="lead">Fecha de Compra</span></th>
+													<th><span class="lead">Cantidad</span></th>																								
 												</tr>
 											</thead>
 											<tbody>
@@ -150,11 +149,12 @@
 													var="tieneingredienteselusuario">
 													<tr align="left">
 
-														<th><span class="lead">${tieneingredienteselusuario.nombre}</span></th>
-														<th><span class="lead">${tieneingredienteselusuario.cantidad}</span></th>
-														<th><span class="lead">${tieneingredienteselusuario.gramos}</span></th>
-														<th><span class="lead">${tieneingredienteselusuario.fcompra}</span></th>
+														<th><span class="lead">${tieneingredienteselusuario.nombre}</span></th>											
 														<th><span class="lead">${tieneingredienteselusuario.fvencimiento}</span></th>
+														<th><span class="lead">${tieneingredienteselusuario.fcompra}</span></th>
+														<th><span class="lead">${tieneingredienteselusuario.cantidad}</span></th>
+<!-- 														<th><label for="date-start">Date</label> -->
+<!-- 														<input type="text" id="date" class="form-control"></th> -->
 													</tr>
 												</c:forEach>
 											</tbody>
@@ -179,11 +179,10 @@
 											<table class="table table-hover">
 												<thead>
 													<tr>
-														<th><span class="lead">Nombre</span></th>
-														<th><span class="lead">Cantidad</span></th>
-														<th><span class="lead">Gramos</span></th>
-														<th><span class="lead">Fecha de Compra</span></th>
+														<th><span class="lead">Nombre</span></th>														
 														<th><span class="lead">Fecha de Vencimiento</span></th>
+														<th><span class="lead">Fecha de Compra</span></th>
+														<th><span class="lead">Cantidad</span></th>														
 													</tr>
 												</thead>
 												<tbody>
@@ -191,12 +190,10 @@
 													<c:forEach items="${ingredinetesseleccionados}"
 														var="ingredinetesseleccionados">
 														<tr align="left">
-
 															<th><span class="lead">${ingredinetesseleccionados.nombre}</span></th>
-															<th><span class="lead">${ingredinetesseleccionados.cantidad}</span></th>
-															<th><span class="lead">${ingredinetesseleccionados.gramos}</span></th>
-															<th><span class="lead">${ingredinetesseleccionados.fcompra}</span></th>
 															<th><span class="lead">${ingredinetesseleccionados.fvencimiento}</span></th>
+															<th><span class="lead">${ingredinetesseleccionados.fcompra}</span></th>
+															<th><span class="lead">${ingredinetesseleccionados.cantidad}</span></th>															
 														</tr>
 													</c:forEach>
 											</tbody>

@@ -16,7 +16,6 @@ public class Ingrediente {
 	private String nombre;
 	private Integer [] seleccionados;
 	private Integer cantidad;
-	private Integer gramos;
 	private String tipo;
 	private Integer fvencimiento;
 	private Integer fcompra;
@@ -41,12 +40,6 @@ public class Ingrediente {
 	}
 	public void setCantidad(Integer cantidad) {
 		this.cantidad = cantidad;
-	}
-	public Integer getGramos() {
-		return gramos;
-	}
-	public void setGramos(Integer gramos) {
-		this.gramos = gramos;
 	}
 	public String getTipo() {
 		return tipo;

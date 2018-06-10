@@ -921,6 +921,11 @@ form label {
 #gtco-products {
   background: #008ee0;
 }
+
+.usar {
+  border-color: #3c763d;
+}
+
 #gtco-products .item img {
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;

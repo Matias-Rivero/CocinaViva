@@ -11,6 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.cocinaviva.modelo.Ingrediente;
@@ -40,22 +41,24 @@ public class ControladorLogin {
 			
 			Usuario usuariologueado = (Usuario) request.getSession().getAttribute("usuariologueado");	
 			
-			modelo.put("tieneingredienteselusuario",usuariologueado.getlistaIngrediente());	
+			Usuario usuario = servicioUsuario.traerUnUsuarioPorSuId(usuariologueado.getId());
+			
+			modelo.put("tieneingredienteselusuario",usuario.getlistaIngrediente());	
 	
-			if(usuariologueado.getlistaIngrediente().isEmpty()){
+			if(usuario.getlistaIngrediente().isEmpty()){
 				return new ModelAndView("redirect:/ingredientes");
 			}
 						
 			modelo.put("ingredienteslacteosdelusuario",
-					servicioIngrediente.traerLosIngredientesLacteosDeUnUsuario(usuariologueado.getlistaIngrediente()));			
+					servicioIngrediente.traerLosIngredientesLacteosDeUnUsuario(usuario.getlistaIngrediente()));			
 			modelo.put("ingredientesvegetalesdelusuario", servicioIngrediente
-					.traerLosIngredientesVegetalesDeUnUsuario(usuariologueado.getlistaIngrediente()));		
+					.traerLosIngredientesVegetalesDeUnUsuario(usuario.getlistaIngrediente()));		
 			modelo.put("ingredientescarnesdelusuario",
-					servicioIngrediente.traerLosIngredientesCarnesDeUnUsuario(usuariologueado.getlistaIngrediente()));
+					servicioIngrediente.traerLosIngredientesCarnesDeUnUsuario(usuario.getlistaIngrediente()));
 			modelo.put("ingredientespescadodelusuario",
-					servicioIngrediente.traerLosIngredientesPescadoDeUnUsuario(usuariologueado.getlistaIngrediente()));
+					servicioIngrediente.traerLosIngredientesPescadoDeUnUsuario(usuario.getlistaIngrediente()));
 			modelo.put("ingredientescondimentodelusuario", servicioIngrediente
-					.traerLosIngredientesCondimentoDeUnUsuario(usuariologueado.getlistaIngrediente()));
+					.traerLosIngredientesCondimentoDeUnUsuario(usuario.getlistaIngrediente()));
 			
 			Ingrediente checkingredientes = new Ingrediente();
 			modelo.put("checkingredientes", checkingredientes);
@@ -165,7 +168,9 @@ public class ControladorLogin {
 			
 			Usuario usuariologueado = (Usuario) request.getSession().getAttribute("usuariologueado");	
 			
-			modelo.put("tieneingredienteselusuario",usuariologueado.getlistaIngrediente());	
+			Usuario usuario = servicioUsuario.traerUnUsuarioPorSuId(usuariologueado.getId());
+			
+			modelo.put("tieneingredienteselusuario",usuario.getlistaIngrediente());	
 				
 				List<Ingrediente> listaDeTodosLosIngredientesOfrecidos = servicioIngrediente.traerTodosLosIngredientes();
 				modelo.put("ingredientesofrecidosenlacteos",
@@ -198,9 +203,9 @@ public class ControladorLogin {
 			
 			Usuario usuariologueado = (Usuario) request.getSession().getAttribute("usuariologueado");
 			
-			modelo.put("tieneingredienteselusuario",usuariologueado.getlistaIngrediente());	
+			Usuario usuario = servicioUsuario.traerUnUsuarioPorSuId(usuariologueado.getId());
 			
-
+			modelo.put("tieneingredienteselusuario",usuario.getlistaIngrediente());	
 			
 			List<Ingrediente> listaDeTodosLosIngredientesOfrecidos = servicioIngrediente.traerTodosLosIngredientes();
 			modelo.put("ingredientesofrecidosenlacteos",
@@ -213,11 +218,6 @@ public class ControladorLogin {
 					servicioIngrediente.traerLosIngredientesOfrecidosEnPescado(listaDeTodosLosIngredientesOfrecidos));
 			modelo.put("ingredientesofrecidosencondimento", servicioIngrediente
 					.traerLosIngredientesOfrecidosEnCondimento(listaDeTodosLosIngredientesOfrecidos));
-			
-			
-			
-		
-		
 		
 		List<Ingrediente> Ingredientes = servicioIngrediente.traerIngredientesSeleccionados(checkingredientes.getSeleccionados());
 			
@@ -230,4 +230,19 @@ public class ControladorLogin {
 		}
 		return new ModelAndView("agregaringredientes", modelo);
 	}
+	
+	@RequestMapping(path = "/eliminar-ingrediente")
+	public ModelAndView eliminarIngrediente(@RequestParam("id") Long id, HttpServletRequest request) {
+		
+		if (request.getSession().getAttribute("usuariologueado") != null) {
+			
+			Usuario usuariologueado = (Usuario) request.getSession().getAttribute("usuariologueado");	
+					
+			servicioIngrediente.eliminarIngredienteAUsuario(usuariologueado.getId(),id);
+					
+		return new ModelAndView("redirect:/home");
+	}
+		return new ModelAndView("redirect:/home");
+	}
+	
 }
