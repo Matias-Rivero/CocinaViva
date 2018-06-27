@@ -1583,7 +1583,7 @@ p {
 .lead {
   margin-bottom: 20px;
   font-size: 16px;
-  font-weight: 300;
+  font-weight: 600;
   line-height: 1.4;
 }
 @media (min-width: 768px) {
@@ -5750,6 +5750,7 @@ a.thumbnail.active {
 .list-group {
   margin-bottom: 20px;
   padding-left: 0;
+
 }
 
 .list-group-item {

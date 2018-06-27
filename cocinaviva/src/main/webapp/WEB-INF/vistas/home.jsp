@@ -85,7 +85,7 @@
 				<div class="row">
 					<div class="col-sm-4 col-xs-12">
 						<div id="gtco-logo">
-							<a href="home">Cocina Viva <em>.</em></a>
+							<a href="home">Cocina Viva<em>.</em></a>
 						</div>
 					</div>
 
@@ -114,11 +114,9 @@
 					<c:when test="${not empty tieneingredienteselusuario}">
 
 						<div class="overlay"></div>
+						<div class="gtco-section">
 						<div class="gtco-container">
 							<div class="py-5 text-center">
-								<img class="d-block mx-auto mb-4"
-									src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg"
-									alt="" width="72" height="72">
 								<h1>Cocina con tus ingredientes!</h1>
 							</div>
 							<div class="row">
@@ -128,21 +126,24 @@
 											class="list-group-item d-flex justify-content-between lh-condensed">
 
 											<div class="input-group">
-												<span class="input-group-addon">Buscar</span> <input
+												<span class="input-group-addon">Usar</span> <input
 													type="text" id="filtrar" class="form-control"
 													placeholder="pure de tomate">
 											</div>
 										</li>
 									</ul>
 								</div>
-								<div class="col-md-9 order-md-9 mb-9">
-									<h4
-										class="d-flex justify-content-between align-items-center mb-3">
+							</div>	
+							<div class="row">
+								<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+									<h4 class="d-flex justify-content-between align-items-center mb-3">
 										<span class="text-muted">Selecciona los ingredientes de
-											tu heladera</span>
-									</h4>
+											tu heladera &nbsp </span>
+										<span class="lead glyphicon glyphicon-pencil"><a href="#">Modificar</a></span>	
+									</h4>		
+									
 									<ul class="list-group mb-3">
-										<form:form method="POST" modelAttribute="checkingredientes"
+										<form:form id="f1" name="confirform" method="POST" modelAttribute="checkingredientes"
 											action="recetas">
 											<c:choose>
 												<c:when test="${not empty ingredienteslacteosdelusuario}">
@@ -153,6 +154,7 @@
 																<thead>
 																	<tr>
 																		<th><span class="lead"><strong>Lacteos</strong></span></th>
+																		<th><span class="lead colorverde">Usar</span></th>
 																		<th><span class="lead">Fecha de Compra</span></th>
 																		<th><span class="lead">Fecha de
 																				Vencimiento</span></th>
@@ -164,15 +166,15 @@
 																		var="ingredienteslacteosdelusuario">
 																		<tr align="left">
 																			<th><span class="lead">${ingredienteslacteosdelusuario.nombre}</span></th>
-																			<th><span class="lead">${ingredienteslacteosdelusuario.fcompra}</span></th>
-																			<th><span class="lead">${ingredienteslacteosdelusuario.fvencimiento}</span></th>
-																			<th><span class="lead">${ingredienteslacteosdelusuario.cantidad}</span></th>
-																			<th><span class="lead"><form:checkbox
+																			<th><span class="lead colorverde"><form:checkbox
 																						path="seleccionados"
 																						value="${ingredienteslacteosdelusuario.id}" />&nbsp
 																					Usar</span></th>
+																			<th><span class="lead">${ingredienteslacteosdelusuario.fcompra}</span></th>
+																			<th><span class="lead">${ingredienteslacteosdelusuario.fvencimiento}</span></th>
+																			<th><span class="lead">${ingredienteslacteosdelusuario.cantidad}</span></th>															
 																			<td><a
-																				href="eliminar-ingrediente?id=${ingredienteslacteosdelusuario.id}"><span
+																				href='javascript:;' onclick="eliminarIngrediente(${ingredienteslacteosdelusuario.id},'${ingredienteslacteosdelusuario.nombre}');"><span
 																					class="lead glyphicon glyphicon-trash"></span></a></td>
 																		</tr>
 																	</c:forEach>
@@ -180,6 +182,10 @@
 															</table>
 														</div>
 													</li>
+													<span class="hidden"> <input id="f1t1" name="f1t1"
+													type="text" class="form-control"
+													placeholder="" value="" />
+													</span>
 												</c:when>
 											</c:choose>
 
@@ -192,6 +198,7 @@
 																<thead>
 																	<tr>
 																		<th><span class="lead"><strong>Vegetales</strong></span></th>
+																		<th><span class="lead colorverde">Usar</span></th>
 																		<th><span class="lead">Fecha de Compra</span></th>
 																		<th><span class="lead">Fecha de
 																				Vencimiento</span></th>
@@ -203,13 +210,13 @@
 																		var="ingredientesvegetalesdelusuario">
 																		<tr align="left">
 																			<th><span class="lead">${ingredientesvegetalesdelusuario.nombre}</span></th>
-																			<th><span class="lead">${ingredientesvegetalesdelusuario.fcompra}</span></th>
-																			<th><span class="lead">${ingredientesvegetalesdelusuario.fvencimiento}</span></th>
-																			<th><span class="lead">${ingredientesvegetalesdelusuario.cantidad}</span></th>
-																			<th><span class="lead"><form:checkbox
+																			<th><span class="lead colorverde"><form:checkbox
 																						path="seleccionados"
 																						value="${ingredientesvegetalesdelusuario.id}" />&nbsp
 																					Usar</span></th>
+																			<th><span class="lead">${ingredientesvegetalesdelusuario.fcompra}</span></th>
+																			<th><span class="lead">${ingredientesvegetalesdelusuario.fvencimiento}</span></th>
+																			<th><span class="lead">${ingredientesvegetalesdelusuario.cantidad}</span></th>																			
 																			<td><a
 																				href="eliminar-ingrediente?id=${ingredientesvegetalesdelusuario.id}"><span
 																					class="lead glyphicon glyphicon-trash"></span></a></td>
@@ -231,6 +238,7 @@
 																<thead>
 																	<tr>
 																		<th><span class="lead"><strong>Carnes</strong></span></th>
+																		<th><span class="lead colorverde">Usar</span></th>
 																		<th><span class="lead">Fecha de Compra</span></th>
 																		<th><span class="lead">Fecha de
 																				Vencimiento</span></th>
@@ -242,13 +250,13 @@
 																		var="ingredientescarnesdelusuario">
 																		<tr align="left">
 																			<th><span class="lead">${ingredientescarnesdelusuario.nombre}</span></th>
-																			<th><span class="lead">${ingredientescarnesdelusuario.fcompra}</span></th>
-																			<th><span class="lead">${ingredientescarnesdelusuario.fvencimiento}</span></th>
-																			<th><span class="lead">${ingredientescarnesdelusuario.cantidad}</span></th>
-																			<th><span class="lead"><form:checkbox
+																			<th><span class="lead colorverde"><form:checkbox
 																						path="seleccionados"
 																						value="${ingredientescarnesdelusuario.id}" />&nbsp
 																					Usar</span></th>
+																			<th><span class="lead">${ingredientescarnesdelusuario.fcompra}</span></th>
+																			<th><span class="lead">${ingredientescarnesdelusuario.fvencimiento}</span></th>
+																			<th><span class="lead">${ingredientescarnesdelusuario.cantidad}</span></th>																		
 																			<td><a
 																				href="eliminar-ingrediente?id=${ingredientescarnesdelusuario.id}"><span
 																					class="lead glyphicon glyphicon-trash"></span></a></td>
@@ -270,7 +278,8 @@
 																<thead>
 																	<tr>
 																		<th><span class="lead"><strong>Pescado</strong></span></th>
-																		<th><span class="lead">Fecha de Compra</span></th>
+																		<th><span class="lead">Usar</span></th>
+																		<th><span class="lead colorverde">Fecha de Compra</span></th>
 																		<th><span class="lead">Fecha de
 																				Vencimiento</span></th>
 																		<th><span class="lead">Cantidad</span></th>
@@ -281,13 +290,13 @@
 																		var="ingredientespescadodelusuario">
 																		<tr align="left">
 																			<th><span class="lead">${ingredientespescadodelusuario.nombre}</span></th>
-																			<th><span class="lead">${ingredientespescadodelusuario.fcompra}</span></th>
-																			<th><span class="lead">${ingredientespescadodelusuario.fvencimiento}</span></th>
-																			<th><span class="lead">${ingredientespescadodelusuario.cantidad}</span></th>
-																			<th><span class="lead"><form:checkbox
+																			<th><span class="lead colorverde"><form:checkbox
 																						path="seleccionados"
 																						value="${ingredientespescadodelusuario.id}" />&nbsp
 																					Usar</span></th>
+																			<th><span class="lead">${ingredientespescadodelusuario.fcompra}</span></th>
+																			<th><span class="lead">${ingredientespescadodelusuario.fvencimiento}</span></th>
+																			<th><span class="lead">${ingredientespescadodelusuario.cantidad}</span></th>																
 																			<td><a
 																				href="eliminar-ingrediente?id=${ingredientespescadodelusuario.id}"><span
 																					class="lead glyphicon glyphicon-trash"></span></a></td>
@@ -309,6 +318,7 @@
 																<thead>
 																	<tr>
 																		<th><span class="lead"><strong>Condimento</strong></span></th>
+																		<th><span class="lead colorverde">Usar</span></th>
 																		<th><span class="lead">Fecha de Compra</span></th>
 																		<th><span class="lead">Fecha de
 																				Vencimiento</span></th>
@@ -320,13 +330,13 @@
 																		var="ingredientescondimentodelusuario">
 																		<tr align="left">
 																			<th><span class="lead">${ingredientescondimentodelusuario.nombre}</span></th>
-																			<th><span class="lead">${ingredientescondimentodelusuario.fcompra}</span></th>
-																			<th><span class="lead">${ingredientescondimentodelusuario.fvencimiento}</span></th>
-																			<th><span class="lead">${ingredientescondimentodelusuario.cantidad}</span></th>
-																			<th><span class="lead"><form:checkbox
+																			<th><span class="lead colorverde"><form:checkbox
 																						path="seleccionados"
 																						value="${ingredientescondimentodelusuario.id}" />&nbsp
 																					Usar</span></th>
+																			<th><span class="lead">${ingredientescondimentodelusuario.fcompra}</span></th>
+																			<th><span class="lead">${ingredientescondimentodelusuario.fvencimiento}</span></th>
+																			<th><span class="lead">${ingredientescondimentodelusuario.cantidad}</span></th>																			
 																			<td><a
 																				href="eliminar-ingrediente?id=${ingredientescondimentodelusuario.id}"><span
 																					class="lead glyphicon glyphicon-trash"></span></a></td>
@@ -347,49 +357,47 @@
 
 								</div>
 
-								<div class="col-md-3 order-md-3">
+								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 
 									<h4
 										class="d-flex justify-content-between align-items-center mb-3">
-										<span class="text-muted">¿Tienes mas ingredientes?</span>
+										<span class="text-muted">¿Tienes mas?</span>
 									</h4>
 
 									<ul class="list-group mb-3">
-										<li
-											class="list-group-item d-flex justify-content-between lh-condensed">
-											<a href="ingredientes"
-											class="btn btn-primary btn-lg btn-block" role="button">Agregar
-												Ingredientes</a>
+										<li class="list-group-item d-flex justify-content-between lh-condensed">
+<!-- 											<a href="ingredientes" class="btn btn-primary btn-block" role="button">Agregar</a> -->
+<!-- 											<span class="lead glyphicon glyphicon-pencil"><a href="ingredientes">Agregar</a></span>	 -->
+												<a href="ingredientes"><input type=image src="images/mas.jpg"  alt="mas" class="img-rounded img-responsive"/></a>
 										</li>
 									</ul>
-
+									<h4
+										class="d-flex justify-content-between align-items-center mb-3">
+										<span class="lead">BUSCAR RECETAS</span>
+									</h4>
 									<ul class="list-group mb-3">
-										<li
-											class="list-group-item d-flex justify-content-between lh-condensed">
-											<a onclick="buscarreceta();"> <span class="text-muted"><input
+										<li class="list-group-item d-flex justify-content-between lh-condensed">
+											<a onclick="buscarreceta();"><input
 													type=image src="images/flecha.jpg" alt="BUSCAR RECETA"
-													class="img-rounded img-responsive"></span>
-												<h2
-													class="d-flex justify-content-between align-items-center mb-3">
-													<span class="text-muted">BUSCAR RECETAS</span>
-												</h2>
+													class="img-rounded img-responsive">
+												
 										</a>
 										</li>
 									</ul>
 
 								</div>
-
-							</div>
+							</div>	
+							
 
 						</div>
-
+						</div>
 					</c:when>
 				</c:choose>
 
 			</c:when>
 			<c:otherwise>
 				<header id="gtco-header" class="gtco-cover gtco-cover-md"
-					role="banner" style="background-image: url(images/img_bg_1.jpg)"
+					role="banner" style="background-image: url(images/lareceta.jpg)"
 					data-stellar-background-ratio="0.5">
 					<div class="overlay"></div>
 					<div class="gtco-container">
@@ -463,6 +471,24 @@
 			</c:otherwise>
 		</c:choose>
 
+
+		<div id="ModalCrear" class="modal fade" tabindex="-1" role="dialog" style="overflow-y: scroll;">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">¿Estas seguro de elminar el ingrediente?</h4>
+      </div>
+      <div class="modal-body">
+        <span class="lead" id="ingred"></span>
+      </div>
+      <div class="modal-footer" id="despues">
+        <a type="button" class="btn btn-lg btn-primary btn-block" href="" id="eliminar"><span class="glyphicon glyphicon-ok">Confirmar</span></a>
+        <a type="button" class="btn btn-lg btn-default btn-block" href="" data-dismiss="modal"><span class="glyphicon glyphicon-remove">Cancelar</span></a>
+      </div>    
+    </div>
+  </div>
+</div>
 		<footer id="gtco-footer" role="contentinfo"
 			style="background-image: url(images/img_bg_1.jpg)"
 			data-stellar-background-ratio="0.5">
@@ -555,8 +581,18 @@
 			capa.click();
 
 		}
+		
+		function eliminarIngrediente(ingrediente,nombre) {		
+			var ingre = ingrediente;		
+			var nombr = nombre;	
+			$('#eliminar').attr('href','eliminar-ingrediente?id='+ingre+'');
+			$('#ingred').text(''+nombr+'');		
+			$('#ModalCrear').modal('show');
+
+		}
 	</script>
 
+	
 	<script type="text/javascript">
 		$(document).ready(function() {
 			(function($) {
@@ -570,8 +606,6 @@
 			}(jQuery));
 		});
 	</script>
-
 </body>
-
 </html>
 

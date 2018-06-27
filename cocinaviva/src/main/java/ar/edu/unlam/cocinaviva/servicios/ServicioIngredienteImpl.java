@@ -208,4 +208,26 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 		 servicioIngredienteDao.eliminarIngrediente(ingrediente);
 	}
 
+	@Override
+	public Ingrediente generarListaDeIngredientes(List<Ingrediente> ingredientesSelec) {
+		Ingrediente ingrediente = new Ingrediente();
+		ingrediente.setlistaIngredientes(ingredientesSelec);
+		return ingrediente;
+	}
+
+	@Override
+	public void guardarIngredientesAUsuario(Long id, List<Ingrediente> listaIngredientes) {
+		Usuario usuario = servicioUsuarioDao.traerUnUsuarioPorSuId(id);
+		
+		List<Ingrediente> ingredientesdelusuario  = usuario.getlistaIngrediente();
+		for (Ingrediente ingredienteagregar : listaIngredientes) {
+//			if (ingredientesuser.getNombre().equals("CONDIMENTOS")) {
+//				ingredientesCondimento.add(condimento);
+//			}
+			ingredientesdelusuario.add(ingredienteagregar);
+			guardarIngredienteEnUsuario(ingredienteagregar);			
+		}		
+		servicioUsuarioDao.actualizarUsuario(usuario);		
+	}
+
 }

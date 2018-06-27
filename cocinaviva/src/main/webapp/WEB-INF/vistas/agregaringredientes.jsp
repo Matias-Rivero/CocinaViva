@@ -95,6 +95,8 @@
 						<c:when test="${usuariologueado != null}">
 							<div class="col-xs-8 text-right menu-1">
 								<ul>
+									<li class="btn-cta"><a href="home"><span>Buscar
+												Recetas</span></a></li>
 									<li class="btn-cta"><a href="perfilcliente"><span>Mi
 												perfil: ${usuariologueado.alias}</span></a></li>
 									<li class="btn-cta"><a href="cerrarSesion"><span>Salir</span></a></li>
@@ -113,18 +115,82 @@
 
 
 		<div class="overlay"></div>
+		<div class="gtco-section">
 		<div class="gtco-container">
-			<div class="py-5 text-center">
-				<img class="d-block mx-auto mb-4"
-					src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg"
-					alt="" width="72" height="72">
+			<div class="py-5 text-center">				
 				<h1>Agregar Ingredientes</h1>
 			</div>
-
+		</div>
+		</div>
 			<div class="row">
 				<div class="col-md-12 order-md-12 mb-12">
+				
+					<c:choose>
+						<c:when test="${not empty ingrediente.listaIngredientes}">
+							<ul class="list-group mb-3">
+								<form:form method="POST" modelAttribute="ingrediente"
+									action="altaIngredientes">
 
-					<h4 class="d-flex justify-content-between align-items-center mb-3">
+									<li
+										class="list-group-item d-flex justify-content-between lh-condensed">
+
+										<div class="table-responsive">
+											<h3 class="my-0">Para Agregar</h3>
+											<a href="ingredientes#agringre" class="btn btn-link">Volver a seleccionar ingredientes</a>
+											<table class="table table-hover">
+												<thead>
+													<tr>
+														<th><span class="lead">Nombre</span></th>
+														<th><span class="lead">Fecha de Compra</span></th>
+														<th><span class="lead">Fecha de Vencimiento</span></th>
+														<th><span class="lead">Cantidad</span></th>
+													</tr>
+												</thead>
+												<tbody>
+
+													<c:forEach items="${ingrediente.listaIngredientes}" var="i"
+														varStatus="status">
+														<tr align="left">
+															<th><span class="lead">${i.nombre}</span></th>
+															<th><form:input
+																	path="listaIngredientes[${status.index}].fvencimiento"
+																	type="text" /></th>
+															<th><form:input
+																	path="listaIngredientes[${status.index}].fcompra"
+																	type="text" /></th>
+															<th><form:select
+																	path="listaIngredientes[${status.index}].cantidad">
+																	<c:forEach var="cantidad" begin="1" end="20">
+																		<form:option value="${cantidad}">${cantidad}</form:option>
+																	</c:forEach>
+																</form:select></th>
+															<label style="display: none"><form:input
+																	path="listaIngredientes[${status.index}].nombre"
+																	type="text" /></label>
+															<label style="display: none"><form:input
+																	path="listaIngredientes[${status.index}].estado"
+																	type="text" /></label>
+															<label style="display: none"><form:input
+																	path="listaIngredientes[${status.index}].tipo"
+																	type="text" /></label>
+														</tr>
+													</c:forEach>
+												</tbody>
+
+											</table>
+											<input type="submit" class="btn btn-primary btn-lg btn-block"
+												value="AGREGAR">
+										</div>
+									</li>
+
+								</form:form>
+								<!-- 											<div style="visibility: hidden;"> -->
+
+								<!-- 											</div> -->
+								<%-- 										</form:form> --%>
+							</ul>
+							
+							<h4 class="d-flex justify-content-between align-items-center mb-3">
 					</h4>
 					<ul class="list-group mb-3">
 						<c:choose>
@@ -134,13 +200,14 @@
 
 									<div class="table-responsive">
 										<h3 class="my-0">Tus ingredientes</h3>
+										<a href="ingredientes#agringre" class="btn btn-link">Modificar</a>
 										<table class="table table-hover">
 											<thead>
 												<tr>
 													<th><span class="lead">Nombre</span></th>
-													<th><span class="lead">Fecha de Vencimiento</span></th>
 													<th><span class="lead">Fecha de Compra</span></th>
-													<th><span class="lead">Cantidad</span></th>																								
+													<th><span class="lead">Fecha de Vencimiento</span></th>
+													<th><span class="lead">Cantidad</span></th>
 												</tr>
 											</thead>
 											<tbody>
@@ -149,12 +216,12 @@
 													var="tieneingredienteselusuario">
 													<tr align="left">
 
-														<th><span class="lead">${tieneingredienteselusuario.nombre}</span></th>											
-														<th><span class="lead">${tieneingredienteselusuario.fvencimiento}</span></th>
+														<th><span class="lead">${tieneingredienteselusuario.nombre}</span></th>
 														<th><span class="lead">${tieneingredienteselusuario.fcompra}</span></th>
+														<th><span class="lead">${tieneingredienteselusuario.fvencimiento}</span></th>
 														<th><span class="lead">${tieneingredienteselusuario.cantidad}</span></th>
-<!-- 														<th><label for="date-start">Date</label> -->
-<!-- 														<input type="text" id="date" class="form-control"></th> -->
+														<!-- 														<th><label for="date-start">Date</label> -->
+														<!-- 														<input type="text" id="date" class="form-control"></th> -->
 													</tr>
 												</c:forEach>
 											</tbody>
@@ -166,291 +233,313 @@
 					</ul>
 					<%-- 										<form:form method="POST" modelAttribute="checkingredientes" --%>
 					<%-- 											action="recetas"> --%>
-					<ul class="list-group mb-3">
-						<form:form method="POST" modelAttribute="altaingredientes"
-							action="altaIngredientes">
-							<c:choose>
-								<c:when test="${not empty ingredinetesseleccionados}">
-									<li
-										class="list-group-item d-flex justify-content-between lh-condensed">
-
-										<div class="table-responsive">
-											<h3 class="my-0">Para Agregar</h3>
-											<table class="table table-hover">
-												<thead>
-													<tr>
-														<th><span class="lead">Nombre</span></th>														
-														<th><span class="lead">Fecha de Vencimiento</span></th>
-														<th><span class="lead">Fecha de Compra</span></th>
-														<th><span class="lead">Cantidad</span></th>														
-													</tr>
-												</thead>
-												<tbody>
-
-													<c:forEach items="${ingredinetesseleccionados}"
-														var="ingredinetesseleccionados">
-														<tr align="left">
-															<th><span class="lead">${ingredinetesseleccionados.nombre}</span></th>
-															<th><span class="lead">${ingredinetesseleccionados.fvencimiento}</span></th>
-															<th><span class="lead">${ingredinetesseleccionados.fcompra}</span></th>
-															<th><span class="lead">${ingredinetesseleccionados.cantidad}</span></th>															
-														</tr>
-													</c:forEach>
-											</tbody>
-											
-										</table>
-										<input type="submit" class="btn btn-primary btn-lg btn-block"
-												value="AGREGAR">
-									</div>
-								</li>
-							</c:when>
-						</c:choose>
-						</form:form>
-						<!-- 											<div style="visibility: hidden;"> -->
-																		
-						<!-- 											</div> -->
-						<%-- 										</form:form> --%>
-					</ul>
-
-
-
-
-				</div>
-
-
+							</div>
+						</div>
+							
+						
+						
+						</c:when>
+						<c:otherwise>									
+				
+			
+			<div class="col-md-12 order-md-12 mb-12" id="agringre">
+				<!-- Oops!. ¿No tienes ingredientes en tu heladera? -->
+<!-- 				<h4 class="d-flex justify-content-between align-items-center mb-3"> -->
+<!-- 					<span class="text-muted">Agregar Ingrediente</span> -->
+<!-- 				</h4> -->
+				<ul class="list-group mb-3">
+					<li
+						class="list-group-item d-flex justify-content-between lh-condensed">
+						<div class="input-group">
+							<span class="input-group-addon">Buscar</span><form name="buscar" action="javascript:;" onsubmit="buscarIngrediente(this)" method="get"><input type="text"
+								id="filtrar" class="form-control"
+								placeholder="tomate"></form>
+						</div>
+					</li>
+				</ul>
 			</div>
-
 
 			<div class="row">
-				<div class="col-md-12 order-md-12 mb-12">
-					<!-- Oops!. ¿No tienes ingredientes en tu heladera? -->
-					<h4 class="d-flex justify-content-between align-items-center mb-3">
-						<span class="text-muted">Agregar Ingrediente</span>
-					</h4>
-					<ul class="list-group mb-3">
-						<li
-							class="list-group-item d-flex justify-content-between lh-condensed">
-
-							<div class="input-group">
-								<span class="input-group-addon">Buscar</span> <input type="text"
-									id="filtrar" class="form-control"
-									placeholder="Agregar Ingrediente">
-
-							</div>
-
-						</li>
-					</ul>
+			
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				
+					
+					
+				<div class="jumbotron">
+				  <div class="container">
+				  <div class="row">
+			
+				<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
+				    <table class="table">
+									<thead>
+										<tr>
+											<th><span class="lead"><strong>Lacteoss</strong></span></th>
+										</tr>
+									</thead>
+									<tbody id="madlacteos">
+											
+												
+											
+											
+									</tbody>
+					</table>
 				</div>
-				<div class="col-md-9 order-md-9 mb-9">
-					<h4 class="d-flex justify-content-between align-items-center mb-3">
-						<span class="text-muted">Ingredientes Sugeridos</span>
-					</h4>
-
-					<ul class="list-group mb-3">
-						<form:form method="POST" modelAttribute="checkingredientes"
-							action="agregarIngredientes">
-							<c:choose>
-								<c:when test="${not empty ingredientesofrecidosenlacteos}">
-									<li
-										class="list-group-item d-flex justify-content-between lh-condensed">
-
-										<div class="table-responsive">
-											<h2 class="my-0">Lacteos</h2>
-											<table class="table table-hover">
-												<thead>
-													<tr>
-														<th><span class="lead">Nombre</span></th>
-													</tr>
-												</thead>
-												<tbody class="buscar">
-
-													<c:forEach items="${ingredientesofrecidosenlacteos}"
-														var="ingredientesofrecidosenlacteos">
-														<tr align="left">
-
-															<th><span class="lead"><form:checkbox
-																		path="seleccionados"
-																		value="${ingredientesofrecidosenlacteos.id}" />&nbsp
-																	${ingredientesofrecidosenlacteos.nombre}</span></th>
-														</tr>
-													</c:forEach>
-												</tbody>
-											</table>
-										</div>
-									</li>
-								</c:when>
-							</c:choose>
-
-							<c:choose>
-								<c:when test="${not empty ingredientesofrecidosenvegetales}">
-									<li
-										class="list-group-item d-flex justify-content-between lh-condensed">
-
-										<div class="table-responsive">
-											<h2 class="my-0">Vegetales</h2>
-											<table class="table table-hover">
-												<thead>
-													<tr>
-														<th><span class="lead">Nombre</span></th>
-													</tr>
-												</thead>
-												<tbody class="buscar">
-
-													<c:forEach items="${ingredientesofrecidosenvegetales}"
-														var="ingredientesofrecidosenvegetales">
-														<tr align="left">
-
-															<th><span class="lead"><form:checkbox
-																		path="seleccionados"
-																		value="${ingredientesofrecidosenvegetales.id}" />&nbsp
-																	${ingredientesofrecidosenvegetales.nombre}</span></th>
-														</tr>
-													</c:forEach>
-												</tbody>
-											</table>
-										</div>
-									</li>
-								</c:when>
-							</c:choose>
-
-							<c:choose>
-								<c:when test="${not empty ingredientesofrecidosencarnes}">
-									<li
-										class="list-group-item d-flex justify-content-between lh-condensed">
-
-										<div class="table-responsive">
-											<h2 class="my-0">Carnes</h2>
-											<table class="table table-hover">
-												<thead>
-													<tr>
-														<th><span class="lead">Nombre</span></th>
-													</tr>
-												</thead>
-												<tbody class="buscar">
-
-													<c:forEach items="${ingredientesofrecidosencarnes}"
-														var="ingredientesofrecidosencarnes">
-														<tr align="left">
-
-															<th><span class="lead"><form:checkbox
-																		path="seleccionados"
-																		value="${ingredientesofrecidosencarnes.id}" />&nbsp
-																	${ingredientesofrecidosencarnes.nombre}</span></th>
-														</tr>
-													</c:forEach>
-												</tbody>
-											</table>
-										</div>
-									</li>
-								</c:when>
-							</c:choose>
-
-							<c:choose>
-								<c:when test="${not empty ingredientesofrecidosenpescado}">
-									<li
-										class="list-group-item d-flex justify-content-between lh-condensed">
-
-										<div class="table-responsive">
-											<h2 class="my-0">Pescado</h2>
-											<table class="table table-hover">
-												<thead>
-													<tr>
-														<th><span class="lead">Nombre</span></th>
-													</tr>
-												</thead>
-												<tbody class="buscar">
-
-													<c:forEach items="${ingredientesofrecidosenpescado}"
-														var="ingredientesofrecidosenpescado">
-														<tr align="left">
-
-															<th><span class="lead"><form:checkbox
-																		path="seleccionados"
-																		value="${ingredientesofrecidosenpescado.id}" />&nbsp
-																	${ingredientesofrecidosenpescado.nombre}</span></th>
-														</tr>
-													</c:forEach>
-												</tbody>
-											</table>
-										</div>
-									</li>
-								</c:when>
-							</c:choose>
-
-							<c:choose>
-								<c:when test="${not empty ingredientesofrecidosencondimento}">
-									<li
-										class="list-group-item d-flex justify-content-between lh-condensed">
-
-										<div class="table-responsive">
-											<h2 class="my-0">Condimento</h2>
-											<table class="table table-hover">
-												<thead>
-													<tr>
-														<th><span class="lead">Nombre</span></th>
-													</tr>
-												</thead>
-												<tbody class="buscar">
-
-													<c:forEach items="${ingredientesofrecidosencondimento}"
-														var="ingredientesofrecidosencondimento">
-														<tr align="left">
-
-															<th><span class="lead"><form:checkbox
-																		path="seleccionados"
-																		value="${ingredientesofrecidosencondimento.id}" />&nbsp
-																	${ingredientesofrecidosencondimento.nombre}</span></th>
-														</tr>
-													</c:forEach>
-												</tbody>
-											</table>
-										</div>
-									</li>
-								</c:when>
-							</c:choose>
-							<div style="visibility: hidden;">
-								<button id="agregaringre" class="btn btn-primary" type="submit">Iniciar</button>
-							</div>
-						</form:form>
-					</ul>
-
-
+				<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
+				    <table class="table">
+									<thead>
+										<tr>
+											<th><span class="lead"><strong>Vegetales</strong></span></th>
+										</tr>
+									</thead>
+									<tbody id="madvegetales">
+											
+												
+											
+											
+									</tbody>
+					</table>
 				</div>
-				<div class="col-md-3 order-md-3">
-
-					<h4 class="d-flex justify-content-between align-items-center mb-3">
-						<span class="text-muted">Click para confirmar</span>
-					</h4>
-
-					<ul class="list-group mb-3">
-
-
-						<li
-							class="list-group-item d-flex justify-content-between lh-condensed">
-
-							<a onclick="agregaringre();"> <span class="text-muted">
-									<span class="text-muted"> <input type=image
-										src="images/flecha.jpg" alt="AGREGAR INGREDIENTE"
-										class="img-rounded img-responsive">
-
-								</span>
-									<h2
-										class="d-flex justify-content-between align-items-center mb-3">
-										<span class="text-muted">AGREGAR INGREDIENTE</span>
-									</h2></a>
-						</li>
-					</ul>
-
+				<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
+				    <table class="table">
+									<thead>
+										<tr>
+											<th><span class="lead"><strong>Carnes</strong></span></th>
+										</tr>
+									</thead>
+									<tbody id="madcarnes">
+											
+												
+											
+											
+									</tbody>
+					</table>
 				</div>
+				<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
+				    <table class="table">
+									<thead>
+										<tr>
+											<th><span class="lead"><strong>Pescado</strong></span></th>
+										</tr>
+									</thead>
+									<tbody id="madpescado">
+											
+												
+											
+											
+									</tbody>
+					</table>
+				</div>
+				<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
+				    <table class="table">
+									<thead>
+										<tr>
+											<th><span class="lead"><strong>Condimento</strong></span></th>
+										</tr>
+									</thead>
+									<tbody id="madcondimento">
+											
+												
+											
+											
+									</tbody>
+					</table>
+				</div>				   				    
+				    </div>
+				  </div>
+				  
+				</div>
+					<button type="button" onclick="agregaringre();" class="btn btn-success btn-lg btn-block">Agregar Ingredientes</button>
+				
+				</div>
+						
+				<form:form method="POST" name="f1" modelAttribute="checkingredientes"
+					action="agregarIngredientes">
+					<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+						<c:choose>
+							<c:when test="${not empty iflacteos}">
+			
+								<div id="lacteos">
 
+									<table class="table table-hover">
+										<thead>
+											<tr>																															
+												<th><img class="d-block mx-auto mb-4" src="images/lacteos.png" id="blacteos" alt="Lacteos" width="40" height="40"/></th>
+											</tr>
+										</thead>
+										<tbody class="buscar" id="tlacteos" style="display:none">
+
+											<c:forEach items="${iflacteos}" var="iflacteos">
+												<tr align="left">
+													<th><span class="lead"> <form:checkbox
+																path="seleccionados" class="${iflacteos.nombre}" id="${iflacteos.id}"
+																value="${iflacteos.id}" name="valores[]" onclick="armarListaLacteos(${iflacteos.id}, '${iflacteos.nombre}')" />&nbsp
+															${iflacteos.nombre}
+													</span></th>
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+
+								</div>
+
+							</c:when>
+						</c:choose>
+					</div>
+					<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+						<c:choose>
+							<c:when test="${not empty ifvegetales}">
+
+								<div id="vegetales">
+
+									<table class="table table-hover">
+										<thead>
+											<tr>																															
+												<th><img class="d-block mx-auto mb-4" src="images/vegetales.png" id="bvegetales" alt="Vegetales" width="40" height="40"/></th>
+											</tr>
+										</thead>
+										<tbody class="buscar" id="tvegetales" style="display:none">
+
+											<c:forEach items="${ifvegetales}" var="ifvegetales">
+												<tr align="left">
+													<th><span class="lead"> <form:checkbox
+																path="seleccionados" class="${ifvegetales.nombre}" id="${ifvegetales.id}"
+																value="${ifvegetales.id}" name="valores[]"
+																onclick="armarListaVegetales(${ifvegetales.id}, '${ifvegetales.nombre}')" />&nbsp
+															${ifvegetales.nombre}
+													</span></th>
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+
+								</div>
+
+							</c:when>
+						</c:choose>
+					</div>
+					<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+						<c:choose>
+							<c:when test="${not empty ifcarnes}">
+							
+								<div id="carnes">
+
+									<table class="table table-hover">
+										<thead>
+											<tr>																															
+												<th><img class="d-block mx-auto mb-4" src="images/carnes.png" id="bcarnes" alt="Carnes" width="40" height="40"/></th>
+											</tr>
+										</thead>
+										<tbody class="buscar" id="tcarnes" style="display:none">
+
+											<c:forEach items="${ifcarnes}" var="ifcarnes">
+												<tr align="left">
+													<th><span class="lead"> <form:checkbox
+																path="seleccionados" class="${ifcarnes.nombre}" id="${ifcarnes.id}"
+																value="${ifcarnes.id}" name="valores[]"
+																onclick="armarListaCarnes(${ifcarnes.id}, '${ifcarnes.nombre}')" />&nbsp
+															${ifcarnes.nombre}
+													</span></th>
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+
+								</div>
+
+							</c:when>
+						</c:choose>
+					</div>
+					<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+						<c:choose>
+							<c:when test="${not empty ifpescado}">
+
+								<div id="pescado">
+
+									<table class="table table-hover">
+										<thead>
+											<tr>																															
+												<th><img class="d-block mx-auto mb-4" src="images/pescado.png" id="bpescado" alt="Pescado" width="40" height="40"/></th>
+											</tr>
+										</thead>
+										<tbody class="buscar" id="tpescado" style="display:none">
+
+											<c:forEach items="${ifpescado}" var="ifpescado">
+												<tr align="left">
+													<th><span class="lead"> <form:checkbox
+																path="seleccionados" class="${ifpescado.nombre}" id="${ifpescado.id}"
+																value="${ifpescado.id}" name="valores[]"
+																onclick="armarListaPescado(${ifpescado.id}, '${ifpescado.nombre}')" />&nbsp
+															${ifpescado.nombre}
+													</span></th>
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+
+								</div>
+
+							</c:when>
+						</c:choose>
+					</div>
+					<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+						<c:choose>
+							<c:when test="${not empty ifcondimento}">
+
+								<div id="condimento">
+
+									<table class="table table-hover">
+										<thead>
+											<tr>																															
+												<th><img class="d-block mx-auto mb-4" src="images/condimento.png" id="bcondimento" alt="Condimento" width="40" height="40"/></th>
+											</tr>
+										</thead>
+										<tbody class="buscar" id="tcondimento" style="display:none">
+
+											<c:forEach items="${ifcondimento}" var="ifcondimento">
+												<tr align="left">
+													<th><span class="lead"> <form:checkbox
+																path="seleccionados" class="${ifcondimento.nombre}" id="${ifcondimento.id}"
+																value="${ifcondimento.id}" name="valores[]"
+																onclick="armarListaCondimento(${ifcondimento.id}, '${ifcondimento.nombre}')" />&nbsp
+															${ifcondimento.nombre}
+													</span></th>
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+
+								</div>
+
+							</c:when>
+						</c:choose>
+
+						<div style="visibility: hidden;">
+							<button id="agregaringre" class="btn btn-primary" type="submit">Iniciar</button>
+						</div>
+					</div>
+				</form:form>
+
+
+
+
+
+
+				
 			</div>
 
+		<!-- </div> -->
+			</c:otherwise>
+					</c:choose>
+		
 
-		</div>
 
 
 
-		<footer id="gtco-footer" role="contentinfo"
+
+		
+		
+	</div>
+	<footer id="gtco-footer" role="contentinfo"
 			style="background-image: url(images/img_bg_1.jpg)"
 			data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
@@ -495,10 +584,6 @@
 
 			</div>
 		</footer>
-		<!-- </div> -->
-
-	</div>
-
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 	</div>
@@ -532,21 +617,30 @@
 	<script src="js/main.js"></script>
 
 	<script type="text/javascript">
-		function buscarreceta() {
-
-			var capa = document.getElementById("buscarreceta");
-			capa.click();
-
-		}
-
 		function agregaringre() {
-
+			
 			var capa = document.getElementById("agregaringre");
 			capa.click();
-
+			
+			for (i=0;i<document.f1.elements.length;i++) 
+			      if(document.f1.elements[i].type == "checkbox")	
+			         document.f1.elements[i].checked=0	
 		}
 	</script>
+<script type="text/javascript">
+		function buscarIngrediente() {
+			var ingrediente = document.getElementById("filtrar").value;
+			var clases = document.getElementsByClassName(ingrediente);
+					
+			for (x = 0; x < clases.length; x++)
+		      {
+		        if(clases[x].className == ingrediente){
+		          clases[x].click();
+		        }
 
+		      }
+		}
+	</script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			(function($) {
@@ -560,7 +654,205 @@
 			}(jQuery));
 		});
 	</script>
-
+	
+	<script>
+$("#filtrar").keyup(
+      function() {
+    	  $( "#tlacteos" ).show();
+          $( "#tvegetales" ).show();
+          $( "#tcarnes" ).show();
+          $( "#tpescado" ).show();
+          $( "#tcondimento" ).show();
+      });
+</script>
+	
+	<script type="text/javascript">
+	$(document).ready(function(){ 
+		   $('#blacteos').on('click',function(){
+		      $('#tlacteos').toggle('slow');
+		   	   });
+	});
+	</script>
+	<script type="text/javascript">
+	$(document).ready(function(){ 	   
+		   $('#bvegetales').on('click',function(){
+			      $('#tvegetales').toggle('slow');
+			   });
+	});
+	</script>
+	<script type="text/javascript">
+	$(document).ready(function(){ 		   
+		   $('#bcarnes').on('click',function(){
+			      $('#tcarnes').toggle('slow');
+			   });
+	});
+	</script>
+	<script type="text/javascript">
+	$(document).ready(function(){ 		   
+		   $('#bpescado').on('click',function(){
+			      $('#tpescado').toggle('slow');
+			   });
+	});
+	</script>
+	<script type="text/javascript">
+	$(document).ready(function(){ 		   
+		   $('#bcondimento').on('click',function(){
+			      $('#tcondimento').toggle('slow');
+			   });
+		});
+	</script>
+		
+	<script type="text/javascript">
+	    function armarLista(iddelcheck, nombre) {
+	    	var idcheck = iddelcheck;
+	    	var nombr = nombre;
+	        element = document.getElementById("smedio");
+	        check = document.getElementById(iddelcheck);
+	        if (check.checked) {
+	    //    	var elementNodetr = document.createElement('th');
+	        	var elementNodeth = document.createElement('tr');
+	        	elementNodeth.setAttribute("align","left");
+	        	var elementNode = document.createElement('span');
+	        	elementNodeth.appendChild(elementNode);
+	        	elementNode.setAttribute("id",iddelcheck+"n");
+	        	elementNode.setAttribute("class","lead2");
+	            var textNode = document.createTextNode(nombr);  
+	            elementNode.appendChild(textNode);
+	            element.appendChild(elementNodeth);
+	      //      elementNode.appendChild(document.createElement("br"));
+	        }
+	        else {
+	        	var checkno = document.getElementById(iddelcheck+"n"); 
+	        	checkno.parentNode.removeChild(checkno); 
+	        }
+	    }
+	</script>
+	<script type="text/javascript">
+	    function armarListaLacteos(iddelcheck, nombre) {
+	    	var idcheck = iddelcheck;
+	    	var nombr = nombre;
+	        element = document.getElementById("madlacteos");
+	        check = document.getElementById(iddelcheck);
+	  //      $('#filtrar').val('');
+	        if (check.checked) {
+	    //    	var elementNodetr = document.createElement('th');
+	        	var elementNodeth = document.createElement('tr');
+	        	elementNodeth.setAttribute("align","left");
+	        	var elementNode = document.createElement('span');
+	        	elementNodeth.appendChild(elementNode);
+	        	elementNode.setAttribute("id",iddelcheck+"n");
+	        	elementNode.setAttribute("class","lead2");
+	            var textNode = document.createTextNode(nombr);  
+	            elementNode.appendChild(textNode);
+	            element.appendChild(elementNodeth);
+	      //      elementNode.appendChild(document.createElement("br"));
+	        }
+	        else {
+	        	var checkno = document.getElementById(iddelcheck+"n"); 
+	        	checkno.parentNode.removeChild(checkno); 
+	        }
+	    }
+	</script>
+	<script type="text/javascript">
+	    function armarListaVegetales(iddelcheck, nombre) {
+	    	var idcheck = iddelcheck;
+	    	var nombr = nombre;
+	        element = document.getElementById("madvegetales");
+	        check = document.getElementById(iddelcheck);
+	        if (check.checked) {
+	    //    	var elementNodetr = document.createElement('th');
+	        	var elementNodeth = document.createElement('tr');
+	        	elementNodeth.setAttribute("align","left");
+	        	var elementNode = document.createElement('span');
+	        	elementNodeth.appendChild(elementNode);
+	        	elementNode.setAttribute("id",iddelcheck+"n");
+	        	elementNode.setAttribute("class","lead2");
+	            var textNode = document.createTextNode(nombr);  
+	            elementNode.appendChild(textNode);
+	            element.appendChild(elementNodeth);
+	      //      elementNode.appendChild(document.createElement("br"));
+	        }
+	        else {
+	        	var checkno = document.getElementById(iddelcheck+"n"); 
+	        	checkno.parentNode.removeChild(checkno); 
+	        }
+	    }
+	</script>
+	<script type="text/javascript">
+	    function armarListaCarnes(iddelcheck, nombre) {
+	    	var idcheck = iddelcheck;
+	    	var nombr = nombre;
+	        element = document.getElementById("madcarnes");
+	        check = document.getElementById(iddelcheck);
+	        if (check.checked) {
+	    //    	var elementNodetr = document.createElement('th');
+	        	var elementNodeth = document.createElement('tr');
+	        	elementNodeth.setAttribute("align","left");
+	        	var elementNode = document.createElement('span');
+	        	elementNodeth.appendChild(elementNode);
+	        	elementNode.setAttribute("id",iddelcheck+"n");
+	        	elementNode.setAttribute("class","lead2");
+	            var textNode = document.createTextNode(nombr);  
+	            elementNode.appendChild(textNode);
+	            element.appendChild(elementNodeth);
+	      //      elementNode.appendChild(document.createElement("br"));
+	        }
+	        else {
+	        	var checkno = document.getElementById(iddelcheck+"n"); 
+	        	checkno.parentNode.removeChild(checkno); 
+	        }
+	    }
+	</script>
+	<script type="text/javascript">
+	    function armarListaPescado(iddelcheck, nombre) {
+	    	var idcheck = iddelcheck;
+	    	var nombr = nombre;
+	        element = document.getElementById("madpescado");
+	        check = document.getElementById(iddelcheck);
+	        if (check.checked) {
+	    //    	var elementNodetr = document.createElement('th');
+	        	var elementNodeth = document.createElement('tr');
+	        	elementNodeth.setAttribute("align","left");
+	        	var elementNode = document.createElement('span');
+	        	elementNodeth.appendChild(elementNode);
+	        	elementNode.setAttribute("id",iddelcheck+"n");
+	        	elementNode.setAttribute("class","lead2");
+	            var textNode = document.createTextNode(nombr);  
+	            elementNode.appendChild(textNode);
+	            element.appendChild(elementNodeth);
+	      //      elementNode.appendChild(document.createElement("br"));
+	        }
+	        else {
+	        	var checkno = document.getElementById(iddelcheck+"n"); 
+	        	checkno.parentNode.removeChild(checkno); 
+	        }
+	    }
+	</script>
+	<script type="text/javascript">
+	    function armarListaCondimento(iddelcheck, nombre) {
+	    	var idcheck = iddelcheck;
+	    	var nombr = nombre;
+	        element = document.getElementById("madcondimento");
+	        check = document.getElementById(iddelcheck);
+	        if (check.checked) {
+	    //    	var elementNodetr = document.createElement('th');
+	        	var elementNodeth = document.createElement('tr');
+	        	elementNodeth.setAttribute("align","left");
+	        	var elementNode = document.createElement('span');
+	        	elementNodeth.appendChild(elementNode);
+	        	elementNode.setAttribute("id",iddelcheck+"n");
+	        	elementNode.setAttribute("class","lead2");
+	            var textNode = document.createTextNode(nombr);  
+	            elementNode.appendChild(textNode);
+	            element.appendChild(elementNodeth);
+	      //      elementNode.appendChild(document.createElement("br"));
+	        }
+	        else {
+	        	var checkno = document.getElementById(iddelcheck+"n"); 
+	        	checkno.parentNode.removeChild(checkno); 
+	        }
+	    }
+	</script>
 </body>
 </html>
 

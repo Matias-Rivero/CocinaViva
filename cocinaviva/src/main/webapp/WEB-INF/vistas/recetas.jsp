@@ -64,9 +64,9 @@
 	<![endif]-->
 <style type="text/css">
 .gtco-cover.gtco-cover-sm {
-    height: 80px;
+	height: 80px;
 }
-</style>	
+</style>
 </head>
 <body>
 
@@ -104,62 +104,76 @@
 
 		<header id="gtco-header" class="gtco-cover gtco-cover-sm"> </header>
 
-		<div class="overlay"></div>
-		<div class="gtco-container">
-			<div class="py-5 text-center">
-				<img class="d-block mx-auto mb-4"
-					src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg"
-					alt="" width="72" height="72">
-				<h1>Recetas Encontradas</h1>
-			</div>
+		<div class="gtco-section">
+			<div class="gtco-container">
+				<div class="py-5 text-center" id="gtco-counter">
+					<h1>
+						Recetas Encontradas!<span
+							class="badge pull-right counter js-counter" data-from="0"
+							data-to="1000" data-speed="5000" data-refresh-interval="50">1</span>
+					</h1>
+					<label class="label label-warning">Con:</label>
+					<c:forEach items="${ingredinetesseleccionados}"
+						var="ingredinetesseleccionados">
+						<label class="label label-success">${ingredinetesseleccionados.nombre}<span
+							class="badge">x</span></label>
+					</c:forEach>
 
-			<div class="row">
-				<!-- <h2>blabla</h2> -->
+				</div>
+				<div class="row">
+					<div class="col-md-12 order-md-12 mb-12">
+						<br>
+						<ul class="list-group mb-3">
+							<li
+								class="list-group-item d-flex justify-content-between lh-condensed">
 
-				<div class="col-md-12 ">
-
-					<div class="panel panel-default">
-						<div class="panel-heading">
-						<h2>Ingredientes:</h2>	
-						<c:forEach items="${ingredinetesseleccionados}" var="ingredinetesseleccionados">
-				              <h4>${ingredinetesseleccionados.nombre}</h4>	
-							</c:forEach>	
-							
-						</div>
-						<div class="panel-body">
-
-<%-- 							<c:choose> --%>
-<%-- 									<c:when test="${not empty recetasencontradas}"> --%>
-										<div class="col-md-9 order-md-1">
-											<h3 class="mb-3">Recetas encontradas</h3>
-
-											<form:form method="POST" modelAttribute="recetasencontradas"
-												action="leerReceta">
-												<div class="row">
-													<div class="col-md-3 mb-3">
-														<span>
-
-															<h4>${recetasencontradas.nombre}</h4>
-<%-- 														</span> <img src="images/recetas/${recetasencontradas.imagen}" --%>
-														</span> <img src="images/recetas/cebollaroja.jpg" 
-															alt="imagen no encontrada"
-															class="img-rounded img-responsive"> <span>
-															<h5>Calorias: ${recetasencontradas.calorias}</h5>
-														</span>
-
-														<button type="submit" class="btn btn-warning">Leer
-															receta</button>
-													</div>
-												</div>
-											</form:form>
-										</div>
-<%-- 									</c:when> --%>
-<%-- 								</c:choose> --%>
+								<div class="input-group">
+									<span class="input-group-addon">Buscar recetas</span> <input
+										type="text" id="filtrar" class="form-control"
+										placeholder="estofado de pollo">
+								</div>
+							</li>
+						</ul>
 					</div>
 				</div>
 
+
+
+				<div class="row">
+					<c:choose>
+						<c:when test="${not empty listaRecetas}">
+							<c:forEach items="${listaRecetas}" var="listaRecetas">
+								<div class="col-lg-4 col-md-4 col-sm-6">
+									<form:form method="POST" modelAttribute="receta"
+										action="leerReceta">
+										<a href="images/recetas/${listaRecetas.imagen}"
+											class="fh5co-card-item image-popup">
+											<figure>
+												<div class="overlay">
+													<i class="ti-plus"></i>
+												</div>
+												<img src="images/recetas/${listaRecetas.imagen}" alt="Image"
+													class="img-responsive">
+											</figure>
+											<div class="fh5co-text">
+												<h2>${listaRecetas.nombre}</h2>
+												<p>
+													<span class="price cursive-font">${listaRecetas.calorias}</span>
+												</p>
+												<button type="submit" class="btn btn-warning">Leer
+													receta</button>
+											</div>
+										</a>
+										<form:input path="id" name="id" type="hidden"
+											value="${listaRecetas.id}" />
+									</form:form>
+								</div>
+							</c:forEach>
+						</c:when>
+					</c:choose>
+
+				</div>
 			</div>
-		</div>
 		</div>
 
 		<footer id="gtco-footer" role="contentinfo"
@@ -238,7 +252,7 @@
 
 	<!-- Main -->
 	<script src="js/main.js"></script>
-	
+
 </body>
 </html>
 

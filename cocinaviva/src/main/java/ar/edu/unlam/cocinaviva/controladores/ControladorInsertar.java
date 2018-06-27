@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.cocinaviva.modelo.Ingrediente;
+import ar.edu.unlam.cocinaviva.modelo.Receta;
 import ar.edu.unlam.cocinaviva.modelo.Usuario;
 import ar.edu.unlam.cocinaviva.servicios.ServicioIngrediente;
+import ar.edu.unlam.cocinaviva.servicios.ServicioReceta;
 import ar.edu.unlam.cocinaviva.servicios.ServicioUsuario;
 
 @Controller
@@ -21,6 +23,9 @@ public class ControladorInsertar {
 
 	@Inject
 	private ServicioUsuario servicioUsuario;
+	
+	@Inject
+	private ServicioReceta servicioReceta;
 
 	@Inject
 	private ServicioIngrediente servicioIngrediente;
@@ -36,7 +41,7 @@ public class ControladorInsertar {
 			return new ModelAndView("redirect:/insertar-usuarios");
 		} else if(listaUsuario.get(0).getlistaIngrediente().isEmpty()){
 			return new ModelAndView("redirect:/insertar-ingre-usuarios");
-		}	
+		} 
 		
 		return new ModelAndView("redirect:/home");
 	}
@@ -369,7 +374,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(polloentero);
 		
 		Ingrediente cerdo = new Ingrediente();
-		cerdo.setNombre("pechuga de pollo");
+		cerdo.setNombre("cerdo");
 		cerdo.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(cerdo);
 		
@@ -414,7 +419,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(costillasdeternera);
 		
 		Ingrediente pato = new Ingrediente();
-		pato.setNombre("pechuga de pollo");
+		pato.setNombre("pato");
 		pato.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(pato);
 		
@@ -731,13 +736,15 @@ public class ControladorInsertar {
 		cebollarojamatias.setFvencimiento(0105202);
 		cebollarojamatias.setCantidad(4);
 		cebollarojamatias.setTipo("VEGETALES");
-	
+		cebollarojamatias.setEstado("NOVENCIDO");
+		
 		Ingrediente manteca = new Ingrediente();
 		manteca.setNombre("manteca");
 		manteca.setFcompra(0105201);
 		manteca.setFvencimiento(0105202);
 		manteca.setCantidad(2);
 		manteca.setTipo("LACTEOS");
+		manteca.setEstado("NOVENCIDO");
 		
 		Ingrediente quesofresco = new Ingrediente();
 		quesofresco.setNombre("queso fresco");
@@ -745,6 +752,7 @@ public class ControladorInsertar {
 		quesofresco.setFvencimiento(0105202);
 		quesofresco.setCantidad(250);
 		quesofresco.setTipo("LACTEOS");
+		quesofresco.setEstado("NOVENCIDO");
 
 		Ingrediente huevos = new Ingrediente();
 		huevos.setNombre("huevos");
@@ -752,6 +760,7 @@ public class ControladorInsertar {
 		huevos.setFvencimiento(0105202);
 		huevos.setCantidad(6);
 		huevos.setTipo("LACTEOS");
+		huevos.setEstado("NOVENCIDO");
 
 		List<Ingrediente> ingredientesdematias  = matias.getlistaIngrediente();
 		ingredientesdematias.add(cebollarojamatias);
@@ -772,6 +781,7 @@ public class ControladorInsertar {
 		cebollarojajuanpi.setNombre("cebolla roja");
 		cebollarojajuanpi.setCantidad(1);
 		cebollarojajuanpi.setTipo("VEGETALES");
+		cebollarojajuanpi.setEstado("NOVENCIDO");
 		cebollarojajuanpi.setFcompra(03);
 		cebollarojajuanpi.setFvencimiento(07);
 		
@@ -798,4 +808,57 @@ public class ControladorInsertar {
 				
 		return new ModelAndView("redirect:/");
 	}
+	
+	@RequestMapping("/insertar-recetas")
+	public ModelAndView insertarRecetas() {	
+
+	Receta receta1 = new Receta();
+	receta1.setNombre("receta1");
+	receta1.setCalorias(250);
+	receta1.setImagen("receta.jpg");
+	List<Ingrediente> ingredientesreceta1 = new LinkedList<Ingrediente>();
+	Ingrediente manteca = servicioIngrediente.traerUnIngredientePorSuId((long) 1);	
+	Ingrediente qfresco = servicioIngrediente.traerUnIngredientePorSuId((long) 2);
+	Ingrediente huevos = servicioIngrediente.traerUnIngredientePorSuId((long) 3);
+	Ingrediente leche = servicioIngrediente.traerUnIngredientePorSuId((long) 4);
+	ingredientesreceta1.add(manteca);
+	ingredientesreceta1.add(qfresco);
+	ingredientesreceta1.add(huevos);
+	ingredientesreceta1.add(leche);
+	receta1.setListaIngrediente(ingredientesreceta1);
+	servicioReceta.guardarReceta(receta1);
+	
+	Receta receta2 = new Receta();
+	receta2.setNombre("receta2");
+	receta2.setCalorias(350);
+	receta2.setImagen("receta.jpg");
+	List<Ingrediente> ingredientesreceta2 = new LinkedList<Ingrediente>();
+	Ingrediente pepino = servicioIngrediente.traerUnIngredientePorSuId((long) 45);	
+	Ingrediente batata = servicioIngrediente.traerUnIngredientePorSuId((long) 46);
+	Ingrediente calabacin = servicioIngrediente.traerUnIngredientePorSuId((long) 47);
+	Ingrediente aceituna = servicioIngrediente.traerUnIngredientePorSuId((long) 48);
+	ingredientesreceta2.add(pepino);
+	ingredientesreceta2.add(batata);
+	ingredientesreceta2.add(calabacin);
+	ingredientesreceta2.add(aceituna);
+	receta2.setListaIngrediente(ingredientesreceta2);
+	servicioReceta.guardarReceta(receta2);
+	
+	Receta receta3 = new Receta();
+	receta3.setNombre("receta3");
+	receta3.setCalorias(450);
+	receta3.setImagen("receta.jpg");
+	List<Ingrediente> ingredientesreceta3 = new LinkedList<Ingrediente>();
+	Ingrediente cebollaroja = servicioIngrediente.traerUnIngredientePorSuId((long) 44);
+	Ingrediente remolacha = servicioIngrediente.traerUnIngredientePorSuId((long) 50);
+	Ingrediente calabaza = servicioIngrediente.traerUnIngredientePorSuId((long) 51);
+	ingredientesreceta3.add(manteca);
+	ingredientesreceta3.add(cebollaroja);
+	ingredientesreceta3.add(remolacha);
+	ingredientesreceta3.add(calabaza);
+	receta3.setListaIngrediente(ingredientesreceta3);
+	servicioReceta.guardarReceta(receta3);
+	
+	return new ModelAndView("redirect:/");
+}
 }
