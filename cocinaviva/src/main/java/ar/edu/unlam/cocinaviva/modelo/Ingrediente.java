@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Transient;
 
 @Entity
-public class Ingrediente {
+public class Ingrediente implements Cloneable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,10 +21,11 @@ public class Ingrediente {
 	private List<Ingrediente> listaIngredientes;
 	@Transient
 	private Integer[] seleccionados;
+	private Integer faltante;
 	private Integer cantidad;
+	private String unidad;
 	private String tipo;
-	private Integer fvencimiento;
-	private Integer fcompra;
+	private String fvencimiento;
 	private String uso;
 	private String estado;
 
@@ -43,13 +44,21 @@ public class Ingrediente {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
+	
 	public Integer getCantidad() {
 		return cantidad;
 	}
 
 	public void setCantidad(Integer cantidad) {
 		this.cantidad = cantidad;
+	}
+	
+	public String getUnidad() {
+		return unidad;
+	}
+
+	public void setUnidad(String unidad) {
+		this.unidad = unidad;
 	}
 
 	public String getTipo() {
@@ -60,6 +69,14 @@ public class Ingrediente {
 		this.tipo = tipo;
 	}
 
+	public String getFvencimiento() {
+		return fvencimiento;
+	}
+
+	public void setFvencimiento(String fvencimiento) {
+		this.fvencimiento = fvencimiento;
+	}
+	
 	public List<Ingrediente> getlistaIngredientes() {
 		return listaIngredientes;
 	}
@@ -75,21 +92,13 @@ public class Ingrediente {
 	public void setSeleccionados(Integer[] seleccionados) {
 		this.seleccionados = seleccionados;
 	}
-
-	public Integer getFvencimiento() {
-		return fvencimiento;
+	
+	public Integer getFaltante() {
+		return faltante;
 	}
 
-	public void setFvencimiento(Integer fvencimiento) {
-		this.fvencimiento = fvencimiento;
-	}
-
-	public Integer getFcompra() {
-		return fcompra;
-	}
-
-	public void setFcompra(Integer fcompra) {
-		this.fcompra = fcompra;
+	public void setFaltante(Integer faltante) {
+		this.faltante = faltante;
 	}
 
 	public String getUso() {
@@ -107,5 +116,19 @@ public class Ingrediente {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
+	
+	public boolean equals (Ingrediente i){
+		 
+        if(i.getNombre().equals(nombre)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
+	public Ingrediente clone() throws CloneNotSupportedException{
+		Ingrediente cloningrediente = (Ingrediente) super.clone();
+        return cloningrediente;
+   }
+	
 }

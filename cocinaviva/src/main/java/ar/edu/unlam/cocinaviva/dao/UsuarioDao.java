@@ -18,4 +18,6 @@ public interface UsuarioDao {
 	Usuario traerUnUsuarioPorSuId(Long id);
 
 	void actualizarUsuario(Usuario usuario);
+
+	Usuario consultarCorreoUsuario(Usuario usuario);
 }

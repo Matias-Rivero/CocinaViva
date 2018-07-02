@@ -18,4 +18,10 @@ public interface IngredienteDao {
 
 	void eliminarIngrediente(Ingrediente ingrediente);
 
+	Ingrediente traerIngredienteDelInventarioAPartirDeIngredienteDelUsuario(Ingrediente ingredienteDelUs);
+
+	void guardarIngredienteEnReceta(Ingrediente ingrediente);
+
+	List<Ingrediente> traerIngredienteDeRecetasAPartirDeIngredienteDelUsuario(Ingrediente ingredienteDelUs);
+
 }

@@ -1,5 +1,6 @@
 package ar.edu.unlam.cocinaviva.servicios;
 
+import java.text.ParseException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ar.edu.unlam.cocinaviva.dao.IngredienteDao;
 import ar.edu.unlam.cocinaviva.dao.UsuarioDao;
 import ar.edu.unlam.cocinaviva.modelo.Ingrediente;
+import ar.edu.unlam.cocinaviva.modelo.Receta;
 import ar.edu.unlam.cocinaviva.modelo.Usuario;
 
 @Service("servicioIngrediente")
@@ -26,10 +28,15 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 	@Override
 	public void guardarIngredienteEnInventario(Ingrediente ingrediente) {
 		ingrediente.setUso("INVENTARIO");
-		ingrediente.setCantidad(0);
-		ingrediente.setFcompra(0);
-		ingrediente.setFvencimiento(0);
+		ingrediente.setCantidad(0);			
+		ingrediente.setFvencimiento("");
 		ingrediente.setEstado("NOVENCIDO"); // VENCIDO // ADVERTENCIA
+		if(ingrediente.getTipo() == "CARNES"){
+			ingrediente.setUnidad("Grs");	
+		}
+		if(ingrediente.getTipo() == "PESCADO"){
+			ingrediente.setUnidad("Grs");	
+		}
 		 servicioIngredienteDao.guardarIngredienteEnInventario(ingrediente);
 	}
 	
@@ -39,6 +46,12 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 		 servicioIngredienteDao.guardarIngredienteEnUsuario(ingrediente);
 	}
 
+	@Override
+	public void guardarIngredienteEnReceta(Ingrediente ingrediente) {
+		ingrediente.setUso("RECETA");
+		 servicioIngredienteDao.guardarIngredienteEnReceta(ingrediente);
+	}
+	
 	@Override
 	public List<Ingrediente> traerTodosLosIngredientes() {
 		return servicioIngredienteDao.traerTodosLosIngredientes();
@@ -59,9 +72,6 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 				ingredientesLacteos.add(lacteos);
 			}
 		}
-		
-	//	List<Ingrediente> ingredientesLacteosNorep = new LinkedList<>(new HashSet<>(ingredientesLacteos));
-	//	return ingredientesLacteosNorep;
 		return ingredientesLacteos;
 	}
 
@@ -229,5 +239,34 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 		}		
 		servicioUsuarioDao.actualizarUsuario(usuario);		
 	}
+
+	@Override
+	public Ingrediente traerIngredienteDelInventarioAPartirDeIngredienteDelUsuario(Ingrediente ingredienteDelUs) {
+		Ingrediente ingrediente = servicioIngredienteDao.traerIngredienteDelInventarioAPartirDeIngredienteDelUsuario(ingredienteDelUs);
+		return ingrediente;
+	}
+
+	@Override
+	public List<Ingrediente> traerIngredienteDeRecetasAPartirDeIngredienteDelUsuario(Ingrediente ingredienteDelUs) {
+		List<Ingrediente> ingrediente = servicioIngredienteDao.traerIngredienteDeRecetasAPartirDeIngredienteDelUsuario(ingredienteDelUs);
+		return ingrediente;
+	}
+
+	@Override
+	public List<Ingrediente> traerListaQuitandoIngrediente(Ingrediente ingrediente) {
+		
+			Integer[] seleccionados = ingrediente.getSeleccionados();
+			Ingrediente i;
+			Long idver;
+			List<Ingrediente> ingredientesSeleccionados = new LinkedList<Ingrediente>();
+			for (Integer id : seleccionados) {
+				idver = (long) id;
+				if(idver != ingrediente.getId()){
+				i = traerUnIngredientePorSuId((long) id);
+				ingredientesSeleccionados.add(i);
+				}
+			}
+			return ingredientesSeleccionados;
+	}		
 
 }

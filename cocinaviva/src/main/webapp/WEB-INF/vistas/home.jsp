@@ -138,12 +138,13 @@
 								<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
 									<h4 class="d-flex justify-content-between align-items-center mb-3">
 										<span class="text-muted">Selecciona los ingredientes de
-											tu heladera &nbsp </span>
-										<span class="lead glyphicon glyphicon-pencil"><a href="#">Modificar</a></span>	
+											tu heladera</span>
+										<span class="lead4 glyphicon glyphicon-pencil"><a href="#">Modificar</a></span>
+										<span class="lead4 glyphicon glyphicon-play-circle"><a href="javascript:todos();" id="todos">Todos</a></span>	
 									</h4>		
-									
+										
 									<ul class="list-group mb-3">
-										<form:form id="f1" name="confirform" method="POST" modelAttribute="checkingredientes"
+										<form:form name="confirform" method="POST" modelAttribute="checkingredientes"
 											action="recetas">
 											<c:choose>
 												<c:when test="${not empty ingredienteslacteosdelusuario}">
@@ -155,9 +156,7 @@
 																	<tr>
 																		<th><span class="lead"><strong>Lacteos</strong></span></th>
 																		<th><span class="lead colorverde">Usar</span></th>
-																		<th><span class="lead">Fecha de Compra</span></th>
-																		<th><span class="lead">Fecha de
-																				Vencimiento</span></th>
+																		<th><span class="lead">Fecha de:</span></th>
 																		<th><span class="lead">Cantidad</span></th>
 																	</tr>
 																</thead>
@@ -168,24 +167,27 @@
 																			<th><span class="lead">${ingredienteslacteosdelusuario.nombre}</span></th>
 																			<th><span class="lead colorverde"><form:checkbox
 																						path="seleccionados"
-																						value="${ingredienteslacteosdelusuario.id}" />&nbsp
-																					Usar</span></th>
-																			<th><span class="lead">${ingredienteslacteosdelusuario.fcompra}</span></th>
-																			<th><span class="lead">${ingredienteslacteosdelusuario.fvencimiento}</span></th>
-																			<th><span class="lead">${ingredienteslacteosdelusuario.cantidad}</span></th>															
-																			<td><a
-																				href='javascript:;' onclick="eliminarIngrediente(${ingredienteslacteosdelusuario.id},'${ingredienteslacteosdelusuario.nombre}');"><span
+																						value="${ingredienteslacteosdelusuario.id}" />Usar</span></th>																	
+																			<th><span class="lead4">${ingredienteslacteosdelusuario.fvencimiento}</span><label><strong>Vencimiento</strong></label></th>
+																			<th><span class="lead4">${ingredienteslacteosdelusuario.cantidad}</span>
+																			<c:if test = "${ingredienteslacteosdelusuario.unidad == 'Lts'}">
+																			<label>Litros</label>
+																			</c:if>
+																			<c:if test = "${ingredienteslacteosdelusuario.unidad == 'Grs'}">
+																			<label>Gramos</label>
+																			</c:if>
+																			<c:if test = "${ingredienteslacteosdelusuario.unidad == 'Unids'}">
+																			<label>Unidades</label>
+																			</c:if>
+																			</th>															
+																<td><a href='javascript:;' onclick="eliminarIngrediente(${ingredienteslacteosdelusuario.id},'${ingredienteslacteosdelusuario.nombre}');"><span
 																					class="lead glyphicon glyphicon-trash"></span></a></td>
 																		</tr>
 																	</c:forEach>
 																</tbody>
 															</table>
 														</div>
-													</li>
-													<span class="hidden"> <input id="f1t1" name="f1t1"
-													type="text" class="form-control"
-													placeholder="" value="" />
-													</span>
+													</li>												
 												</c:when>
 											</c:choose>
 
@@ -199,9 +201,7 @@
 																	<tr>
 																		<th><span class="lead"><strong>Vegetales</strong></span></th>
 																		<th><span class="lead colorverde">Usar</span></th>
-																		<th><span class="lead">Fecha de Compra</span></th>
-																		<th><span class="lead">Fecha de
-																				Vencimiento</span></th>
+																		<th><span class="lead">Fecha de:</span></th>
 																		<th><span class="lead">Cantidad</span></th>
 																	</tr>
 																</thead>
@@ -212,13 +212,20 @@
 																			<th><span class="lead">${ingredientesvegetalesdelusuario.nombre}</span></th>
 																			<th><span class="lead colorverde"><form:checkbox
 																						path="seleccionados"
-																						value="${ingredientesvegetalesdelusuario.id}" />&nbsp
-																					Usar</span></th>
-																			<th><span class="lead">${ingredientesvegetalesdelusuario.fcompra}</span></th>
-																			<th><span class="lead">${ingredientesvegetalesdelusuario.fvencimiento}</span></th>
-																			<th><span class="lead">${ingredientesvegetalesdelusuario.cantidad}</span></th>																			
-																			<td><a
-																				href="eliminar-ingrediente?id=${ingredientesvegetalesdelusuario.id}"><span
+																						value="${ingredientesvegetalesdelusuario.id}" />Usar</span></th>																	
+																			<th><span class="lead4">${ingredientesvegetalesdelusuario.fvencimiento}</span><label><strong>Compra</strong></label></th>
+																			<th><span class="lead4">${ingredientesvegetalesdelusuario.cantidad}</span>
+																			<c:if test = "${ingredientesvegetalesdelusuario.unidad == 'Lts'}">
+																			<label>Litros</label>
+																			</c:if>
+																			<c:if test = "${ingredientesvegetalesdelusuario.unidad == 'Grs'}">
+																			<label>Gramos</label>
+																			</c:if>
+																			<c:if test = "${ingredientesvegetalesdelusuario.unidad == 'Unids'}">
+																			<label>Unidades</label>
+																			</c:if>
+																			</th>															
+																<td><a href='javascript:;' onclick="eliminarIngrediente(${ingredientesvegetalesdelusuario.id},'${ingredientesvegetalesdelusuario.nombre}');"><span
 																					class="lead glyphicon glyphicon-trash"></span></a></td>
 																		</tr>
 																	</c:forEach>
@@ -239,9 +246,7 @@
 																	<tr>
 																		<th><span class="lead"><strong>Carnes</strong></span></th>
 																		<th><span class="lead colorverde">Usar</span></th>
-																		<th><span class="lead">Fecha de Compra</span></th>
-																		<th><span class="lead">Fecha de
-																				Vencimiento</span></th>
+																		<th><span class="lead">Fecha de:</span></th>
 																		<th><span class="lead">Cantidad</span></th>
 																	</tr>
 																</thead>
@@ -252,13 +257,20 @@
 																			<th><span class="lead">${ingredientescarnesdelusuario.nombre}</span></th>
 																			<th><span class="lead colorverde"><form:checkbox
 																						path="seleccionados"
-																						value="${ingredientescarnesdelusuario.id}" />&nbsp
-																					Usar</span></th>
-																			<th><span class="lead">${ingredientescarnesdelusuario.fcompra}</span></th>
-																			<th><span class="lead">${ingredientescarnesdelusuario.fvencimiento}</span></th>
-																			<th><span class="lead">${ingredientescarnesdelusuario.cantidad}</span></th>																		
-																			<td><a
-																				href="eliminar-ingrediente?id=${ingredientescarnesdelusuario.id}"><span
+																						value="${ingredientescarnesdelusuario.id}" />Usar</span></th>																	
+																			<th><span class="lead4">${ingredientescarnesdelusuario.fvencimiento}</span><label><strong>Compra</strong></label></th>
+																			<th><span class="lead4">${ingredientescarnesdelusuario.cantidad}</span>
+																			<c:if test = "${ingredientescarnesdelusuario.unidad == 'Lts'}">
+																			<label>Litros</label>
+																			</c:if>
+																			<c:if test = "${ingredientescarnesdelusuario.unidad == 'Grs'}">
+																			<label>Gramos</label>
+																			</c:if>
+																			<c:if test = "${ingredientescarnesdelusuario.unidad == 'Unids'}">
+																			<label>Unidades</label>
+																			</c:if>
+																			</th>															
+																<td><a href='javascript:;' onclick="eliminarIngrediente(${ingredientescarnesdelusuario.id},'${ingredientescarnesdelusuario.nombre}');"><span
 																					class="lead glyphicon glyphicon-trash"></span></a></td>
 																		</tr>
 																	</c:forEach>
@@ -278,10 +290,8 @@
 																<thead>
 																	<tr>
 																		<th><span class="lead"><strong>Pescado</strong></span></th>
-																		<th><span class="lead">Usar</span></th>
-																		<th><span class="lead colorverde">Fecha de Compra</span></th>
-																		<th><span class="lead">Fecha de
-																				Vencimiento</span></th>
+																		<th><span class="lead colorverde">Usar</span></th>
+																		<th><span class="lead">Fecha de:</span></th>
 																		<th><span class="lead">Cantidad</span></th>
 																	</tr>
 																</thead>
@@ -292,13 +302,20 @@
 																			<th><span class="lead">${ingredientespescadodelusuario.nombre}</span></th>
 																			<th><span class="lead colorverde"><form:checkbox
 																						path="seleccionados"
-																						value="${ingredientespescadodelusuario.id}" />&nbsp
-																					Usar</span></th>
-																			<th><span class="lead">${ingredientespescadodelusuario.fcompra}</span></th>
-																			<th><span class="lead">${ingredientespescadodelusuario.fvencimiento}</span></th>
-																			<th><span class="lead">${ingredientespescadodelusuario.cantidad}</span></th>																
-																			<td><a
-																				href="eliminar-ingrediente?id=${ingredientespescadodelusuario.id}"><span
+																						value="${ingredientespescadodelusuario.id}" />Usar</span></th>																	
+																			<th><span class="lead4">${ingredientespescadodelusuario.fvencimiento}</span><label><strong>Compra</strong></label></th>
+																			<th><span class="lead4">${ingredientespescadodelusuario.cantidad}</span>
+																			<c:if test = "${ingredientespescadodelusuario.unidad == 'Lts'}">
+																			<label>Litros</label>
+																			</c:if>
+																			<c:if test = "${ingredientespescadodelusuario.unidad == 'Grs'}">
+																			<label>Gramos</label>
+																			</c:if>
+																			<c:if test = "${ingredientespescadodelusuario.unidad == 'Unids'}">
+																			<label>Unidades</label>
+																			</c:if>
+																			</th>															
+																<td><a href='javascript:;' onclick="eliminarIngrediente(${ingredientespescadodelusuario.id},'${ingredientespescadodelusuario.nombre}');"><span
 																					class="lead glyphicon glyphicon-trash"></span></a></td>
 																		</tr>
 																	</c:forEach>
@@ -319,9 +336,7 @@
 																	<tr>
 																		<th><span class="lead"><strong>Condimento</strong></span></th>
 																		<th><span class="lead colorverde">Usar</span></th>
-																		<th><span class="lead">Fecha de Compra</span></th>
-																		<th><span class="lead">Fecha de
-																				Vencimiento</span></th>
+																		<th><span class="lead">Fecha de:</span></th>
 																		<th><span class="lead">Cantidad</span></th>
 																	</tr>
 																</thead>
@@ -332,13 +347,20 @@
 																			<th><span class="lead">${ingredientescondimentodelusuario.nombre}</span></th>
 																			<th><span class="lead colorverde"><form:checkbox
 																						path="seleccionados"
-																						value="${ingredientescondimentodelusuario.id}" />&nbsp
-																					Usar</span></th>
-																			<th><span class="lead">${ingredientescondimentodelusuario.fcompra}</span></th>
-																			<th><span class="lead">${ingredientescondimentodelusuario.fvencimiento}</span></th>
-																			<th><span class="lead">${ingredientescondimentodelusuario.cantidad}</span></th>																			
-																			<td><a
-																				href="eliminar-ingrediente?id=${ingredientescondimentodelusuario.id}"><span
+																						value="${ingredientescondimentodelusuario.id}" />Usar</span></th>																	
+																			<th><span class="lead4">${ingredientescondimentodelusuario.fvencimiento}</span><label><strong>Vencimiento</strong></label></th>
+																			<th><span class="lead4">${ingredientescondimentodelusuario.cantidad}</span>
+																			<c:if test = "${ingredientescondimentodelusuario.unidad == 'Lts'}">
+																			<label>Litros</label>
+																			</c:if>
+																			<c:if test = "${ingredientescondimentodelusuario.unidad == 'Grs'}">
+																			<label>Gramos</label>
+																			</c:if>
+																			<c:if test = "${ingredientescondimentodelusuario.unidad == 'Unids'}">
+																			<label>Unidades</label>
+																			</c:if>
+																			</th>															
+																<td><a href='javascript:;' onclick="eliminarIngrediente(${ingredientescondimentodelusuario.id},'${ingredientescondimentodelusuario.nombre}');"><span
 																					class="lead glyphicon glyphicon-trash"></span></a></td>
 																		</tr>
 																	</c:forEach>
@@ -605,6 +627,15 @@
 				})
 			}(jQuery));
 		});
+	</script>
+	
+	<script type="text/javascript">
+	
+	function todos() {
+		for (i=0;i<document.confirform.elements.length;i++) 
+		      if(document.confirform.elements[i].type == "checkbox")	
+		         document.confirform.elements[i].checked=1	
+	}
 	</script>
 </body>
 </html>

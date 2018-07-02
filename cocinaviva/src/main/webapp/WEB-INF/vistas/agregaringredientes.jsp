@@ -117,9 +117,18 @@
 		<div class="overlay"></div>
 		<div class="gtco-section">
 		<div class="gtco-container">
-			<div class="py-5 text-center">				
-				<h1>Agregar Ingredientes</h1>
-			</div>
+					<c:choose>
+						<c:when test="${not empty tieneingredienteselusuario}">
+								<div class="py-5 text-center">				
+									<h1>¿Ingredientes para agregar?</h1>
+								</div>
+						</c:when>
+						<c:otherwise>
+								<div class="py-5 text-center">				
+									<h1>Oops!...</h1><h2>¿No tienes ingredientes en tu heladera?</h2>
+								</div>
+						</c:otherwise>
+					</c:choose>
 		</div>
 		</div>
 			<div class="row">
@@ -141,8 +150,7 @@
 												<thead>
 													<tr>
 														<th><span class="lead">Nombre</span></th>
-														<th><span class="lead">Fecha de Compra</span></th>
-														<th><span class="lead">Fecha de Vencimiento</span></th>
+														<th><span class="lead">Fecha de :</span></th>
 														<th><span class="lead">Cantidad</span></th>
 													</tr>
 												</thead>
@@ -152,27 +160,59 @@
 														varStatus="status">
 														<tr align="left">
 															<th><span class="lead">${i.nombre}</span></th>
-															<th><form:input
+															<th>
+															<c:if test = "${(i.tipo == 'LACTEOS') || (i.tipo == 'CONDIMENTOS')}">
+															<label><strong>Vencimiento</strong></label>
+															</c:if>
+															<c:if test = "${(i.tipo == 'VEGETALES') || (i.tipo == 'CARNES') || (i.tipo == 'PESCADO')}">
+															<label><strong>Compra</strong></label>
+															</c:if>
+															<form:input class="form-control datetimepicker1" autocomplete="off"
 																	path="listaIngredientes[${status.index}].fvencimiento"
-																	type="text" /></th>
-															<th><form:input
-																	path="listaIngredientes[${status.index}].fcompra"
-																	type="text" /></th>
-															<th><form:select
+																	type="text" /></th>	
+															<c:if test = "${i.unidad == 'Lts'}">																
+															<th><label><strong>Litros</strong></label>												
+																<form:select class="form-control"
 																	path="listaIngredientes[${status.index}].cantidad">
-																	<c:forEach var="cantidad" begin="1" end="20">
+																	<c:forEach var="cantidad" begin="1" end="10">
 																		<form:option value="${cantidad}">${cantidad}</form:option>
 																	</c:forEach>
-																</form:select></th>
-															<label style="display: none"><form:input
+																</form:select>																
+															</th>
+															</c:if>
+															<c:if test = "${i.unidad == 'Unids'}">																
+															<th><label><strong>Unidades</strong></label>												
+																<form:select class="form-control"
+																	path="listaIngredientes[${status.index}].cantidad">
+																	<c:forEach var="cantidad" begin="1" end="24">
+																		<form:option value="${cantidad}">${cantidad}</form:option>
+																	</c:forEach>
+																</form:select>																
+															</th>
+															</c:if> 
+															<c:if test = "${i.unidad == 'Grs'}">																
+															<th><label><strong>Gramos</strong></label>												
+																<form:select class="form-control"
+																	path="listaIngredientes[${status.index}].cantidad">
+																	<c:forEach var="cantidad" begin="1" end="60">
+																		<form:option value="${cantidad * 50}">${cantidad * 50}</form:option>
+																	</c:forEach>
+																</form:select>																
+															</th>
+															</c:if>    
+															<label class="oculto"><form:input
+																	path="listaIngredientes[${status.index}].unidad"
+																	type="text" /></label>
+															<label class="oculto"><form:input
 																	path="listaIngredientes[${status.index}].nombre"
 																	type="text" /></label>
-															<label style="display: none"><form:input
+															<label class="oculto"><form:input
 																	path="listaIngredientes[${status.index}].estado"
 																	type="text" /></label>
-															<label style="display: none"><form:input
+															<label class="oculto"><form:input
 																	path="listaIngredientes[${status.index}].tipo"
-																	type="text" /></label>
+																	type="text" /></label> 
+<!-- 																	style="display: none" -->
 														</tr>
 													</c:forEach>
 												</tbody>
@@ -181,6 +221,7 @@
 											<input type="submit" class="btn btn-primary btn-lg btn-block"
 												value="AGREGAR">
 										</div>
+										
 									</li>
 
 								</form:form>
@@ -204,9 +245,8 @@
 										<table class="table table-hover">
 											<thead>
 												<tr>
-													<th><span class="lead">Nombre</span></th>
-													<th><span class="lead">Fecha de Compra</span></th>
-													<th><span class="lead">Fecha de Vencimiento</span></th>
+													<th><span class="lead">Nombre</span></th>													
+													<th><span class="lead">Fecha de:</span></th>
 													<th><span class="lead">Cantidad</span></th>
 												</tr>
 											</thead>
@@ -215,13 +255,28 @@
 												<c:forEach items="${tieneingredienteselusuario}"
 													var="tieneingredienteselusuario">
 													<tr align="left">
-
-														<th><span class="lead">${tieneingredienteselusuario.nombre}</span></th>
-														<th><span class="lead">${tieneingredienteselusuario.fcompra}</span></th>
-														<th><span class="lead">${tieneingredienteselusuario.fvencimiento}</span></th>
-														<th><span class="lead">${tieneingredienteselusuario.cantidad}</span></th>
-														<!-- 														<th><label for="date-start">Date</label> -->
-														<!-- 														<input type="text" id="date" class="form-control"></th> -->
+														<th><span class="lead">${tieneingredienteselusuario.nombre}</span></th>														
+														<th>														
+														<span class="lead">${tieneingredienteselusuario.fvencimiento}</span>
+														<c:if test = "${(tieneingredienteselusuario.tipo == 'LACTEOS') || (tieneingredienteselusuario.tipo == 'CONDIMENTOS')}">																
+														<label><strong>Vencimiento</strong></label>	
+														</c:if>
+														<c:if test = "${(tieneingredienteselusuario.tipo == 'VEGETALES') || (tieneingredienteselusuario.tipo == 'CARNES') || (i.tipo == 'PESCADO')}">
+														<label><strong>Compra</strong></label>
+														</c:if>													
+														</th>
+														<th>
+														<span class="lead">${tieneingredienteselusuario.cantidad}</span>
+														<c:if test = "${tieneingredienteselusuario.unidad == 'Lts'}">
+														<label><strong>Litros</strong></label>
+														</c:if>
+														<c:if test = "${tieneingredienteselusuario.unidad == 'Grs'}">
+														<label><strong>Gramos</strong></label>
+														</c:if>
+														<c:if test = "${tieneingredienteselusuario.unidad == 'Unids'}">
+														<label><strong>Unidades</strong></label>
+														</c:if>
+														</th>											
 													</tr>
 												</c:forEach>
 											</tbody>
@@ -242,7 +297,11 @@
 						<c:otherwise>									
 				
 			
-			<div class="col-md-12 order-md-12 mb-12" id="agringre">
+			
+
+			<div class="row">
+			
+							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2" id="agringre">
 				<!-- Oops!. ¿No tienes ingredientes en tu heladera? -->
 <!-- 				<h4 class="d-flex justify-content-between align-items-center mb-3"> -->
 <!-- 					<span class="text-muted">Agregar Ingrediente</span> -->
@@ -251,110 +310,17 @@
 					<li
 						class="list-group-item d-flex justify-content-between lh-condensed">
 						<div class="input-group">
-							<span class="input-group-addon">Buscar</span><form name="buscar" action="javascript:;" onsubmit="buscarIngrediente(this)" method="get"><input type="text"
+							<form name="buscar" action="javascript:;" onsubmit="buscarIngrediente(this)" method="get"><input type="text"
 								id="filtrar" class="form-control"
-								placeholder="tomate"></form>
+								placeholder="tomate" autocomplete="off"></form>
 						</div>
 					</li>
 				</ul>
-			</div>
-
-			<div class="row">
 			
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				
-					
-					
-				<div class="jumbotron">
-				  <div class="container">
-				  <div class="row">
-			
-				<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
-				    <table class="table">
-									<thead>
-										<tr>
-											<th><span class="lead"><strong>Lacteoss</strong></span></th>
-										</tr>
-									</thead>
-									<tbody id="madlacteos">
-											
-												
-											
-											
-									</tbody>
-					</table>
-				</div>
-				<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
-				    <table class="table">
-									<thead>
-										<tr>
-											<th><span class="lead"><strong>Vegetales</strong></span></th>
-										</tr>
-									</thead>
-									<tbody id="madvegetales">
-											
-												
-											
-											
-									</tbody>
-					</table>
-				</div>
-				<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
-				    <table class="table">
-									<thead>
-										<tr>
-											<th><span class="lead"><strong>Carnes</strong></span></th>
-										</tr>
-									</thead>
-									<tbody id="madcarnes">
-											
-												
-											
-											
-									</tbody>
-					</table>
-				</div>
-				<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
-				    <table class="table">
-									<thead>
-										<tr>
-											<th><span class="lead"><strong>Pescado</strong></span></th>
-										</tr>
-									</thead>
-									<tbody id="madpescado">
-											
-												
-											
-											
-									</tbody>
-					</table>
-				</div>
-				<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
-				    <table class="table">
-									<thead>
-										<tr>
-											<th><span class="lead"><strong>Condimento</strong></span></th>
-										</tr>
-									</thead>
-									<tbody id="madcondimento">
-											
-												
-											
-											
-									</tbody>
-					</table>
-				</div>				   				    
-				    </div>
-				  </div>
-				  
-				</div>
-					<button type="button" onclick="agregaringre();" class="btn btn-success btn-lg btn-block">Agregar Ingredientes</button>
-				
-				</div>
-						
 				<form:form method="POST" name="f1" modelAttribute="checkingredientes"
 					action="agregarIngredientes">
-					<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+					
 						<c:choose>
 							<c:when test="${not empty iflacteos}">
 			
@@ -370,10 +336,7 @@
 
 											<c:forEach items="${iflacteos}" var="iflacteos">
 												<tr align="left">
-													<th><span class="lead"> <form:checkbox
-																path="seleccionados" class="${iflacteos.nombre}" id="${iflacteos.id}"
-																value="${iflacteos.id}" name="valores[]" onclick="armarListaLacteos(${iflacteos.id}, '${iflacteos.nombre}')" />&nbsp
-															${iflacteos.nombre}
+<th><span class="lead"> <form:checkbox path="seleccionados" class="${iflacteos.nombre}" id="${iflacteos.id}" value="${iflacteos.id}" name="valores[]" onclick="armarListaLacteos(${iflacteos.id}, '${iflacteos.nombre}')" /> ${iflacteos.nombre}
 													</span></th>
 												</tr>
 											</c:forEach>
@@ -384,10 +347,10 @@
 
 							</c:when>
 						</c:choose>
-					</div>
-					<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-						<c:choose>
-							<c:when test="${not empty ifvegetales}">
+					
+					
+						
+							<c:if test="${not empty ifvegetales}">
 
 								<div id="vegetales">
 
@@ -401,11 +364,7 @@
 
 											<c:forEach items="${ifvegetales}" var="ifvegetales">
 												<tr align="left">
-													<th><span class="lead"> <form:checkbox
-																path="seleccionados" class="${ifvegetales.nombre}" id="${ifvegetales.id}"
-																value="${ifvegetales.id}" name="valores[]"
-																onclick="armarListaVegetales(${ifvegetales.id}, '${ifvegetales.nombre}')" />&nbsp
-															${ifvegetales.nombre}
+<th><span class="lead"> <form:checkbox path="seleccionados" class="${ifvegetales.nombre}" id="${ifvegetales.id}" value="${ifvegetales.id}" name="valores[]" onclick="armarListaVegetales(${ifvegetales.id}, '${ifvegetales.nombre}')" /> ${ifvegetales.nombre}
 													</span></th>
 												</tr>
 											</c:forEach>
@@ -414,12 +373,12 @@
 
 								</div>
 
-							</c:when>
-						</c:choose>
-					</div>
-					<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-						<c:choose>
-							<c:when test="${not empty ifcarnes}">
+							</c:if>
+						
+					
+					
+						
+							<c:if test="${not empty ifcarnes}">
 							
 								<div id="carnes">
 
@@ -436,8 +395,7 @@
 													<th><span class="lead"> <form:checkbox
 																path="seleccionados" class="${ifcarnes.nombre}" id="${ifcarnes.id}"
 																value="${ifcarnes.id}" name="valores[]"
-																onclick="armarListaCarnes(${ifcarnes.id}, '${ifcarnes.nombre}')" />&nbsp
-															${ifcarnes.nombre}
+																onclick="armarListaCarnes(${ifcarnes.id}, '${ifcarnes.nombre}')" /> ${ifcarnes.nombre}
 													</span></th>
 												</tr>
 											</c:forEach>
@@ -446,12 +404,12 @@
 
 								</div>
 
-							</c:when>
-						</c:choose>
-					</div>
-					<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-						<c:choose>
-							<c:when test="${not empty ifpescado}">
+							</c:if>
+						
+					
+					
+						
+							<c:if test="${not empty ifpescado}">
 
 								<div id="pescado">
 
@@ -468,8 +426,7 @@
 													<th><span class="lead"> <form:checkbox
 																path="seleccionados" class="${ifpescado.nombre}" id="${ifpescado.id}"
 																value="${ifpescado.id}" name="valores[]"
-																onclick="armarListaPescado(${ifpescado.id}, '${ifpescado.nombre}')" />&nbsp
-															${ifpescado.nombre}
+																onclick="armarListaPescado(${ifpescado.id}, '${ifpescado.nombre}')" /> ${ifpescado.nombre}
 													</span></th>
 												</tr>
 											</c:forEach>
@@ -478,12 +435,12 @@
 
 								</div>
 
-							</c:when>
-						</c:choose>
-					</div>
-					<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-						<c:choose>
-							<c:when test="${not empty ifcondimento}">
+							</c:if>
+						
+					
+					
+						
+							<c:if test="${not empty ifcondimento}">
 
 								<div id="condimento">
 
@@ -500,8 +457,7 @@
 													<th><span class="lead"> <form:checkbox
 																path="seleccionados" class="${ifcondimento.nombre}" id="${ifcondimento.id}"
 																value="${ifcondimento.id}" name="valores[]"
-																onclick="armarListaCondimento(${ifcondimento.id}, '${ifcondimento.nombre}')" />&nbsp
-															${ifcondimento.nombre}
+																onclick="armarListaCondimento(${ifcondimento.id}, '${ifcondimento.nombre}')" /> ${ifcondimento.nombre}
 													</span></th>
 												</tr>
 											</c:forEach>
@@ -510,23 +466,116 @@
 
 								</div>
 
-							</c:when>
-						</c:choose>
+							</c:if>
+						
 
 						<div style="visibility: hidden;">
 							<button id="agregaringre" class="btn btn-primary" type="submit">Iniciar</button>
 						</div>
-					</div>
+					
 				</form:form>
-
-
-
-
-
-
 				
 			</div>
+			
+				<div class="col-xs-6 col-sm-6 col-md-10 col-lg-10">
+				
+					
+					
+				<div class="jumbotron">
+				  <div class="container">
+				  <div class="row">
+			
+				<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+				    <table class="table">
+									<thead>
+										<tr>
+											<th><span class="lead3"><strong>Lacteos</strong></span></th>
+										</tr>
+									</thead>
+									<tbody id="madlacteos">
+											
+												
+											
+											
+									</tbody>
+					</table>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+				    <table class="table">
+									<thead>
+										<tr>
+											<th><span class="lead3"><strong>Vegetales</strong></span></th>
+										</tr>
+									</thead>
+									<tbody id="madvegetales">
+											
+												
+											
+											
+									</tbody>
+					</table>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+				    <table class="table">
+									<thead>
+										<tr>
+											<th><span class="lead3"><strong>Carnes</strong></span></th>
+										</tr>
+									</thead>
+									<tbody id="madcarnes">
+											
+												
+											
+											
+									</tbody>
+					</table>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+				    <table class="table">
+									<thead>
+										<tr>
+											<th><span class="lead3"><strong>Pescado</strong></span></th>
+										</tr>
+									</thead>
+									<tbody id="madpescado">
+											
+												
+											
+											
+									</tbody>
+					</table>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+				    <table class="table">
+									<thead>
+										<tr>
+											<th><span class="lead3"><strong>Condimento</strong></span></th>
+										</tr>
+									</thead>
+									<tbody id="madcondimento">
+											
+												
+											
+											
+									</tbody>
+					</table>
+				</div>				   				    
+				    </div>
+				  </div>
+				  
+				</div>
+					<button type="button" onclick="agregaringre();" class="btn btn-success btn-lg btn-block">Agregar</button>
+				
+				</div>
+				
+				
+				
+			</div>	
+				<div class="row">	
+				
 
+			
+	</div>
 		<!-- </div> -->
 			</c:otherwise>
 					</c:choose>
@@ -539,9 +588,7 @@
 		
 		
 	</div>
-	<footer id="gtco-footer" role="contentinfo"
-			style="background-image: url(images/img_bg_1.jpg)"
-			data-stellar-background-ratio="0.5">
+	<footer id="gtco-footer" role="contentinfo" data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
 			<div class="gtco-container">
 				<div class="row row-pb-md">
@@ -636,9 +683,25 @@
 		      {
 		        if(clases[x].className == ingrediente){
 		          clases[x].click();
-		        }
+		          document.getElementById("filtrar").value = '';
+//		          clases[x].focus();
+ 		          $( "#filtrar" ).focus();
+		        } 
 
-		      }
+		      }		
+			if(document.getElementById("filtrar").value != ''){
+	        	$( "#tlacteos" ).show();
+	            $( "#tvegetales" ).show();
+	            $( "#tcarnes" ).show();
+	            $( "#tpescado" ).show();
+	            $( "#tcondimento" ).show();
+	        }else{	
+			  $( "#tlacteos" ).hide();
+	          $( "#tvegetales" ).hide();
+	          $( "#tcarnes" ).hide();
+	          $( "#tpescado" ).hide();
+	          $( "#tcondimento" ).hide();
+	        }
 		}
 	</script>
 	<script type="text/javascript">
@@ -646,7 +709,7 @@
 			(function($) {
 				$('#filtrar').keyup(function() {
 					var rex = new RegExp($(this).val(), 'i');
-					$('.buscar tr').hide();
+ 					$('.buscar tr').hide();
 					$('.buscar tr').filter(function() {
 						return rex.test($(this).text());
 					}).show();
@@ -655,16 +718,16 @@
 		});
 	</script>
 	
-	<script>
-$("#filtrar").keyup(
-      function() {
-    	  $( "#tlacteos" ).show();
-          $( "#tvegetales" ).show();
-          $( "#tcarnes" ).show();
-          $( "#tpescado" ).show();
-          $( "#tcondimento" ).show();
-      });
-</script>
+<!-- <script> -->
+// $("#filtrar").keyup(
+//       function() {
+//     	  $( "#tlacteos" ).show();
+//           $( "#tvegetales" ).show();
+//           $( "#tcarnes" ).show();
+//           $( "#tpescado" ).show();
+//           $( "#tcondimento" ).show();
+//       });
+<!-- </script> -->
 	
 	<script type="text/javascript">
 	$(document).ready(function(){ 
@@ -741,7 +804,7 @@ $("#filtrar").keyup(
 	        	var elementNode = document.createElement('span');
 	        	elementNodeth.appendChild(elementNode);
 	        	elementNode.setAttribute("id",iddelcheck+"n");
-	        	elementNode.setAttribute("class","lead2");
+	        	elementNode.setAttribute("class","leadl");
 	            var textNode = document.createTextNode(nombr);  
 	            elementNode.appendChild(textNode);
 	            element.appendChild(elementNodeth);
@@ -766,7 +829,7 @@ $("#filtrar").keyup(
 	        	var elementNode = document.createElement('span');
 	        	elementNodeth.appendChild(elementNode);
 	        	elementNode.setAttribute("id",iddelcheck+"n");
-	        	elementNode.setAttribute("class","lead2");
+	        	elementNode.setAttribute("class","leadv");
 	            var textNode = document.createTextNode(nombr);  
 	            elementNode.appendChild(textNode);
 	            element.appendChild(elementNodeth);
@@ -791,7 +854,7 @@ $("#filtrar").keyup(
 	        	var elementNode = document.createElement('span');
 	        	elementNodeth.appendChild(elementNode);
 	        	elementNode.setAttribute("id",iddelcheck+"n");
-	        	elementNode.setAttribute("class","lead2");
+	        	elementNode.setAttribute("class","leadc");
 	            var textNode = document.createTextNode(nombr);  
 	            elementNode.appendChild(textNode);
 	            element.appendChild(elementNodeth);
@@ -816,7 +879,7 @@ $("#filtrar").keyup(
 	        	var elementNode = document.createElement('span');
 	        	elementNodeth.appendChild(elementNode);
 	        	elementNode.setAttribute("id",iddelcheck+"n");
-	        	elementNode.setAttribute("class","lead2");
+	        	elementNode.setAttribute("class","leadp");
 	            var textNode = document.createTextNode(nombr);  
 	            elementNode.appendChild(textNode);
 	            element.appendChild(elementNodeth);
@@ -841,7 +904,7 @@ $("#filtrar").keyup(
 	        	var elementNode = document.createElement('span');
 	        	elementNodeth.appendChild(elementNode);
 	        	elementNode.setAttribute("id",iddelcheck+"n");
-	        	elementNode.setAttribute("class","lead2");
+	        	elementNode.setAttribute("class","leadco");
 	            var textNode = document.createTextNode(nombr);  
 	            elementNode.appendChild(textNode);
 	            element.appendChild(elementNodeth);
@@ -853,6 +916,14 @@ $("#filtrar").keyup(
 	        }
 	    }
 	</script>
+	
+   <script type="text/javascript">
+            $(function () {
+                $('.datetimepicker1').datetimepicker({
+                	format: 'DD/MM/YYYY'               	
+                });
+            });
+        </script>
 </body>
 </html>
 

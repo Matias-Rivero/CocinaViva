@@ -21,6 +21,8 @@ public interface ServicioReceta {
 
 	List<Receta> traerLasRecetasCarnesDeUnUsuario(List<Receta> listaRecetasUs);
 
+	List<Receta> traerRecetasConFaltantesDeIngredientes(List<Receta> recetas, List<Ingrediente> ingredientesUs);
+
 	
 	
 }

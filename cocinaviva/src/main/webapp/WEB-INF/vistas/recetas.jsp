@@ -110,14 +110,20 @@
 					<h1>
 						Recetas Encontradas!<span
 							class="badge pull-right counter js-counter" data-from="0"
-							data-to="1000" data-speed="5000" data-refresh-interval="50">1</span>
+							data-to="${listaRecetasLargo}" data-speed="300" data-refresh-interval="50"></span>
 					</h1>
 					<label class="label label-warning">Con:</label>
-					<c:forEach items="${ingredinetesseleccionados}"
-						var="ingredinetesseleccionados">
-						<label class="label label-success">${ingredinetesseleccionados.nombre}<span
-							class="badge">x</span></label>
-					</c:forEach>
+					<form:form id="form1" method="POST" modelAttribute="lingrediente"
+									action="buscarSinElIng">
+						<label class="oculto"><<form:input path="id" id="id" type="text" class="form-control" /></label>					
+						<c:forEach items="${ingredinetesseleccionados}"
+							var="ingredinetesseleccionados">
+							<label class="label label-success"><a href="javascript:quitarIng(${ingredinetesseleccionados.id});" class="badge badge-danger">x</a>${ingredinetesseleccionados.nombre}<span
+								class="badge badge-secondary">${ingredinetesseleccionados.cantidad}${ingredinetesseleccionados.unidad}</span></label>							
+<%-- 							<label class="oculto"><form:input id="${ingredinetesseleccionados.id}" path="faltante" type="text" value="${ingredinetesseleccionados.faltante}" /></label>		 --%>
+							<label class="oculto"><form:input path="seleccionados" type="text" value="${ingredinetesseleccionados.id}" /></label>	
+						</c:forEach>
+					</form:form>
 
 				</div>
 				<div class="row">
@@ -156,14 +162,43 @@
 													class="img-responsive">
 											</figure>
 											<div class="fh5co-text">
-												<h2>${listaRecetas.nombre}</h2>
-												<p>
-													<span class="price cursive-font">${listaRecetas.calorias}</span>
+												<h3>${listaRecetas.nombre}</h3>
+												<p>			
+													<span class="label">Calorias:</span>										
+													<label>${listaRecetas.calorias}</label>													
 												</p>
-												<button type="submit" class="btn btn-warning">Leer
-													receta</button>
+												<div class="table-responsive">
+<table  class="table table-bordered">
+<tbody>
+  <!-- Aplicadas en las filas -->
+  <tr class="active">Requiere:</tr>
+ 
+  <!-- Aplicadas en las celdas (<td> o <th>) -->
+  <c:forEach items="${listaRecetas.listaIngrediente}" var="listaIngredientes">   
+  <tr>               
+    <td class="active">${listaIngredientes.nombre} ${listaIngredientes.cantidad} ${listaIngredientes.unidad}</td>
+    <c:if test = "${listaIngredientes.faltante > 0}">
+    <td class="success"><label class="label label-success">OK</label></td>
+    </c:if>  
+    <c:if test = "${listaIngredientes.faltante < 0}">
+    <td class="info"><label class="label label-info">FALTAN ${listaIngredientes.faltante * -1} ${listaIngredientes.unidad} </label></td>
+    </c:if>
+    <c:if test = "${listaIngredientes.faltante == 0}">
+    <td class="warning"><label class="label label-warning">OK</label></td>
+    </c:if>
+    <c:if test="${empty listaIngredientes.faltante}">
+    <td class="danger"><label class="label label-danger">NO</label></td>
+    </c:if>    
+  </tr>
+  </c:forEach> 
+</tbody>
+</table>
+</div>									
 											</div>
 										</a>
+										<button type="submit" class="btn btn-warning">Leer
+													receta</button>
+										
 										<form:input path="id" name="id" type="hidden"
 											value="${listaRecetas.id}" />
 									</form:form>
@@ -252,7 +287,17 @@
 
 	<!-- Main -->
 	<script src="js/main.js"></script>
-
+	
+	<script type="text/javascript">
+		function quitarIng(id) {
+			
+		
+			document.getElementById("id").value = id;
+			
+			document.forms["form1"].submit();
+		}
+	</script>
+	
 </body>
 </html>
 

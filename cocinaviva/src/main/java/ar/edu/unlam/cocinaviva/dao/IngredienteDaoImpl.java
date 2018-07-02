@@ -22,6 +22,12 @@ public class IngredienteDaoImpl implements IngredienteDao {
 	@Override
 	public void guardarIngredienteEnUsuario(Ingrediente ingrediente) {
 		final Session session = sessionFactory.getCurrentSession();
+		session.saveOrUpdate(ingrediente);
+	}
+	
+	@Override
+	public void guardarIngredienteEnReceta(Ingrediente ingrediente) {
+		final Session session = sessionFactory.getCurrentSession();
 		session.save(ingrediente);
 	}
 	
@@ -55,6 +61,22 @@ public class IngredienteDaoImpl implements IngredienteDao {
 	public Ingrediente traerUnIngredientePorSuId(Long id) {
 		return (Ingrediente) (sessionFactory.getCurrentSession().createCriteria(Ingrediente.class).add(Restrictions.eq("id", id))
 				.uniqueResult());
+	}
+
+	@Override
+	public Ingrediente traerIngredienteDelInventarioAPartirDeIngredienteDelUsuario(Ingrediente ingredienteDelUs) {
+		return (Ingrediente) (sessionFactory.getCurrentSession().createCriteria(Ingrediente.class)
+				.add(Restrictions.eq("uso", "INVENTARIO"))
+				.add(Restrictions.eq("nombre", ingredienteDelUs.getNombre()))
+				.uniqueResult());	
+	}
+
+	@Override
+	public List<Ingrediente> traerIngredienteDeRecetasAPartirDeIngredienteDelUsuario(Ingrediente ingredienteDelUs) {
+		return (List<Ingrediente>) (sessionFactory.getCurrentSession().createCriteria(Ingrediente.class)
+				.add(Restrictions.eq("uso", "RECETA"))
+				.add(Restrictions.eq("nombre", ingredienteDelUs.getNombre()))
+				.list());	
 	}
 
 }

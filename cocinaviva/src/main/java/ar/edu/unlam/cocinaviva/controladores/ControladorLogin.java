@@ -113,7 +113,7 @@ public class ControladorLogin {
 	public ModelAndView validarRegistro(@ModelAttribute("usuario") Usuario usuario, HttpServletRequest request) {
 		ModelMap modelo = new ModelMap();
 
-		Usuario usuarioBuscado = servicioLogin.consultarUsuario(usuario);
+		Usuario usuarioBuscado = servicioLogin.consultarCorreoUsuario(usuario);
 		if (usuarioBuscado != null) {
 			modelo.put("errors", "El email ya existe en la base de datos");
 			return new ModelAndView("registro", modelo);
@@ -153,17 +153,47 @@ public class ControladorLogin {
 	@RequestMapping(path = "/recetas", method = RequestMethod.POST)
 	public ModelAndView buscarRecetas(@ModelAttribute("checkingredientes") Ingrediente checkingredientes,
 			HttpServletRequest request) {
+		
 		ModelMap modelo = new ModelMap();	
+		
+		if (request.getSession().getAttribute("usuariologueado") != null) {
+					
 		Receta receta = new Receta();
-		modelo.put("receta", receta);	
+		modelo.put("receta", receta);
+		Ingrediente ingrediente = new Ingrediente();
+		modelo.put("lingrediente", ingrediente);	
 		List<Ingrediente> Ingredientes = servicioIngrediente.traerIngredientesSeleccionados(checkingredientes.getSeleccionados());
-//		List<Receta> recetas = servicioReceta.traerRecetasAPartirDeIngredientesDelUsuario(Ingredientes);
-		List<Receta> recetas = servicioReceta.traerTodasLasRecetas();
-			
-		modelo.put("listaRecetas", recetas);
+		List<Receta> recetas = servicioReceta.traerRecetasAPartirDeIngredientesDelUsuario(Ingredientes);
+		List<Receta> recetasConFaltantes = servicioReceta.traerRecetasConFaltantesDeIngredientes(recetas,Ingredientes); // IngredelUS
+		
+		modelo.put("listaRecetas", recetasConFaltantes);
+		modelo.put("listaRecetasLargo", recetas.size());
 		modelo.put("ingredinetesseleccionados", Ingredientes);
 		
-		return new ModelAndView("recetas", modelo);
+		}return new ModelAndView("recetas", modelo);
+	}
+	
+	@RequestMapping(path = "/buscarSinElIng", method = RequestMethod.POST)
+	public ModelAndView buscarSinElIng(@ModelAttribute("lingrediente") Ingrediente ingrediente, HttpServletRequest request) {
+		
+		ModelMap modelo = new ModelMap();	
+
+	if (request.getSession().getAttribute("usuariologueado") != null) {
+
+			Receta receta = new Receta();
+			modelo.put("receta", receta);	
+			Ingrediente ingre = new Ingrediente();
+			modelo.put("lingrediente", ingre);	
+			List<Ingrediente> Ingredientes = servicioIngrediente.traerListaQuitandoIngrediente(ingrediente);
+			List<Receta> recetas = servicioReceta.traerRecetasAPartirDeIngredientesDelUsuario(Ingredientes);
+			List<Receta> recetasConFaltantes = servicioReceta.traerRecetasConFaltantesDeIngredientes(recetas,Ingredientes); // IngredelUS
+			
+			modelo.put("listaRecetas", recetasConFaltantes);
+			modelo.put("listaRecetasLargo", recetas.size());
+			modelo.put("ingredinetesseleccionados", Ingredientes);
+
+			return new ModelAndView("recetas", modelo);
+	}return new ModelAndView("redirect:/home");
 	}
 	
 	@RequestMapping("/ingredientes")
@@ -213,7 +243,7 @@ public class ControladorLogin {
 			Usuario usuario = servicioUsuario.traerUnUsuarioPorSuId(usuariologueado.getId());
 			
 			modelo.put("tieneingredienteselusuario",usuario.getlistaIngrediente());	
-			
+					
 			List<Ingrediente> listaDeTodosLosIngredientesOfrecidos = servicioIngrediente.traerTodosLosIngredientes();
 			modelo.put("iflacteos",
 					servicioIngrediente.traerLosIngredientesOfrecidosEnLacteos(listaDeTodosLosIngredientesOfrecidos));

@@ -45,4 +45,14 @@ public interface ServicioIngrediente {
 	Ingrediente generarListaDeIngredientes(List<Ingrediente> ingredientesSelec);
 
 	void guardarIngredientesAUsuario(Long id, List<Ingrediente> listaIngredientes);
+
+	Ingrediente traerIngredienteDelInventarioAPartirDeIngredienteDelUsuario(Ingrediente ingredienteDelUs);
+
+	void guardarIngredienteEnReceta(Ingrediente manteca);
+
+	List<Ingrediente> traerIngredienteDeRecetasAPartirDeIngredienteDelUsuario(Ingrediente ingredienteDelUs);
+
+	List<Ingrediente> traerListaQuitandoIngrediente(Ingrediente ingrediente);
+
+
 }

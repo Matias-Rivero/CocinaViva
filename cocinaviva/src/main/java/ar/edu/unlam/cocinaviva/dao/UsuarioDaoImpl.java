@@ -26,6 +26,15 @@ public class UsuarioDaoImpl implements UsuarioDao {
 				.add(Restrictions.eq("password", usuario.getPassword()))
 				.uniqueResult();
 	}
+	
+	@Override
+	public Usuario consultarCorreoUsuario(Usuario usuario) {
+
+		final Session session = sessionFactory.getCurrentSession();
+		return (Usuario) session.createCriteria(Usuario.class)
+				.add(Restrictions.eq("email", usuario.getEmail()))
+				.uniqueResult();
+	}
 
 	@Override
 	public void guardarUsuario(Usuario usuario) {
