@@ -68,8 +68,13 @@ h1 {
   font-weight: 400;
   margin: 0 0 20px 0;
 }
-
-h2, h3, h4, h5, h6, figure {
+h3 {
+  color: #000;
+  font-family: "Lato", Arial, sans-serif;
+  font-weight: 400;
+  margin: 0 0 20px 0;
+}
+h2, h4, h5, h6, figure {
   color: #fab348;
   font-family: "Lato", Arial, sans-serif;
   font-weight: 400;
@@ -125,6 +130,13 @@ h2, h3, h4, h5, h6, figure {
   line-height: 1.4;
   color: #000;
 }
+.lead5 {
+  margin-bottom: 20px;
+  font-size: 27px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #000;
+}
 .leadl {
   margin-bottom: 20px;
   font-size: 20px;
@@ -151,7 +163,7 @@ h2, h3, h4, h5, h6, figure {
   font-size: 20px;
   font-weight: 600;
   line-height: 1.4;
-  color: #371dff;
+  color: #1d80ff;
 }
 .leadco {
   margin-bottom: 20px;

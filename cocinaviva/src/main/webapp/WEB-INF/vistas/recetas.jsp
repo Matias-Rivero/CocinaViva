@@ -1,11 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
-<!--
-	Aesthetic by gettemplates.co
-	Twitter: http://twitter.com/gettemplateco
-	URL: http://gettemplates.co
--->
 <html>
 <head>
 <meta charset="utf-8">
@@ -13,10 +8,10 @@
 <title>Cocina Viva &mdash;</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description"
-	content="Free HTML5 Website Template by GetTemplates.co" />
+	content="" />
 <meta name="keywords"
-	content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
-<meta name="author" content="GetTemplates.co" />
+	content="" />
+<meta name="author" content="" />
 
 <!-- Facebook and Twitter integration -->
 <meta property="og:title" content="" />
@@ -114,8 +109,8 @@
 					</h1>
 					<label class="label label-warning">Con:</label>
 					<form:form id="form1" method="POST" modelAttribute="lingrediente"
-									action="buscarSinElIng">
-						<label class="oculto"><<form:input path="id" id="id" type="text" class="form-control" /></label>					
+									action="drecetas">
+						<label class="oculto"><form:input path="id" id="id" type="text" class="form-control" /></label>					
 						<c:forEach items="${ingredinetesseleccionados}"
 							var="ingredinetesseleccionados">
 							<label class="label label-success"><a href="javascript:quitarIng(${ingredinetesseleccionados.id});" class="badge badge-danger">x</a>${ingredinetesseleccionados.nombre}<span

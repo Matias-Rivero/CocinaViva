@@ -1,11 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
-<!--
-	Aesthetic by gettemplates.co
-	Twitter: http://twitter.com/gettemplateco
-	URL: http://gettemplates.co
--->
 <html>
 <head>
 <meta charset="utf-8">
@@ -13,10 +8,10 @@
 <title>Cocina Viva &mdash;</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description"
-	content="Free HTML5 Website Template by GetTemplates.co" />
+	content="" />
 <meta name="keywords"
-	content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
-<meta name="author" content="GetTemplates.co" />
+	content="" />
+<meta name="author" content="" />
 
 <!-- Facebook and Twitter integration -->
 <meta property="og:title" content="" />
@@ -120,7 +115,7 @@
 					<c:choose>
 						<c:when test="${not empty tieneingredienteselusuario}">
 								<div class="py-5 text-center">				
-									<h1>¿Ingredientes para agregar?</h1>
+									<h1>¿Ingredientes para agregar?  <c:if test="${not empty paso}"><span class="lead5">${paso}</span></c:if></h1>
 								</div>
 						</c:when>
 						<c:otherwise>
@@ -145,7 +140,7 @@
 
 										<div class="table-responsive">
 											<h3 class="my-0">Para Agregar</h3>
-											<a href="ingredientes#agringre" class="btn btn-link">Volver a seleccionar ingredientes</a>
+<!-- 											<a href="ingredientes#agringre" class="btn btn-link">Volver a seleccionar ingredientes</a> -->
 											<table class="table table-hover">
 												<thead>
 													<tr>
@@ -192,12 +187,11 @@
 															</c:if> 
 															<c:if test = "${i.unidad == 'Grs'}">																
 															<th><label><strong>Gramos</strong></label>												
-																<form:select class="form-control"
-																	path="listaIngredientes[${status.index}].cantidad">
-																	<c:forEach var="cantidad" begin="1" end="60">
-																		<form:option value="${cantidad * 50}">${cantidad * 50}</form:option>
-																	</c:forEach>
-																</form:select>																
+																<form:select class="form-control" path="listaIngredientes[${status.index}].cantidad">
+																<c:forEach items="${listagramos}" var="g" varStatus="estado">
+																		<form:option value="${(estado.index + 1)* 50}">${g}</form:option>
+																</c:forEach>
+																</form:select>														
 															</th>
 															</c:if>    
 															<label class="oculto"><form:input
@@ -218,8 +212,10 @@
 												</tbody>
 
 											</table>
-											<input type="submit" class="btn btn-primary btn-lg btn-block"
-												value="AGREGAR">
+											<button type="button" onclick="validaEnviaAltaIngre();" class="btn btn-primary btn-lg btn-block">Agregar</button>	
+											<div style="visibility: hidden;">
+												<button id="agregaringre" class="btn btn-primary" type="submit">agregaringre</button>
+											</div>	
 										</div>
 										
 									</li>
@@ -241,7 +237,7 @@
 
 									<div class="table-responsive">
 										<h3 class="my-0">Tus ingredientes</h3>
-										<a href="ingredientes#agringre" class="btn btn-link">Modificar</a>
+										<a href="modificar" class="btn btn-link">Modificar</a>
 										<table class="table table-hover">
 											<thead>
 												<tr>
@@ -318,7 +314,7 @@
 				</ul>
 			
 				
-				<form:form method="POST" name="f1" modelAttribute="checkingredientes"
+				<form:form method="POST" name="f1" id="f1" modelAttribute="checkingredientes"
 					action="agregarIngredientes">
 					
 						<c:choose>
@@ -470,7 +466,7 @@
 						
 
 						<div style="visibility: hidden;">
-							<button id="agregaringre" class="btn btn-primary" type="submit">Iniciar</button>
+							<button id="agregaringre" class="btn btn-primary" type="submit">agregaringre</button>
 						</div>
 					
 				</form:form>
@@ -564,7 +560,7 @@
 				  </div>
 				  
 				</div>
-					<button type="button" onclick="agregaringre();" class="btn btn-success btn-lg btn-block">Agregar</button>
+					<button type="button" onclick="validaEnvia();" class="btn btn-success btn-lg btn-block">Agregar</button>
 				
 				</div>
 				
@@ -588,6 +584,31 @@
 		
 		
 	</div>
+	<div id="almenosuno" class="modal fade" tabindex="-1" role="dialog" style="overflow-y: scroll;">
+	  <div class="modal-dialog modal-sm">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	      	<div class="alert alert-danger" role="alert">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>        
+			  <h3>¡Agrega al menos 1 ingrediente!</h3>
+			</div>
+	      </div>  
+	    </div>
+	  </div>
+	</div>
+	<div id="datetimepickervacio" class="modal fade" tabindex="-1" role="dialog" style="overflow-y: scroll;">
+	  <div class="modal-dialog modal-sm">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	      	<div class="alert alert-danger" role="alert">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>        
+			  <h3>¡La fecha es necesaria!</h3>
+			</div>
+	      </div>  
+	    </div>
+	  </div>
+	</div>
+	
 	<footer id="gtco-footer" role="contentinfo" data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
 			<div class="gtco-container">
@@ -662,18 +683,68 @@
 
 	<!-- Main -->
 	<script src="js/main.js"></script>
-
+	
 	<script type="text/javascript">
-		function agregaringre() {
-			
-			var capa = document.getElementById("agregaringre");
-			capa.click();
-			
-			for (i=0;i<document.f1.elements.length;i++) 
-			      if(document.f1.elements[i].type == "checkbox")	
-			         document.f1.elements[i].checked=0	
-		}
+		window.onload=function() {
+// 			if(typeof (document.getElementsByName("f1") ) !== "undefined"){
+		if($("#f1").length != 0) {
+			for (i=0;i<document.f1.elements.length;i++) {  		
+		          if(document.f1.elements[i].type == "checkbox") {
+				               if(document.f1.elements[i].checked == 1) {  
+				            	   document.f1.elements[i].checked = false;
+				            	   document.f1.elements[i].click();
+				                  
+				                  }
+				         
+		                  }
+		            } 
+				}
+			}
 	</script>
+	<script type="text/javascript">
+	function validaEnviaAltaIngre() {
+	var clases = document.getElementsByClassName("datetimepicker1");	
+	var no = "si";
+	for (x = 0; x < clases.length; x++)
+		      {
+		        if(clases[x].value == ''){
+		        $('#datetimepickervacio').modal('show');
+// 		        clases[x].focus();   	
+				no = "no";
+		        }
+		      }
+		        if(no == "si") { 
+			        var capa = document.getElementById("agregaringre");
+					capa.click(); 
+			        }         
+
+		      		
+	}		
+</script>	
+	<script type="text/javascript">
+	function validaEnvia() {
+		
+		 var no = "no";
+		  for (i=0;i<document.f1.elements.length;i++) {  		
+		          if(document.f1.elements[i].type == "checkbox") {
+				               if(document.f1.elements[i].checked == 1) {  
+				                  document.getElementById("agregaringre").click();
+				                  no = "si";
+				                  
+				                  }
+				         
+		                  }
+		            }      
+		        if(no == "no") { 
+		          $('#almenosuno').modal('show');
+		          $( "#filtrar" ).focus();   
+		        }          
+        
+    
+	}
+	</script>
+	
+
 <script type="text/javascript">
 		function buscarIngrediente() {
 			var ingrediente = document.getElementById("filtrar").value;

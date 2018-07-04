@@ -23,6 +23,7 @@ public class Ingrediente implements Cloneable {
 	private Integer[] seleccionados;
 	private Integer faltante;
 	private Integer cantidad;
+	private String medida;
 	private String unidad;
 	private String tipo;
 	private String fvencimiento;
@@ -51,6 +52,14 @@ public class Ingrediente implements Cloneable {
 
 	public void setCantidad(Integer cantidad) {
 		this.cantidad = cantidad;
+	}
+
+	public String getMedida() {
+		return medida;
+	}
+
+	public void setMedida(String medida) {
+		this.medida = medida;
 	}
 	
 	public String getUnidad() {
@@ -130,5 +139,6 @@ public class Ingrediente implements Cloneable {
 		Ingrediente cloningrediente = (Ingrediente) super.clone();
         return cloningrediente;
    }
+
 	
 }

@@ -24,4 +24,6 @@ public interface IngredienteDao {
 
 	List<Ingrediente> traerIngredienteDeRecetasAPartirDeIngredienteDelUsuario(Ingrediente ingredienteDelUs);
 
+	void actualizarIngredientesAUsuario(Ingrediente ingredienteUs);
+
 }

@@ -79,4 +79,10 @@ public class IngredienteDaoImpl implements IngredienteDao {
 				.list());	
 	}
 
+	@Override
+	public void actualizarIngredientesAUsuario(Ingrediente ingredienteUs) {
+		final Session session = sessionFactory.getCurrentSession();
+		session.saveOrUpdate(ingredienteUs);
+	}
+
 }

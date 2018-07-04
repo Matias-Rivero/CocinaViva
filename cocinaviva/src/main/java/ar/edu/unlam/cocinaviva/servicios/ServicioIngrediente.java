@@ -1,6 +1,9 @@
 package ar.edu.unlam.cocinaviva.servicios;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import ar.edu.unlam.cocinaviva.modelo.Ingrediente;
 
@@ -54,5 +57,8 @@ public interface ServicioIngrediente {
 
 	List<Ingrediente> traerListaQuitandoIngrediente(Ingrediente ingrediente);
 
+	ArrayList<String> traerListaDeGramos();
+
+	void modificarIngredientesDeUsuario(Long id, List<Ingrediente> listaIngredientes);
 
 }

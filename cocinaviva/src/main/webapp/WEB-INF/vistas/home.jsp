@@ -1,11 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
-<!--
-	Aesthetic by gettemplates.co
-	Twitter: http://twitter.com/gettemplateco
-	URL: http://gettemplates.co
--->
 <html>
 <head>
 <meta charset="utf-8">
@@ -13,10 +8,10 @@
 <title>Cocina Viva &mdash;</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description"
-	content="Free HTML5 Website Template by GetTemplates.co" />
+	content="" />
 <meta name="keywords"
-	content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
-<meta name="author" content="GetTemplates.co" />
+	content="" />
+<meta name="author" content="" />
 
 <!-- Facebook and Twitter integration -->
 <meta property="og:title" content="" />
@@ -139,8 +134,8 @@
 									<h4 class="d-flex justify-content-between align-items-center mb-3">
 										<span class="text-muted">Selecciona los ingredientes de
 											tu heladera</span>
-										<span class="lead4 glyphicon glyphicon-pencil"><a href="#">Modificar</a></span>
-										<span class="lead4 glyphicon glyphicon-play-circle"><a href="javascript:todos();" id="todos">Todos</a></span>	
+										<span class="lead4 glyphicon glyphicon-pencil"><a href="modificar">Modificar</a><c:if test="${not empty exitomodificar}">${exitomodificar}</c:if></span>
+										<span class="lead4 glyphicon glyphicon-play-circle"><a href="javascript:seleccionarTodos();" id="todos">Todos</a></span>	
 									</h4>		
 										
 									<ul class="list-group mb-3">
@@ -167,7 +162,7 @@
 																			<th><span class="lead">${ingredienteslacteosdelusuario.nombre}</span></th>
 																			<th><span class="lead colorverde"><form:checkbox
 																						path="seleccionados"
-																						value="${ingredienteslacteosdelusuario.id}" />Usar</span></th>																	
+																						value="${ingredienteslacteosdelusuario.id}" class="check"/>Usar</span></th>																	
 																			<th><span class="lead4">${ingredienteslacteosdelusuario.fvencimiento}</span><label><strong>Vencimiento</strong></label></th>
 																			<th><span class="lead4">${ingredienteslacteosdelusuario.cantidad}</span>
 																			<c:if test = "${ingredienteslacteosdelusuario.unidad == 'Lts'}">
@@ -212,7 +207,7 @@
 																			<th><span class="lead">${ingredientesvegetalesdelusuario.nombre}</span></th>
 																			<th><span class="lead colorverde"><form:checkbox
 																						path="seleccionados"
-																						value="${ingredientesvegetalesdelusuario.id}" />Usar</span></th>																	
+																						value="${ingredientesvegetalesdelusuario.id}" class="check"/>Usar</span></th>																	
 																			<th><span class="lead4">${ingredientesvegetalesdelusuario.fvencimiento}</span><label><strong>Compra</strong></label></th>
 																			<th><span class="lead4">${ingredientesvegetalesdelusuario.cantidad}</span>
 																			<c:if test = "${ingredientesvegetalesdelusuario.unidad == 'Lts'}">
@@ -257,7 +252,7 @@
 																			<th><span class="lead">${ingredientescarnesdelusuario.nombre}</span></th>
 																			<th><span class="lead colorverde"><form:checkbox
 																						path="seleccionados"
-																						value="${ingredientescarnesdelusuario.id}" />Usar</span></th>																	
+																						value="${ingredientescarnesdelusuario.id}" class="check"/>Usar</span></th>																	
 																			<th><span class="lead4">${ingredientescarnesdelusuario.fvencimiento}</span><label><strong>Compra</strong></label></th>
 																			<th><span class="lead4">${ingredientescarnesdelusuario.cantidad}</span>
 																			<c:if test = "${ingredientescarnesdelusuario.unidad == 'Lts'}">
@@ -302,7 +297,7 @@
 																			<th><span class="lead">${ingredientespescadodelusuario.nombre}</span></th>
 																			<th><span class="lead colorverde"><form:checkbox
 																						path="seleccionados"
-																						value="${ingredientespescadodelusuario.id}" />Usar</span></th>																	
+																						value="${ingredientespescadodelusuario.id}" class="check"/>Usar</span></th>																	
 																			<th><span class="lead4">${ingredientespescadodelusuario.fvencimiento}</span><label><strong>Compra</strong></label></th>
 																			<th><span class="lead4">${ingredientespescadodelusuario.cantidad}</span>
 																			<c:if test = "${ingredientespescadodelusuario.unidad == 'Lts'}">
@@ -347,7 +342,7 @@
 																			<th><span class="lead">${ingredientescondimentodelusuario.nombre}</span></th>
 																			<th><span class="lead colorverde"><form:checkbox
 																						path="seleccionados"
-																						value="${ingredientescondimentodelusuario.id}" />Usar</span></th>																	
+																						value="${ingredientescondimentodelusuario.id}" class="check"/>Usar</span></th>																	
 																			<th><span class="lead4">${ingredientescondimentodelusuario.fvencimiento}</span><label><strong>Vencimiento</strong></label></th>
 																			<th><span class="lead4">${ingredientescondimentodelusuario.cantidad}</span>
 																			<c:if test = "${ingredientescondimentodelusuario.unidad == 'Lts'}">
@@ -399,7 +394,7 @@
 									</h4>
 									<ul class="list-group mb-3">
 										<li class="list-group-item d-flex justify-content-between lh-condensed">
-											<a onclick="buscarreceta();"><input
+											<a onclick="validaEnvia();"><input
 													type=image src="images/flecha.jpg" alt="BUSCAR RECETA"
 													class="img-rounded img-responsive">
 												
@@ -508,6 +503,18 @@
         <a type="button" class="btn btn-lg btn-primary btn-block" href="" id="eliminar"><span class="glyphicon glyphicon-ok">Confirmar</span></a>
         <a type="button" class="btn btn-lg btn-default btn-block" href="" data-dismiss="modal"><span class="glyphicon glyphicon-remove">Cancelar</span></a>
       </div>    
+    </div>
+  </div>
+</div>
+<div id="Selecciona" class="modal fade" tabindex="-1" role="dialog" style="overflow-y: scroll;">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+      	<div class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>        
+		  <h3>Por favor, primero selecciona los ingredientes a usar</h3>
+		</div>
+      </div>  
     </div>
   </div>
 </div>
@@ -628,15 +635,36 @@
 			}(jQuery));
 		});
 	</script>
-	
+
 	<script type="text/javascript">
-	
-	function todos() {
-		for (i=0;i<document.confirform.elements.length;i++) 
-		      if(document.confirform.elements[i].type == "checkbox")	
-		         document.confirform.elements[i].checked=1	
+	function seleccionarTodos() {
+		
+        $(".check").each(function(){
+        	 if ($(this).is(':checked')) {         	 	
+       $(this).prop('checked',false);     
+        }else{
+       $(this).prop('checked',true);  	
+   		 }
+        });
+    
 	}
-	</script>
+	</script>	
+	<script type="text/javascript">
+  function validaEnvia() {
+   var no = "no"; 
+        $(".check").each(function(){
+           if ($(this).is(':checked')) {   
+          no = "si";         
+        }
+        });
+
+        if(no == "no") { 
+              $('#Selecciona').modal('show'); 
+            }else{
+              buscarreceta();
+            }                
+  }
+  </script>
 </body>
 </html>
 

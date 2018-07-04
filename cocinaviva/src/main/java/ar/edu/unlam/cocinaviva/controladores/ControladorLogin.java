@@ -152,12 +152,11 @@ public class ControladorLogin {
 	
 	@RequestMapping(path = "/recetas", method = RequestMethod.POST)
 	public ModelAndView buscarRecetas(@ModelAttribute("checkingredientes") Ingrediente checkingredientes,
-			HttpServletRequest request) {
+			HttpServletRequest request) {				
 		
-		ModelMap modelo = new ModelMap();	
+		if (request.getSession().getAttribute("usuariologueado") != null && (!(checkingredientes.getSeleccionados().equals(null)))) {
+		ModelMap modelo = new ModelMap();
 		
-		if (request.getSession().getAttribute("usuariologueado") != null) {
-					
 		Receta receta = new Receta();
 		modelo.put("receta", receta);
 		Ingrediente ingrediente = new Ingrediente();
@@ -170,20 +169,22 @@ public class ControladorLogin {
 		modelo.put("listaRecetasLargo", recetas.size());
 		modelo.put("ingredinetesseleccionados", Ingredientes);
 		
-		}return new ModelAndView("recetas", modelo);
+		return new ModelAndView("recetas", modelo);
+		}
+	return new ModelAndView("redirect:/home");	
 	}
 	
-	@RequestMapping(path = "/buscarSinElIng", method = RequestMethod.POST)
-	public ModelAndView buscarSinElIng(@ModelAttribute("lingrediente") Ingrediente ingrediente, HttpServletRequest request) {
+	@RequestMapping(path = "/drecetas", method = RequestMethod.POST)
+	public ModelAndView recetasDes(@ModelAttribute("lingrediente") Ingrediente ingrediente, HttpServletRequest request) {		
 		
-		ModelMap modelo = new ModelMap();	
-
-	if (request.getSession().getAttribute("usuariologueado") != null) {
-
+	if (request.getSession().getAttribute("usuariologueado") != null && (!(ingrediente.getSeleccionados().length == 1))) {
+			ModelMap modelo = new ModelMap();	
+		
 			Receta receta = new Receta();
 			modelo.put("receta", receta);	
 			Ingrediente ingre = new Ingrediente();
 			modelo.put("lingrediente", ingre);	
+			
 			List<Ingrediente> Ingredientes = servicioIngrediente.traerListaQuitandoIngrediente(ingrediente);
 			List<Receta> recetas = servicioReceta.traerRecetasAPartirDeIngredientesDelUsuario(Ingredientes);
 			List<Receta> recetasConFaltantes = servicioReceta.traerRecetasConFaltantesDeIngredientes(recetas,Ingredientes); // IngredelUS
@@ -193,7 +194,8 @@ public class ControladorLogin {
 			modelo.put("ingredinetesseleccionados", Ingredientes);
 
 			return new ModelAndView("recetas", modelo);
-	}return new ModelAndView("redirect:/home");
+	}
+	return new ModelAndView("redirect:/home");
 	}
 	
 	@RequestMapping("/ingredientes")
@@ -223,7 +225,7 @@ public class ControladorLogin {
 				
 				Ingrediente checkingrediente = new Ingrediente();
 				modelo.put("checkingredientes", checkingrediente);
-			
+				modelo.put("paso", "#1");
 		}else{
 			return new ModelAndView("redirect:/home");
 		}
@@ -259,8 +261,9 @@ public class ControladorLogin {
 		List<Ingrediente> ingredientesSelec = servicioIngrediente.traerIngredientesSeleccionados(checkingredientes.getSeleccionados());
 		Ingrediente ingredientes = servicioIngrediente.generarListaDeIngredientes(ingredientesSelec);
 		
-		// Estos ingredientes deben persistirse
-		// modelo.put("ingredinetesseleccionados", ingredientesSelec);
+
+		modelo.put("paso", "#2");
+		modelo.put("listagramos", servicioIngrediente.traerListaDeGramos());
 		modelo.put("ingrediente", ingredientes);
 		
 		
@@ -297,5 +300,77 @@ public class ControladorLogin {
 	}return new ModelAndView("redirect:/home");
 	}
 	
+	@RequestMapping(path = "/modificar", method = RequestMethod.GET)
+	  public ModelAndView modificar(HttpServletRequest request) {
+	    
+	    ModelMap modelo = new ModelMap();
+	    
+	    if (request.getSession().getAttribute("usuariologueado") != null) {
+	      
+	      Usuario usuariologueado = (Usuario) request.getSession().getAttribute("usuariologueado");
+	      
+	      Usuario usuario = servicioUsuario.traerUnUsuarioPorSuId(usuariologueado.getId());
+
+	      if(usuario.getlistaIngrediente().isEmpty()){
+	        return new ModelAndView("redirect:/ingredientes");
+	      }
+	      
+	      List<Ingrediente> ingredientesSelec = usuario.getlistaIngrediente();
+		 Ingrediente ingredientes = servicioIngrediente.generarListaDeIngredientes(ingredientesSelec);
+	      
+	      modelo.put("tieneingredienteselusuario",usuario.getlistaIngrediente()); 
+	      modelo.put("listagramos", servicioIngrediente.traerListaDeGramos());
+	      modelo.put("ingrediente", ingredientes); 
+	         
+	    
+	    }else{
+	      return new ModelAndView("redirect:/home");
+	    }
+	    return new ModelAndView("modificar", modelo);
+	  }
+
+	@RequestMapping(path = "/modificar", method = RequestMethod.POST)
+	public ModelAndView modificarIngrediente(@ModelAttribute("ingrediente") Ingrediente ingrediente, HttpServletRequest request) {
+		
+
+	if (request.getSession().getAttribute("usuariologueado") != null) {
+			ModelMap modelo = new ModelMap();
+			Usuario usuariologueado = (Usuario) request.getSession().getAttribute("usuariologueado");	
+			List<Ingrediente> listaIngredientes = ingrediente.getlistaIngredientes();
+			servicioIngrediente.modificarIngredientesDeUsuario(usuariologueado.getId(),listaIngredientes);	
+			modelo.put("exitomodificar", "Excelente, exito al modificar");
+			return new ModelAndView("redirect:/home");
+	}return new ModelAndView("redirect:/home");
+	}
 	
+	
+// Si quieren acceder por GET	
+	@RequestMapping("/validar-login")
+	protected ModelAndView validarLogin() {
+		return new ModelAndView("redirect:/home");
+	}
+	@RequestMapping("/validar-registro")
+	protected ModelAndView validarRegistro() {
+		return new ModelAndView("redirect:/home");
+	}
+	@RequestMapping("/recetas")
+	protected ModelAndView recetas() {
+		return new ModelAndView("redirect:/home");
+	}
+	@RequestMapping("/drecetas")
+	protected ModelAndView dRecetas() {
+		return new ModelAndView("redirect:/home");
+	}
+	@RequestMapping("/agregarIngredientes")
+	protected ModelAndView agregarIngredientes() {
+		return new ModelAndView("redirect:/home");
+	}
+	@RequestMapping("/altaIngredientes")
+	protected ModelAndView altaIngredientes() {
+		return new ModelAndView("redirect:/home");
+	}
+	@RequestMapping("/modificar")
+	protected ModelAndView modificarIngrediente() {
+		return new ModelAndView("redirect:/home");
+	}
 }

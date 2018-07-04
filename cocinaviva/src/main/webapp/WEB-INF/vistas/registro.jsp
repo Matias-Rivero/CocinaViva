@@ -1,11 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
-<!--
-	Aesthetic by gettemplates.co
-	Twitter: http://twitter.com/gettemplateco
-	URL: http://gettemplates.co
--->
 <html>
 <head>
 <meta charset="utf-8">
@@ -13,10 +8,10 @@
 <title>Cocina Viva &mdash;</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description"
-	content="Free HTML5 Website Template by GetTemplates.co" />
+	content="" />
 <meta name="keywords"
-	content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
-<meta name="author" content="GetTemplates.co" />
+	content="" />
+<meta name="author" content="" />
 
 <!-- Facebook and Twitter integration -->
 <meta property="og:title" content="" />
