@@ -1,5 +1,6 @@
 package ar.edu.unlam.cocinaviva.controladores;
 
+import java.text.ParseException;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -37,7 +38,7 @@ public class ControladorLogin {
 	private ServicioIngrediente servicioIngrediente;
 
 	@RequestMapping("/home")
-	public ModelAndView irAHome(HttpServletRequest request) {
+	public ModelAndView irAHome(HttpServletRequest request) throws ParseException {
 
 		ModelMap modelo = new ModelMap();
 
@@ -48,6 +49,8 @@ public class ControladorLogin {
 			Usuario usuario = servicioUsuario.traerUnUsuarioPorSuId(usuariologueado.getId());
 			
 			modelo.put("tieneingredienteselusuario",usuario.getlistaIngrediente());	
+			
+			servicioIngrediente.verificarEstadoDelIngrediente(usuario);
 	
 			if(usuario.getlistaIngrediente().isEmpty()){
 				return new ModelAndView("redirect:/ingredientes");

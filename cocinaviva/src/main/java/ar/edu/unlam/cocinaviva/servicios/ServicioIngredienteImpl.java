@@ -1,14 +1,22 @@
 package ar.edu.unlam.cocinaviva.servicios;
 
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Date;
+import java.time.temporal.ChronoUnit;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+//import org.joda.time.format.DateTimeFormat;
 
 import ar.edu.unlam.cocinaviva.dao.IngredienteDao;
 import ar.edu.unlam.cocinaviva.dao.UsuarioDao;
@@ -390,6 +398,44 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 	
 	private void actualizarIngredientesAUsuario(Ingrediente ingredienteUs) {
 		servicioIngredienteDao.actualizarIngredientesAUsuario(ingredienteUs);
+	}
+
+	@Override
+	public void verificarEstadoDelIngrediente(Usuario usuario) throws ParseException {
+		List<Ingrediente> ingredientesUs  = usuario.getlistaIngrediente();
+		
+		LocalDate fechaActual = LocalDate.now();
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+				
+		String fechaActualConFormato = fechaActual.format(formatter);
+		
+//		System.out.println(fechaActual.toString());	
+//		System.out.println(fechaActualConFormato);
+		
+		Long difDias;
+		Date fechaing;
+		LocalDate fechainglocald;
+	
+		 for (Ingrediente ingredienteUs : ingredientesUs) {
+//			  fechaing =   formatter.parse(ingredienteUs.getFvencimiento());
+			  fechaing =   df.parse(ingredienteUs.getFvencimiento());
+			  fechainglocald = fechaing.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//			  System.out.println("=======Nombre Ingrediente: " +ingredienteUs.getNombre()+", dias vencidos: "+ChronoUnit.DAYS.between(fechaActual, fechainglocald));
+			  difDias = ChronoUnit.DAYS.between(fechaActual, fechainglocald);
+			  if(difDias <= 0){
+				  ingredienteUs.setEstado("VENCIDO");
+				  actualizarIngredientesAUsuario(ingredienteUs);
+				  servicioUsuarioDao.actualizarUsuario(usuario);
+			  }
+			  if(difDias > 0 && difDias <= 5){
+				  ingredienteUs.setEstado("AVENCER"); 
+				  actualizarIngredientesAUsuario(ingredienteUs);
+				  servicioUsuarioDao.actualizarUsuario(usuario);
+			  }
+		 }
 	}
 
 }
