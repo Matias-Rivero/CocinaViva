@@ -163,7 +163,20 @@
 																			<th><span class="lead colorverde"><form:checkbox
 																						path="seleccionados"
 																						value="${ingredienteslacteosdelusuario.id}" class="check"/>Usar</span></th>																	
-																			<th><span class="lead4">${ingredienteslacteosdelusuario.fvencimiento}</span><label><strong>Vencimiento</strong></label></th>
+																			<th><span class="lead4">${ingredienteslacteosdelusuario.fvencimiento}</span><label><strong>Vencimiento</strong></label>
+
+																			<c:choose>
+																				<c:when test="${ingredienteslacteosdelusuario.estado == 'AVENCER'}">
+																					<label class="label label-warning">Por Vencerse</label>
+																				</c:when>
+																				<c:when test="${ingredienteslacteosdelusuario.estado == 'VENCIDO'}">
+																					<label class="label label-danger">Vencido</label>
+																				</c:when>
+																				<c:otherwise>
+																					<label class="label label-success">Usable</label>
+																				</c:otherwise>
+																			</c:choose>
+																			</th>
 																			<th><span class="lead4">${ingredienteslacteosdelusuario.cantidad}</span>
 																			<c:if test = "${ingredienteslacteosdelusuario.unidad == 'Lts'}">
 																			<label>Litros</label>
@@ -378,7 +391,7 @@
 
 									<h4
 										class="d-flex justify-content-between align-items-center mb-3">
-										<span class="text-muted">¿Tienes mas?</span>
+										<span class="text-muted">ï¿½Tienes mas?</span>
 									</h4>
 
 									<ul class="list-group mb-3">
@@ -425,11 +438,11 @@
 								<div class="row row-mt-15em">
 									<div class="col-md-7 mt-text animate-box"
 										data-animate-effect="fadeInUp">
-										<span class="intro-text-small">NO desperdicies más!</span>
+										<span class="intro-text-small">NO desperdicies mï¿½s!</span>
 										<h2 class="cursive-font">Unite a esta comunidad
 											saludable!</h2>
 										<span class="intro-text-small">Cocina todo lo de tu
-											alacena, ahorrás y aprendes a comer. ¿Qué Más?.</span>
+											alacena, ahorrï¿½s y aprendes a comer. ï¿½Quï¿½ Mï¿½s?.</span>
 									</div>
 									<div class="col-md-4 col-md-push-1 animate-box"
 										data-animate-effect="fadeInRight">
@@ -438,7 +451,7 @@
 
 												<div class="tab-content">
 													<div class="tab-content-inner active" data-content="signup">
-														<h2 class="cursive-font">Ingresá</h2>
+														<h2 class="cursive-font">Ingresï¿½</h2>
 														<form:form action="validar-login" method="POST"
 															modelAttribute="usuario">
 
@@ -452,7 +465,7 @@
 															</div>
 															<div class="row form-group">
 																<div class="col-md-12">
-																	<label for="date-start">Contraseña</label>
+																	<label for="date-start">Contraseï¿½a</label>
 																	<form:input path="password" type="password"
 																		id="password" class="form-control" />
 																</div>
@@ -473,7 +486,7 @@
 															<br>
 														</c:if>
 														<h2 class="cursive-font">
-															<a href="registro">Regístrate</a>
+															<a href="registro">Regï¿½strate</a>
 														</h2>
 													</div>
 												</div>
@@ -494,7 +507,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">¿Estas seguro de elminar el ingrediente?</h4>
+        <h4 class="modal-title" id="myModalLabel">ï¿½Estas seguro de elminar el ingrediente?</h4>
       </div>
       <div class="modal-body">
         <span class="lead" id="ingred"></span>
