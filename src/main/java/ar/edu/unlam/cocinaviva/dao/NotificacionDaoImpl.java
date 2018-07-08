@@ -44,7 +44,7 @@ public class NotificacionDaoImpl implements NotificacionDao {
 	@Override
 	public String MensajeParaIngredienteVencido(Usuario usuario){
 		List<Ingrediente> ingredientesCarnes = usuario.getlistaIngrediente();
-
+		return "Mensaje";
 
 	}
 
@@ -52,7 +52,7 @@ public class NotificacionDaoImpl implements NotificacionDao {
 	@Override
 	public String MensajeParaIngredienteProximoAVencer(Usuario usuario){
 		List<Ingrediente> ingredientesCarnes = usuario.getlistaIngrediente();
-
+	return "Mensaje";
 	}
 
 
@@ -60,7 +60,7 @@ public class NotificacionDaoImpl implements NotificacionDao {
 	@Override
 	public String MensajeParaIngredientePasado(Usuario usuario){
 		List<Ingrediente> ingredientesCarnes = usuario.getlistaIngrediente();
-
+		return "Mensaje";
 
 	}
 

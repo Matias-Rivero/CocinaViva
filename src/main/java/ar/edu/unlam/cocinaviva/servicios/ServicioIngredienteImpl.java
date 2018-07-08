@@ -14,6 +14,7 @@ import java.time.temporal.ChronoUnit;
 
 import javax.inject.Inject;
 
+import ar.edu.unlam.cocinaviva.dao.NotificacionDao;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,6 +33,9 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 	
 	@Inject
 	private UsuarioDao servicioUsuarioDao;
+
+	@Inject
+	private NotificacionDao servicioNotificacionDao;
 
 	@Override
 	public void guardarIngredienteEnInventario(Ingrediente ingrediente) {
