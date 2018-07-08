@@ -137,7 +137,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(quesosuizo);
 		
 		Ingrediente requeson = new Ingrediente();
-		requeson.setNombre("requesón");
+		requeson.setNombre("requesÃ³n");
 		requeson.setTipo("LACTEOS");
 		requeson.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(requeson);
@@ -271,13 +271,13 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(perejil);
 		
 		Ingrediente brocoli = new Ingrediente();
-		brocoli.setNombre("brócoli");
+		brocoli.setNombre("brÃ³coli");
 		brocoli.setTipo("VEGETALES");
 		brocoli.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(brocoli);
 		
 		Ingrediente maiz = new Ingrediente();
-		maiz.setNombre("maíz");
+		maiz.setNombre("maï¿½z");
 		maiz.setTipo("VEGETALES");
 		maiz.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(maiz);
@@ -295,7 +295,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(jengibre);
 		
 		Ingrediente ajipicante = new Ingrediente();
-		ajipicante.setNombre("ají picante");
+		ajipicante.setNombre("ajï¿½ picante");
 		ajipicante.setTipo("VEGETALES");
 		ajipicante.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(ajipicante);
@@ -331,7 +331,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(batata);
 		
 		Ingrediente calabacin = new Ingrediente();
-		calabacin.setNombre("calabacín");
+		calabacin.setNombre("calabacï¿½n");
 		calabacin.setTipo("VEGETALES");
 		calabacin.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(calabacin);
@@ -406,7 +406,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(filetedeternera);
 		
 		Ingrediente jamon = new Ingrediente();
-		jamon.setNombre("jamón");
+		jamon.setNombre("jamÃ³n");
 		jamon.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(jamon);
 		
@@ -493,7 +493,7 @@ public class ControladorInsertar {
 		// PESCADO
 		
 		Ingrediente atunenlatado = new Ingrediente();
-		atunenlatado.setNombre("atún enlatado");
+		atunenlatado.setNombre("atï¿½n enlatado");
 		atunenlatado.setTipo("PESCADO");
 		servicioIngrediente.guardarIngredienteEnInventario(atunenlatado);
 		
@@ -503,7 +503,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(filetesdepescado);
 		
 		Ingrediente salmon = new Ingrediente();
-		salmon.setNombre("salmón");
+		salmon.setNombre("salmÃ³n");
 		salmon.setTipo("PESCADO");
 		servicioIngrediente.guardarIngredienteEnInventario(salmon);
 		
@@ -513,7 +513,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(tilapia);
 		
 		Ingrediente salmonenlatado = new Ingrediente();
-		salmonenlatado.setNombre("salmón enlatado");
+		salmonenlatado.setNombre("salmÃ³n enlatado");
 		salmonenlatado.setTipo("PESCADO");
 		servicioIngrediente.guardarIngredienteEnInventario(salmonenlatado);
 
@@ -523,7 +523,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(anchoas);
 		
 		Ingrediente salmonahumado = new Ingrediente();
-		salmonahumado.setNombre("salmón ahumado");
+		salmonahumado.setNombre("salmï¿½n ahumado");
 		salmonahumado.setTipo("PESCADO");
 		servicioIngrediente.guardarIngredienteEnInventario(salmonahumado);
 		
@@ -533,7 +533,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(sardinas);
 		
 		Ingrediente filetedeatun = new Ingrediente();
-		filetedeatun.setNombre("filete de atún");
+		filetedeatun.setNombre("filete de atï¿½n");
 		filetedeatun.setTipo("PESCADO");
 		servicioIngrediente.guardarIngredienteEnInventario(filetedeatun);
 		
@@ -573,7 +573,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(pezroca);
 		
 		Ingrediente sueladelimon = new Ingrediente();
-		sueladelimon.setNombre("suela de limón");
+		sueladelimon.setNombre("suela de limï¿½n");
 		sueladelimon.setTipo("PESCADO");
 		servicioIngrediente.guardarIngredienteEnInventario(sueladelimon);
 		
@@ -691,13 +691,13 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(mostaza);
 		
 		Ingrediente salsatartara = new Ingrediente();
-		salsatartara.setNombre("salsa tártara");
+		salsatartara.setNombre("salsa tï¿½rtara");
 		salsatartara.setTipo("CONDIMENTOS");
 		salsatartara.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(salsatartara);
 		
 		Ingrediente salsadecoctel = new Ingrediente();
-		salsadecoctel.setNombre("salsa de cóctel");
+		salsadecoctel.setNombre("salsa de cÃ³ctel");
 		salsadecoctel.setTipo("CONDIMENTOS");
 		salsadecoctel.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(salsadecoctel);
@@ -721,7 +721,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(ketchup);
 		
 		Ingrediente aderezodesesamo = new Ingrediente();
-		aderezodesesamo.setNombre("aderezo de sésamo");
+		aderezodesesamo.setNombre("aderezo de sÃ³samo");
 		aderezodesesamo.setTipo("CONDIMENTOS");
 		aderezodesesamo.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(aderezodesesamo);

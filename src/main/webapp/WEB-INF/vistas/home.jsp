@@ -90,6 +90,7 @@
 								<ul>
 									<li class="btn-cta"><a href="perfilcliente"><span>Mi
 												perfil: ${usuariologueado.alias}</span></a></li>
+									<li class="btn-cta"><a><span>Notificacion</span></a></li>
 									<li class="btn-cta"><a href="cerrarSesion"><span>Salir</span></a></li>
 								</ul>
 							</div>

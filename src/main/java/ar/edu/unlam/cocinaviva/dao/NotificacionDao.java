@@ -1,17 +1,22 @@
 package ar.edu.unlam.cocinaviva.dao;
 
+import ar.edu.unlam.cocinaviva.modelo.Ingrediente;
 import ar.edu.unlam.cocinaviva.modelo.Notificacion;
 import ar.edu.unlam.cocinaviva.modelo.Usuario;
 
 public interface NotificacionDao {
 
-	void NuevaNotificacion(Notificacion notificacion, Usuario usuario);
+	void NuevaNotificacionVencimiento(Usuario usuario, Ingrediente ingrediente);
 
-	void UpdateNotificacion(Notificacion notificacion, Usuario usuario);
+	void NuevaNotificacionSinStock(Usuario usuario, Ingrediente ingrediente);
 
-	String MensajeParaIngredienteVencido(Usuario usuario);
+	void UpdateNotificacion(Notificacion notificacion);
 
-	String MensajeParaIngredienteProximoAVencer(Usuario usuario);
+	void NuevaNotificacionIngredientePasado(Usuario usuario, Ingrediente ingrediente);
+
+	String MensajeParaIngredienteVencido(Usuario usuario, Ingrediente ingrediente);
+
+	String MensajeParaIngredienteProximoAVencer(Usuario usuario, Ingrediente ingrediente);
 
 	String MensajeParaIngredientePasado(Usuario usuario);
 

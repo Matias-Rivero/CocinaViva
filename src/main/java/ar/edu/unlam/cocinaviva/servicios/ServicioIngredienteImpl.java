@@ -432,11 +432,14 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 			if(difDias <= 0){
 				ingredienteUs.setEstado("VENCIDO");
 				actualizarIngredientesAUsuario(ingredienteUs);
+				servicioNotificacionDao.NuevaNotificacionVencimiento(usuario,ingredienteUs);
 				servicioUsuarioDao.actualizarUsuario(usuario);
+
 			}
 			if(difDias > 0 && difDias <= 5){
 				ingredienteUs.setEstado("AVENCER");
 				actualizarIngredientesAUsuario(ingredienteUs);
+				servicioNotificacionDao.NuevaNotificacionVencimiento(usuario,ingredienteUs);
 				servicioUsuarioDao.actualizarUsuario(usuario);
 			}
 		}
