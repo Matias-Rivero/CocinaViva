@@ -1,11 +1,13 @@
 package ar.edu.unlam.cocinaviva.servicios;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import ar.edu.unlam.cocinaviva.modelo.Ingrediente;
+import ar.edu.unlam.cocinaviva.modelo.Usuario;
 
 public interface ServicioIngrediente {
 
@@ -60,5 +62,7 @@ public interface ServicioIngrediente {
 	ArrayList<String> traerListaDeGramos();
 
 	void modificarIngredientesDeUsuario(Long id, List<Ingrediente> listaIngredientes);
+
+	void verificarEstadoDelIngrediente(Usuario usuario) throws ParseException;
 
 }
