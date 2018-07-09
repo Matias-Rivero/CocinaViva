@@ -35,6 +35,10 @@ public class NotificacionDaoImpl implements NotificacionDao {
 				break;
 			case "AVENCER":
 				notificacion.setMensaje(MensajeParaIngredienteProximoAVencer(usuario,ingrediente));
+				break;
+			default:
+				notificacion.setMensaje("Mensaje para el ingrediente " + ingrediente.getNombre());
+				break;
 		}
 
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
