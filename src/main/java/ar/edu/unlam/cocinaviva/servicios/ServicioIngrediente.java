@@ -65,4 +65,8 @@ public interface ServicioIngrediente {
 
 	void verificarEstadoDelIngrediente(Usuario usuario) throws ParseException;
 
+	List<Ingrediente> traerListaDeIngredientesNoVencidosDeUnUsuario(Usuario usuario);
+	
+
+
 }

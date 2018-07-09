@@ -17,6 +17,7 @@ import javax.inject.Inject;
 import ar.edu.unlam.cocinaviva.dao.NotificacionDao;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+//import org.joda.time.format.DateTimeFormat;
 
 import ar.edu.unlam.cocinaviva.dao.IngredienteDao;
 import ar.edu.unlam.cocinaviva.dao.UsuarioDao;
@@ -41,16 +42,36 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 	public void guardarIngredienteEnInventario(Ingrediente ingrediente) {
 		ingrediente.setUso("INVENTARIO");
 		ingrediente.setCantidad(0);	
-		ingrediente.setMedida("");
 		ingrediente.setFvencimiento("");
-		ingrediente.setEstado("NOVENCIDO"); // VENCIDO // ADVERTENCIA
+		ingrediente.setFcompra(""); // VENCIDO // NOVENCIDO // AVENCER // AVISO // SINAVISO
+		if(ingrediente.getPerece() == "SEPUDRE"){
+			ingrediente.setEstado("SINAVISO");	
+		}
+		if(ingrediente.getPerece() == "SEVENCE"){	// PARA EL PESCADO
+			ingrediente.setEstado("NOVENCIDO");	
+		}
+		// SEPUDRE // SEVENCE
 		if(ingrediente.getTipo() == "CARNES"){
-			ingrediente.setUnidad("Grs");	
+			ingrediente.setUnidad("Grs");
+			ingrediente.setPerece("SEPUDRE");
+			ingrediente.setEstado("SINAVISO");
 		}
+		if(ingrediente.getTipo() == "CONDIMENTOS" && ingrediente.getPerece() != "SEPUDRE"){
+			ingrediente.setPerece("SEVENCE");	
+			ingrediente.setEstado("NOVENCIDO");
+		}
+		if(ingrediente.getTipo() == "LACTEOS" && ingrediente.getPerece() != "SEPUDRE"){
+			ingrediente.setPerece("SEVENCE");
+			ingrediente.setEstado("NOVENCIDO");
+		}
+		if(ingrediente.getTipo() == "VEGETALES" && ingrediente.getPerece() != "SEPUDRE"){
+			ingrediente.setPerece("SEPUDRE");
+			ingrediente.setEstado("SINAVISO");
+		}	
 		if(ingrediente.getTipo() == "PESCADO"){
-			ingrediente.setUnidad("Grs");	
+			ingrediente.setUnidad("Grs");
 		}
-		 servicioIngredienteDao.guardarIngredienteEnInventario(ingrediente);
+		servicioIngredienteDao.guardarIngredienteEnInventario(ingrediente);
 	}
 	
 	@Override
@@ -371,7 +392,7 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 	
 	@Override
 	public void modificarIngredientesDeUsuario(Long id, List<Ingrediente> listaIngredientes) {
-		String modifique = "Modifique los datos";
+		String modifique = "Sin modificacion";
 		Usuario usuario = servicioUsuarioDao.traerUnUsuarioPorSuId(id);
 		 List<Ingrediente> ingredientesUs  = usuario.getlistaIngrediente();  
 		    List<Ingrediente> ingredientesMd  = listaIngredientes;
@@ -379,22 +400,30 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 		     for (Ingrediente ingredienteUs : ingredientesUs) {
 		       for (Ingrediente ingredienteMd : ingredientesMd) {           
 		               if (ingredienteUs.getId().equals(ingredienteMd.getId())) {
+		            	   
+		            	if (ingredienteUs.getFvencimiento() != null) {   
 		                 if (!(ingredienteUs.getFvencimiento().equals(ingredienteMd.getFvencimiento()))) {
 		                   ingredienteUs.setFvencimiento(ingredienteMd.getFvencimiento());
 		                   actualizarIngredientesAUsuario(ingredienteUs);
 		                   modifique = "Modificacion Exitosa";
-		                 }
+		                 }}
+		                if (ingredienteUs.getFcompra() != null) {   
+			                 if (!(ingredienteUs.getFcompra().equals(ingredienteMd.getFcompra()))) {
+				                   ingredienteUs.setFcompra(ingredienteMd.getFcompra());
+				                   actualizarIngredientesAUsuario(ingredienteUs);
+				                   modifique = "Modificacion Exitosa";
+				         }}		                
 		                 if (!(ingredienteUs.getCantidad().equals(ingredienteMd.getCantidad()))) {
 		                   ingredienteUs.setCantidad(ingredienteMd.getCantidad());
 		                   actualizarIngredientesAUsuario(ingredienteUs);
 		                   modifique = "Modificacion Exitosa";
 		                 }
-		                     
+		            	  
 		               }
 		      
 		      }
 		    }
-		     if(modifique != "Modifique los datos") {
+		     if(modifique != "Sin modificacion") {
 		    servicioUsuarioDao.actualizarUsuario(usuario); 
 		     }
 		  }
@@ -403,46 +432,88 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 		servicioIngredienteDao.actualizarIngredientesAUsuario(ingredienteUs);
 	}
 
-
 	@Override
 	public void verificarEstadoDelIngrediente(Usuario usuario) throws ParseException {
 		List<Ingrediente> ingredientesUs  = usuario.getlistaIngrediente();
-
+		
 		LocalDate fechaActual = LocalDate.now();
-
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
+		
 		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+			
+		Long difDiasVence;
+		Long difDiasAvisoSePudre;
+		
+		Date fechaIngVence;
+		Date fechaIngSePudre;
+		
+		LocalDate fechaIngVenceEnLocalD;
+		LocalDate fechaIngSePudreEnLocalD;
+	
+		 for (Ingrediente ingredienteUs : ingredientesUs) {
+			 
+			  if(ingredienteUs.getPerece().equals("SEVENCE")){
+				  fechaIngVence =  df.parse(ingredienteUs.getFvencimiento());
+				  
+				  fechaIngVenceEnLocalD = fechaIngVence.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+				  
+				  difDiasVence = ChronoUnit.DAYS.between(fechaActual, fechaIngVenceEnLocalD);
+				  if(difDiasVence <= 0){
 
-		String fechaActualConFormato = fechaActual.format(formatter);
+					  ingredienteUs.setEstado("VENCIDO");
+					  actualizarIngredientesAUsuario(ingredienteUs);
+					  servicioNotificacionDao.NuevaNotificacionVencimiento(usuario,ingredienteUs);
+					  servicioUsuarioDao.actualizarUsuario(usuario);
 
-//		System.out.println(fechaActual.toString());
-//		System.out.println(fechaActualConFormato);
+				  }else if(ingredienteUs.getEstado().equals("VENCIDO")){
 
-		Long difDias;
-		Date fechaing;
-		LocalDate fechainglocald;
+					  ingredienteUs.setEstado("NOVENCIDO");
+				  }
+				  if(difDiasVence > 0 && difDiasVence <= 5){
 
-		for (Ingrediente ingredienteUs : ingredientesUs) {
-//			  fechaing =   formatter.parse(ingredienteUs.getFvencimiento());
-			fechaing =   df.parse(ingredienteUs.getFvencimiento());
-			fechainglocald = fechaing.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-//			  System.out.println("=======Nombre Ingrediente: " +ingredienteUs.getNombre()+", dias vencidos: "+ChronoUnit.DAYS.between(fechaActual, fechainglocald));
-			difDias = ChronoUnit.DAYS.between(fechaActual, fechainglocald);
-			if(difDias <= 0){
-				ingredienteUs.setEstado("VENCIDO");
-				actualizarIngredientesAUsuario(ingredienteUs);
-				servicioNotificacionDao.NuevaNotificacionVencimiento(usuario,ingredienteUs);
-				servicioUsuarioDao.actualizarUsuario(usuario);
+					  ingredienteUs.setEstado("AVENCER"); 
+					  actualizarIngredientesAUsuario(ingredienteUs);
+					  servicioNotificacionDao.NuevaNotificacionVencimiento(usuario,ingredienteUs);
+					  servicioUsuarioDao.actualizarUsuario(usuario);
 
-			}
-			if(difDias > 0 && difDias <= 5){
-				ingredienteUs.setEstado("AVENCER");
-				actualizarIngredientesAUsuario(ingredienteUs);
-				servicioNotificacionDao.NuevaNotificacionVencimiento(usuario,ingredienteUs);
-				servicioUsuarioDao.actualizarUsuario(usuario);
+				  }else if(ingredienteUs.getEstado().equals("AVENCER")){
+
+					  ingredienteUs.setEstado("NOVENCIDO");
+				  }	
+			  }	  
+			  
+			  if(ingredienteUs.getPerece().equals("SEPUDRE")){
+				  		  
+				  fechaIngSePudre = df.parse(ingredienteUs.getFcompra());
+				  		 
+				  fechaIngSePudreEnLocalD = fechaIngSePudre.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+				  			 		  		  
+				  difDiasAvisoSePudre = ChronoUnit.DAYS.between(fechaActual, fechaIngSePudreEnLocalD);
+				  if(difDiasAvisoSePudre < 0 && difDiasAvisoSePudre <= -10){
+
+					  ingredienteUs.setEstado("AVISO");  // Aviso que hace 10 dias que lo compraste fijate porque se pudre
+					  actualizarIngredientesAUsuario(ingredienteUs);
+					  servicioUsuarioDao.actualizarUsuario(usuario);
+
+				  }else if(ingredienteUs.getEstado().equals("AVISO")){
+
+					  ingredienteUs.setEstado("SINAVISO");
+				  }	
+			  
+			  }  
+			  
+		 }
+	}
+
+	@Override
+	public List<Ingrediente> traerListaDeIngredientesNoVencidosDeUnUsuario(Usuario usuario) {
+		List<Ingrediente> ingUsuario  = usuario.getlistaIngrediente();
+		List<Ingrediente> ingUsuarioSinVencidos  = new LinkedList<Ingrediente>();
+		for (Ingrediente i : ingUsuario) {
+			if (!(i.getEstado().equals("VENCIDO"))) {
+				ingUsuarioSinVencidos.add(i);
 			}
 		}
+		return ingUsuarioSinVencidos;		
 	}
 
 }

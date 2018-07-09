@@ -139,16 +139,20 @@
 						                            varStatus="status">
 						                            <tr align="left">
 						                              <th><span class="lead">${i.nombre}</span></th>
-						                              <th>
-						                              <c:if test = "${(i.tipo == 'LACTEOS') || (i.tipo == 'CONDIMENTOS')}">
-						                              <label><strong>Vencimiento</strong></label>
-						                              </c:if>
-						                              <c:if test = "${(i.tipo == 'VEGETALES') || (i.tipo == 'CARNES') || (i.tipo == 'PESCADO')}">
-						                              <label><strong>Compra</strong></label>
-						                              </c:if>
+						                              
+						                              <c:if test = "${i.perece == 'SEVENCE'}">
+						                              <th><label><strong>Vencimiento</strong></label>
 						                              <form:input class="form-control datetimepicker1" autocomplete="off"
 						                                  path="listaIngredientes[${status.index}].fvencimiento"
 						                                  type="text" /></th> 
+						                              </c:if>
+						                              <c:if test = "${i.perece == 'SEPUDRE'}">
+						                              <th><label><strong>Compra</strong></label>
+						                              <form:input class="form-control datetimepicker1" autocomplete="off"
+						                                  path="listaIngredientes[${status.index}].fcompra"
+						                                  type="text" /></th>
+						                              </c:if>
+						                              
 						                              <c:if test = "${i.unidad == 'Lts'}">                                
 						                              <th><label><strong>Litros</strong></label>                        
 						                                <form:select class="form-control"
@@ -193,6 +197,17 @@
 						                              <label class="oculto"><form:input
 						                                  path="listaIngredientes[${status.index}].tipo"
 						                                  type="text" /></label> 
+						                                  
+						                              <c:if test = "${i.perece == 'SEVENCE'}">    
+						                               <label class="oculto"><form:input
+						                                  path="listaIngredientes[${status.index}].fcompra"
+						                                  type="text" /></label> 
+						                              </c:if>
+						                              <c:if test = "${i.perece == 'SEPUDRE'}">    
+						                                <label class="oculto"><form:input
+						                                  path="listaIngredientes[${status.index}].fvencimiento"
+						                                  type="text" /></label>  
+						                              </c:if>          
 						                            </tr>
 						                          </c:forEach>
 						                        </tbody>

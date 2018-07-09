@@ -101,28 +101,28 @@
 							<div class="row form-group">
 								<div class="col-md-12">
 									<label for="date-start">Nombre</label>
-									<form:input path="nombre" id="nombre" type="text" class="form-control" required="required" />
+									<form:input path="nombre" id="nombre" type="text" class="form-control" />
 								</div>
 							</div>
 							<div class="row form-group">
 								<div class="col-md-12">
 									<label for="date-start">Apellido</label>
 									<form:input path="apellido" type="text" id="apellido"
-										class="form-control" required="required"/>
+										class="form-control" />
 								</div>
 							</div>
 							<div class="row form-group">
 								<div class="col-md-12">
 									<label for="date-start">Usuario</label>
 									<form:input path="email" id="email" type="email"
-										placeholder="usuario@usuario.com.ar" class="form-control" required="required"/>
+										placeholder="usuario@usuario.com.ar" class="form-control" />
 								</div>
 							</div>
 							<div class="row form-group">
 								<div class="col-md-12">
 									<label for="date-start">Contraseña</label>
 									<form:input path="password" type="password" id="password"
-										class="form-control" required="required"/>
+										class="form-control" />
 								</div>
 							</div>
 							
@@ -130,7 +130,7 @@
 								<div class="col-md-12">
 									<label for="date-start">Confirmar contraseña</label>
 									<form:input path="repassword" type="password" id="password"
-										class="form-control" required="required"/>
+										class="form-control" />
 								</div>
 							</div>
 							
@@ -138,7 +138,7 @@
 								<div class="col-md-12">
 									<label for="date-start">Alias</label>
 									<form:input path="alias" type="text" id="alias" placeholder="JuanPi" 
-										class="form-control" required="required"/>
+										class="form-control" />
 								</div>
 							</div>
 
