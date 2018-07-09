@@ -10,5 +10,7 @@ public interface RecetaDao {
 
 	List<Receta> traerTodasLasRecetas();
 
-	Receta traerUnaRecetaPorSuId(Long id);;
+	Receta traerUnaRecetaPorSuId(Long id);
+
+	List<Receta> buscarRecetasPorNombre(String nombre);;
 }

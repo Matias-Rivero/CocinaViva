@@ -23,6 +23,6 @@ public interface ServicioReceta {
 
 	List<Receta> traerRecetasConFaltantesDeIngredientes(List<Receta> recetas, List<Ingrediente> ingredientesUs);
 
-	
+	List<Receta> buscarRecetasPorNombre(String nombre);
 	
 }

@@ -265,6 +265,32 @@
 		});
 	
 	};
+	
+	var goToTopo = function() {
+
+		$('.js-gotopo').on('click', function(event){
+			
+			event.preventDefault();
+
+			$('html, body').animate({
+				scrollTop: $('html').offset().top
+			}, 500, 'easeInOutExpo');
+			
+			return false;
+		});
+
+		$(window).scroll(function(){
+
+			var $win = $(window);
+			if ($win.scrollTop() > 200) {
+				$('.js-topo').addClass('active');
+			} else {
+				$('.js-topo').removeClass('active');
+			}
+
+		});
+	
+	};
 
 
 	// Loading page
@@ -328,6 +354,7 @@
 		dropdown();
 		owlCarousel();
 		goToTop();
+		goToTopo();
 		loaderPage();
 		counterWayPoint();
 		dateTimeForm();
