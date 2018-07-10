@@ -109,19 +109,19 @@
 
 		<div class="overlay"></div>
 		<div class="gtco-section">
-		<div class="gtco-container" id="altura">
+		<div class="gtco-container" id="altura2">
 							
 			<div class="row">
  						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
    							<c:choose>
    							<c:when test="${not empty tieneingredienteselusuario}">
    							<div class="py-5 text-center">		
-   								<h1>¿Ingredientes para agregar?  <c:if test="${not empty paso}"><span class="lead5">${paso}</span></c:if></h1>
+   								<h1>ï¿½Ingredientes para agregar?  <c:if test="${not empty paso}"><span class="lead5">${paso}</span></c:if></h1>
    							</div>
 	   						</c:when>
 	   						<c:otherwise>
 	   						<div class="py-5 text-center">			
-	   							<h1>Oops!...</h1><h2>¿No tienes ingredientes en tu heladera?</h2>
+	   							<h1>Oops!...</h1><h2>ï¿½No tienes ingredientes en tu heladera?</h2>
 	   						</div>
    							</c:otherwise>
    							</c:choose>					
@@ -327,7 +327,7 @@
 	      <div class="modal-header">
 	      	<div class="alert alert-danger" role="alert">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>        
-			  <h3>¡Agrega al menos 1 ingrediente!</h3>
+			  <h3>ï¿½Agrega al menos 1 ingrediente!</h3>
 			</div>
 	      </div>  
 	    </div>
@@ -339,7 +339,7 @@
 	      <div class="modal-header">
 	      	<div class="alert alert-danger" role="alert">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>        
-			  <h3>¡La fecha es necesaria!</h3>
+			  <h3>ï¿½La fecha es necesaria!</h3>
 			</div>
 	      </div>  
 	    </div>
