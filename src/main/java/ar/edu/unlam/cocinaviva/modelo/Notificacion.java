@@ -18,8 +18,11 @@ public class Notificacion {
 
 	private String fechaNotificacion;
 
+	private Long idUsuario;
 
-	private String idUsuario;
+	private Long idIngrediente;
+
+	private String tipoNotificacion;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "usuarios_notificaciones", joinColumns = { @JoinColumn(name = "id_Usuario") }, inverseJoinColumns = {
@@ -51,11 +54,11 @@ public class Notificacion {
 		this.mensaje = mensaje;
 	}
 
-	public String getIdUsuario() {
+	public Long getIdUsuario() {
 		return idUsuario;
 	}
 
-	public void setIdUsuario(String idUsuario) {
+	public void setIdUsuario(Long idUsuario) {
 		this.idUsuario = idUsuario;
 	}
 
@@ -67,6 +70,20 @@ public class Notificacion {
 		this.fechaNotificacion = fechaNotificacion;
 	}
 
+	public Long getIdIngrediente() {
+		return idIngrediente;
+	}
 
+	public void setIdIngrediente(Long idIngrediente) {
+		this.idIngrediente = idIngrediente;
+	}
+
+	public String getTipoNotificacion() {
+		return tipoNotificacion;
+	}
+
+	public void setTipoNotificacion(String tipoNotificacion) {
+		this.tipoNotificacion = tipoNotificacion;
+	}
 
 }

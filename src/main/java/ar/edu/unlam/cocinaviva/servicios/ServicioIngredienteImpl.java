@@ -38,6 +38,9 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 	@Inject
 	private NotificacionDao servicioNotificacionDao;
 
+	@Inject
+	private  ServicioNotificacionImpl servicioNotificacionImpl;
+
 	@Override
 	public void guardarIngredienteEnInventario(Ingrediente ingrediente) {
 		ingrediente.setUso("INVENTARIO");
@@ -461,7 +464,7 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 
 					  ingredienteUs.setEstado("VENCIDO");
 					  actualizarIngredientesAUsuario(ingredienteUs);
-					  servicioNotificacionDao.NuevaNotificacionVencimiento(usuario,ingredienteUs);
+					  servicioNotificacionImpl.NuevaNotificacionVencimiento(usuario,ingredienteUs);
 					  servicioUsuarioDao.actualizarUsuario(usuario);
 
 				  }else if(ingredienteUs.getEstado().equals("VENCIDO")){
@@ -472,7 +475,7 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 
 					  ingredienteUs.setEstado("AVENCER"); 
 					  actualizarIngredientesAUsuario(ingredienteUs);
-					  servicioNotificacionDao.NuevaNotificacionVencimiento(usuario,ingredienteUs);
+					  servicioNotificacionImpl.NuevaNotificacionVencimiento(usuario,ingredienteUs);
 					  servicioUsuarioDao.actualizarUsuario(usuario);
 
 				  }else if(ingredienteUs.getEstado().equals("AVENCER")){
@@ -488,10 +491,11 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 				  fechaIngSePudreEnLocalD = fechaIngSePudre.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 				  			 		  		  
 				  difDiasAvisoSePudre = ChronoUnit.DAYS.between(fechaActual, fechaIngSePudreEnLocalD);
-				  if(difDiasAvisoSePudre < 0 && difDiasAvisoSePudre <= -10){
+				  if(difDiasAvisoSePudre < 0 && difDiasAvisoSePudre <= -7){
 
 					  ingredienteUs.setEstado("AVISO");  // Aviso que hace 10 dias que lo compraste fijate porque se pudre
 					  actualizarIngredientesAUsuario(ingredienteUs);
+					  servicioNotificacionImpl.NuevaNotificacionIngredientePasado(usuario,ingredienteUs);
 					  servicioUsuarioDao.actualizarUsuario(usuario);
 
 				  }else if(ingredienteUs.getEstado().equals("AVISO")){
