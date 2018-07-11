@@ -57,11 +57,7 @@
 <!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-<style type="text/css">
-.gtco-cover.gtco-cover-sm {
-    height: 80px;
-}
-</style>	
+
 </head>
 <body>
 
@@ -81,101 +77,82 @@
 						</div>
 					</div>
 
-					<c:choose>
-						<c:when test="${usuariologueado != null}">
-							<div class="col-xs-8 text-right menu-1">
-								<ul>
-									<li class="btn-cta"><a href="home"><span>Buscar
-												Recetas</span></a></li>
-									<li class="btn-cta"><a href="cerrarSesion"><span>Salir</span></a></li>
-								</ul>
-							</div>
-						</c:when>
-					</c:choose>
-				</div>
-
 			</div>
 		</nav>
 
-		<header id="gtco-header" class="gtco-cover gtco-cover-sm"> </header>
-
-		<div class="overlay"></div>
-		<div class="gtco-container">
-			<div class="py-5 text-center">
-				<h1>Mi Perfil</h1>
-			</div>
-
-			<div class="row">
-				<!-- <h2>blabla</h2> -->
-
-				<div class="col-md-12 ">
-
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h2>${usuariologueado.alias}</h2>
-						</div>
-						<div class="panel-body">
-
-							<div class="box box-info">
-
-								<div class="box-body">
-									<div class="col-sm-6">
-										<div align="center">
-											<img alt="User Pic"
-												src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
-												id="profile-image1" class="img-circle img-responsive">
-
-											<input id="profile-image-upload" class="hidden" type="file">
-											<div style="color: #999;">Click para cambiar imagen</div>
-											
-										</div>
-
-										<br>
-
-										<!-- /input-group -->
-									</div>
-									<div class="col-sm-6">
-										<h4 style="color: #00b1b1;">Objetivo saludable:</h4>
-										</span> <span><p>Normal</p></span>
-									</div>
-									<div class="clearfix"></div>
-									<hr style="margin: 5px 0 5px 0;">
-
-
-									<div class="col-sm-5 col-xs-6 tital ">Nombre:</div>
-									<div class="col-sm-7 col-xs-6 ">${usuariologueado.nombre}</div>
-									<div class="clearfix"></div>
-									<div class="bot-border"></div>
-
-									<div class="col-sm-5 col-xs-6 tital ">Apellido:</div>
-									<div class="col-sm-7">${usuariologueado.apellido}</div>
-									<div class="clearfix"></div>
-									<div class="bot-border"></div>
-
-									<div class="col-sm-5 col-xs-6 tital ">Alias:</div>
-									<div class="col-sm-7">${usuariologueado.alias}</div>
-									<div class="clearfix"></div>
-									<div class="bot-border"></div>
-
-									<div class="col-sm-5 col-xs-6 tital ">Email</div>
-									<div class="col-sm-7">${usuariologueado.email}</div>
-
-									<div class="clearfix"></div>
-									<div class="bot-border"></div>
-
-									<!-- /.box-body -->
-								</div>
-								<!-- /.box -->
-
-							</div>
-
-
-						</div>
+		<div id="gtco-subscribe">
+			<div class="gtco-container">
+				<div class="row animate-box">
+					<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+						<h2 class="cursive-font">Registráte</h2>
+					
+					<c:if test="${not empty errors}">
+							<h4>
+								<span class="intro-text-small">${errors}</span>
+							</h4>			
+					</c:if>
 					</div>
 				</div>
+				<div class="row animate-box">
+					<div class="col-md-8 col-md-offset-2">
+						
+						<form:form action="validar-registro" method="POST"
+							modelAttribute="usuario">
+							<div class="row form-group">
+								<div class="col-md-6">
+									<label for="date-start">Nombre</label>
+									<form:input path="nombre" id="nombre" type="text" class="form-control" />
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col-md-6">
+									<label for="date-start">Apellido</label>
+									<form:input path="apellido" type="text" id="apellido"
+										class="form-control" />
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col-md-12">
+									<label for="date-start">Usuario</label>
+									<form:input path="email" id="email" type="email"
+										placeholder="usuario@usuario.com.ar" class="form-control" />
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col-md-12">
+									<label for="date-start">Contraseña</label>
+									<form:input path="password" type="password" id="password"
+										class="form-control" />
+								</div>
+							</div>
+							
+							<div class="row form-group">
+								<div class="col-md-12">
+									<label for="date-start">Confirmar contraseña</label>
+									<form:input path="repassword" type="password" id="password"
+										class="form-control" />
+								</div>
+							</div>
+							
+							<div class="row form-group">
+								<div class="col-md-12">
+									<label for="date-start">Alias</label>
+									<form:input path="alias" type="text" id="alias" placeholder="JuanPi" 
+										class="form-control" />
+								</div>
+							</div>
 
+							<div class="row form-group">
+								<div class="col-md-12">
+									<input type="submit" class="btn btn-primary btn-block"
+										value="Registrarme">
+								</div>
+							</div>
+						</form:form>
+						
+					</div>
+				</div>
 			</div>
-
 		</div>
 
 		<footer id="gtco-footer" role="contentinfo"
@@ -218,6 +195,9 @@
 					</div>
 
 				</div>
+
+
+
 			</div>
 		</footer>
 		<!-- </div> -->
@@ -255,13 +235,6 @@
 	<!-- Main -->
 	<script src="js/main.js"></script>
 
-	<script>
-		$(function() {
-			$('#profile-image1').on('click', function() {
-				$('#profile-image-upload').click();
-			});
-		});
-	</script>
 </body>
 </html>
 

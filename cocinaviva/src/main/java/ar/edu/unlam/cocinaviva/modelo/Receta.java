@@ -25,6 +25,7 @@ public class Receta {
 	private String imagen;
 	private Integer calorias;
 	private Integer tiempo;
+	private String uso;
 	private String tipo;
 	private String descripcion;
 	
@@ -86,6 +87,15 @@ public class Receta {
 		this.calorias = calorias;
 	}
 
+
+	public String getUso() {
+		return uso;
+	}
+
+	public void setUso(String uso) {
+		this.uso = uso;
+	}
+	
 	public String getTipo() {
 		return tipo;
 	}

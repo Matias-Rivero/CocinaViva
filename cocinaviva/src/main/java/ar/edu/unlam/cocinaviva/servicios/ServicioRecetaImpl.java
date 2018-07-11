@@ -29,6 +29,7 @@ public class ServicioRecetaImpl implements ServicioReceta {
 
 	@Override
 	public void guardarReceta(Receta receta) {
+		receta.setUso("GENERAL");
 		servicioRecetaDao.guardarReceta(receta);
 	}
 
@@ -113,6 +114,11 @@ public class ServicioRecetaImpl implements ServicioReceta {
 			}
 		}
 		return recetas;	
+	}
+
+	@Override
+	public List<Receta> buscarRecetasPorNombre(String nombre) {
+		return servicioRecetaDao.buscarRecetasPorNombre(nombre);
 	}
 
 }

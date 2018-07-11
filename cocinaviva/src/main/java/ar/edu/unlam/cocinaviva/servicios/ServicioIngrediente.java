@@ -64,6 +64,8 @@ public interface ServicioIngrediente {
 	void modificarIngredientesDeUsuario(Long id, List<Ingrediente> listaIngredientes);
 
 	void verificarEstadoDelIngrediente(Usuario usuario) throws ParseException;
+
+	List<Ingrediente> traerListaDeIngredientesNoVencidosDeUnUsuario(Usuario usuario);
 	
 
 }

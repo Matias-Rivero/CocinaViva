@@ -7,10 +7,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Cocina Viva &mdash;</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description"
-	content="" />
-<meta name="keywords"
-	content="" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
 <meta name="author" content="" />
 
 <!-- Facebook and Twitter integration -->
@@ -24,10 +22,12 @@
 <meta name="twitter:url" content="" />
 <meta name="twitter:card" content="" />
 
-<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700"
-	rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Kaushan+Script"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Pontano+Sans" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" -->
+<!-- 	rel="stylesheet"> -->
+<!-- <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" -->
+<!-- 	rel="stylesheet"> -->
 
 <!-- Animate.css -->
 <link rel="stylesheet" href="css/animate.css">
@@ -80,7 +80,7 @@
 				<div class="row">
 					<div class="col-sm-4 col-xs-12">
 						<div id="gtco-logo">
-							<a href="home">Cocina Viva<em>.</em></a>
+							<img src="images/logo.png" width="150px" />
 						</div>
 					</div>
 
@@ -110,303 +110,437 @@
 
 						<div class="overlay"></div>
 						<div class="gtco-section">
-						<div class="gtco-container">
-							<div class="py-5 text-center">
-								<h1>Cocina con tus ingredientes!</h1>
-							</div>
-							<div class="row">
-								<div class="col-md-12 order-md-12 mb-12">
-									<ul class="list-group mb-3">
-										<li
-											class="list-group-item d-flex justify-content-between lh-condensed">
-
-											<div class="input-group">
-												<span class="input-group-addon">Usar</span> <input
-													type="text" id="filtrar" class="form-control"
-													placeholder="pure de tomate">
-											</div>
-										</li>
-									</ul>
+							<div class="gtco-container">
+								<div class="py-5 text-center">
+									<h1>Cocina con tus ingredientes!</h1>
 								</div>
-							</div>	
-							<div class="row">
-								<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-									<h4 class="d-flex justify-content-between align-items-center mb-3">
-										<span class="text-muted">Selecciona los ingredientes de
-											tu heladera</span>
-										<span class="lead4 glyphicon glyphicon-pencil"><a href="modificar">Modificar</a><c:if test="${not empty exitomodificar}">${exitomodificar}</c:if></span>
-										<span class="lead4 glyphicon glyphicon-play-circle"><a href="javascript:seleccionarTodos();" id="todos">Todos</a></span>	
-									</h4>		
-										
-									<ul class="list-group mb-3">
-										<form:form name="confirform" method="POST" modelAttribute="checkingredientes"
-											action="recetas">
-											<c:choose>
-												<c:when test="${not empty ingredienteslacteosdelusuario}">
-													<li
-														class="list-group-item d-flex justify-content-between lh-condensed">
-														<div class="table-responsive">
-															<table class="table table-hover">
-																<thead>
-																	<tr>
-																		<th><span class="lead"><strong>Lacteos</strong></span></th>
-																		<th><span class="lead colorverde">Usar</span></th>
-																		<th><span class="lead">Fecha de:</span></th>
-																		<th><span class="lead">Cantidad</span></th>
-																	</tr>
-																</thead>
-																<tbody class="buscar">
-																	<c:forEach items="${ingredienteslacteosdelusuario}"
-																		var="ingredienteslacteosdelusuario">
-																		<tr align="left">
-																			<th><span class="lead">${ingredienteslacteosdelusuario.nombre}</span></th>
-																			<th><span class="lead colorverde"><form:checkbox
-																						path="seleccionados"
-																						value="${ingredienteslacteosdelusuario.id}" class="check"/>Usar</span></th>																	
-																			<th><span class="lead4">${ingredienteslacteosdelusuario.fvencimiento}</span><label><strong>Vencimiento</strong></label></th>
-																			<th><span class="lead4">${ingredienteslacteosdelusuario.cantidad}</span>
-																			<c:if test = "${ingredienteslacteosdelusuario.unidad == 'Lts'}">
-																			<label>Litros</label>
-																			</c:if>
-																			<c:if test = "${ingredienteslacteosdelusuario.unidad == 'Grs'}">
-																			<label>Gramos</label>
-																			</c:if>
-																			<c:if test = "${ingredienteslacteosdelusuario.unidad == 'Unids'}">
-																			<label>Unidades</label>
-																			</c:if>
-																			</th>															
-																<td><a href='javascript:;' onclick="eliminarIngrediente(${ingredienteslacteosdelusuario.id},'${ingredienteslacteosdelusuario.nombre}');"><span
-																					class="lead glyphicon glyphicon-trash"></span></a></td>
-																		</tr>
-																	</c:forEach>
-																</tbody>
-															</table>
-														</div>
-													</li>												
-												</c:when>
-											</c:choose>
+								<div class="row">
+									<div class="col-md-12 order-md-12 mb-12">
+										<ul class="list-group mb-3">
+											<li
+												class="list-group-item d-flex justify-content-between lh-condensed">
 
-											<c:choose>
-												<c:when test="${not empty ingredientesvegetalesdelusuario}">
-													<li
-														class="list-group-item d-flex justify-content-between lh-condensed">
-														<div class="table-responsive">
-															<table class="table table-hover">
-																<thead>
-																	<tr>
-																		<th><span class="lead"><strong>Vegetales</strong></span></th>
-																		<th><span class="lead colorverde">Usar</span></th>
-																		<th><span class="lead">Fecha de:</span></th>
-																		<th><span class="lead">Cantidad</span></th>
-																	</tr>
-																</thead>
-																<tbody class="buscar">
-																	<c:forEach items="${ingredientesvegetalesdelusuario}"
-																		var="ingredientesvegetalesdelusuario">
-																		<tr align="left">
-																			<th><span class="lead">${ingredientesvegetalesdelusuario.nombre}</span></th>
-																			<th><span class="lead colorverde"><form:checkbox
-																						path="seleccionados"
-																						value="${ingredientesvegetalesdelusuario.id}" class="check"/>Usar</span></th>																	
-																			<th><span class="lead4">${ingredientesvegetalesdelusuario.fvencimiento}</span><label><strong>Compra</strong></label></th>
-																			<th><span class="lead4">${ingredientesvegetalesdelusuario.cantidad}</span>
-																			<c:if test = "${ingredientesvegetalesdelusuario.unidad == 'Lts'}">
-																			<label>Litros</label>
-																			</c:if>
-																			<c:if test = "${ingredientesvegetalesdelusuario.unidad == 'Grs'}">
-																			<label>Gramos</label>
-																			</c:if>
-																			<c:if test = "${ingredientesvegetalesdelusuario.unidad == 'Unids'}">
-																			<label>Unidades</label>
-																			</c:if>
-																			</th>															
-																<td><a href='javascript:;' onclick="eliminarIngrediente(${ingredientesvegetalesdelusuario.id},'${ingredientesvegetalesdelusuario.nombre}');"><span
-																					class="lead glyphicon glyphicon-trash"></span></a></td>
-																		</tr>
-																	</c:forEach>
-																</tbody>
-															</table>
-														</div>
-													</li>
-												</c:when>
-											</c:choose>
-
-											<c:choose>
-												<c:when test="${not empty ingredientescarnesdelusuario}">
-													<li
-														class="list-group-item d-flex justify-content-between lh-condensed">
-														<div class="table-responsive">
-															<table class="table table-hover">
-																<thead>
-																	<tr>
-																		<th><span class="lead"><strong>Carnes</strong></span></th>
-																		<th><span class="lead colorverde">Usar</span></th>
-																		<th><span class="lead">Fecha de:</span></th>
-																		<th><span class="lead">Cantidad</span></th>
-																	</tr>
-																</thead>
-																<tbody class="buscar">
-																	<c:forEach items="${ingredientescarnesdelusuario}"
-																		var="ingredientescarnesdelusuario">
-																		<tr align="left">
-																			<th><span class="lead">${ingredientescarnesdelusuario.nombre}</span></th>
-																			<th><span class="lead colorverde"><form:checkbox
-																						path="seleccionados"
-																						value="${ingredientescarnesdelusuario.id}" class="check"/>Usar</span></th>																	
-																			<th><span class="lead4">${ingredientescarnesdelusuario.fvencimiento}</span><label><strong>Compra</strong></label></th>
-																			<th><span class="lead4">${ingredientescarnesdelusuario.cantidad}</span>
-																			<c:if test = "${ingredientescarnesdelusuario.unidad == 'Lts'}">
-																			<label>Litros</label>
-																			</c:if>
-																			<c:if test = "${ingredientescarnesdelusuario.unidad == 'Grs'}">
-																			<label>Gramos</label>
-																			</c:if>
-																			<c:if test = "${ingredientescarnesdelusuario.unidad == 'Unids'}">
-																			<label>Unidades</label>
-																			</c:if>
-																			</th>															
-																<td><a href='javascript:;' onclick="eliminarIngrediente(${ingredientescarnesdelusuario.id},'${ingredientescarnesdelusuario.nombre}');"><span
-																					class="lead glyphicon glyphicon-trash"></span></a></td>
-																		</tr>
-																	</c:forEach>
-																</tbody>
-															</table>
-														</div>
-													</li>
-												</c:when>
-											</c:choose>
-
-											<c:choose>
-												<c:when test="${not empty ingredientespescadodelusuario}">
-													<li
-														class="list-group-item d-flex justify-content-between lh-condensed">
-														<div class="table-responsive">
-															<table class="table table-hover">
-																<thead>
-																	<tr>
-																		<th><span class="lead"><strong>Pescado</strong></span></th>
-																		<th><span class="lead colorverde">Usar</span></th>
-																		<th><span class="lead">Fecha de:</span></th>
-																		<th><span class="lead">Cantidad</span></th>
-																	</tr>
-																</thead>
-																<tbody class="buscar">
-																	<c:forEach items="${ingredientespescadodelusuario}"
-																		var="ingredientespescadodelusuario">
-																		<tr align="left">
-																			<th><span class="lead">${ingredientespescadodelusuario.nombre}</span></th>
-																			<th><span class="lead colorverde"><form:checkbox
-																						path="seleccionados"
-																						value="${ingredientespescadodelusuario.id}" class="check"/>Usar</span></th>																	
-																			<th><span class="lead4">${ingredientespescadodelusuario.fvencimiento}</span><label><strong>Compra</strong></label></th>
-																			<th><span class="lead4">${ingredientespescadodelusuario.cantidad}</span>
-																			<c:if test = "${ingredientespescadodelusuario.unidad == 'Lts'}">
-																			<label>Litros</label>
-																			</c:if>
-																			<c:if test = "${ingredientespescadodelusuario.unidad == 'Grs'}">
-																			<label>Gramos</label>
-																			</c:if>
-																			<c:if test = "${ingredientespescadodelusuario.unidad == 'Unids'}">
-																			<label>Unidades</label>
-																			</c:if>
-																			</th>															
-																<td><a href='javascript:;' onclick="eliminarIngrediente(${ingredientespescadodelusuario.id},'${ingredientespescadodelusuario.nombre}');"><span
-																					class="lead glyphicon glyphicon-trash"></span></a></td>
-																		</tr>
-																	</c:forEach>
-																</tbody>
-															</table>
-														</div>
-													</li>
-												</c:when>
-											</c:choose>
-
-											<c:choose>
-												<c:when test="${not empty ingredientescondimentodelusuario}">
-													<li
-														class="list-group-item d-flex justify-content-between lh-condensed">
-														<div class="table-responsive">
-															<table class="table table-hover">
-																<thead>
-																	<tr>
-																		<th><span class="lead"><strong>Condimento</strong></span></th>
-																		<th><span class="lead colorverde">Usar</span></th>
-																		<th><span class="lead">Fecha de:</span></th>
-																		<th><span class="lead">Cantidad</span></th>
-																	</tr>
-																</thead>
-																<tbody class="buscar">
-																	<c:forEach items="${ingredientescondimentodelusuario}"
-																		var="ingredientescondimentodelusuario">
-																		<tr align="left">
-																			<th><span class="lead">${ingredientescondimentodelusuario.nombre}</span></th>
-																			<th><span class="lead colorverde"><form:checkbox
-																						path="seleccionados"
-																						value="${ingredientescondimentodelusuario.id}" class="check"/>Usar</span></th>																	
-																			<th><span class="lead4">${ingredientescondimentodelusuario.fvencimiento}</span><label><strong>Vencimiento</strong></label></th>
-																			<th><span class="lead4">${ingredientescondimentodelusuario.cantidad}</span>
-																			<c:if test = "${ingredientescondimentodelusuario.unidad == 'Lts'}">
-																			<label>Litros</label>
-																			</c:if>
-																			<c:if test = "${ingredientescondimentodelusuario.unidad == 'Grs'}">
-																			<label>Gramos</label>
-																			</c:if>
-																			<c:if test = "${ingredientescondimentodelusuario.unidad == 'Unids'}">
-																			<label>Unidades</label>
-																			</c:if>
-																			</th>															
-																<td><a href='javascript:;' onclick="eliminarIngrediente(${ingredientescondimentodelusuario.id},'${ingredientescondimentodelusuario.nombre}');"><span
-																					class="lead glyphicon glyphicon-trash"></span></a></td>
-																		</tr>
-																	</c:forEach>
-																</tbody>
-															</table>
-														</div>
-													</li>
-												</c:when>
-											</c:choose>
-											<div style="visibility: hidden;">
-												<button id="buscarreceta" class="btn btn-primary"
-													type="submit">Iniciar</button>
-											</div>
-										</form:form>
-									</ul>
-
+												<div class="input-group">
+													<span class="input-group-addon">Usar</span> <input
+														type="text" id="filtrar" class="form-control"
+														placeholder="pure de tomate">
+												</div>
+											</li>
+										</ul>
+									</div>
 								</div>
+								<div class="row">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+																	
 
-								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-
-									<h4
-										class="d-flex justify-content-between align-items-center mb-3">
-										<span class="text-muted">¿Tienes mas?</span>
-									</h4>
-
-									<ul class="list-group mb-3">
-										<li class="list-group-item d-flex justify-content-between lh-condensed">
-<!-- 											<a href="ingredientes" class="btn btn-primary btn-block" role="button">Agregar</a> -->
-<!-- 											<span class="lead glyphicon glyphicon-pencil"><a href="ingredientes">Agregar</a></span>	 -->
-												<a href="ingredientes"><input type=image src="images/mas.jpg"  alt="mas" class="img-rounded img-responsive"/></a>
-										</li>
-									</ul>
-									<h4
-										class="d-flex justify-content-between align-items-center mb-3">
-										<span class="lead">BUSCAR RECETAS</span>
-									</h4>
-									<ul class="list-group mb-3">
-										<li class="list-group-item d-flex justify-content-between lh-condensed">
-											<a onclick="validaEnvia();"><input
-													type=image src="images/flecha.jpg" alt="BUSCAR RECETA"
-													class="img-rounded img-responsive">
+										<div class="btn-group" role="group" aria-label="Basic example">
+											<a href="javascript:seleccionarTodos();" id="todos" class="btn btn-primary btn-md "><i class="icon-check"></i>Seleccionar Todos</a>
+											<a href="modificar" class="btn btn-primary btn-md "><i class="icon-pencil"></i>Modificar</a>	
+											<a href="ingredientes" class="btn btn-primary btn-md "><i class="icon-plus"></i>Agergar Ingredientes</a>	
+											<a onclick="validaEnvia();" class="btn btn-primary btn-md "><i class="icon-search"></i>Buscar Recetas</a>
+											<c:if test="${not empty exitomodificar}"><li>${exitomodificar}</li></c:if>
 												
-										</a>
-										</li>
-									</ul>
+										</div>																
+								
+										
+												
+									</div>	
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+										<ul class="list-group mb-3">
+											<form:form name="confirform" method="POST"
+												modelAttribute="checkingredientes" action="recetas">
+												<c:choose>
+													<c:when test="${not empty ingredienteslacteosdelusuario}">
+														<li
+															class="list-group-item d-flex justify-content-between lh-condensed">
+															<div class="table-responsive">
+																<table class="table table-hover">
+																	<thead>
+																		<tr>
+																			<th><span class="lead"><strong>Lacteos</strong></span></th>
+																			<th><span class="lead colorverde">Estado</span></th>
+																			<th><span class="lead"></span></th>
+																			<th><span class="lead">Cantidad</span></th>
+																			<th><span class="lead">Fecha de:</span></th>
+																		</tr>
+																	</thead>
+																	<tbody class="buscar">
+																		<c:forEach items="${ingredienteslacteosdelusuario}"
+																			var="ingredientes">
+																			<tr align="left">
+																				<c:if test="${ingredientes.estado != 'VENCIDO'}">
+																					<td><span class="lead"><form:checkbox
+																								path="seleccionados" value="${ingredientes.id}"
+																								class="check" />${ingredientes.nombre}</span></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
+																					<td><span class="lead"><input
+																							type="checkbox" value="disabled" disabled>${ingredientes.nombre}</span></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'NOVENCIDO'}">
+																					<td class="success"><label
+																						class="label label-success">Usable</label></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'AVENCER'}">
+																					<td class="danger"><label
+																						class="label label-warning">Por vencer</label></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'SINAVISO'}">
+																					<td class="success"><label
+																						class="label label-success">Usable</label></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'AVISO'}">
+																					<td class="warning"><label
+																						class="label label-warning">Mas de 10 dias</label></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
+																					<td class="danger"><label
+																						class="label label-danger">Vencido</label></td>
+																				</c:if>
 
+																				<td><a href='javascript:;'
+																					onclick="eliminarIngrediente(${ingredientes.id},'${ingredientes.nombre}','${ingredientes.cantidad}','${ingredientes.unidad}');"><span
+																						class="lead glyphicon glyphicon-trash"></span></a></td>
+
+																				<td><span class="lead4">${ingredientes.cantidad}</span>
+																					<c:if test="${ingredientes.unidad == 'Lts'}">
+																						<label>Litros</label>
+																					</c:if> <c:if test="${ingredientes.unidad == 'Grs'}">
+																						<label>Gramos</label>
+																					</c:if> <c:if test="${ingredientes.unidad == 'Unids'}">
+																						<label>Unidades</label>
+																					</c:if></td>
+
+																				<c:if test="${ingredientes.perece == 'SEVENCE'}">
+																					<td><span class="lead4">${ingredientes.fvencimiento}</span><label><strong>Vencimiento</strong></label></td>
+																				</c:if>
+																				<c:if test="${ingredientes.perece == 'SEPUDRE'}">
+																					<td><span class="lead4">${ingredientes.fcompra}</span><label><strong>Compra</strong></label></td>
+																				</c:if>
+																			</tr>
+																		</c:forEach>
+																	</tbody>
+																</table>
+															</div>
+														</li>
+													</c:when>
+												</c:choose>
+												<c:choose>
+													<c:when test="${not empty ingredientesvegetalesdelusuario}">
+														<li
+															class="list-group-item d-flex justify-content-between lh-condensed">
+															<div class="table-responsive">
+																<table class="table table-hover">
+																	<thead>
+																		<tr>
+																			<th><span class="lead"><strong>Vegetales</strong></span></th>
+																			<th><span class="lead colorverde">Estado</span></th>
+																			<th><span class="lead"></span></th>
+																			<th><span class="lead">Cantidad</span></th>
+																			<th><span class="lead">Fecha de:</span></th>
+																		</tr>
+																	</thead>
+																	<tbody class="buscar">
+																		<c:forEach items="${ingredientesvegetalesdelusuario}"
+																			var="ingredientes">
+																			<tr align="left">
+																				<c:if test="${ingredientes.estado != 'VENCIDO'}">
+																					<td><span class="lead"><form:checkbox
+																								path="seleccionados" value="${ingredientes.id}"
+																								class="check" />${ingredientes.nombre}</span></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
+																					<td><span class="lead"><input
+																							type="checkbox" value="disabled" disabled>${ingredientes.nombre}</span></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'NOVENCIDO'}">
+																					<td class="success"><label
+																						class="label label-success">Usable</label></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'AVENCER'}">
+																					<td class="danger"><label
+																						class="label label-warning">Por vencer</label></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'SINAVISO'}">
+																					<td class="success"><label
+																						class="label label-success">Usable</label></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'AVISO'}">
+																					<td class="warning"><label
+																						class="label label-warning">Mas de 10 dias</label></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
+																					<td class="danger"><label
+																						class="label label-danger">Vencido</label></td>
+																				</c:if>
+
+																				<td><a href='javascript:;'
+																					onclick="eliminarIngrediente(${ingredientes.id},'${ingredientes.nombre}','${ingredientes.cantidad}','${ingredientes.unidad}');"><span
+																						class="lead glyphicon glyphicon-trash"></span></a></td>
+
+																				<td><span class="lead4">${ingredientes.cantidad}</span>
+																					<c:if test="${ingredientes.unidad == 'Lts'}">
+																						<label>Litros</label>
+																					</c:if> <c:if test="${ingredientes.unidad == 'Grs'}">
+																						<label>Gramos</label>
+																					</c:if> <c:if test="${ingredientes.unidad == 'Unids'}">
+																						<label>Unidades</label>
+																					</c:if></td>
+
+																				<c:if test="${ingredientes.perece == 'SEVENCE'}">
+																					<td><span class="lead4">${ingredientes.fvencimiento}</span><label><strong>Vencimiento</strong></label></td>
+																				</c:if>
+																				<c:if test="${ingredientes.perece == 'SEPUDRE'}">
+																					<td><span class="lead4">${ingredientes.fcompra}</span><label><strong>Compra</strong></label></td>
+																				</c:if>
+																			</tr>
+																		</c:forEach>
+																	</tbody>
+																</table>
+															</div>
+														</li>
+													</c:when>
+												</c:choose>
+												<c:choose>
+													<c:when test="${not empty ingredientescarnesdelusuario}">
+														<li
+															class="list-group-item d-flex justify-content-between lh-condensed">
+															<div class="table-responsive">
+																<table class="table table-hover">
+																	<thead>
+																		<tr>
+																			<th><span class="lead"><strong>Carnes</strong></span></th>
+																			<th><span class="lead colorverde">Estado</span></th>
+																			<th><span class="lead"></span></th>
+																			<th><span class="lead">Cantidad</span></th>
+																			<th><span class="lead">Fecha de:</span></th>
+																		</tr>
+																	</thead>
+																	<tbody class="buscar">
+																		<c:forEach items="${ingredientescarnesdelusuario}"
+																			var="ingredientes">
+																			<tr align="left">
+																				<c:if test="${ingredientes.estado != 'VENCIDO'}">
+																					<td><span class="lead"><form:checkbox
+																								path="seleccionados" value="${ingredientes.id}"
+																								class="check" />${ingredientes.nombre}</span></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
+																					<td><span class="lead"><input
+																							type="checkbox" value="disabled" disabled>${ingredientes.nombre}</span></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'NOVENCIDO'}">
+																					<td class="success"><label
+																						class="label label-success">Usable</label></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'AVENCER'}">
+																					<td class="danger"><label
+																						class="label label-warning">Por vencer</label></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'SINAVISO'}">
+																					<td class="success"><label
+																						class="label label-success">Usable</label></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'AVISO'}">
+																					<td class="warning"><label
+																						class="label label-warning">Mas de 10 dias</label></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
+																					<td class="danger"><label
+																						class="label label-danger">Vencido</label></td>
+																				</c:if>
+
+																				<td><a href='javascript:;'
+																					onclick="eliminarIngrediente(${ingredientes.id},'${ingredientes.nombre}','${ingredientes.cantidad}','${ingredientes.unidad}');"><span
+																						class="lead glyphicon glyphicon-trash"></span></a></td>
+
+																				<td><span class="lead4">${ingredientes.cantidad}</span>
+																					<c:if test="${ingredientes.unidad == 'Lts'}">
+																						<label>Litros</label>
+																					</c:if> <c:if test="${ingredientes.unidad == 'Grs'}">
+																						<label>Gramos</label>
+																					</c:if> <c:if test="${ingredientes.unidad == 'Unids'}">
+																						<label>Unidades</label>
+																					</c:if></td>
+
+																				<c:if test="${ingredientes.perece == 'SEVENCE'}">
+																					<td><span class="lead4">${ingredientes.fvencimiento}</span><label><strong>Vencimiento</strong></label></td>
+																				</c:if>
+																				<c:if test="${ingredientes.perece == 'SEPUDRE'}">
+																					<td><span class="lead4">${ingredientes.fcompra}</span><label><strong>Compra</strong></label></td>
+																				</c:if>
+																			</tr>
+																		</c:forEach>
+																	</tbody>
+																</table>
+															</div>
+														</li>
+													</c:when>
+												</c:choose>
+												<c:choose>
+													<c:when test="${not empty ingredientespescadodelusuario}">
+														<li
+															class="list-group-item d-flex justify-content-between lh-condensed">
+															<div class="table-responsive">
+																<table class="table table-hover">
+																	<thead>
+																		<tr>
+																			<th><span class="lead"><strong>Pescado</strong></span></th>
+																			<th><span class="lead colorverde">Estado</span></th>
+																			<th><span class="lead"></span></th>
+																			<th><span class="lead">Cantidad</span></th>
+																			<th><span class="lead">Fecha de:</span></th>
+																		</tr>
+																	</thead>
+																	<tbody class="buscar">
+																		<c:forEach items="${ingredientespescadodelusuario}"
+																			var="ingredientes">
+																			<tr align="left">
+																				<c:if test="${ingredientes.estado != 'VENCIDO'}">
+																					<td><span class="lead"><form:checkbox
+																								path="seleccionados" value="${ingredientes.id}"
+																								class="check" />${ingredientes.nombre}</span></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
+																					<td><span class="lead"><input
+																							type="checkbox" value="disabled" disabled>${ingredientes.nombre}</span></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'NOVENCIDO'}">
+																					<td class="success"><label
+																						class="label label-success">Usable</label></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'AVENCER'}">
+																					<td class="danger"><label
+																						class="label label-warning">Por vencer</label></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'SINAVISO'}">
+																					<td class="success"><label
+																						class="label label-success">Usable</label></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'AVISO'}">
+																					<td class="warning"><label
+																						class="label label-warning">Mas de 10 dias</label></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
+																					<td class="danger"><label
+																						class="label label-danger">Vencido</label></td>
+																				</c:if>
+
+																				<td><a href='javascript:;'
+																					onclick="eliminarIngrediente(${ingredientes.id},'${ingredientes.nombre}','${ingredientes.cantidad}','${ingredientes.unidad}');"><span
+																						class="lead glyphicon glyphicon-trash"></span></a></td>
+
+																				<td><span class="lead4">${ingredientes.cantidad}</span>
+																					<c:if test="${ingredientes.unidad == 'Lts'}">
+																						<label>Litros</label>
+																					</c:if> <c:if test="${ingredientes.unidad == 'Grs'}">
+																						<label>Gramos</label>
+																					</c:if> <c:if test="${ingredientes.unidad == 'Unids'}">
+																						<label>Unidades</label>
+																					</c:if></td>
+
+																				<c:if test="${ingredientes.perece == 'SEVENCE'}">
+																					<td><span class="lead4">${ingredientes.fvencimiento}</span><label><strong>Vencimiento</strong></label></td>
+																				</c:if>
+																				<c:if test="${ingredientes.perece == 'SEPUDRE'}">
+																					<td><span class="lead4">${ingredientes.fcompra}</span><label><strong>Compra</strong></label></td>
+																				</c:if>
+																			</tr>
+																		</c:forEach>
+																	</tbody>
+																</table>
+															</div>
+														</li>
+													</c:when>
+												</c:choose>
+												<c:choose>
+													<c:when test="${not empty ingredientescondimentodelusuario}">
+														<li
+															class="list-group-item d-flex justify-content-between lh-condensed">
+															<div class="table-responsive">
+																<table class="table table-hover">
+																	<thead>
+																		<tr>
+																			<th><span class="lead"><strong>Condimento</strong></span></th>
+																			<th><span class="lead colorverde">Estado</span></th>
+																			<th><span class="lead"></span></th>
+																			<th><span class="lead">Cantidad</span></th>
+																			<th><span class="lead">Fecha de:</span></th>
+																		</tr>
+																	</thead>
+																	<tbody class="buscar">
+																		<c:forEach items="${ingredientescondimentodelusuario}"
+																			var="ingredientes">
+																			<tr align="left">
+																				<c:if test="${ingredientes.estado != 'VENCIDO'}">
+																					<td><span class="lead"><form:checkbox
+																								path="seleccionados" value="${ingredientes.id}"
+																								class="check" />${ingredientes.nombre}</span></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
+																					<td><span class="lead"><input
+																							type="checkbox" value="disabled" disabled>${ingredientes.nombre}</span></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'NOVENCIDO'}">
+																					<td class="success"><label
+																						class="label label-success">Usable</label></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'AVENCER'}">
+																					<td class="danger"><label
+																						class="label label-warning">Por vencer</label></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'SINAVISO'}">
+																					<td class="success"><label
+																						class="label label-success">Usable</label></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'AVISO'}">
+																					<td class="warning"><label
+																						class="label label-warning">Mas de 10 dias</label></td>
+																				</c:if>
+																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
+																					<td class="danger"><label
+																						class="label label-danger">Vencido</label></td>
+																				</c:if>
+
+																				<td><a href='javascript:;'
+																					onclick="eliminarIngrediente(${ingredientes.id},'${ingredientes.nombre}','${ingredientes.cantidad}','${ingredientes.unidad}');"><span
+																						class="lead glyphicon glyphicon-trash"></span></a></td>
+
+																				<td><span class="lead4">${ingredientes.cantidad}</span>
+																					<c:if test="${ingredientes.unidad == 'Lts'}">
+																						<label>Litros</label>
+																					</c:if> <c:if test="${ingredientes.unidad == 'Grs'}">
+																						<label>Gramos</label>
+																					</c:if> <c:if test="${ingredientes.unidad == 'Unids'}">
+																						<label>Unidades</label>
+																					</c:if></td>
+
+																				<c:if test="${ingredientes.perece == 'SEVENCE'}">
+																					<td><span class="lead4">${ingredientes.fvencimiento}</span><label><strong>Vencimiento</strong></label></td>
+																				</c:if>
+																				<c:if test="${ingredientes.perece == 'SEPUDRE'}">
+																					<td><span class="lead4">${ingredientes.fcompra}</span><label><strong>Compra</strong></label></td>
+																				</c:if>
+																			</tr>
+																		</c:forEach>
+																	</tbody>
+																</table>
+															</div>
+														</li>
+													</c:when>
+												</c:choose>
+												<div style="visibility: hidden;">
+													<button id="buscarreceta" class="btn btn-primary"
+														type="submit">Iniciar</button>
+												</div>
+											</form:form>
+										</ul>
+										</div>
+									</div>									
 								</div>
-							</div>	
-							
 
-						</div>
+
+							</div>
 						</div>
 					</c:when>
 				</c:choose>
@@ -489,35 +623,46 @@
 		</c:choose>
 
 
-		<div id="ModalCrear" class="modal fade" tabindex="-1" role="dialog" style="overflow-y: scroll;">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">¿Estas seguro de elminar el ingrediente?</h4>
-      </div>
-      <div class="modal-body">
-        <span class="lead" id="ingred"></span>
-      </div>
-      <div class="modal-footer" id="despues">
-        <a type="button" class="btn btn-lg btn-primary btn-block" href="" id="eliminar"><span class="glyphicon glyphicon-ok">Confirmar</span></a>
-        <a type="button" class="btn btn-lg btn-default btn-block" href="" data-dismiss="modal"><span class="glyphicon glyphicon-remove">Cancelar</span></a>
-      </div>    
-    </div>
-  </div>
-</div>
-<div id="Selecciona" class="modal fade" tabindex="-1" role="dialog" style="overflow-y: scroll;">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header">
-      	<div class="alert alert-danger" role="alert">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>        
-		  <h3>Por favor, primero selecciona los ingredientes a usar</h3>
+		<div id="ModalCrear" class="modal fade" tabindex="-1" role="dialog"
+			style="overflow-y: scroll;">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">¿Estas seguro de
+							elminar el ingrediente?</h4>
+					</div>
+					<div class="modal-body">
+						<span class="lead" id="ingred"></span>
+					</div>
+					<div class="modal-footer" id="despues">
+						<a type="button" class="btn btn-lg btn-primary btn-block" href=""
+							id="eliminar"><span class="glyphicon glyphicon-ok">Confirmar</span></a>
+						<a type="button" class="btn btn-lg btn-default btn-block" href=""
+							data-dismiss="modal"><span class="glyphicon glyphicon-remove">Cancelar</span></a>
+					</div>
+				</div>
+			</div>
 		</div>
-      </div>  
-    </div>
-  </div>
-</div>
+		<div id="Selecciona" class="modal fade" tabindex="-1" role="dialog"
+			style="overflow-y: scroll;">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<div class="alert alert-danger" role="alert">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h3>Por favor, primero selecciona los ingredientes a usar</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<footer id="gtco-footer" role="contentinfo"
 			style="background-image: url(images/img_bg_1.jpg)"
 			data-stellar-background-ratio="0.5">
@@ -611,17 +756,19 @@
 
 		}
 		
-		function eliminarIngrediente(ingrediente,nombre) {		
+		function eliminarIngrediente(ingrediente,nombre,cantidad,unidad) {		
 			var ingre = ingrediente;		
 			var nombr = nombre;	
+			var cant = cantidad;	
+			var unid = unidad;	
 			$('#eliminar').attr('href','eliminar-ingrediente?id='+ingre+'');
-			$('#ingred').text(''+nombr+'');		
+			$('#ingred').text(''+nombr+' '+cant+' '+unid+'');		
 			$('#ModalCrear').modal('show');
 
 		}
 	</script>
 
-	
+
 	<script type="text/javascript">
 		$(document).ready(function() {
 			(function($) {
@@ -643,12 +790,13 @@
         	 if ($(this).is(':checked')) {         	 	
        $(this).prop('checked',false);     
         }else{
-       $(this).prop('checked',true);  	
+       $(this).prop('checked',true);        
+       $( "#iconbusc" ).focus();
    		 }
         });
     
 	}
-	</script>	
+	</script>
 	<script type="text/javascript">
   function validaEnvia() {
    var no = "no"; 

@@ -1,8 +1,6 @@
 package ar.edu.unlam.cocinaviva.controladores;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -67,6 +65,7 @@ public class ControladorInsertar {
 		Ingrediente huevos = new Ingrediente();
 		huevos.setNombre("huevos");
 		huevos.setTipo("LACTEOS");
+		huevos.setPerece("SEPUDRE");
 		huevos.setUnidad("Unids");
 		servicioIngrediente.guardarIngredienteEnInventario(huevos);
 		
@@ -495,101 +494,121 @@ public class ControladorInsertar {
 		Ingrediente atunenlatado = new Ingrediente();
 		atunenlatado.setNombre("atún enlatado");
 		atunenlatado.setTipo("PESCADO");
+		atunenlatado.setPerece("SEVENCE");
 		servicioIngrediente.guardarIngredienteEnInventario(atunenlatado);
 		
 		Ingrediente filetesdepescado = new Ingrediente();
 		filetesdepescado.setNombre("filetes de pescado");
 		filetesdepescado.setTipo("PESCADO");
+		filetesdepescado.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(filetesdepescado);
 		
 		Ingrediente salmon = new Ingrediente();
 		salmon.setNombre("salmón");
 		salmon.setTipo("PESCADO");
+		salmon.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(salmon);
 		
 		Ingrediente tilapia = new Ingrediente();
 		tilapia.setNombre("tilapia");
 		tilapia.setTipo("PESCADO");
+		tilapia.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(tilapia);
 		
 		Ingrediente salmonenlatado = new Ingrediente();
 		salmonenlatado.setNombre("salmón enlatado");
 		salmonenlatado.setTipo("PESCADO");
+		salmonenlatado.setPerece("SEVENCE");
 		servicioIngrediente.guardarIngredienteEnInventario(salmonenlatado);
 
 		Ingrediente anchoas = new Ingrediente();
 		anchoas.setNombre("anchoas");
 		anchoas.setTipo("PESCADO");
+		anchoas.setPerece("SEVENCE");
 		servicioIngrediente.guardarIngredienteEnInventario(anchoas);
 		
 		Ingrediente salmonahumado = new Ingrediente();
 		salmonahumado.setNombre("salmón ahumado");
 		salmonahumado.setTipo("PESCADO");
+		salmonahumado.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(salmonahumado);
 		
 		Ingrediente sardinas = new Ingrediente();
 		sardinas.setNombre("sardinas");
 		sardinas.setTipo("PESCADO");
+		sardinas.setPerece("SEVENCE");
 		servicioIngrediente.guardarIngredienteEnInventario(sardinas);
 		
 		Ingrediente filetedeatun = new Ingrediente();
 		filetedeatun.setNombre("filete de atún");
 		filetedeatun.setTipo("PESCADO");
+		filetedeatun.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(filetedeatun);
 		
 		Ingrediente trucha = new Ingrediente();
 		trucha.setNombre("trucha");
 		trucha.setTipo("PESCADO");
+		trucha.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(trucha);
 
 		Ingrediente bagre = new Ingrediente();
 		bagre.setNombre("bagre");
 		bagre.setTipo("PESCADO");
+		bagre.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(bagre);
 		
 		Ingrediente caballa = new Ingrediente();
 		caballa.setNombre("caballa");
 		caballa.setTipo("PESCADO");
+		caballa.setPerece("SEVENCE");
 		servicioIngrediente.guardarIngredienteEnInventario(caballa);
 		
 		Ingrediente pezespada = new Ingrediente();
 		pezespada.setNombre("pez espada");
 		pezespada.setTipo("PESCADO");
+		pezespada.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(pezespada);
 		
 		Ingrediente abadejo = new Ingrediente();
 		abadejo.setNombre("abadejo");
 		abadejo.setTipo("PESCADO");
+		abadejo.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(abadejo);
 		
 		Ingrediente caviar = new Ingrediente();
 		caviar.setNombre("caviar");
 		caviar.setTipo("PESCADO");
+		caviar.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(caviar);
 
 		Ingrediente pezroca = new Ingrediente();
 		pezroca.setNombre("pez roca");
 		pezroca.setTipo("PESCADO");
+		pezroca.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(pezroca);
 		
 		Ingrediente sueladelimon = new Ingrediente();
 		sueladelimon.setNombre("suela de limón");
 		sueladelimon.setTipo("PESCADO");
+		sueladelimon.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(sueladelimon);
 		
 		Ingrediente carpa = new Ingrediente();
 		carpa.setNombre("carpa");
 		carpa.setTipo("PESCADO");
+		carpa.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(carpa);
 		
 		Ingrediente calamar = new Ingrediente();
 		calamar.setNombre("calamar");
 		calamar.setTipo("PESCADO");
+		calamar.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(calamar);
 		
 		Ingrediente cornalitos = new Ingrediente();
 		cornalitos.setNombre("cornalitos");
 		cornalitos.setTipo("PESCADO");
+		cornalitos.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(cornalitos);
 		
 		// CONDIMENTOS
@@ -804,6 +823,26 @@ public class ControladorInsertar {
 	peke.setRol("Usuario");
 	servicioUsuario.guardarUsuario(peke);
 	
+	Usuario martin = new Usuario();
+	martin.setNombre("jorge martin");
+	martin.setApellido("rivero");
+	martin.setAlias("tincho");
+	martin.setEmail("tincho_2235@hotmail.com");
+	martin.setPassword("GUADA");
+	martin.setRepassword("GUADA");
+	martin.setRol("Usuario");
+	servicioUsuario.guardarUsuario(martin);
+	
+	Usuario rossana = new Usuario();
+	rossana.setNombre("jorge martin");
+	rossana.setApellido("rivero");
+	rossana.setAlias("tincho");
+	rossana.setEmail("rossanavera2015@gmail.com");
+	rossana.setPassword("GUADA");
+	rossana.setRepassword("GUADA");
+	rossana.setRol("Usuario");
+	servicioUsuario.guardarUsuario(martin);
+	
 	// Administrador
 	
 	Usuario admin = new Usuario();
@@ -902,17 +941,18 @@ public class ControladorInsertar {
 }
 	
 	@RequestMapping("/insertar-ingre-usuarios")
-	public ModelAndView ingredientesAUsuarios() throws ParseException {	
+	public ModelAndView ingredientesAUsuarios() throws ParseException, CloneNotSupportedException {	
 		
 		Usuario matias = servicioUsuario.traerUnUsuarioPorSuId((long) 1);
 		
 		Ingrediente cebollarojamatias = new Ingrediente();
 		cebollarojamatias.setNombre("cebolla roja");	
-		cebollarojamatias.setFvencimiento("28/06/2018");
+		cebollarojamatias.setFcompra("28/06/2018");
 		cebollarojamatias.setCantidad(250);
 		cebollarojamatias.setUnidad("Grs");
 		cebollarojamatias.setTipo("VEGETALES");
-		cebollarojamatias.setEstado("NOVENCIDO");
+		cebollarojamatias.setPerece("SEPUDRE");
+		cebollarojamatias.setEstado("SINAVISO");
 		
 		Ingrediente manteca = new Ingrediente();
 		manteca.setNombre("manteca");
@@ -920,6 +960,7 @@ public class ControladorInsertar {
 		manteca.setCantidad(500);
 		manteca.setUnidad("Grs");
 		manteca.setTipo("LACTEOS");
+		manteca.setPerece("SEVENCE");
 		manteca.setEstado("NOVENCIDO");
 		
 		Ingrediente quesofresco = new Ingrediente();
@@ -928,15 +969,17 @@ public class ControladorInsertar {
 		quesofresco.setCantidad(250);
 		quesofresco.setUnidad("Grs");
 		quesofresco.setTipo("LACTEOS");
+		quesofresco.setPerece("SEVENCE");
 		quesofresco.setEstado("NOVENCIDO");
 
 		Ingrediente huevos = new Ingrediente();
 		huevos.setNombre("huevos");
-		huevos.setFvencimiento("26/06/2018");
+		huevos.setFcompra("26/06/2018");
 		huevos.setCantidad(24);
 		huevos.setUnidad("Unids");
 		huevos.setTipo("LACTEOS");
-		huevos.setEstado("NOVENCIDO");
+		huevos.setPerece("SEPUDRE");
+		huevos.setEstado("SINAVISO");
 
 		List<Ingrediente> ingredientesdematias  = matias.getlistaIngrediente();
 		ingredientesdematias.add(cebollarojamatias);
@@ -958,8 +1001,9 @@ public class ControladorInsertar {
 		cebollarojajuanpi.setCantidad(1000);
 		cebollarojajuanpi.setUnidad("Grs");
 		cebollarojajuanpi.setTipo("VEGETALES");
-		cebollarojajuanpi.setEstado("NOVENCIDO");
-		cebollarojajuanpi.setFvencimiento("26/06/2018");
+		cebollarojajuanpi.setPerece("SEPUDRE");
+		cebollarojajuanpi.setEstado("SINAVISO");
+		cebollarojajuanpi.setFcompra("26/06/2018");
 		
 		List<Ingrediente> ingredientesdejuanpablo = juanpablo.getlistaIngrediente();
 		ingredientesdejuanpablo.add(cebollarojajuanpi);
@@ -970,10 +1014,16 @@ public class ControladorInsertar {
 		
 		Usuario flor = servicioUsuario.traerUnUsuarioPorSuId((long) 3);
 		
-		Ingrediente cebollarojaflor = servicioIngrediente.traerUnIngredientePorSuId((long) 44);
+		Ingrediente cebollarojaDelInventario = servicioIngrediente.traerUnIngredientePorSuId((long) 44);
+		Ingrediente cebollarojaflor = new Ingrediente();
+		
+		cebollarojaflor.setNombre(cebollarojaDelInventario.getNombre());		
+		cebollarojaflor.setUnidad(cebollarojaDelInventario.getUnidad());
+		cebollarojaflor.setTipo(cebollarojaDelInventario.getTipo());
+		cebollarojaflor.setPerece(cebollarojaDelInventario.getPerece());
+		cebollarojaflor.setEstado(cebollarojaDelInventario.getEstado());
 		cebollarojaflor.setCantidad(500);
-		cebollarojaflor.setUnidad("Grs");
-		cebollarojaflor.setFvencimiento("30/09/2018");
+		cebollarojaflor.setFcompra("30/09/2018");
 		
 		List<Ingrediente> ingredientesdeflor = flor.getlistaIngrediente();
 		ingredientesdeflor.add(cebollarojaflor);
