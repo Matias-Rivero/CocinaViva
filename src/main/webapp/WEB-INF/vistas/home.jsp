@@ -566,7 +566,7 @@
 							<h2 class="cursive-font">Unite a esta comunidad
 								saludable!</h2>
 							<span class="intro-text-small">Cocina todo lo de tu
-											alacena, ahorr�s y aprendes a comer. �Qu� M�s?.</span>
+											alacena, ahorras y aprendes a comer. ¿Que Mas?.</span>
 						</div>
 						<div class="col-md-4 col-md-push-1 animate-box"
 							 data-animate-effect="fadeInRight">
@@ -575,7 +575,7 @@
 
 									<div class="tab-content">
 										<div class="tab-content-inner active" data-content="signup">
-											<h2 class="cursive-font">Ingres�</h2>
+											<h2 class="cursive-font">Ingresa</h2>
 											<form:form action="validar-login" method="POST"
 													   modelAttribute="usuario">
 
@@ -589,7 +589,7 @@
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="date-start">Contrase�a</label>
+														<label for="date-start">Contraseña</label>
 														<form:input path="password" type="password"
 																	id="password" class="form-control" />
 													</div>
@@ -610,7 +610,7 @@
 												<br>
 											</c:if>
 											<h2 class="cursive-font">
-												<a href="registro">Reg�strate</a>
+												<a href="registro">Registrate</a>
 											</h2>
 										</div>
 									</div>

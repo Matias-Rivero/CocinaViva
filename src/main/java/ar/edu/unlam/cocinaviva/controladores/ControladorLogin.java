@@ -180,7 +180,7 @@ public class ControladorLogin {
 				
 				Ingrediente checkingrediente = new Ingrediente();
 				modelo.put("checkingredientes", checkingrediente);
-				modelo.put("paso", "#1");
+				modelo.put("paso", "	#1");
 		}else{
 			return new ModelAndView("redirect:/home");
 		}

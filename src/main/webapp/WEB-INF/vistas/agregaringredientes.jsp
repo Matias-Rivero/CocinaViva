@@ -116,12 +116,12 @@
    							<c:choose>
    							<c:when test="${not empty tieneingredienteselusuario}">
    							<div class="py-5 text-center">		
-   								<h1>�Ingredientes para agregar?  <c:if test="${not empty paso}"><span class="lead5">${paso}</span></c:if></h1>
+   								<h1>¿Ingredientes para agregar?  <c:if test="${not empty paso}"><span class="lead5">${paso}</span></c:if></h1>
    							</div>
 	   						</c:when>
 	   						<c:otherwise>
 	   						<div class="py-5 text-center">			
-	   							<h1>Oops!...</h1><h2>�No tienes ingredientes en tu heladera?</h2>
+	   							<h1>Oops!...</h1><h2>¿No tienes ingredientes en tu heladera?</h2>
 	   						</div>
    							</c:otherwise>
    							</c:choose>					
@@ -148,7 +148,8 @@
 
 									<table class="table table-fixed" >
 										<thead>
-											<tr>																															
+											<tr>
+												<span>Inventario</span>
 												<th><input type="text" id="filtrar" class="form-control" value="" placeholder="tomate" autocomplete="off"></th>
 											</tr>
 										</thead>
