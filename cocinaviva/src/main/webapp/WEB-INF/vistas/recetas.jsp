@@ -24,10 +24,8 @@
 <meta name="twitter:url" content="" />
 <meta name="twitter:card" content="" />
 
-<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700"
-	rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Kaushan+Script"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet">
 
 <!-- Animate.css -->
 <link rel="stylesheet" href="css/animate.css">
@@ -86,9 +84,10 @@
 							<div class="col-xs-8 text-right menu-1">
 								<ul>
 									<li class="btn-cta"><a href="home"><span>Inventario</span></a></li>
+									<li class="btn-cta"><a href="modificar"><span>Modificar Ingredientes</span></a></li>
 									<li class="btn-cta"><a href="perfilcliente"><span>Mi
 												perfil: ${usuariologueado.alias}</span></a></li>
-<!-- 									<li class="btn-cta"><a href="home"><span>Buscar -->
+<!-- 								<li class="btn-cta"><a href="home"><span>Buscar -->
 <!-- 												Recetas</span></a></li> -->
 									<li class="btn-cta"><a href="cerrarSesion"><span>Salir</span></a></li>
 								</ul>
@@ -110,7 +109,9 @@
 						Recetas Encontradas!<span
 							class="badge pull-right counter js-counter" data-from="0"
 							data-to="${listaRecetasLargo}" data-speed="300" data-refresh-interval="50"></span>
+					
 					</h1>
+					
 					<a href="trecetas"><span class="label label-warning pull-left">¡Usalos Todos!</span></a>
 					<label class="label label-warning">Con:</label>
 					<form:form id="form1" method="POST" modelAttribute="lingrediente"
@@ -126,6 +127,8 @@
 						</c:forEach>
 					</form:form>
 				</div>
+										<input type="button" onclick="history.back()" value="Volver Atrás" class="btn btn-light"></input>
+				
 				<div class="row">
 		          <div class="col-md-12 order-md-12 mb-12">
 		          <br>

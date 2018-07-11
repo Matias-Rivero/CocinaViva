@@ -24,10 +24,8 @@
 <meta name="twitter:url" content="" />
 <meta name="twitter:card" content="" />
 
-<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700"
-	rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Kaushan+Script"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet">
 
 <!-- Animate.css -->
 <link rel="stylesheet" href="css/animate.css">
@@ -88,6 +86,8 @@
 						<c:when test="${usuariologueado != null}">
 							<div class="col-xs-8 text-right menu-1">
 								<ul>
+									<li class="btn-cta"><a href="home"><span>Inventario</span></a></li>
+									<li class="btn-cta"><a href="agregaringredientes"><span>Agregar Ingredientes</span></a></li>
 									<li class="btn-cta"><a href="perfilcliente"><span>Mi
 												perfil: ${usuariologueado.alias}</span></a></li>
 									<li class="btn-cta"><a href="cerrarSesion"><span>Salir</span></a></li>
@@ -100,20 +100,24 @@
 			</div>
 		</nav>
 
+	
 		<c:choose>
 			<c:when test="${usuariologueado != null}">
 
 				<header id="gtco-header" class="gtco-cover gtco-cover-sm"></header>
+				
 
 				<c:choose>
 					<c:when test="${not empty tieneingredienteselusuario}">
-
+	
 						<div class="overlay"></div>
 						<div class="gtco-section">
 						<div class="gtco-container">
 							<div class="py-5 text-center">
 								<h1>Modificar Ingredientes <c:if test="${not empty modificar}">${modificar}</c:if></h1>
 							</div>
+							           				<input type="button" onclick="history.back()" value="Volver Atrás" class="btn btn-light"></input>
+							
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
@@ -134,6 +138,7 @@
 						                          </tr>
 						                        </thead>
 						                        <tbody>
+						                        
 
 						                          <c:forEach items="${ingrediente.listaIngredientes}" var="i"
 						                            varStatus="status">
