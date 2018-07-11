@@ -1,8 +1,6 @@
 package ar.edu.unlam.cocinaviva.controladores;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -824,6 +822,26 @@ public class ControladorInsertar {
 	peke.setRepassword("monsters");
 	peke.setRol("Usuario");
 	servicioUsuario.guardarUsuario(peke);
+	
+	Usuario martin = new Usuario();
+	martin.setNombre("jorge martin");
+	martin.setApellido("rivero");
+	martin.setAlias("tincho");
+	martin.setEmail("tincho_2235@hotmail.com");
+	martin.setPassword("GUADA");
+	martin.setRepassword("GUADA");
+	martin.setRol("Usuario");
+	servicioUsuario.guardarUsuario(martin);
+	
+	Usuario rossana = new Usuario();
+	rossana.setNombre("jorge martin");
+	rossana.setApellido("rivero");
+	rossana.setAlias("tincho");
+	rossana.setEmail("rossanavera2015@gmail.com");
+	rossana.setPassword("GUADA");
+	rossana.setRepassword("GUADA");
+	rossana.setRol("Usuario");
+	servicioUsuario.guardarUsuario(martin);
 	
 	// Administrador
 	
