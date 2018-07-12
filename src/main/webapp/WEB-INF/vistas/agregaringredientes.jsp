@@ -302,6 +302,15 @@
 								
 							</ul>
 						</c:when>
+						<c:otherwise>
+						
+							<div class="text-center">
+
+										<h2>Si compraste ingredientes o simplemente tienes mas en tu alacena, agregalos aquí.</h2>										
+	
+							</div>
+	
+						</c:otherwise>
 					</c:choose>	
 				
 				</div>

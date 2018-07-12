@@ -159,12 +159,12 @@
 															<div class="table-responsive">
 																<table class="table table-hover">
 																	<thead>
-																		<tr>
+																		<tr class="bg-info">
 																			<th><span class="lead"><strong>Lacteos</strong></span></th>
-																			<th><span class="lead colorverde">Estado</span></th>
+																			<th><span class="lead">Estado</span></th>
 																			<th><span class="lead"></span></th>
 																			<th><span class="lead">Cantidad</span></th>
-																			<th><span class="lead">Fecha de:</span></th>
+																			<th><span class="lead">Fecha de vencimiento:</span></th>
 																		</tr>
 																	</thead>
 																	<tbody class="buscar">
@@ -181,24 +181,19 @@
 																							type="checkbox" value="disabled" disabled>${ingredientes.nombre}</span></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'NOVENCIDO'}">
-																					<td class="success"><label
-																						class="label label-success">Usable</label></td>
+																					<td><label class="label label-success lead6">OK</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVENCER'}">
-																					<td class="danger"><label
-																						class="label label-warning">Por vencer</label></td>
+																					<td><label class="label label-warning lead6">Por vencer</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'SINAVISO'}">
-																					<td class="success"><label
-																						class="label label-success">Usable</label></td>
+																					<td><label class="label label-success lead6">OK</label></td>																					
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVISO'}">
-																					<td class="warning"><label
-																						class="label label-warning">Mas de 10 dias</label></td>
+																				<td><label class="label label-warning lead6">Mas de 10 dias</label></td>	
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
-																					<td class="danger"><label
-																						class="label label-danger">Vencido</label></td>
+																				<td><label class="label label-danger lead6">Vencido</label></td>	
 																				</c:if>
 
 																				<td><a href='javascript:;'
@@ -213,13 +208,7 @@
 																					</c:if> <c:if test="${ingredientes.unidad == 'Unids'}">
 																						<label>Unidades</label>
 																					</c:if></td>
-
-																				<c:if test="${ingredientes.perece == 'SEVENCE'}">
-																					<td><span class="lead4">${ingredientes.fvencimiento}</span><label><strong>Vencimiento</strong></label></td>
-																				</c:if>
-																				<c:if test="${ingredientes.perece == 'SEPUDRE'}">
-																					<td><span class="lead4">${ingredientes.fcompra}</span><label><strong>Compra</strong></label></td>
-																				</c:if>
+																					<td><span class="lead4">${ingredientes.fvencimiento}</span></td>
 																			</tr>
 																		</c:forEach>
 																	</tbody>
@@ -235,12 +224,12 @@
 															<div class="table-responsive">
 																<table class="table table-hover">
 																	<thead>
-																		<tr>
+																		<tr class="bg-success">
 																			<th><span class="lead"><strong>Vegetales</strong></span></th>
-																			<th><span class="lead colorverde">Estado</span></th>
+																			<th><span class="lead">Estado</span></th>
 																			<th><span class="lead"></span></th>
 																			<th><span class="lead">Cantidad</span></th>
-																			<th><span class="lead">Fecha de:</span></th>
+																			<th><span class="lead">Fecha de vencimiento</span></th>
 																		</tr>
 																	</thead>
 																	<tbody class="buscar">
@@ -257,24 +246,19 @@
 																							type="checkbox" value="disabled" disabled>${ingredientes.nombre}</span></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'NOVENCIDO'}">
-																					<td class="success"><label
-																						class="label label-success">Usable</label></td>
+																					<td><label class="label label-success lead6">OK</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVENCER'}">
-																					<td class="danger"><label
-																						class="label label-warning">Por vencer</label></td>
+																					<td><label class="label label-warning lead6">Por vencer</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'SINAVISO'}">
-																					<td class="success"><label
-																						class="label label-success">Usable</label></td>
+																					<td><label class="label label-success lead6">OK</label></td>																					
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVISO'}">
-																					<td class="warning"><label
-																						class="label label-warning">Mas de 10 dias</label></td>
+																				<td><label class="label label-warning lead6">Mas de 10 dias</label></td>	
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
-																					<td class="danger"><label
-																						class="label label-danger">Vencido</label></td>
+																				<td><label class="label label-danger lead6">Vencido</label></td>	
 																				</c:if>
 
 																				<td><a href='javascript:;'
@@ -289,13 +273,7 @@
 																					</c:if> <c:if test="${ingredientes.unidad == 'Unids'}">
 																						<label>Unidades</label>
 																					</c:if></td>
-
-																				<c:if test="${ingredientes.perece == 'SEVENCE'}">
-																					<td><span class="lead4">${ingredientes.fvencimiento}</span><label><strong>Vencimiento</strong></label></td>
-																				</c:if>
-																				<c:if test="${ingredientes.perece == 'SEPUDRE'}">
-																					<td><span class="lead4">${ingredientes.fcompra}</span><label><strong>Compra</strong></label></td>
-																				</c:if>
+																					<td><span class="lead4">${ingredientes.fvencimiento}</span></td>
 																			</tr>
 																		</c:forEach>
 																	</tbody>
@@ -311,12 +289,12 @@
 															<div class="table-responsive">
 																<table class="table table-hover">
 																	<thead>
-																		<tr>
+																		<tr class="bg-danger">
 																			<th><span class="lead"><strong>Carnes</strong></span></th>
-																			<th><span class="lead colorverde">Estado</span></th>
+																			<th><span class="lead">Estado</span></th>
 																			<th><span class="lead"></span></th>
 																			<th><span class="lead">Cantidad</span></th>
-																			<th><span class="lead">Fecha de:</span></th>
+																			<th><span class="lead">Fecha de vencimiento</span></th>
 																		</tr>
 																	</thead>
 																	<tbody class="buscar">
@@ -333,24 +311,19 @@
 																							type="checkbox" value="disabled" disabled>${ingredientes.nombre}</span></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'NOVENCIDO'}">
-																					<td class="success"><label
-																						class="label label-success">Usable</label></td>
+																					<td><label class="label label-success lead6">OK</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVENCER'}">
-																					<td class="danger"><label
-																						class="label label-warning">Por vencer</label></td>
+																					<td><label class="label label-warning lead6">Por vencer</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'SINAVISO'}">
-																					<td class="success"><label
-																						class="label label-success">Usable</label></td>
+																					<td><label class="label label-success lead6">OK</label></td>																					
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVISO'}">
-																					<td class="warning"><label
-																						class="label label-warning">Mas de 10 dias</label></td>
+																				<td><label class="label label-warning lead6">Mas de 10 dias</label></td>	
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
-																					<td class="danger"><label
-																						class="label label-danger">Vencido</label></td>
+																				<td><label class="label label-danger lead6">Vencido</label></td>	
 																				</c:if>
 
 																				<td><a href='javascript:;'
@@ -365,13 +338,7 @@
 																					</c:if> <c:if test="${ingredientes.unidad == 'Unids'}">
 																						<label>Unidades</label>
 																					</c:if></td>
-
-																				<c:if test="${ingredientes.perece == 'SEVENCE'}">
-																					<td><span class="lead4">${ingredientes.fvencimiento}</span><label><strong>Vencimiento</strong></label></td>
-																				</c:if>
-																				<c:if test="${ingredientes.perece == 'SEPUDRE'}">
-																					<td><span class="lead4">${ingredientes.fcompra}</span><label><strong>Compra</strong></label></td>
-																				</c:if>
+																					<td><span class="lead4">${ingredientes.fvencimiento}</span></td>
 																			</tr>
 																		</c:forEach>
 																	</tbody>
@@ -387,12 +354,12 @@
 															<div class="table-responsive">
 																<table class="table table-hover">
 																	<thead>
-																		<tr>
+																		<tr class="bg-info">
 																			<th><span class="lead"><strong>Pescado</strong></span></th>
-																			<th><span class="lead colorverde">Estado</span></th>
+																			<th><span class="lead">Estado</span></th>
 																			<th><span class="lead"></span></th>
 																			<th><span class="lead">Cantidad</span></th>
-																			<th><span class="lead">Fecha de:</span></th>
+																			<th><span class="lead">Fecha de vencimiento</span></th>
 																		</tr>
 																	</thead>
 																	<tbody class="buscar">
@@ -409,24 +376,19 @@
 																							type="checkbox" value="disabled" disabled>${ingredientes.nombre}</span></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'NOVENCIDO'}">
-																					<td class="success"><label
-																						class="label label-success">Usable</label></td>
+																					<td><label class="label label-success lead6">OK</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVENCER'}">
-																					<td class="danger"><label
-																						class="label label-warning">Por vencer</label></td>
+																					<td><label class="label label-warning lead6">Por vencer</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'SINAVISO'}">
-																					<td class="success"><label
-																						class="label label-success">Usable</label></td>
+																					<td><label class="label label-success lead6">OK</label></td>																					
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVISO'}">
-																					<td class="warning"><label
-																						class="label label-warning">Mas de 10 dias</label></td>
+																				<td><label class="label label-warning lead6">Mas de 10 dias</label></td>	
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
-																					<td class="danger"><label
-																						class="label label-danger">Vencido</label></td>
+																				<td><label class="label label-danger lead6">Vencido</label></td>	
 																				</c:if>
 
 																				<td><a href='javascript:;'
@@ -441,13 +403,7 @@
 																					</c:if> <c:if test="${ingredientes.unidad == 'Unids'}">
 																						<label>Unidades</label>
 																					</c:if></td>
-
-																				<c:if test="${ingredientes.perece == 'SEVENCE'}">
-																					<td><span class="lead4">${ingredientes.fvencimiento}</span><label><strong>Vencimiento</strong></label></td>
-																				</c:if>
-																				<c:if test="${ingredientes.perece == 'SEPUDRE'}">
-																					<td><span class="lead4">${ingredientes.fcompra}</span><label><strong>Compra</strong></label></td>
-																				</c:if>
+																					<td><span class="lead4">${ingredientes.fvencimiento}</span></td>
 																			</tr>
 																		</c:forEach>
 																	</tbody>
@@ -463,12 +419,12 @@
 															<div class="table-responsive">
 																<table class="table table-hover">
 																	<thead>
-																		<tr>
+																		<tr class="bg-warning">
 																			<th><span class="lead"><strong>Condimento</strong></span></th>
-																			<th><span class="lead colorverde">Estado</span></th>
+																			<th><span class="lead">Estado</span></th>
 																			<th><span class="lead"></span></th>
 																			<th><span class="lead">Cantidad</span></th>
-																			<th><span class="lead">Fecha de:</span></th>
+																			<th><span class="lead">Fecha de vencimiento</span></th>
 																		</tr>
 																	</thead>
 																	<tbody class="buscar">
@@ -485,24 +441,19 @@
 																							type="checkbox" value="disabled" disabled>${ingredientes.nombre}</span></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'NOVENCIDO'}">
-																					<td class="success"><label
-																						class="label label-success">Usable</label></td>
+																					<td><label class="label label-success lead6">OK</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVENCER'}">
-																					<td class="danger"><label
-																						class="label label-warning">Por vencer</label></td>
+																					<td><label class="label label-warning lead6">Por vencer</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'SINAVISO'}">
-																					<td class="success"><label
-																						class="label label-success">Usable</label></td>
+																					<td><label class="label label-success lead6">OK</label></td>																					
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVISO'}">
-																					<td class="warning"><label
-																						class="label label-warning">Mas de 10 dias</label></td>
+																				<td><label class="label label-warning lead6">Mas de 10 dias</label></td>	
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
-																					<td class="danger"><label
-																						class="label label-danger">Vencido</label></td>
+																				<td><label class="label label-danger lead6">Vencido</label></td>	
 																				</c:if>
 
 																				<td><a href='javascript:;'
@@ -517,13 +468,7 @@
 																					</c:if> <c:if test="${ingredientes.unidad == 'Unids'}">
 																						<label>Unidades</label>
 																					</c:if></td>
-
-																				<c:if test="${ingredientes.perece == 'SEVENCE'}">
-																					<td><span class="lead4">${ingredientes.fvencimiento}</span><label><strong>Vencimiento</strong></label></td>
-																				</c:if>
-																				<c:if test="${ingredientes.perece == 'SEPUDRE'}">
-																					<td><span class="lead4">${ingredientes.fcompra}</span><label><strong>Compra</strong></label></td>
-																				</c:if>
+																					<td><span class="lead4">${ingredientes.fvencimiento}</span></td>	
 																			</tr>
 																		</c:forEach>
 																	</tbody>

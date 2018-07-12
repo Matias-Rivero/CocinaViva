@@ -51,6 +51,8 @@ public class ControladorLogin {
 			modelo.put("tieneingredienteselusuario",usuario.getlistaIngrediente());	
 			
 			servicioIngrediente.verificarEstadoDelIngrediente(usuario);
+			
+			servicioIngrediente.actualizarFVDeIngQuePerecen(usuario);
 	
 			if(usuario.getlistaIngrediente().isEmpty()){
 				return new ModelAndView("redirect:/ingredientes");
@@ -251,6 +253,20 @@ public class ControladorLogin {
 			servicioIngrediente.eliminarIngredienteAUsuario(usuariologueado.getId(),id);
 					
 		return new ModelAndView("redirect:/home");
+	}
+		return new ModelAndView("redirect:/home");
+	}
+	
+	@RequestMapping(path = "/eliminar-ingrediente-modificar")
+	public ModelAndView eliminarIngredienteModificar(@RequestParam("id") Long id, HttpServletRequest request) {
+		
+		if (request.getSession().getAttribute("usuariologueado") != null) {
+			
+			Usuario usuariologueado = (Usuario) request.getSession().getAttribute("usuariologueado");	
+					
+			servicioIngrediente.eliminarIngredienteAUsuario(usuariologueado.getId(),id);
+					
+		return new ModelAndView("redirect:/modificar");
 	}
 		return new ModelAndView("redirect:/home");
 	}

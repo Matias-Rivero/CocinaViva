@@ -5,7 +5,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,7 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
 import ar.edu.unlam.cocinaviva.dao.IngredienteDao;
 import ar.edu.unlam.cocinaviva.dao.UsuarioDao;
 import ar.edu.unlam.cocinaviva.modelo.Ingrediente;
-import ar.edu.unlam.cocinaviva.modelo.Receta;
 import ar.edu.unlam.cocinaviva.modelo.Usuario;
 
 @Service("servicioIngrediente")
@@ -257,13 +255,18 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 
 	@Override
 	public void guardarIngredientesAUsuario(Long id, List<Ingrediente> listaIngredientes) {
-		Usuario usuario = servicioUsuarioDao.traerUnUsuarioPorSuId(id);
+		String DATE_FORMAT = "dd/MM/yyyy";
+		DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+		LocalDate fechaActual = LocalDate.now();
+		String fechaActualString;
+		Usuario usuario = servicioUsuarioDao.traerUnUsuarioPorSuId(id);		
+		List<Ingrediente> ingredientesdelusuario  = usuario.getlistaIngrediente();		
+		fechaActualString = dateFormat.format(java.sql.Date.valueOf(fechaActual));
 		
-		List<Ingrediente> ingredientesdelusuario  = usuario.getlistaIngrediente();
-		for (Ingrediente ingredienteagregar : listaIngredientes) {
-//			if (ingredientesuser.getNombre().equals("CONDIMENTOS")) {
-//				ingredientesCondimento.add(condimento);
-//			}
+		for (Ingrediente ingredienteagregar : listaIngredientes) {		//Agregue que meta fecha de compra la fecha actual al cargar ing
+			if (ingredienteagregar.getPerece().equals("SEVENCE")) {		//En los que tienen fecha de vencimiento
+				ingredienteagregar.setFcompra(fechaActualString);
+			}
 			ingredientesdelusuario.add(ingredienteagregar);
 			guardarIngredienteEnUsuario(ingredienteagregar);			
 		}		
@@ -499,6 +502,42 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 			}
 		}
 		return ingUsuarioSinVencidos;		
+	}
+
+	@Override
+	public void actualizarFVDeIngQuePerecen(Usuario usuario) throws ParseException {
+		List<Ingrediente> ingUsuario  = usuario.getlistaIngrediente();
+
+		LocalDate calculoVencimiento;
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+
+		Date fechaIngSePudre;
+		LocalDate fechaIngSePudreEnLocalD;
+		
+		String DATE_FORMAT = "dd/MM/yyyy";
+		DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+		
+		String resultado;
+		
+		for (Ingrediente ingredienteUs : ingUsuario) {
+		 if(ingredienteUs.getPerece().equals("SEPUDRE")){
+	  		  
+			  fechaIngSePudre = df.parse(ingredienteUs.getFcompra());
+			  		 
+			  fechaIngSePudreEnLocalD = fechaIngSePudre.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			  calculoVencimiento = fechaIngSePudreEnLocalD.plusDays(7);			  
+			  resultado = dateFormat.format(java.sql.Date.valueOf(calculoVencimiento));
+			  if(ingredienteUs.getFvencimiento() != resultado){
+			  ingredienteUs.setFvencimiento(resultado);
+			  actualizarIngredientesAUsuario(ingredienteUs);
+			  servicioUsuarioDao.actualizarUsuario(usuario);
+			  }
+//			  System.out.println("=======Nombre Ingrediente: " +ingredienteUs.getNombre()+", fecha ant: "+fechaIngSePudreEnLocalD+"");
+//			  System.out.println("=======Nombre Ingrediente: " +ingredienteUs.getNombre()+", fecha desp 7: "+calculoVencimiento+"");
+//			  System.out.println("=======Nombre Ingrediente: " +ingredienteUs.getNombre()+", fecha: "+resultado+"");		  
+		  }  
+		}		
+		
 	}
 	
 }

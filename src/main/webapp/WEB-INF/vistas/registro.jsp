@@ -121,7 +121,7 @@
 																</h4>			
 														</c:if>	
 															<form:form action="validar-registro" method="POST"
-																modelAttribute="usuario">
+																modelAttribute="usuario" id="registro">
 																<div class="row form-group">
 																	<div class="col-md-12">
 																		<label for="date-start">Nombre </label>

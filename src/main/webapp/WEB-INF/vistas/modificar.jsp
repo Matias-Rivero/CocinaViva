@@ -124,37 +124,53 @@
 						                  <li class="list-group-item d-flex justify-content-between lh-condensed">
 
 						                    <div class="table-responsive">
-						                      <h3 class="my-0">Ingredientes</h3>
-						                      <table class="table table-hover">
+						                      <table class="table">
 						                        <thead>
 						                          <tr>
-						                            <th><span class="lead">Nombre</span></th>
-						                            <th><span class="lead">Fecha de :</span></th>
+						                            <th><span class="lead">Ingredientes</span></th>
+						                            <th><span class="lead">Fecha de vencimiento:</span></th>
 						                            <th><span class="lead">Cantidad</span></th>
+						                            <th><span class="lead"></span></th>
 						                          </tr>
 						                        </thead>
 						                        <tbody>
 
 						                          <c:forEach items="${ingrediente.listaIngredientes}" var="i"
 						                            varStatus="status">
-						                            <tr align="left">
+						                            
+						                            <c:if test = "${i.tipo == 'LACTEOS'}">
+						                            <tr align="left" class="bg-info">
+						                            </c:if>
+						                            <c:if test = "${i.tipo == 'VEGETALES'}">
+						                            <tr align="left" class="bg-success">
+						                            </c:if>
+						                            <c:if test = "${i.tipo == 'CARNES'}">
+						                            <tr align="left" class="bg-danger">
+						                            </c:if>
+						                            <c:if test = "${i.tipo == 'PESCADO'}">
+						                            <tr align="left" class="bg-info">
+						                            </c:if>
+						                            <c:if test = "${i.tipo == 'CONDIMENTOS'}">
+						                            <tr align="left" class="bg-warning">
+						                            </c:if>
+						                            
 						                              <th><span class="lead">${i.nombre}</span></th>
 						                              
 						                              <c:if test = "${i.perece == 'SEVENCE'}">
-						                              <th><label><strong>Vencimiento</strong></label>
+						                              <th>
 						                              <form:input class="form-control datetimepicker1" autocomplete="off"
 						                                  path="listaIngredientes[${status.index}].fvencimiento"
 						                                  type="text" /></th> 
 						                              </c:if>
 						                              <c:if test = "${i.perece == 'SEPUDRE'}">
-						                              <th><label><strong>Compra</strong></label>
-						                              <form:input class="form-control datetimepicker1" autocomplete="off"
-						                                  path="listaIngredientes[${status.index}].fcompra"
-						                                  type="text" /></th>
+						                              <th></th>
+<%-- 						                              <form:input class="form-control datetimepicker1" autocomplete="off" --%>
+<%-- 						                                  path="listaIngredientes[${status.index}].fcompra" --%>
+<%-- 						                                  type="text" /></th> --%>
 						                              </c:if>
 						                              
 						                              <c:if test = "${i.unidad == 'Lts'}">                                
-						                              <th><label><strong>Litros</strong></label>                        
+						                              <th>                        
 						                                <form:select class="form-control"
 						                                  path="listaIngredientes[${status.index}].cantidad">
 						                                  <c:forEach var="cantidad" begin="1" end="10">
@@ -164,7 +180,7 @@
 						                              </th>
 						                              </c:if>
 						                              <c:if test = "${i.unidad == 'Unids'}">                                
-						                              <th><label><strong>Unidades</strong></label>                        
+						                              <th>                        
 						                                <form:select class="form-control"
 						                                  path="listaIngredientes[${status.index}].cantidad">
 						                                  <c:forEach var="cantidad" begin="1" end="24">
@@ -174,14 +190,16 @@
 						                              </th>
 						                              </c:if> 
 						                              <c:if test = "${i.unidad == 'Grs'}">                                
-						                              <th><label><strong>Gramos</strong></label>                        
+						                              <th>                        
 						                                <form:select class="form-control" path="listaIngredientes[${status.index}].cantidad">
 						                                <c:forEach items="${listagramos}" var="g" varStatus="estado">
 						                                    <form:option value="${(estado.index + 1)* 50}">${g}</form:option>
 						                                </c:forEach>
 						                                </form:select>                            
 						                              </th>
-						                              </c:if>    
+						                              </c:if> 
+						                              <th><a href='javascript:;' onclick="eliminarIngrediente(${i.id},'${i.nombre}','${i.cantidad}','${i.unidad}');"><span
+																						class="lead glyphicon glyphicon-trash"></span></a></th>   
 						                              <label class="oculto"><form:input
 						                                  path="listaIngredientes[${status.index}].id"
 						                                  type="text" /></label>
@@ -252,7 +270,32 @@
 		    </div>
 		  </div>
 		</div>
-
+		
+		<div id="ModalCrear" class="modal fade" tabindex="-1" role="dialog"
+			style="overflow-y: scroll;">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">¿Estas seguro de
+							elminar el ingrediente?</h4>
+					</div>
+					<div class="modal-body">
+						<span class="lead" id="ingred"></span>
+					</div>
+					<div class="modal-footer" id="despues">
+						<a type="button" class="btn btn-lg btn-primary btn-block" href=""
+							id="eliminar"><span class="glyphicon glyphicon-ok">Confirmar</span></a>
+						<a type="button" class="btn btn-lg btn-default btn-block" href=""
+							data-dismiss="modal"><span class="glyphicon glyphicon-remove">Cancelar</span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
 		<footer id="gtco-footer" role="contentinfo"
 			style="background-image: url(images/img_bg_1.jpg)"
 			data-stellar-background-ratio="0.5">
@@ -357,6 +400,19 @@
                 });
             });
      </script>
+     
+     <script type="text/javascript">
+     	function eliminarIngrediente(ingrediente,nombre,cantidad,unidad) {		
+			var ingre = ingrediente;		
+			var nombr = nombre;	
+			var cant = cantidad;	
+			var unid = unidad;	
+			$('#eliminar').attr('href','eliminar-ingrediente-modificar?id='+ingre+'');
+			$('#ingred').text(''+nombr+' '+cant+' '+unid+'');		
+			$('#ModalCrear').modal('show');
+
+		}
+	</script>
 </body>
 </html>
 
