@@ -2206,4 +2206,12 @@ display:none;
   border-bottom-width: 0;
 }
 
+.dot {
+  height: 20px;
+  width: 80px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
 /*# sourceMappingURL=style.css.map */

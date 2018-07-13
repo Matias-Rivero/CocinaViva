@@ -115,13 +115,8 @@
 												<div class="tab-content">
 													<div class="tab-content-inner active" data-content="signup">
 														<h1 class="cursive-font text-center">Registrate</h1>
-														<c:if test="${not empty errors}">
-																<h4>
-																	<span class="intro-text-small">${errors}</span>
-																</h4>			
-														</c:if>	
 															<form:form action="validar-registro" method="POST"
-																modelAttribute="usuario" id="registro">
+																modelAttribute="usuario" name="formregistro">
 																<div class="row form-group">
 																	<div class="col-md-12">
 																		<label for="date-start">Nombre </label>
@@ -142,7 +137,8 @@
 																		<label for="date-start">Usuario</label>
 																		<form:input path="email" id="email" type="email"
 																			placeholder="usuario@usuario.com.ar" class="form-control" autocomplete="off"/>
-																		<label id="erroremail" class="label label-danger"></label>	
+																		<label id="erroremail" class="label label-danger"></label>
+																		<c:if test="${not empty errors}"><label class="label label-danger">${errors}</label></c:if>		
 																	</div>
 																</div>
 																<div class="row form-group">
@@ -242,7 +238,7 @@
 	</div>
 	
 	</div>
-	<script src="js/js.js"></script>
+	<script src="js/registro.js"></script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery-2.1.4.min.js" type="text/javascript"></script>

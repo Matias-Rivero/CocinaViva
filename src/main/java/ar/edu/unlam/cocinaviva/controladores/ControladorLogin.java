@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.cocinaviva.modelo.Ingrediente;
+import ar.edu.unlam.cocinaviva.modelo.Pasos;
 import ar.edu.unlam.cocinaviva.modelo.Receta;
 import ar.edu.unlam.cocinaviva.modelo.Usuario;
 import ar.edu.unlam.cocinaviva.servicios.ServicioIngrediente;
@@ -406,6 +407,32 @@ public class ControladorLogin {
 		}
 	return new ModelAndView("redirect:/home");	
 	}
+	
+	@RequestMapping(path = "/leerRecetas")
+	public ModelAndView leerReceta(@RequestParam("id") Long id, HttpServletRequest request) {
+		
+		if (request.getSession().getAttribute("usuariologueado") != null) {
+			
+			Usuario usuariologueado = (Usuario) request.getSession().getAttribute("usuariologueado");
+
+		ModelMap modelo = new ModelMap();		
+					
+		Usuario usuario = servicioUsuario.traerUnUsuarioPorSuId(usuariologueado.getId());
+
+		List<Ingrediente> ingredientesUs = usuario.getlistaIngrediente();
+		Receta receta = servicioReceta.traerUnaRecetaPorSuId(id);
+		
+		Receta recetaConFaltantes = servicioReceta.traerRecetaConFaltantesDeIngredientes(receta,ingredientesUs);
+		
+		modelo.put("listaPasos", receta.getlistaPasos());
+		modelo.put("receta", recetaConFaltantes);
+		modelo.put("ingredientesUs", ingredientesUs);
+
+		return new ModelAndView("leerrecetas", modelo);
+	}
+		return new ModelAndView("redirect:/home");
+	}
+	
 	
 // Si quieren acceder por GET	
 	@RequestMapping("/validar-login")

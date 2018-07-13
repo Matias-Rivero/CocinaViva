@@ -2,6 +2,8 @@ package ar.edu.unlam.cocinaviva.dao;
 
 import java.util.List;
 
+import ar.edu.unlam.cocinaviva.modelo.Ingrediente;
+import ar.edu.unlam.cocinaviva.modelo.Pasos;
 import ar.edu.unlam.cocinaviva.modelo.Receta;
 
 public interface RecetaDao {
@@ -12,5 +14,8 @@ public interface RecetaDao {
 
 	Receta traerUnaRecetaPorSuId(Long id);
 
-	List<Receta> buscarRecetasPorNombre(String nombre);;
+	List<Receta> buscarRecetasPorNombre(String nombre);
+
+	void guardarPasoEnReceta(Pasos paso);
+
 }

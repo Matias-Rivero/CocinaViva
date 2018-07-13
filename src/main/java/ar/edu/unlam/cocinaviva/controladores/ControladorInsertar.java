@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.cocinaviva.modelo.Ingrediente;
+import ar.edu.unlam.cocinaviva.modelo.Pasos;
 import ar.edu.unlam.cocinaviva.modelo.Receta;
 import ar.edu.unlam.cocinaviva.modelo.Usuario;
 import ar.edu.unlam.cocinaviva.servicios.ServicioIngrediente;
@@ -228,7 +229,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(cebolla);
 		
 		Ingrediente ajo = new Ingrediente();
-		ajo.setNombre("ajo");
+		ajo.setNombre("dientes de ajo");
 		ajo.setTipo("VEGETALES");
 		ajo.setUnidad("Unids");
 		servicioIngrediente.guardarIngredienteEnInventario(ajo);
@@ -376,7 +377,7 @@ public class ControladorInsertar {
 		brotesdesoja.setTipo("VEGETALES");
 		brotesdesoja.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(brotesdesoja);
-		
+			
 		// CARNES
 		
 		Ingrediente pechugadepollo = new Ingrediente();
@@ -774,6 +775,12 @@ public class ControladorInsertar {
 		salsadecrema.setTipo("CONDIMENTOS");
 		salsadecrema.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(salsadecrema);
+		
+		Ingrediente aceitedeoliva = new Ingrediente();
+		aceitedeoliva.setNombre("Aceite de oliva");
+		aceitedeoliva.setTipo("CONDIMENTOS");
+		aceitedeoliva.setUnidad("Lts");
+		servicioIngrediente.guardarIngredienteEnInventario(aceitedeoliva);
 
 		return new ModelAndView("redirect:/");
 	}
@@ -936,6 +943,103 @@ public class ControladorInsertar {
 	ingredientesreceta3.add(calabaza);
 	receta3.setListaIngrediente(ingredientesreceta3);
 	servicioReceta.guardarReceta(receta3);
+	
+	Receta polloalhorno = new Receta();
+	polloalhorno.setNombre("Pollo al horno");
+	polloalhorno.setCalorias(650);
+	polloalhorno.setImagen("polloalhorno.jpg");
+	List<Ingrediente> ipolloalhorno = new LinkedList<Ingrediente>();
+	Ingrediente polloentero = servicioIngrediente.traerUnIngredientePorSuId((long) 64);
+	polloentero.setCantidad(2000);
+	polloentero.setCantidadstring("2kg");
+	servicioIngrediente.guardarIngredienteEnReceta(polloentero);
+	Ingrediente dientesdeajo = servicioIngrediente.traerUnIngredientePorSuId((long) 30);
+	dientesdeajo.setCantidad(6);
+	dientesdeajo.setCantidadstring("6u");
+	servicioIngrediente.guardarIngredienteEnReceta(dientesdeajo);
+	Ingrediente aceiteoliva = servicioIngrediente.traerUnIngredientePorSuId((long) 124);
+	aceiteoliva.setCantidad(200);
+	aceiteoliva.setCantidadstring("200cc");
+	servicioIngrediente.guardarIngredienteEnReceta(aceiteoliva);
+	Ingrediente zanahoria = servicioIngrediente.traerUnIngredientePorSuId((long) 34);
+	zanahoria.setCantidad(500);
+	zanahoria.setCantidadstring("1/2kg");
+	servicioIngrediente.guardarIngredienteEnReceta(zanahoria);
+	Ingrediente calabaz = servicioIngrediente.traerUnIngredientePorSuId((long) 51);
+	calabaz.setCantidad(500);
+	calabaz.setCantidadstring("1/2kg");
+	servicioIngrediente.guardarIngredienteEnReceta(calabaz);
+	Ingrediente salfina = servicioIngrediente.traerUnIngredientePorSuId((long) 98);
+	salfina.setCantidad(20);
+	salfina.setCantidadstring("c/n");
+	servicioIngrediente.guardarIngredienteEnReceta(salfina);
+	ipolloalhorno.add(polloentero);
+	ipolloalhorno.add(dientesdeajo);
+	ipolloalhorno.add(aceiteoliva);
+	ipolloalhorno.add(zanahoria);
+	ipolloalhorno.add(calabaz);
+	ipolloalhorno.add(salfina);
+	polloalhorno.setDescripcion("Pollo al horno, Riquísimo para compartir!");
+	
+	List<Pasos> pasospolloalhorno = new LinkedList<Pasos>();
+	
+	Pasos pahP1 = new Pasos();
+	pahP1.setPaso(1);
+	pahP1.setDescripcion("Picar los dientes de ajo, bien chiquitos y colocarlos en un recipiente con el aceite.");
+	pasospolloalhorno.add(pahP1);
+	servicioReceta.guardarPasoEnReceta(pahP1);
+	
+	Pasos pahP2 = new Pasos();
+	pahP2.setPaso(2);
+	pahP2.setDescripcion("Tapar y dejar macerar 10 minutos.");
+	pasospolloalhorno.add(pahP2);
+	servicioReceta.guardarPasoEnReceta(pahP2);
+	
+	Pasos pahP3 = new Pasos();
+	pahP3.setPaso(3);
+	pahP3.setDescripcion("Abrir el pollo, limpiarlo y colocarlo en una bandeja para horno.");
+	pasospolloalhorno.add(pahP3);
+	servicioReceta.guardarPasoEnReceta(pahP3);
+	
+	Pasos pahP4 = new Pasos();
+	pahP4.setPaso(4);
+	pahP4.setDescripcion("Sazonarlo con sal y col el preparado de ajo y aceite. Dejar 90 minutos en reposo.");
+	pasospolloalhorno.add(pahP4);
+	servicioReceta.guardarPasoEnReceta(pahP4);
+	
+	Pasos pahP5 = new Pasos();
+	pahP5.setPaso(5);
+	pahP5.setDescripcion("Llevarlo a horno fuerte, bañando con el mismo líquido de la cocción si fuese necesario, para que no se reseque la carne.");
+	pasospolloalhorno.add(pahP5);
+	servicioReceta.guardarPasoEnReceta(pahP5);
+	
+	Pasos pahP6 = new Pasos();
+	pahP6.setPaso(6);
+	pahP6.setDescripcion("Hervir las zanahorias cortadas en rodajitas.");
+	pasospolloalhorno.add(pahP6);
+	servicioReceta.guardarPasoEnReceta(pahP6);
+	
+	Pasos pahP7 = new Pasos();
+	pahP7.setPaso(7);
+	pahP7.setDescripcion("Cocinar la calabaza y hacer un puré.");
+	pasospolloalhorno.add(pahP7);
+	servicioReceta.guardarPasoEnReceta(pahP7);
+	
+	Pasos pahP8 = new Pasos();
+	pahP8.setPaso(8);
+	pahP8.setDescripcion("Retirar el pollo del horno cuando este dorado y crocante.");
+	pasospolloalhorno.add(pahP8);
+	servicioReceta.guardarPasoEnReceta(pahP8);
+	
+	Pasos pahP9 = new Pasos();
+	pahP9.setPaso(9);
+	pahP9.setDescripcion("Servir decorado con las zanahorias y acompañado del puré de calabaza.");
+	pasospolloalhorno.add(pahP9);
+	servicioReceta.guardarPasoEnReceta(pahP9);
+	
+	polloalhorno.setlistaPasos(pasospolloalhorno);
+	polloalhorno.setListaIngrediente(ipolloalhorno);
+	servicioReceta.guardarReceta(polloalhorno);
 	
 	return new ModelAndView("redirect:/");
 }

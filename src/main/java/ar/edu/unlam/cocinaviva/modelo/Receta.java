@@ -11,8 +11,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;	
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 public class Receta {
@@ -28,6 +32,8 @@ public class Receta {
 	private String uso;
 	private String tipo;
 	private String descripcion;
+	@Transient
+	private List<String> pasosDeLaDescripcion;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "recetas_ingredientes", joinColumns = { @JoinColumn(name = "id_Receta") }, inverseJoinColumns = {
@@ -40,6 +46,20 @@ public class Receta {
 
 	public void setListaIngrediente(List<Ingrediente> listaIngrediente) {
 		this.listaIngrediente = listaIngrediente;
+	}
+	
+	@OneToMany(fetch = FetchType.LAZY)
+    @JoinTable(name="recetas_pasos", joinColumns = @JoinColumn( name="id_Receta"), inverseJoinColumns = @JoinColumn( name="id_Pasos"))
+	
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<Pasos> listaPasos = new LinkedList<Pasos>();	
+
+	public void setlistaPasos(List<Pasos> listaPasos) {
+		this.listaPasos = listaPasos;
+	}
+	
+	public List<Pasos> getlistaPasos() {
+	        return listaPasos;
 	}
 	
 	public Long getId() {
@@ -102,6 +122,14 @@ public class Receta {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+	public List<String> getPasosDeLaDescripcion() {
+		return pasosDeLaDescripcion;
+	}
+
+	public void setPasosDeLaDescripcion(List<String> pasosDeLaDescripcion) {
+		this.pasosDeLaDescripcion = pasosDeLaDescripcion;
 	}
 
 }

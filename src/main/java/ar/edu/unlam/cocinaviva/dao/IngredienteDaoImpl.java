@@ -82,7 +82,7 @@ public class IngredienteDaoImpl implements IngredienteDao {
 	@Override
 	public void actualizarIngredientesAUsuario(Ingrediente ingredienteUs) {
 		final Session session = sessionFactory.getCurrentSession();
-		session.saveOrUpdate(ingredienteUs);
+		session.update(ingredienteUs);
 	}
 
 }

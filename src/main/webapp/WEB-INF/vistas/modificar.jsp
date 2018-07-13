@@ -164,9 +164,9 @@
 						                              </c:if>
 						                              <c:if test = "${i.perece == 'SEPUDRE'}">
 						                              <th></th>
-<%-- 						                              <form:input class="form-control datetimepicker1" autocomplete="off" --%>
-<%-- 						                                  path="listaIngredientes[${status.index}].fcompra" --%>
-<%-- 						                                  type="text" /></th> --%>
+						                           	 <label class="oculto"><form:input class="form-control datetimepicker1" autocomplete="off" 
+						                                  path="listaIngredientes[${status.index}].fcompra"
+						                                  type="text" /></label>
 						                              </c:if>
 						                              
 						                              <c:if test = "${i.unidad == 'Lts'}">                                

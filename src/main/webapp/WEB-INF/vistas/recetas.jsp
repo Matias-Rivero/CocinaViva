@@ -147,10 +147,9 @@
 						<c:when test="${not empty listaRecetasBuscadas}">
 							<c:forEach items="${listaRecetasBuscadas}" var="listaRecetas">
 								<div class="col-lg-4 col-md-4 col-sm-6">
-									<form:form method="POST" modelAttribute="receta"
-										action="leerReceta">
-										<a href="images/recetas/${listaRecetas.imagen}"
-											class="fh5co-card-item image-popup">
+									
+										<a href="leerRecetas?id=${listaRecetas.id}"
+											class="fh5co-card-item">
 											<figure>
 												<div class="overlay">
 													<i class="ti-plus"></i>
@@ -173,12 +172,12 @@
 												  <!-- Aplicadas en las celdas (<td> o <th>) -->
 												  <c:forEach items="${listaRecetas.listaIngrediente}" var="listaIngredientes">   
 												  <tr>               
-												    <td class="active">${listaIngredientes.nombre} ${listaIngredientes.cantidad} ${listaIngredientes.unidad}</td>
+												    <td class="active">${listaIngredientes.nombre} ${listaIngredientes.cantidadstring}</td>
 												    <c:if test = "${listaIngredientes.faltante > 0}">
 												    <td class="success"><label class="label label-success">OK</label></td>
 												    </c:if>  
 												    <c:if test = "${listaIngredientes.faltante < 0}">
-												    <td class="info"><label class="label label-info">FALTAN ${listaIngredientes.faltante * -1} ${listaIngredientes.unidad} </label></td>
+												    <td class="info"><label class="label label-info">FALTAN ${listaIngredientes.faltante * -1} </label></td>
 												    </c:if>
 												    <c:if test = "${listaIngredientes.faltante == 0}">
 												    <td class="warning"><label class="label label-warning">OK</label></td>
@@ -192,13 +191,8 @@
 												</table>
 												</div>									
 											</div>
-										</a>
-										<button type="submit" class="btn btn-warning">Leer
-													receta</button>
-										
-										<form:input path="id" name="id" type="hidden"
-											value="${listaRecetas.id}" />
-									</form:form>
+										</a>																			
+									
 								</div>
 							</c:forEach>
 						</c:when>
@@ -216,10 +210,9 @@
 						<c:when test="${not empty listaRecetas}">
 							<c:forEach items="${listaRecetas}" var="listaRecetas">
 								<div class="col-lg-4 col-md-4 col-sm-6">
-									<form:form method="POST" modelAttribute="receta"
-										action="leerReceta">
-										<a href="images/recetas/${listaRecetas.imagen}"
-											class="fh5co-card-item image-popup">
+
+										<a href="leerRecetas?id=${listaRecetas.id}"
+											class="fh5co-card-item">
 											<figure>
 												<div class="overlay">
 													<i class="ti-plus"></i>
@@ -242,12 +235,12 @@
 												  <!-- Aplicadas en las celdas (<td> o <th>) -->
 												  <c:forEach items="${listaRecetas.listaIngrediente}" var="listaIngredientes">   
 												  <tr>               
-												    <td class="active">${listaIngredientes.nombre} ${listaIngredientes.cantidad} ${listaIngredientes.unidad}</td>
+												    <td class="active">${listaIngredientes.nombre} ${listaIngredientes.cantidadstring}</td>
 												    <c:if test = "${listaIngredientes.faltante > 0}">
 												    <td class="success"><label class="label label-success">OK</label></td>
 												    </c:if>  
 												    <c:if test = "${listaIngredientes.faltante < 0}">
-												    <td class="info"><label class="label label-info">FALTAN ${listaIngredientes.faltante * -1} ${listaIngredientes.unidad} </label></td>
+												    <td class="info"><label class="label label-info">FALTAN ${listaIngredientes.faltante * -1}</label></td>
 												    </c:if>
 												    <c:if test = "${listaIngredientes.faltante == 0}">
 												    <td class="warning"><label class="label label-warning">OK</label></td>
@@ -262,12 +255,7 @@
 												</div>									
 											</div>
 										</a>
-										<button type="submit" class="btn btn-warning">Leer
-													receta</button>
-										
-										<form:input path="id" name="id" type="hidden"
-											value="${listaRecetas.id}" />
-									</form:form>
+
 								</div>
 							</c:forEach>
 						</c:when>

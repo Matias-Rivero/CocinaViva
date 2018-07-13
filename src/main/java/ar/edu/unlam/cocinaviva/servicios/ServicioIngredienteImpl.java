@@ -438,7 +438,8 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 		LocalDate fechaActual = LocalDate.now();
 		
 		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-			
+		DateFormat dfp = new SimpleDateFormat("dd/MM/yyyy");
+		
 		Long difDiasVence;
 		Long difDiasAvisoSePudre;
 		
@@ -454,8 +455,12 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 				  fechaIngVence =  df.parse(ingredienteUs.getFvencimiento());
 				  
 				  fechaIngVenceEnLocalD = fechaIngVence.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-				  
+				
 				  difDiasVence = ChronoUnit.DAYS.between(fechaActual, fechaIngVenceEnLocalD);
+				  
+				if(ingredienteUs.getDias() == null || (!ingredienteUs.getDias().equals(difDiasVence))){  
+					ingredienteUs.setDias(difDiasVence);
+					
 				  if(difDiasVence <= 0){
 					  ingredienteUs.setEstado("VENCIDO");
 					  actualizarIngredientesAUsuario(ingredienteUs);
@@ -470,15 +475,22 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 				  }else if(ingredienteUs.getEstado().equals("AVENCER")){
 					  ingredienteUs.setEstado("NOVENCIDO");
 				  }	
+				  
+				} 
+				
 			  }	  
 			  
 			  if(ingredienteUs.getPerece().equals("SEPUDRE")){
 				  		  
-				  fechaIngSePudre = df.parse(ingredienteUs.getFcompra());
+				  fechaIngSePudre = dfp.parse(ingredienteUs.getFcompra());
 				  		 
 				  fechaIngSePudreEnLocalD = fechaIngSePudre.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 				  			 		  		  
 				  difDiasAvisoSePudre = ChronoUnit.DAYS.between(fechaActual, fechaIngSePudreEnLocalD);
+				  
+				  if(ingredienteUs.getDias() == null || (!ingredienteUs.getDias().equals(difDiasAvisoSePudre)) ){  
+					  ingredienteUs.setDias(difDiasAvisoSePudre);
+				  
 				  if(difDiasAvisoSePudre < 0 && difDiasAvisoSePudre <= -10){
 					  ingredienteUs.setEstado("AVISO");  // Aviso que hace 10 dias que lo compraste fijate porque se pudre
 					  actualizarIngredientesAUsuario(ingredienteUs);
@@ -486,6 +498,8 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 				  }else if(ingredienteUs.getEstado().equals("AVISO")){
 					  ingredienteUs.setEstado("SINAVISO");
 				  }	
+				  
+				  }
 			  
 			  }  
 			  

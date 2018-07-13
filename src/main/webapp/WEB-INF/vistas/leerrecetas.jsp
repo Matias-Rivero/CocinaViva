@@ -53,18 +53,25 @@
 
 <!-- Modernizr JS -->
 <script src="js/modernizr-2.6.2.min.js"></script>
+
+
 <!-- FOR IE9 below -->
 <!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+<style type="text/css">
+.gtco-cover.gtco-cover-sm {
+	height: 80px;
+}
+</style>
 
 </head>
+
 <body>
 
 	<div class="gtco-loader"></div>
 
 	<div id="page">
-
 
 		<!-- <div class="page-inner"> -->
 		<nav class="gtco-nav" role="navigation">
@@ -73,88 +80,133 @@
 				<div class="row">
 					<div class="col-sm-4 col-xs-12">
 						<div id="gtco-logo">
-							<a href="home">Cocina Viva <em>.</em></a>
+							<a href="home">Cocina Viva<em>.</em></a>
 						</div>
 					</div>
+
+					<c:choose>
+						<c:when test="${usuariologueado != null}">
+							<div class="col-xs-8 text-right menu-1">
+								<ul>
+									<li class="btn-cta"><a href="perfilcliente"><span>Mi
+												perfil: ${usuariologueado.alias}</span></a></li>
+									<li class="btn-cta"><a href="cerrarSesion"><span>Salir</span></a></li>
+								</ul>
+							</div>
+						</c:when>
+					</c:choose>
 				</div>
 
 			</div>
 		</nav>
 
-		<div id="gtco-subscribe">
-			<div class="gtco-container">
-				<div class="row animate-box">
-					<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-						<h2 class="cursive-font">Registráte</h2>
-					
-					<c:if test="${not empty errors}">
-							<h4>
-								<span class="intro-text-small">${errors}</span>
-							</h4>			
-					</c:if>
-					</div>
-				</div>
-				<div class="row animate-box">
-					<div class="col-md-8 col-md-offset-2">
-						<form:form action="validar-registro" method="POST"
-							modelAttribute="usuario">
-							<div class="row form-group">
-								<div class="col-md-12">
-									<label for="date-start">Nombre</label>
-									<form:input path="nombre" id="nombre" type="text" class="form-control" />
-								</div>
-							</div>
-							<div class="row form-group">
-								<div class="col-md-12">
-									<label for="date-start">Apellido</label>
-									<form:input path="apellido" type="text" id="apellido"
-										class="form-control" />
-								</div>
-							</div>
-							<div class="row form-group">
-								<div class="col-md-12">
-									<label for="date-start">Usuario</label>
-									<form:input path="email" id="email" type="email"
-										placeholder="usuario@usuario.com.ar" class="form-control" />
-								</div>
-							</div>
-							<div class="row form-group">
-								<div class="col-md-12">
-									<label for="date-start">Contraseña</label>
-									<form:input path="password" type="password" id="password"
-										class="form-control" />
-								</div>
-							</div>
-							
-							<div class="row form-group">
-								<div class="col-md-12">
-									<label for="date-start">Confirmar contraseña</label>
-									<form:input path="repassword" type="password" id="password"
-										class="form-control" />
-								</div>
-							</div>
-							
-							<div class="row form-group">
-								<div class="col-md-12">
-									<label for="date-start">Alias</label>
-									<form:input path="alias" type="text" id="alias" placeholder="JuanPi" 
-										class="form-control" />
-								</div>
-							</div>
+		<c:choose>
+			<c:when test="${usuariologueado != null}">
 
-							<div class="row form-group">
-								<div class="col-md-12">
-									<input type="submit" class="btn btn-primary btn-block"
-										value="Registrarme">
+				<header id="gtco-header" class="gtco-cover gtco-cover-sm"></header>
+
+				<c:choose>
+					<c:when test="${not empty receta}">
+
+						<div class="overlay"></div>
+						<div class="gtco-section">
+						<div class="gtco-container">							
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+								<div class="page-header">
+								 <h1>${receta.nombre}</h1>
+								</div>	 
+								 <img src="images/recetas/${receta.imagen}"  alt="receta" class="img-responsive img-thumbnail" style="width: 500px; height: 300px;" data-holder-rendered="true">
+								 
 								</div>
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+								<div class="page-header">
+<!-- 								 <h1 style="visibility: hidden">.</h1> -->								 
+								 <h1 class="cursive-font"><a href="#" target=""><span class="dot">Cocinar</span></a></h1>
+								</div>
+									<ul class="list-group mb-3">
+						                
+									<c:forEach items="${receta.listaIngrediente}" var="ingrediente">	
+									
+		<li class="list-group-item d-flex justify-content-between lh-condensed">${ingrediente.cantidadstring} ${ingrediente.nombre}</li>
+
+						            </c:forEach>    
+
+						             </ul>																	
+								</div>
+								
+							</div>	
+							
+							
+							
+							<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							
+							  <div class="page-header">
+						        <h1>Pasos</h1>
+						      </div>
+						      <c:forEach items="${listaPasos}" var="pasos">
+						      <div class="panel panel-info">
+					            <div class="panel-heading">
+					              <h3 class="panel-title">Paso ${pasos.paso}</h3>
+					            </div>
+					            <div class="panel-body">
+					              ${pasos.descripcion}
+					            </div>
+					          </div>
+					          </c:forEach> 
+						     						      
 							</div>
-						</form:form>
-						
+							</div>
+							
+							
+
+						</div>
+						</div>
+					</c:when>
+				</c:choose>
+
+			</c:when>
+		</c:choose>
+
+		<div id="datetimepickervacio" class="modal fade" tabindex="-1" role="dialog" style="overflow-y: scroll;">
+		  <div class="modal-dialog modal-sm">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		      	<div class="alert alert-danger" role="alert">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>        
+				  <h3>¡La fecha es necesaria!</h3>
+				</div>
+		      </div>  
+		    </div>
+		  </div>
+		</div>
+		
+		<div id="ModalCrear" class="modal fade" tabindex="-1" role="dialog"
+			style="overflow-y: scroll;">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">¿Estas seguro de
+							elminar el ingrediente?</h4>
+					</div>
+					<div class="modal-body">
+						<span class="lead" id="ingred"></span>
+					</div>
+					<div class="modal-footer" id="despues">
+						<a type="button" class="btn btn-lg btn-primary btn-block" href=""
+							id="eliminar"><span class="glyphicon glyphicon-ok">Confirmar</span></a>
+						<a type="button" class="btn btn-lg btn-default btn-block" href=""
+							data-dismiss="modal"><span class="glyphicon glyphicon-remove">Cancelar</span></a>
 					</div>
 				</div>
 			</div>
 		</div>
-
+		
 		<footer id="gtco-footer" role="contentinfo"
 			style="background-image: url(images/img_bg_1.jpg)"
 			data-stellar-background-ratio="0.5">
@@ -196,11 +248,8 @@
 
 				</div>
 
-
-
 			</div>
 		</footer>
-		<!-- </div> -->
 
 	</div>
 
@@ -210,6 +259,7 @@
 
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery-2.1.4.min.js" type="text/javascript"></script>
 	<!-- jQuery Easing -->
 	<script src="js/jquery.easing.1.3.js"></script>
 	<!-- Bootstrap -->
