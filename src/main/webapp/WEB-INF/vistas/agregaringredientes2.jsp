@@ -94,6 +94,23 @@
 												Recetas</span></a></li>
 									<li class="btn-cta"><a href="perfilcliente"><span>Mi
 												perfil: ${usuariologueado.alias}</span></a></li>
+									<li class="has-dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-microphone"></i> <img src="../../images/notification-bell.png" alt="Notificaciones"></a>
+										<ul class="dropdown">
+											<c:forEach items="${notificacionesUsu}" var="notificacion">
+												<li>
+													<c:choose>
+														<c:when test="${notificacion.tipoNotificacion == 'SIN_STOCK'}">
+															<a href="ingredientes"><span class="label label-primary">${notificacion.fechaNotificacion}</span> ${notificacion.mensaje} </a>
+														</c:when>
+														<c:otherwise>
+															<a href="modificar"><span class="label label-primary">${notificacion.fechaNotificacion}</span> ${notificacion.mensaje} </a>
+														</c:otherwise>
+													</c:choose>
+												</li>
+												<li role="presentation" class="divider"></li>
+											</c:forEach>
+										</ul>
+									</li>
 									<li class="btn-cta"><a href="cerrarSesion"><span>Salir</span></a></li>
 								</ul>
 							</div>
@@ -115,12 +132,12 @@
 					<c:choose>
 						<c:when test="${not empty tieneingredienteselusuario}">
 								<div class="py-5 text-center">				
-									<h1>¿Ingredientes para agregar?  <c:if test="${not empty paso}"><span class="lead5">${paso}</span></c:if></h1>
+									<h1>ï¿½Ingredientes para agregar?  <c:if test="${not empty paso}"><span class="lead5">${paso}</span></c:if></h1>
 								</div>
 						</c:when>
 						<c:otherwise>
 								<div class="py-5 text-center">				
-									<h1>Oops!...</h1><h2>¿No tienes ingredientes en tu heladera?</h2>
+									<h1>Oops!...</h1><h2>ï¿½No tienes ingredientes en tu heladera?</h2>
 								</div>
 						</c:otherwise>
 					</c:choose>
@@ -309,7 +326,7 @@
 			<div class="row">
 			
 							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2" id="agringre">
-				<!-- Oops!. ¿No tienes ingredientes en tu heladera? -->
+				<!-- Oops!. ï¿½No tienes ingredientes en tu heladera? -->
 <!-- 				<h4 class="d-flex justify-content-between align-items-center mb-3"> -->
 <!-- 					<span class="text-muted">Agregar Ingrediente</span> -->
 <!-- 				</h4> -->
@@ -601,7 +618,7 @@
 	      <div class="modal-header">
 	      	<div class="alert alert-danger" role="alert">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>        
-			  <h3>¡Agrega al menos 1 ingrediente!</h3>
+			  <h3>ï¿½Agrega al menos 1 ingrediente!</h3>
 			</div>
 	      </div>  
 	    </div>
@@ -613,7 +630,7 @@
 	      <div class="modal-header">
 	      	<div class="alert alert-danger" role="alert">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>        
-			  <h3>¡La fecha es necesaria!</h3>
+			  <h3>ï¿½La fecha es necesaria!</h3>
 			</div>
 	      </div>  
 	    </div>

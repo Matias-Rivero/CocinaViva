@@ -88,9 +88,26 @@
 							<ul>
 								<li class="btn-cta"><a href="perfilcliente"><span>Mi
 												perfil: ${usuariologueado.alias}</span></a></li>
+								<li class="has-dropdown"><a href="#" data-toggle="dropdown"><img src="../../images/notification-bell.png" alt="Notificaciones"></a>
+									<ul class="dropdown-menu pull-right">
+										<c:forEach items="${notificacionesUsu}" var="notificacion">
+											<li>
+												<c:choose>
+													<c:when test="${notificacion.tipoNotificacion == 'SIN_STOCK'}">
+														<a href="ingredientes" class="notificacionItem"><span class="label label-primary labelNotificacion">${notificacion.fechaNotificacion}</span> ${notificacion.mensaje} </a>
+													</c:when>
+													<c:otherwise>
+														<a href="modificar" class="notificacionItem"><span class="label label-primary labelNotificacion">${notificacion.fechaNotificacion}</span> ${notificacion.mensaje} </a>
+													</c:otherwise>
+												</c:choose>
+											</li>
+											<li role="presentation" class="divider"></li>
+										</c:forEach>
+									</ul>
+								</li>
 								<li class="btn-cta"><a href="cerrarSesion"><span>Salir</span></a></li>
 							</ul>
-						</div>
+                        </div>
 					</c:when>
 				</c:choose>
 			</div>
@@ -816,6 +833,7 @@
         }
     }
 </script>
+
 </body>
 </html>
 

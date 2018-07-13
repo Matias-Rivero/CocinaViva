@@ -23,4 +23,6 @@ public interface ServicioNotificacion {
 
 	String MensajeParaIngredientePasado(Usuario usuario);
 
+	List<Notificacion> getNotificacionesParaUnUsuario(Usuario usuario);
+
 }

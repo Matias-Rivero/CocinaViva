@@ -10,5 +10,6 @@ public interface NotificacionDao {
 
 	List<Notificacion> NotificacionesSinLeerParaUnUsuario(Usuario usuario, Ingrediente ingrediente);
 
+	List<Notificacion> GetNotificacionesParaUnUsuario(Usuario usuario);
 
 }

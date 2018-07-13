@@ -87,6 +87,23 @@
 								<ul>
 									<li class="btn-cta"><a href="home"><span>Buscar
 												Recetas</span></a></li>
+									<li class="has-dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-microphone"></i> <img src="../../images/notification-bell.png" alt="Notificaciones"></a>
+										<ul class="dropdown">
+											<c:forEach items="${notificacionesUsu}" var="notificacion">
+												<li>
+													<c:choose>
+														<c:when test="${notificacion.tipoNotificacion == 'SIN_STOCK'}">
+															<a href="ingredientes"><span class="label label-primary">${notificacion.fechaNotificacion}</span> ${notificacion.mensaje} </a>
+														</c:when>
+														<c:otherwise>
+															<a href="modificar"><span class="label label-primary">${notificacion.fechaNotificacion}</span> ${notificacion.mensaje} </a>
+														</c:otherwise>
+													</c:choose>
+												</li>
+												<li role="presentation" class="divider"></li>
+											</c:forEach>
+										</ul>
+									</li>
 									<li class="btn-cta"><a href="cerrarSesion"><span>Salir</span></a></li>
 								</ul>
 							</div>
@@ -108,7 +125,7 @@
 							class="badge pull-right counter js-counter" data-from="0"
 							data-to="${listaRecetasLargo}" data-speed="300" data-refresh-interval="50"></span>
 					</h1>
-					<a href="trecetas"><span class="label label-warning pull-left">¡Usalos Todos!</span></a>
+					<a href="trecetas"><span class="label label-warning pull-left">ï¿½Usalos Todos!</span></a>
 					<label class="label label-warning">Con:</label>
 					<form:form id="form1" method="POST" modelAttribute="lingrediente"
 									action="drecetas">
