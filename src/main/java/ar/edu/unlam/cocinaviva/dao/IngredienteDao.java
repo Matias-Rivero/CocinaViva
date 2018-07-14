@@ -26,4 +26,6 @@ public interface IngredienteDao {
 
 	void actualizarIngredientesAUsuario(Ingrediente ingredienteUs);
 
+	Ingrediente traerUnIngredienteDelInventarioPorSuNombre(String nombre);
+
 }

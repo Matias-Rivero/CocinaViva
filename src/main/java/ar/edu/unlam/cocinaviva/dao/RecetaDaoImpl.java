@@ -7,6 +7,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import ar.edu.unlam.cocinaviva.modelo.Ingrediente;
+import ar.edu.unlam.cocinaviva.modelo.Pasos;
 import ar.edu.unlam.cocinaviva.modelo.Receta;
 
 import java.util.List;
@@ -37,4 +38,18 @@ public class RecetaDaoImpl implements RecetaDao {
 				.uniqueResult());
 	}
 
+	@Override
+	  public List<Receta> buscarRecetasPorNombre(String nombre) {
+	    return (sessionFactory.getCurrentSession().createCriteria(Receta.class)
+	        .add(Restrictions.eq("uso", "GENERAL"))
+	        .add(Restrictions.like("nombre", "%"+nombre+"%"))
+	        .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list());
+	  }
+
+	@Override
+	public void guardarPasoEnReceta(Pasos paso) {
+		final Session session = sessionFactory.getCurrentSession();
+		session.save(paso);
+	}
+	
 }

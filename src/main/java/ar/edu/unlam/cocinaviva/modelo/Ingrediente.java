@@ -23,10 +23,13 @@ public class Ingrediente implements Cloneable {
 	private Integer[] seleccionados;
 	private Integer faltante;
 	private Integer cantidad;
-	private String medida;
+	private String cantidadstring;
 	private String unidad;
 	private String tipo;
+	private String perece;
+	private String fcompra;
 	private String fvencimiento;
+	private Long dias;
 	private String uso;
 	private String estado;
 
@@ -53,14 +56,6 @@ public class Ingrediente implements Cloneable {
 	public void setCantidad(Integer cantidad) {
 		this.cantidad = cantidad;
 	}
-
-	public String getMedida() {
-		return medida;
-	}
-
-	public void setMedida(String medida) {
-		this.medida = medida;
-	}
 	
 	public String getUnidad() {
 		return unidad;
@@ -77,6 +72,22 @@ public class Ingrediente implements Cloneable {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+	
+	public String getPerece() {
+		return perece;
+	}
+
+	public void setPerece(String perece) {
+		this.perece = perece;
+	}
+	
+	public String getFcompra() {
+		return fcompra;
+	}
+
+	public void setFcompra(String fcompra) {
+		this.fcompra = fcompra;
+	}
 
 	public String getFvencimiento() {
 		return fvencimiento;
@@ -84,6 +95,14 @@ public class Ingrediente implements Cloneable {
 
 	public void setFvencimiento(String fvencimiento) {
 		this.fvencimiento = fvencimiento;
+	}
+
+	public Long getDias() {
+		return dias;
+	}
+
+	public void setDias(Long dias) {
+		this.dias = dias;
 	}
 	
 	public List<Ingrediente> getlistaIngredientes() {
@@ -140,5 +159,14 @@ public class Ingrediente implements Cloneable {
         return cloningrediente;
    }
 
-	
+	public String getCantidadstring() {
+		return cantidadstring;
+	}
+
+	public void setCantidadstring(String cantidadstring) {
+		this.cantidadstring = cantidadstring;
+	}
+
+
+
 }

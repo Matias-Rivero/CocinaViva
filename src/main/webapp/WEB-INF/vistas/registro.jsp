@@ -7,10 +7,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Cocina Viva &mdash;</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description"
-	content="" />
-<meta name="keywords"
-	content="" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
 <meta name="author" content="" />
 
 <!-- Facebook and Twitter integration -->
@@ -53,18 +51,25 @@
 
 <!-- Modernizr JS -->
 <script src="js/modernizr-2.6.2.min.js"></script>
+
+
 <!-- FOR IE9 below -->
 <!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+<style type="text/css">
+.gtco-cover.gtco-cover-sm {
+	height: 80px;
+}
+</style>
 
 </head>
+
 <body>
 
 	<div class="gtco-loader"></div>
 
 	<div id="page">
-
 
 		<!-- <div class="page-inner"> -->
 		<nav class="gtco-nav" role="navigation">
@@ -73,87 +78,114 @@
 				<div class="row">
 					<div class="col-sm-4 col-xs-12">
 						<div id="gtco-logo">
-							<a href="home">Cocina Viva <em>.</em></a>
+							<a href="home">Cocina Viva<em>.</em></a>
 						</div>
 					</div>
+
+					<c:choose>
+						<c:when test="${usuariologueado != null}">
+							<div class="col-xs-8 text-right menu-1">
+								<ul>
+									<li class="btn-cta"><a href="perfilcliente"><span>Mi
+												perfil: ${usuariologueado.alias}</span></a></li>
+									<li class="btn-cta"><a href="cerrarSesion"><span>Salir</span></a></li>
+								</ul>
+							</div>
+						</c:when>
+					</c:choose>
 				</div>
 
 			</div>
 		</nav>
 
-		<div id="gtco-subscribe">
-			<div class="gtco-container">
-				<div class="row animate-box">
-					<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-						<h2 class="cursive-font">Registráte</h2>
-					
-					<c:if test="${not empty errors}">
-							<h4>
-								<span class="intro-text-small">${errors}</span>
-							</h4>			
-					</c:if>
-					</div>
-				</div>
-				<div class="row animate-box">
-					<div class="col-md-8 col-md-offset-2">
-						<form:form action="validar-registro" method="POST"
-							modelAttribute="usuario">
-							<div class="row form-group">
-								<div class="col-md-12">
-									<label for="date-start">Nombre</label>
-									<form:input path="nombre" id="nombre" type="text" class="form-control" required="required" />
-								</div>
-							</div>
-							<div class="row form-group">
-								<div class="col-md-12">
-									<label for="date-start">Apellido</label>
-									<form:input path="apellido" type="text" id="apellido"
-										class="form-control" required="required"/>
-								</div>
-							</div>
-							<div class="row form-group">
-								<div class="col-md-12">
-									<label for="date-start">Usuario</label>
-									<form:input path="email" id="email" type="email"
-										placeholder="usuario@usuario.com.ar" class="form-control" required="required"/>
-								</div>
-							</div>
-							<div class="row form-group">
-								<div class="col-md-12">
-									<label for="date-start">Contraseña</label>
-									<form:input path="password" type="password" id="password"
-										class="form-control" required="required"/>
-								</div>
-							</div>
-							
-							<div class="row form-group">
-								<div class="col-md-12">
-									<label for="date-start">Confirmar contraseña</label>
-									<form:input path="repassword" type="password" id="password"
-										class="form-control" required="required"/>
-								</div>
-							</div>
-							
-							<div class="row form-group">
-								<div class="col-md-12">
-									<label for="date-start">Alias</label>
-									<form:input path="alias" type="text" id="alias" placeholder="JuanPi" 
-										class="form-control" required="required"/>
-								</div>
-							</div>
+		
+				<header id="gtco-header" class="gtco-cover gtco-cover-md"
+					role="banner" style="background-image: url(images/lareceta.jpg)"
+					data-stellar-background-ratio="0.5">
+					<div class="overlay"></div>
+					<div class="gtco-container">
+						<div class="row">
+							<div class="col-md-12 col-md-offset-0 text-left">
 
-							<div class="row form-group">
-								<div class="col-md-12">
-									<input type="submit" class="btn btn-primary btn-block"
-										value="Registrarme">
+
+								<div class="row">
+									<div class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp">
+										<div class="form-wrap">
+											<div class="tab">
+												<div class="tab-content">
+													<div class="tab-content-inner active" data-content="signup">
+														<h1 class="cursive-font text-center">Registrate</h1>
+															<form:form action="validar-registro" method="POST"
+																modelAttribute="usuario" name="formregistro">
+																<div class="row form-group">
+																	<div class="col-md-12">
+																		<label for="date-start">Nombre </label>
+																		<form:input path="nombre" id="nombre" type="text" class="form-control" autocomplete="off"/>
+																		<label id="errornombre" class="label label-danger"></label>																	
+																	</div>
+																</div>
+																<div class="row form-group">
+																	<div class="col-md-12">
+																		<label for="date-start">Apellido</label>
+																		<form:input path="apellido" type="text" id="apellido"
+																			class="form-control" autocomplete="off"/>
+																		<label id="errorapellido" class="label label-danger"></label>	
+																	</div>
+																</div>
+																<div class="row form-group">
+																	<div class="col-md-12">
+																		<label for="date-start">Usuario</label>
+																		<form:input path="email" id="email" type="email"
+																			placeholder="usuario@usuario.com.ar" class="form-control" autocomplete="off"/>
+																		<label id="erroremail" class="label label-danger"></label>
+																		<c:if test="${not empty errors}"><label class="label label-danger">${errors}</label></c:if>		
+																	</div>
+																</div>
+																<div class="row form-group">
+																	<div class="col-md-12">
+																		<label for="date-start">Contraseña</label>
+																		<form:input path="password" type="password" id="password"
+																			class="form-control" autocomplete="off"/>
+																		<label id="errorpassword" class="label label-danger"></label>	
+																	</div>
+																</div>
+																
+																<div class="row form-group">
+																	<div class="col-md-12">
+																		<label for="date-start">Confirmar contraseña</label>
+																		<form:input path="repassword" type="password" id="repassword"
+																			class="form-control" autocomplete="off"/>
+																		<label id="errorrepassword" class="label label-danger"></label>	
+																	</div>
+																</div>
+																
+																<div class="row form-group">
+																	<div class="col-md-12">
+																		<label for="date-start">Alias</label>
+																		<form:input path="alias" type="text" id="alias" placeholder="ej: JuanPi" 
+																			class="form-control" autocomplete="off"/>
+																		<label id="erroralias" class="label label-danger"></label>	
+																	</div>
+																</div>
+									
+																<div class="row form-group">
+																	<div class="col-md-12">
+																		<input type="button" class="btn btn-primary btn-block"
+																			value="Registrarme"  onclick="javascript:validarForm('nombre','apellido','email','password','repassword','alias')">
+																	</div>
+																</div>
+															</form:form>
+															
+													</div>
+												</div>
+											</div>
+										</div>																				
+									</div>									
 								</div>
 							</div>
-						</form:form>
-						
+						</div>
 					</div>
-				</div>
-			</div>
-		</div>
+				</header>
 
 		<footer id="gtco-footer" role="contentinfo"
 			style="background-image: url(images/img_bg_1.jpg)"
@@ -196,20 +228,20 @@
 
 				</div>
 
-
-
 			</div>
 		</footer>
-		<!-- </div> -->
 
-	</div>
+	
 
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 	</div>
-
+	
+	</div>
+	<script src="js/registro.js"></script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery-2.1.4.min.js" type="text/javascript"></script>
 	<!-- jQuery Easing -->
 	<script src="js/jquery.easing.1.3.js"></script>
 	<!-- Bootstrap -->
@@ -234,7 +266,7 @@
 
 	<!-- Main -->
 	<script src="js/main.js"></script>
-
+	
 </body>
 </html>
 

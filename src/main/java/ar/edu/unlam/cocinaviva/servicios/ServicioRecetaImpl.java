@@ -2,6 +2,7 @@ package ar.edu.unlam.cocinaviva.servicios;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.inject.Inject;
 
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ar.edu.unlam.cocinaviva.dao.RecetaDao;
 import ar.edu.unlam.cocinaviva.dao.UsuarioDao;
 import ar.edu.unlam.cocinaviva.modelo.Ingrediente;
+import ar.edu.unlam.cocinaviva.modelo.Pasos;
 import ar.edu.unlam.cocinaviva.modelo.Receta;
 import ar.edu.unlam.cocinaviva.modelo.Usuario;
 
@@ -29,6 +31,7 @@ public class ServicioRecetaImpl implements ServicioReceta {
 
 	@Override
 	public void guardarReceta(Receta receta) {
+		receta.setUso("GENERAL");
 		servicioRecetaDao.guardarReceta(receta);
 	}
 
@@ -113,6 +116,37 @@ public class ServicioRecetaImpl implements ServicioReceta {
 			}
 		}
 		return recetas;	
+	}
+
+	@Override
+	public List<Receta> buscarRecetasPorNombre(String nombre) {
+		return servicioRecetaDao.buscarRecetasPorNombre(nombre);
+	}
+
+	@Override
+	public Receta traerRecetaConFaltantesDeIngredientes(Receta receta, List<Ingrediente> ingredientesUs) {
+		for (Ingrediente ingredienteUs : ingredientesUs) {
+			for (Ingrediente ingredienteRc : receta.getListaIngrediente()) {
+				if (ingredienteRc.getNombre().equals(ingredienteUs.getNombre())) {
+					if(ingredienteRc.getFaltante() != null){
+						Integer faltanteRc = ingredienteRc.getFaltante();
+						Integer sobranteUs = ingredienteUs.getCantidad();
+						Integer resultado = faltanteRc + sobranteUs; // Si hay otro ingrediente igual
+						ingredienteRc.setFaltante(resultado);
+					}else{
+						Integer resultado = (ingredienteUs.getCantidad() - ingredienteRc.getCantidad());
+						ingredienteRc.setFaltante(resultado);	
+					}
+				}
+			}
+		}
+	
+	return receta;	
+	}
+
+	@Override
+	public void guardarPasoEnReceta(Pasos paso) {
+		servicioRecetaDao.guardarPasoEnReceta(paso);
 	}
 
 }

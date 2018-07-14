@@ -79,7 +79,7 @@
 				<div class="row">
 					<div class="col-sm-4 col-xs-12">
 						<div id="gtco-logo">
-							<img src="images/logo.png" width="170px" height="60px" style="margin:-10px" />
+							<img src="images/logo.png" width="170px" height="60px" style="conmargin:-10px" />
 						</div>
 					</div>
 
@@ -113,7 +113,7 @@
 								<div class="py-5 text-center">
 									<h1>Cocina con tus ingredientes!</h1>
 								</div>
-															           				<input type="button" onclick="history.back()" value="Volver Atrás" class="btn btn-light"></input>
+															           				<input type="button" onclick="history.back()" value="Volver Atrï¿½s" class="btn btn-light"></input>
 								
 								<div class="row">
 									<div class="col-md-12 order-md-12 mb-12">
@@ -546,11 +546,11 @@
 								<div class="row row-mt-15em">
 									<div class="col-md-7 mt-text animate-box"
 										data-animate-effect="fadeInUp">
-										<span class="intro-text-small">NO desperdicies más!</span>
+										<span class="intro-text-small">NO desperdicies mï¿½s!</span>
 										<h2 class="cursive-font">Unite a esta comunidad
 											saludable!</h2>
 										<span class="intro-text-small">Cocina todo lo de tu
-											alacena, ahorrás y aprendes a comer. ¿Qué Más?.</span>
+											alacena, ahorrï¿½s y aprendes a comer. ï¿½Quï¿½ Mï¿½s?.</span>
 									</div>
 									<div class="col-md-4 col-md-push-1 animate-box"
 										data-animate-effect="fadeInRight">
@@ -559,7 +559,7 @@
 
 												<div class="tab-content">
 													<div class="tab-content-inner active" data-content="signup">
-														<h2 class="cursive-font">Ingresá</h2>
+														<h2 class="cursive-font">Ingresï¿½</h2>
 														<form:form action="validar-login" method="POST"
 															modelAttribute="usuario">
 
@@ -573,7 +573,7 @@
 															</div>
 															<div class="row form-group">
 																<div class="col-md-12">
-																	<label for="date-start">Contraseña</label>
+																	<label for="date-start">Contraseï¿½a</label>
 																	<form:input path="password" type="password"
 																		id="password" class="form-control" />
 																</div>
@@ -594,7 +594,7 @@
 															<br>
 														</c:if>
 														<h2 class="cursive-font">
-															<a href="registro">Regístrate</a>
+															<a href="registro">Regï¿½strate</a>
 														</h2>
 													</div>
 												</div>
@@ -619,7 +619,7 @@
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<h4 class="modal-title" id="myModalLabel">¿Estas seguro de
+						<h4 class="modal-title" id="myModalLabel">ï¿½Estas seguro de
 							elminar el ingrediente?</h4>
 					</div>
 					<div class="modal-body">

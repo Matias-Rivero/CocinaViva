@@ -62,7 +62,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 	@Override
 	public void actualizarUsuario(Usuario usuario) {
 		final Session session = sessionFactory.getCurrentSession();
-		session.saveOrUpdate(usuario);
+		session.update(usuario);
 	}
 
 }
