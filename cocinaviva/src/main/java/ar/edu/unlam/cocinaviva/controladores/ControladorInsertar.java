@@ -51,170 +51,170 @@ public class ControladorInsertar {
 	public ModelAndView insertarIngredientes() {
 		// Lts Grs Unids
 		Ingrediente manteca = new Ingrediente();
-		manteca.setNombre("manteca");
+		manteca.setNombre("Manteca");
 		manteca.setTipo("LACTEOS");
 		manteca.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(manteca);
 		
 		Ingrediente quesofresco = new Ingrediente();
-		quesofresco.setNombre("queso fresco");
+		quesofresco.setNombre("Queso Fresco");
 		quesofresco.setTipo("LACTEOS");
 		quesofresco.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(quesofresco);
 
 		Ingrediente huevos = new Ingrediente();
-		huevos.setNombre("huevos");
+		huevos.setNombre("Huevos");
 		huevos.setTipo("LACTEOS");
 		huevos.setPerece("SEPUDRE");
 		huevos.setUnidad("Unids");
 		servicioIngrediente.guardarIngredienteEnInventario(huevos);
 		
 		Ingrediente leche = new Ingrediente();
-		leche.setNombre("leche");
+		leche.setNombre("Leche");
 		leche.setTipo("LACTEOS");
 		leche.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(leche);
 		
 		Ingrediente quesoparmesano = new Ingrediente();
-		quesoparmesano.setNombre("queso parmesano");
+		quesoparmesano.setNombre("Queso Parmesano");
 		quesoparmesano.setTipo("LACTEOS");
 		quesoparmesano.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(quesoparmesano);
 		
 		Ingrediente quesocheddar = new Ingrediente();
-		quesocheddar.setNombre("queso cheddar");
+		quesocheddar.setNombre("Queso Cheddar");
 		quesocheddar.setTipo("LACTEOS");
 		quesocheddar.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(quesocheddar);
 
 		Ingrediente quesoamericano = new Ingrediente();
-		quesoamericano.setNombre("queso americano");
+		quesoamericano.setNombre("Queso Americano");
 		quesoamericano.setTipo("LACTEOS");
 		quesoamericano.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(quesoamericano);
 
 		Ingrediente quesocrema = new Ingrediente();
-		quesocrema.setNombre("queso crema");
+		quesocrema.setNombre("Queso Crema");
 		quesocrema.setTipo("LACTEOS");
 		quesocrema.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(quesocrema);
 		
 		Ingrediente quesomozzarella = new Ingrediente();
-		quesomozzarella.setNombre("queso mozzarella");
+		quesomozzarella.setNombre("Queso Mozzarella");
 		quesomozzarella.setTipo("LACTEOS");
 		quesomozzarella.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(quesomozzarella);
 		
 		Ingrediente yogurt  = new Ingrediente();
-		yogurt.setNombre("yogurt");
+		yogurt.setNombre("Yogurt");
 		yogurt.setTipo("LACTEOS");
 		yogurt.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(yogurt);
 		
 		Ingrediente cremadeleche = new Ingrediente();
-		cremadeleche.setNombre("crema de leche");
+		cremadeleche.setNombre("Crema de Leche");
 		cremadeleche.setTipo("LACTEOS");
 		cremadeleche.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(cremadeleche);
 
 		Ingrediente lechecondensada  = new Ingrediente();
-		lechecondensada.setNombre("leche condensada ");
+		lechecondensada.setNombre("Leche Condensada ");
 		lechecondensada.setTipo("LACTEOS");
 		lechecondensada.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(lechecondensada);
 
 		Ingrediente quesocottage = new Ingrediente();
-		quesocottage.setNombre("queso cottage");
+		quesocottage.setNombre("Queso Cottage");
 		quesocottage.setTipo("LACTEOS");
 		quesocottage.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(quesocottage);
 		
 		Ingrediente quesosuizo = new Ingrediente();
-		quesosuizo.setNombre("queso suizo");
+		quesosuizo.setNombre("Queso Suizo");
 		quesosuizo.setTipo("LACTEOS");
 		quesosuizo.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(quesosuizo);
 		
 		Ingrediente requeson = new Ingrediente();
-		requeson.setNombre("requesón");
+		requeson.setNombre("Requesón");
 		requeson.setTipo("LACTEOS");
 		requeson.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(requeson);
 		
 		Ingrediente quesodecabra = new Ingrediente();
-		quesodecabra.setNombre("queso de cabra");
+		quesodecabra.setNombre("Queso de Cabra");
 		quesodecabra.setTipo("LACTEOS");
 		quesodecabra.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(quesodecabra);
 
 		Ingrediente quesoprovolone = new Ingrediente();
-		quesoprovolone.setNombre("queso provolone");
+		quesoprovolone.setNombre("Queso Provolone");
 		quesoprovolone.setTipo("LACTEOS");
 		quesoprovolone.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(quesoprovolone);
 
 		Ingrediente quesoazul = new Ingrediente();
-		quesoazul.setNombre("queso azul");
+		quesoazul.setNombre("Queso Azul");
 		quesoazul.setTipo("LACTEOS");
 		quesoazul.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(quesoazul);
 		
 		Ingrediente lecheenpolvo = new Ingrediente();
-		lecheenpolvo.setNombre("leche en polvo");
+		lecheenpolvo.setNombre("Leche en Polvo");
 		lecheenpolvo.setTipo("LACTEOS");
 		lecheenpolvo.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(lecheenpolvo);
 		
 		Ingrediente quesocolby = new Ingrediente();
-		quesocolby.setNombre("queso colby");
+		quesocolby.setNombre("Queso Colby");
 		quesocolby.setTipo("LACTEOS");
 		quesocolby.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(quesocolby);
 		
 		Ingrediente quesoitaliano = new Ingrediente();
-		quesoitaliano.setNombre("queso italiano");
+		quesoitaliano.setNombre("Queso Italiano");
 		quesoitaliano.setTipo("LACTEOS");
 		quesoitaliano.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(quesoitaliano);
 
 		Ingrediente quesosuavegouda = new Ingrediente();
-		quesosuavegouda.setNombre("queso suave gouda");
+		quesosuavegouda.setNombre("Queso Suave Gouda");
 		quesosuavegouda.setTipo("LACTEOS");
 		quesosuavegouda.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(quesosuavegouda);
 
 		Ingrediente quesopimienta = new Ingrediente();
-		quesopimienta.setNombre("queso pimienta");
+		quesopimienta.setNombre("Queso Pimienta");
 		quesopimienta.setTipo("LACTEOS");
 		quesopimienta.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(quesopimienta);
 		
 		Ingrediente quesobrie = new Ingrediente();
-		quesobrie.setNombre("queso brie");
+		quesobrie.setNombre("Queso Brie");
 		quesobrie.setTipo("LACTEOS");
 		quesobrie.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(quesobrie);
 		
 		Ingrediente quesomuenster = new Ingrediente();
-		quesomuenster.setNombre("queso muenster");
+		quesomuenster.setNombre("Queso Muenster");
 		quesomuenster.setTipo("LACTEOS");
 		quesomuenster.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(quesomuenster);
 		
 		Ingrediente quesoduro = new Ingrediente();
-		quesoduro.setNombre("queso duro");
+		quesoduro.setNombre("Queso Duro");
 		quesoduro.setTipo("LACTEOS");
 		quesoduro.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(quesoduro);
 
 		Ingrediente quesohavarti = new Ingrediente();
-		quesohavarti.setNombre("queso havarti");
+		quesohavarti.setNombre("Queso Havarti");
 		quesohavarti.setTipo("LACTEOS");
 		quesohavarti.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(quesohavarti);
 
 		Ingrediente lechedecabra = new Ingrediente();
-		lechedecabra.setNombre("leche de cabra");
+		lechedecabra.setNombre("Leche de Cabra");
 		lechedecabra.setTipo("LACTEOS");
 		lechedecabra.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(lechedecabra);
@@ -222,157 +222,157 @@ public class ControladorInsertar {
 		// VEGETALES // Lts Grs Unids
 		
 		Ingrediente cebolla = new Ingrediente();
-		cebolla.setNombre("cebolla");
+		cebolla.setNombre("Cebolla");
 		cebolla.setTipo("VEGETALES");
 		cebolla.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(cebolla);
 		
 		Ingrediente ajo = new Ingrediente();
-		ajo.setNombre("ajo");
+		ajo.setNombre("Ajo");
 		ajo.setTipo("VEGETALES");
 		ajo.setUnidad("Unids");
 		servicioIngrediente.guardarIngredienteEnInventario(ajo);
 		
 		Ingrediente lechuga = new Ingrediente();
-		lechuga.setNombre("lechuga");
+		lechuga.setNombre("Lechuga");
 		lechuga.setTipo("VEGETALES");
 		lechuga.setUnidad("Unids");
 		servicioIngrediente.guardarIngredienteEnInventario(lechuga);
 		
 		Ingrediente tomate = new Ingrediente();
-		tomate.setNombre("tomate");
+		tomate.setNombre("Tomate");
 		tomate.setTipo("VEGETALES");
 		tomate.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(tomate);
 		
 		Ingrediente papa = new Ingrediente();
-		papa.setNombre("papa");
+		papa.setNombre("Papa");
 		papa.setTipo("VEGETALES");
 		papa.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(papa);
 		
 		Ingrediente zanahoria = new Ingrediente();
-		zanahoria.setNombre("zanahoria");
+		zanahoria.setNombre("Zanahoria");
 		zanahoria.setTipo("VEGETALES");
 		zanahoria.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(zanahoria);
 		
 		Ingrediente albahaca = new Ingrediente();
-		albahaca.setNombre("albahaca");
+		albahaca.setNombre("Albahaca");
 		albahaca.setTipo("VEGETALES");
 		albahaca.setUnidad("Unids");
 		servicioIngrediente.guardarIngredienteEnInventario(albahaca);
 		
 		Ingrediente perejil = new Ingrediente();
-		perejil.setNombre("perejil");
+		perejil.setNombre("Perejil");
 		perejil.setTipo("VEGETALES");
 		perejil.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(perejil);
 		
 		Ingrediente brocoli = new Ingrediente();
-		brocoli.setNombre("brócoli");
+		brocoli.setNombre("Brócoli");
 		brocoli.setTipo("VEGETALES");
 		brocoli.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(brocoli);
 		
 		Ingrediente maiz = new Ingrediente();
-		maiz.setNombre("maíz");
+		maiz.setNombre("Maíz");
 		maiz.setTipo("VEGETALES");
 		maiz.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(maiz);
 		
 		Ingrediente espinacas = new Ingrediente();
-		espinacas.setNombre("espinacas");
+		espinacas.setNombre("Espinacas");
 		espinacas.setTipo("VEGETALES");
 		espinacas.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(espinacas);
 		
 		Ingrediente jengibre = new Ingrediente();
-		jengibre.setNombre("jengibre");
+		jengibre.setNombre("Jengibre");
 		jengibre.setTipo("VEGETALES");
 		jengibre.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(jengibre);
 		
 		Ingrediente ajipicante = new Ingrediente();
-		ajipicante.setNombre("ají picante");
+		ajipicante.setNombre("Ají picante");
 		ajipicante.setTipo("VEGETALES");
 		ajipicante.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(ajipicante);
 		
 		Ingrediente apio = new Ingrediente();
-		apio.setNombre("apio");
+		apio.setNombre("Apio");
 		apio.setTipo("VEGETALES");
 		apio.setUnidad("Unids");
 		servicioIngrediente.guardarIngredienteEnInventario(apio);
 		
 		Ingrediente romero = new Ingrediente();
-		romero.setNombre("romero");
+		romero.setNombre("Romero");
 		romero.setTipo("VEGETALES");
 		romero.setUnidad("Unids");
 		servicioIngrediente.guardarIngredienteEnInventario(romero);
 		
 		Ingrediente cebollaroja = new Ingrediente();
-		cebollaroja.setNombre("cebolla roja");
+		cebollaroja.setNombre("Cebolla roja");
 		cebollaroja.setTipo("VEGETALES");
 		cebollaroja.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(cebollaroja);
 		
 		Ingrediente pepino = new Ingrediente();
-		pepino.setNombre("pepino");
+		pepino.setNombre("Pepino");
 		pepino.setTipo("VEGETALES");
 		pepino.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(pepino);
 		
 		Ingrediente batata = new Ingrediente();
-		batata.setNombre("batata");
+		batata.setNombre("Batata");
 		batata.setTipo("VEGETALES");
 		batata.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(batata);
 		
 		Ingrediente calabacin = new Ingrediente();
-		calabacin.setNombre("calabacín");
+		calabacin.setNombre("Calabacín");
 		calabacin.setTipo("VEGETALES");
 		calabacin.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(calabacin);
 		
 		Ingrediente aceituna = new Ingrediente();
-		aceituna.setNombre("aceituna");
+		aceituna.setNombre("Aceituna");
 		aceituna.setTipo("VEGETALES");
 		aceituna.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(aceituna);
 		
 		Ingrediente berenjena = new Ingrediente();
-		berenjena.setNombre("berenjena");
+		berenjena.setNombre("Berenjena");
 		berenjena.setTipo("VEGETALES");
 		berenjena.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(berenjena);
 		
 		Ingrediente remolacha = new Ingrediente();
-		remolacha.setNombre("remolacha");
+		remolacha.setNombre("Remolacha");
 		remolacha.setTipo("VEGETALES");
 		remolacha.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(remolacha);
 		
 		Ingrediente calabaza = new Ingrediente();
-		calabaza.setNombre("calabaza");
+		calabaza.setNombre("Calabaza");
 		calabaza.setTipo("VEGETALES");
 		calabaza.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(calabaza);
 		
 		Ingrediente semillasdechia = new Ingrediente();
-		semillasdechia.setNombre("semillas de chia");
+		semillasdechia.setNombre("Semillas de Chia");
 		semillasdechia.setTipo("VEGETALES");
 		semillasdechia.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(semillasdechia);
 		
 		Ingrediente semillasdelino = new Ingrediente();
-		semillasdelino.setNombre("semillas de lino");
+		semillasdelino.setNombre("Semillas de Lino");
 		semillasdelino.setTipo("VEGETALES");
 		semillasdelino.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(semillasdelino);
 		
 		Ingrediente brotesdesoja = new Ingrediente();
-		brotesdesoja.setNombre("brotes de soja");
+		brotesdesoja.setNombre("Brotes de Soja");
 		brotesdesoja.setTipo("VEGETALES");
 		brotesdesoja.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(brotesdesoja);
@@ -380,233 +380,233 @@ public class ControladorInsertar {
 		// CARNES
 		
 		Ingrediente pechugadepollo = new Ingrediente();
-		pechugadepollo.setNombre("pechuga de pollo");
+		pechugadepollo.setNombre("Pechuga de Pollo");
 		pechugadepollo.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(pechugadepollo);
 		
 		Ingrediente carnechurrasco = new Ingrediente();
-		carnechurrasco.setNombre("carne churrasco");
+		carnechurrasco.setNombre("Churrasco");
 		carnechurrasco.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(carnechurrasco);
 		
 		Ingrediente tocino = new Ingrediente();
-		tocino.setNombre("tocino");
+		tocino.setNombre("Tocino");
 		tocino.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(tocino);
 		
 		Ingrediente salchicha = new Ingrediente();
-		salchicha.setNombre("salchicha");
+		salchicha.setNombre("Salchicha");
 		salchicha.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(salchicha);
 		
 		Ingrediente filetedeternera = new Ingrediente();
-		filetedeternera.setNombre("filete de ternera");
+		filetedeternera.setNombre("Filete de ternera");
 		filetedeternera.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(filetedeternera);
 		
 		Ingrediente jamon = new Ingrediente();
-		jamon.setNombre("jamón");
+		jamon.setNombre("Jamón");
 		jamon.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(jamon);
 		
 		Ingrediente chuletasdecerdo = new Ingrediente();
-		chuletasdecerdo.setNombre("chuletas de cerdo");
+		chuletasdecerdo.setNombre("Chuletas de Cerdo");
 		chuletasdecerdo.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(chuletasdecerdo);
 		
 		Ingrediente muslosdepollo = new Ingrediente();
-		muslosdepollo.setNombre("muslos de pollo");
+		muslosdepollo.setNombre("Muslos de Pollo");
 		muslosdepollo.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(muslosdepollo);
 		
 		Ingrediente pavo = new Ingrediente();
-		pavo.setNombre("pavo");
+		pavo.setNombre("Pavo");
 		pavo.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(pavo);
 		
 		Ingrediente polloentero = new Ingrediente();
-		polloentero.setNombre("pollo entero");
+		polloentero.setNombre("Pollo Entero");
 		polloentero.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(polloentero);
 		
 		Ingrediente cerdo = new Ingrediente();
-		cerdo.setNombre("cerdo");
+		cerdo.setNombre("Cerdo");
 		cerdo.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(cerdo);
 		
 		Ingrediente patasdepollo = new Ingrediente();
-		patasdepollo.setNombre("patas de pollo");
+		patasdepollo.setNombre("Patas de Pollo");
 		patasdepollo.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(patasdepollo);
 		
 		Ingrediente carnedecerdo = new Ingrediente();
-		carnedecerdo.setNombre("carne de cerdo");
+		carnedecerdo.setNombre("Carne de Cerdo");
 		carnedecerdo.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(carnedecerdo);
 		
 		Ingrediente chorizo = new Ingrediente();
-		chorizo.setNombre("chorizo");
+		chorizo.setNombre("Chorizo");
 		chorizo.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(chorizo);
 		
 		Ingrediente alitasdepollo = new Ingrediente();
-		alitasdepollo.setNombre("alitas de pollo");
+		alitasdepollo.setNombre("Alitas de Pollo");
 		alitasdepollo.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(alitasdepollo);
 		
 		Ingrediente carneasada = new Ingrediente();
-		carneasada.setNombre("carne asada");
+		carneasada.setNombre("Carne Asada");
 		carneasada.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(carneasada);
 		
 		Ingrediente costillasdecerdo = new Ingrediente();
-		costillasdecerdo.setNombre("costillas de cerdo");
+		costillasdecerdo.setNombre("Costillas de Cerdo");
 		costillasdecerdo.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(costillasdecerdo);
 		
 		Ingrediente cordero = new Ingrediente();
-		cordero.setNombre("cordero");
+		cordero.setNombre("Cordero");
 		cordero.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(cordero);
 		
 		Ingrediente costillasdeternera = new Ingrediente();
-		costillasdeternera.setNombre("costillas de ternera");
+		costillasdeternera.setNombre("Costillas de Ternera");
 		costillasdeternera.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(costillasdeternera);
 		
 		Ingrediente pato = new Ingrediente();
-		pato.setNombre("pato");
+		pato.setNombre("Pato");
 		pato.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(pato);
 		
 		Ingrediente menudenciasdepollo = new Ingrediente();
-		menudenciasdepollo.setNombre("menudencias de pollo");
+		menudenciasdepollo.setNombre("Menudencias de Pollo");
 		menudenciasdepollo.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(menudenciasdepollo);
 		
 		Ingrediente conejo = new Ingrediente();
-		conejo.setNombre("conejo");
+		conejo.setNombre("Conejo");
 		conejo.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(conejo);
 		
 		// PESCADO
 		
 		Ingrediente atunenlatado = new Ingrediente();
-		atunenlatado.setNombre("atún enlatado");
+		atunenlatado.setNombre("Atún enlatado");
 		atunenlatado.setTipo("PESCADO");
 		atunenlatado.setPerece("SEVENCE");
 		servicioIngrediente.guardarIngredienteEnInventario(atunenlatado);
 		
 		Ingrediente filetesdepescado = new Ingrediente();
-		filetesdepescado.setNombre("filetes de pescado");
+		filetesdepescado.setNombre("Filetes de Pescado");
 		filetesdepescado.setTipo("PESCADO");
 		filetesdepescado.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(filetesdepescado);
 		
 		Ingrediente salmon = new Ingrediente();
-		salmon.setNombre("salmón");
+		salmon.setNombre("Salmón");
 		salmon.setTipo("PESCADO");
 		salmon.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(salmon);
 		
 		Ingrediente tilapia = new Ingrediente();
-		tilapia.setNombre("tilapia");
+		tilapia.setNombre("Tilapia");
 		tilapia.setTipo("PESCADO");
 		tilapia.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(tilapia);
 		
 		Ingrediente salmonenlatado = new Ingrediente();
-		salmonenlatado.setNombre("salmón enlatado");
+		salmonenlatado.setNombre("Salmón enlatado");
 		salmonenlatado.setTipo("PESCADO");
 		salmonenlatado.setPerece("SEVENCE");
 		servicioIngrediente.guardarIngredienteEnInventario(salmonenlatado);
 
 		Ingrediente anchoas = new Ingrediente();
-		anchoas.setNombre("anchoas");
+		anchoas.setNombre("Anchoas");
 		anchoas.setTipo("PESCADO");
 		anchoas.setPerece("SEVENCE");
 		servicioIngrediente.guardarIngredienteEnInventario(anchoas);
 		
 		Ingrediente salmonahumado = new Ingrediente();
-		salmonahumado.setNombre("salmón ahumado");
+		salmonahumado.setNombre("Salmón ahumado");
 		salmonahumado.setTipo("PESCADO");
 		salmonahumado.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(salmonahumado);
 		
 		Ingrediente sardinas = new Ingrediente();
-		sardinas.setNombre("sardinas");
+		sardinas.setNombre("Sardinas");
 		sardinas.setTipo("PESCADO");
 		sardinas.setPerece("SEVENCE");
 		servicioIngrediente.guardarIngredienteEnInventario(sardinas);
 		
 		Ingrediente filetedeatun = new Ingrediente();
-		filetedeatun.setNombre("filete de atún");
+		filetedeatun.setNombre("Filete de Atún");
 		filetedeatun.setTipo("PESCADO");
 		filetedeatun.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(filetedeatun);
 		
 		Ingrediente trucha = new Ingrediente();
-		trucha.setNombre("trucha");
+		trucha.setNombre("Trucha");
 		trucha.setTipo("PESCADO");
 		trucha.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(trucha);
 
 		Ingrediente bagre = new Ingrediente();
-		bagre.setNombre("bagre");
+		bagre.setNombre("Bagre");
 		bagre.setTipo("PESCADO");
 		bagre.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(bagre);
 		
 		Ingrediente caballa = new Ingrediente();
-		caballa.setNombre("caballa");
+		caballa.setNombre("Caballa");
 		caballa.setTipo("PESCADO");
 		caballa.setPerece("SEVENCE");
 		servicioIngrediente.guardarIngredienteEnInventario(caballa);
 		
 		Ingrediente pezespada = new Ingrediente();
-		pezespada.setNombre("pez espada");
+		pezespada.setNombre("Pez Espada");
 		pezespada.setTipo("PESCADO");
 		pezespada.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(pezespada);
 		
 		Ingrediente abadejo = new Ingrediente();
-		abadejo.setNombre("abadejo");
+		abadejo.setNombre("Abadejo");
 		abadejo.setTipo("PESCADO");
 		abadejo.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(abadejo);
 		
 		Ingrediente caviar = new Ingrediente();
-		caviar.setNombre("caviar");
+		caviar.setNombre("Caviar");
 		caviar.setTipo("PESCADO");
 		caviar.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(caviar);
 
 		Ingrediente pezroca = new Ingrediente();
-		pezroca.setNombre("pez roca");
+		pezroca.setNombre("Pez roca");
 		pezroca.setTipo("PESCADO");
 		pezroca.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(pezroca);
 		
 		Ingrediente sueladelimon = new Ingrediente();
-		sueladelimon.setNombre("suela de limón");
+		sueladelimon.setNombre("Suela de Limón");
 		sueladelimon.setTipo("PESCADO");
 		sueladelimon.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(sueladelimon);
 		
 		Ingrediente carpa = new Ingrediente();
-		carpa.setNombre("carpa");
+		carpa.setNombre("Carpa");
 		carpa.setTipo("PESCADO");
 		carpa.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(carpa);
 		
 		Ingrediente calamar = new Ingrediente();
-		calamar.setNombre("calamar");
+		calamar.setNombre("Calamar");
 		calamar.setTipo("PESCADO");
 		calamar.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(calamar);
 		
 		Ingrediente cornalitos = new Ingrediente();
-		cornalitos.setNombre("cornalitos");
+		cornalitos.setNombre("Cornalitos");
 		cornalitos.setTipo("PESCADO");
 		cornalitos.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(cornalitos);
@@ -614,163 +614,163 @@ public class ControladorInsertar {
 		// CONDIMENTOS
 		
 		Ingrediente mayonesa = new Ingrediente();
-		mayonesa.setNombre("mayonesa");
+		mayonesa.setNombre("Mayonesa");
 		mayonesa.setTipo("CONDIMENTOS");
 		mayonesa.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(mayonesa);
 		
 		Ingrediente salfina = new Ingrediente();
-		salfina.setNombre("sal fina");
+		salfina.setNombre("Sal fina");
 		salfina.setTipo("CONDIMENTOS");
 		salfina.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(salfina);
 		
 		Ingrediente salsadetomate = new Ingrediente();
-		salsadetomate.setNombre("salsa de tomate");
+		salsadetomate.setNombre("Salsa de Tomate");
 		salsadetomate.setTipo("CONDIMENTOS");
 		salsadetomate.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(salsadetomate);
 		
 		Ingrediente vinagre = new Ingrediente();
-		vinagre.setNombre("vinagre");
+		vinagre.setNombre("Vinagre");
 		vinagre.setTipo("CONDIMENTOS");
 		vinagre.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(vinagre);
 		
 		Ingrediente salsadesoja = new Ingrediente();
-		salsadesoja.setNombre("salsa de soja");
+		salsadesoja.setNombre("Salsa de Soja");
 		salsadesoja.setTipo("CONDIMENTOS");
 		salsadesoja.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(salsadesoja);
 		
 		Ingrediente salsapicante = new Ingrediente();
-		salsapicante.setNombre("salsa picante");
+		salsapicante.setNombre("Salsa Picante");
 		salsapicante.setTipo("CONDIMENTOS");
 		salsapicante.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(salsapicante);
 		
 		Ingrediente salsadebarbacoa = new Ingrediente();
-		salsadebarbacoa.setNombre("salsa de barbacoa");
+		salsadebarbacoa.setNombre("Salsa de Barbacoa");
 		salsadebarbacoa.setTipo("CONDIMENTOS");
 		salsadebarbacoa.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(salsadebarbacoa);
 		
 		Ingrediente aderezoranch = new Ingrediente();
-		aderezoranch.setNombre("aderezo ranch");
+		aderezoranch.setNombre("Aderezo Ranch");
 		aderezoranch.setTipo("CONDIMENTOS");
 		aderezoranch.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(aderezoranch);
 		
 		Ingrediente vinagredesidrademanzana = new Ingrediente();
-		vinagredesidrademanzana.setNombre("vinagre de sidra de manzana ");
+		vinagredesidrademanzana.setNombre("Vinagre de Sidra de Manzana ");
 		vinagredesidrademanzana.setTipo("CONDIMENTOS");
 		vinagredesidrademanzana.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(vinagredesidrademanzana);
 		
 		Ingrediente vinagredevino = new Ingrediente();
-		vinagredevino.setNombre("vinagre de vino");
+		vinagredevino.setNombre("Vinagre de Vino");
 		vinagredevino.setTipo("CONDIMENTOS");
 		vinagredevino.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(vinagredevino);
 		
 		Ingrediente vinagredearroz = new Ingrediente();
-		vinagredearroz.setNombre("vinagre de arroz");
+		vinagredearroz.setNombre("Vinagre de Arroz");
 		vinagredearroz.setTipo("CONDIMENTOS");
 		vinagredearroz.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(vinagredearroz);
 		
 		Ingrediente aderezoparaensaladas = new Ingrediente();
-		aderezoparaensaladas.setNombre("aderezo para ensaladas");
+		aderezoparaensaladas.setNombre("Aderezo para Ensaladas");
 		aderezoparaensaladas.setTipo("CONDIMENTOS");
 		aderezoparaensaladas.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(aderezoparaensaladas);
 		
 		Ingrediente tabasco = new Ingrediente();
-		tabasco.setNombre("tabasco");
+		tabasco.setNombre("Tabasco");
 		tabasco.setTipo("CONDIMENTOS");
 		tabasco.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(tabasco);
 		
 		Ingrediente salsadepescado = new Ingrediente();
-		salsadepescado.setNombre("salsa de pescado");
+		salsadepescado.setNombre("Salsa de Pescado");
 		salsadepescado.setTipo("CONDIMENTOS");
 		salsadepescado.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(salsadepescado);
 		
 		Ingrediente miel = new Ingrediente();
-		miel.setNombre("miel");
+		miel.setNombre("Miel");
 		miel.setTipo("CONDIMENTOS");
 		miel.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(miel);
 		
 		Ingrediente mostaza = new Ingrediente();
-		mostaza.setNombre("mostaza");
+		mostaza.setNombre("Mostaza");
 		mostaza.setTipo("CONDIMENTOS");
 		mostaza.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(mostaza);
 		
 		Ingrediente salsatartara = new Ingrediente();
-		salsatartara.setNombre("salsa tártara");
+		salsatartara.setNombre("Salsa Tártara");
 		salsatartara.setTipo("CONDIMENTOS");
 		salsatartara.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(salsatartara);
 		
 		Ingrediente salsadecoctel = new Ingrediente();
-		salsadecoctel.setNombre("salsa de cóctel");
+		salsadecoctel.setNombre("Salsa de Cóctel");
 		salsadecoctel.setTipo("CONDIMENTOS");
 		salsadecoctel.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(salsadecoctel);
 		
 		Ingrediente marsala = new Ingrediente();
-		marsala.setNombre("marsala");
+		marsala.setNombre("Marsala");
 		marsala.setTipo("CONDIMENTOS");
 		marsala.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(marsala);
 		
 		Ingrediente salsadeadobo = new Ingrediente();
-		salsadeadobo.setNombre("salsa de adobo");
+		salsadeadobo.setNombre("Salsa de Adobo");
 		salsadeadobo.setTipo("CONDIMENTOS");
 		salsadeadobo.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(salsadeadobo);
 		
 		Ingrediente ketchup = new Ingrediente();
-		ketchup.setNombre("ketchup");
+		ketchup.setNombre("Ketchup");
 		ketchup.setTipo("CONDIMENTOS");
 		ketchup.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(ketchup);
 		
 		Ingrediente aderezodesesamo = new Ingrediente();
-		aderezodesesamo.setNombre("aderezo de sésamo");
+		aderezodesesamo.setNombre("Aderezo de Sésamo");
 		aderezodesesamo.setTipo("CONDIMENTOS");
 		aderezodesesamo.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(aderezodesesamo);
 		
 		Ingrediente ponzu = new Ingrediente();
-		ponzu.setNombre("ponzu");
+		ponzu.setNombre("Ponzu");
 		ponzu.setTipo("CONDIMENTOS");
 		ponzu.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(ponzu);
 		
 		Ingrediente salsadepato = new Ingrediente();
-		salsadepato.setNombre("salsa de pato");
+		salsadepato.setNombre("Salsa de Pato");
 		salsadepato.setTipo("CONDIMENTOS");
 		salsadepato.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(salsadepato);
 		
 		Ingrediente salsapickapeppa = new Ingrediente();
-		salsapickapeppa.setNombre("salsa pickapeppa");
+		salsapickapeppa.setNombre("Salsa Pickapeppa");
 		salsapickapeppa.setTipo("CONDIMENTOS");
 		salsapickapeppa.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(salsapickapeppa);
 		
 		Ingrediente jugodeyuzu = new Ingrediente();
-		jugodeyuzu.setNombre("jugo de yuzu");
+		jugodeyuzu.setNombre("Jugo de Yuzu");
 		jugodeyuzu.setTipo("CONDIMENTOS");
 		jugodeyuzu.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(jugodeyuzu);
 		
 		Ingrediente salsadecrema = new Ingrediente();
-		salsadecrema.setNombre("salsa de crema");
+		salsadecrema.setNombre("Salsa de Crema");
 		salsadecrema.setTipo("CONDIMENTOS");
 		salsadecrema.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(salsadecrema);

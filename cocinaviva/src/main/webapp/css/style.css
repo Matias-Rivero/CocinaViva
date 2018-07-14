@@ -181,10 +181,11 @@ font-family: 'Fira Sans', sans-serif;
 }
 
 @media (min-width: 768px) {
-  .lead2 .leadco .leadp .leadc .leadv .leadl{
+  .lead2 .leadco .leadp .leadc .leadv .leadl .leadNombr{
     font-size: 21px;
   }
 }
+
 
 .gtco-container {
   max-width: 1100px;
