@@ -75,7 +75,7 @@
 				<div class="row">
 					<div class="col-sm-4 col-xs-12">
 						<div id="gtco-logo">
-							<img src="images/logo.png" width="170px" height="60px" style="margin:-10px"/>
+							<img src="images/logo.png" width="150px" />
 						</div>
 					</div>
 

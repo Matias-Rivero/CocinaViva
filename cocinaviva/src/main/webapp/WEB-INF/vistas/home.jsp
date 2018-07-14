@@ -79,7 +79,7 @@
 				<div class="row">
 					<div class="col-sm-4 col-xs-12">
 						<div id="gtco-logo">
-							<img src="images/logo.png" width="170px" height="60px" style="margin:-10px" />
+							<img src="images/logo.png" width="150px" />
 						</div>
 					</div>
 
@@ -158,10 +158,9 @@
 															<div class="table-responsive">
 																<table class="table table-hover">
 																	<thead>
-																		<tr class="info">
-																			
+																		<tr>
 																			<th><span class="lead"><strong>Lacteos</strong></span></th>
-																			<th><span class="lead ">Estado</span></th>
+																			<th><span class="lead colorverde">Estado</span></th>
 																			<th><span class="lead"></span></th>
 																			<th><span class="lead">Cantidad</span></th>
 																			<th><span class="lead">Fecha de:</span></th>
@@ -172,34 +171,38 @@
 																			var="ingredientes">
 																			<tr align="left">
 																				<c:if test="${ingredientes.estado != 'VENCIDO'}">
-																					<td style="width:255px;"><span class="lead"><form:checkbox
+																					<td><span class="lead"><form:checkbox
 																								path="seleccionados" value="${ingredientes.id}"
-																								class="check" title="Usar"/></span>
-																								<span class="lead">${ingredientes.nombre}</span></td>
+																								class="check" title="Usar"/>${ingredientes.nombre}</span></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
-																					<td style="width:255px;"><span class="lead"><input
-																							type="checkbox" value="disabled" disabled>&nbsp;${ingredientes.nombre}</span></td>
+																					<td><span class="lead"><input
+																							type="checkbox" value="disabled" disabled>${ingredientes.nombre}</span></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'NOVENCIDO'}">
-																					<td ><button type="button" class="btn btn-success">Usable</button></td>
+																					<td class="success"><label
+																						class="label label-success">Usable</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVENCER'}">
-																					<td ><button type="button" class="btn btn-warning">Por vencer</button></td>
+																					<td class="danger"><label
+																						class="label label-warning">Por vencer</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'SINAVISO'}">
-																					<td ><button type="button" class="btn btn-success">Usable</button></td>
+																					<td class="success"><label
+																						class="label label-success">Usable</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVISO'}">
-																					<td ><button type="button" class="btn btn-warning">Mas de 10 dias</button></td>
+																					<td class="warning"><label
+																						class="label label-warning">Mas de 10 dias</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
-																					<td><button type="button" class="btn btn-danger">Vencido</button></td>
+																					<td class="danger"><label
+																						class="label label-danger">Vencido</label></td>
 																				</c:if>
 
 																				<td><a href='javascript:;'
-																					onclick="eliminarIngrediente(${ingredientes.id},'${ingredientes.nombre}','${ingredientes.cantidad}','${ingredientes.unidad}');">
-																					<span class="lead glyphicon glyphicon-trash"></span></a></td>
+																					onclick="eliminarIngrediente(${ingredientes.id},'${ingredientes.nombre}','${ingredientes.cantidad}','${ingredientes.unidad}');"><span
+																						class="lead glyphicon glyphicon-trash"></span></a></td>
 
 																				<td><span class="lead4">${ingredientes.cantidad}</span>
 																					<c:if test="${ingredientes.unidad == 'Lts'}">
@@ -231,10 +234,9 @@
 															<div class="table-responsive">
 																<table class="table table-hover">
 																	<thead>
-																		<tr class="success">
-																																				
-																			<th style="width:255px;"><span class="lead"><strong>Vegetales</strong></span></th>
-																			<th><span class="lead">Estado</span></th>
+																		<tr>
+																			<th><span class="lead"><strong>Vegetales</strong></span></th>
+																			<th><span class="lead colorverde">Estado</span></th>
 																			<th><span class="lead"></span></th>
 																			<th><span class="lead">Cantidad</span></th>
 																			<th><span class="lead">Fecha de:</span></th>
@@ -245,29 +247,33 @@
 																			var="ingredientes">
 																			<tr align="left">
 																				<c:if test="${ingredientes.estado != 'VENCIDO'}">
-																					<td style="width:255px;"><span class="lead"><form:checkbox
+																					<td><span class="lead"><form:checkbox
 																								path="seleccionados" value="${ingredientes.id}"
-																								class="check" title="Usar" /></span>
-																								<span class="lead">${ingredientes.nombre}</span></td>
+																								class="check" title="Usar" />${ingredientes.nombre}</span></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
-																					<td style="width:255px;"><span class="lead"><input
+																					<td><span class="lead"><input
 																							type="checkbox" value="disabled" disabled>${ingredientes.nombre}</span></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'NOVENCIDO'}">
-																					<td ><button type="button" class="btn btn-success">Usable</button></td>
+																					<td class="success"><label
+																						class="label label-success">Usable</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVENCER'}">
-																					<td ><button type="button" class="btn btn-warning">Por vencer</button></td>
+																					<td class="danger"><label
+																						class="label label-warning">Por vencer</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'SINAVISO'}">
-																					<td ><button type="button" class="btn btn-success">Usable</button></td>
+																					<td class="success"><label
+																						class="label label-success">Usable</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVISO'}">
-																					<td ><button type="button" class="btn btn-warning">Mas de 10 dias</button></td>
+																					<td class="warning"><label
+																						class="label label-warning">Mas de 10 dias</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
-																					<td><button type="button" class="btn btn-danger">Vencido</button></td>
+																					<td class="danger"><label
+																						class="label label-danger">Vencido</label></td>
 																				</c:if>
 
 																				<td><a href='javascript:;'
@@ -304,10 +310,9 @@
 															<div class="table-responsive">
 																<table class="table table-hover">
 																	<thead>
-																		<tr class="warning">
-																			
-																			<th style="width:255px;"><span class="lead"><strong>Carnes</strong></span></th>
-																			<th><span class="lead">Estado</span></th>
+																		<tr>
+																			<th><span class="lead"><strong>Carnes</strong></span></th>
+																			<th><span class="lead colorverde">Estado</span></th>
 																			<th><span class="lead"></span></th>
 																			<th><span class="lead">Cantidad</span></th>
 																			<th><span class="lead">Fecha de:</span></th>
@@ -318,28 +323,33 @@
 																			var="ingredientes">
 																			<tr align="left">
 																				<c:if test="${ingredientes.estado != 'VENCIDO'}">
-																					<td style="width:255px;"><span class="lead"><form:checkbox
+																					<td><span class="lead"><form:checkbox
 																								path="seleccionados" value="${ingredientes.id}"
-																								class="check"  title="Usar"/></span>
-																								<span class="lead">${ingredientes.nombre}</span></td>
+																								class="check"  title="Usar"/>${ingredientes.nombre}</span></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
-																					<td style="width:255px;"><span class="lead"><input type="checkbox" value="disabled" disabled>${ingredientes.nombre}</span></td>
+																					<td><span class="lead"><input
+																							type="checkbox" value="disabled" disabled>${ingredientes.nombre}</span></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'NOVENCIDO'}">
-																					<td><button type="button" class="btn btn-success">Usable</button></td>
+																					<td class="success"><label
+																						class="label label-success">Usable</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVENCER'}">
-																					<td ><button type="button" class="btn btn-warning">Por vencer</button></td>
+																					<td class="danger"><label
+																						class="label label-warning">Por vencer</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'SINAVISO'}">
-																					<td ><button type="button" class="btn btn-success">Usable</button></td>
+																					<td class="success"><label
+																						class="label label-success">Usable</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVISO'}">
-																					<td ><button type="button" class="btn btn-warning">Mas de 10 dias</button></td>
+																					<td class="warning"><label
+																						class="label label-warning">Mas de 10 dias</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
-																					<td ><button type="button" class="btn btn-danger">Vencido</buton></td>
+																					<td class="danger"><label
+																						class="label label-danger">Vencido</label></td>
 																				</c:if>
 
 																				<td><a href='javascript:;'
@@ -376,10 +386,9 @@
 															<div class="table-responsive">
 																<table class="table table-hover">
 																	<thead>
-																		<tr class="primary">
-																			
-																			<th style="width:255px;"><span class="lead"><strong>Pescado</strong></span></th>
-																			<th><span class="lead ">Estado</span></th>
+																		<tr>
+																			<th><span class="lead"><strong>Pescado</strong></span></th>
+																			<th><span class="lead colorverde">Estado</span></th>
 																			<th><span class="lead"></span></th>
 																			<th><span class="lead">Cantidad</span></th>
 																			<th><span class="lead">Fecha de:</span></th>
@@ -390,29 +399,33 @@
 																			var="ingredientes">
 																			<tr align="left">
 																				<c:if test="${ingredientes.estado != 'VENCIDO'}">
-																					<td style="width:255px;"><span class="lead"><form:checkbox
+																					<td><span class="lead"><form:checkbox
 																								path="seleccionados" value="${ingredientes.id}"
-																								class="check" title="Usar"/></span>
-																								<span class="lead">${ingredientes.nombre}</span></td>
+																								class="check" title="Usar"/>${ingredientes.nombre}</span></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
-																					<td style="width:255px;"><span class="lead"><input
+																					<td><span class="lead"><input
 																							type="checkbox" value="disabled" disabled>${ingredientes.nombre}</span></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'NOVENCIDO'}">
-																					<td ><button type="button" class="btn btn-success">Usable</button></td>
+																					<td class="success"><label
+																						class="label label-success">Usable</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVENCER'}">
-																					<td ><button type="button" class="btn btn-warning">Por vencer</button></td>
+																					<td class="danger"><label
+																						class="label label-warning">Por vencer</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'SINAVISO'}">
-																					<td ><button type="button" class="btn btn-success">Usable</button></td>
+																					<td class="success"><label
+																						class="label label-success">Usable</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVISO'}">
-																					<td ><button type="button" class="btn btn-warning">Mas de 10 dias</button></td>
+																					<td class="warning"><label
+																						class="label label-warning">Mas de 10 dias</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
-																					<td ><button type="button" class="btn btn-danger">Vencido</button></td>
+																					<td class="danger"><label
+																						class="label label-danger">Vencido</label></td>
 																				</c:if>
 
 																				<td><a href='javascript:;'
@@ -449,10 +462,9 @@
 															<div class="table-responsive">
 																<table class="table table-hover">
 																	<thead>
-																		<tr class="danger">
-																			
-																			<th style="width:255px;"><span class="lead"><strong>Condimento</strong></span></th>
-																			<th><span class="lead">Estado</span></th>
+																		<tr>
+																			<th><span class="lead"><strong>Condimento</strong></span></th>
+																			<th><span class="lead colorverde">Estado</span></th>
 																			<th><span class="lead"></span></th>
 																			<th><span class="lead">Cantidad</span></th>
 																			<th><span class="lead">Fecha de:</span></th>
@@ -463,29 +475,32 @@
 																			var="ingredientes">
 																			<tr align="left">
 																				<c:if test="${ingredientes.estado != 'VENCIDO'}">
-																					<td style="width:255px;"><span class="lead"><form:checkbox
+																					<td><span class="lead"><form:checkbox
 																								path="seleccionados" value="${ingredientes.id}"
-																								class="check" title="Usar" /></span>
-																								<span>${ingredientes.nombre}</span></td>
+																								class="check" title="Usar" />${ingredientes.nombre}</span></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
-																					<td style="width:255px;"><span class="lead"><input
+																					<td><span class="lead"><input
 																							type="checkbox" value="disabled" disabled>${ingredientes.nombre}</span></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'NOVENCIDO'}">
-																					<td ><button type="button" class="btn btn-success">Usable</button></td>
+																					<td class="success"><label
+																						class="label label-success">Usable</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVENCER'}">
-																					<td ><button type="button" class="btn btn-warning">Por vencer</button></td>
+																					<td class="danger"><label
+																						class="label label-warning">Por vencer</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'SINAVISO'}">
-																					<td ><button type="button" class="btn btn-success">Usable</button></td>
+																					<td class="success"><label
+																						class="label label-success">Usable</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVISO'}">
-																					<td ><button type="button" class="btn btn-warning">Mas de 10 dias</button></td>
+																					<td class="warning"><label
+																						class="label label-warning">Mas de 10 dias</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
-																					<td ><label
+																					<td class="danger"><label
 																						class="label label-danger">Vencido</label></td>
 																				</c:if>
 
