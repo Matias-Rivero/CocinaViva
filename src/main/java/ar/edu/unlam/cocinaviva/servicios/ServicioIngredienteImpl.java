@@ -214,6 +214,11 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 	}
 
 	@Override
+	public Ingrediente traerUnIngredienteDelInventarioPorSuNombre(String nombre) {
+		return servicioIngredienteDao.traerUnIngredienteDelInventarioPorSuNombre(nombre);
+	}
+	
+	@Override
 	public List<Ingrediente> traerIngredientesSeleccionados(Integer[] seleccionados) {
 			Ingrediente i;
 			List<Ingrediente> ingredientesSeleccionados = new LinkedList<Ingrediente>();

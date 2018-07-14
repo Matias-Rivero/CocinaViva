@@ -128,7 +128,7 @@
 						                
 									<c:forEach items="${receta.listaIngrediente}" var="ingrediente">	
 									
-		<li class="list-group-item d-flex justify-content-between lh-condensed">${ingrediente.cantidadstring} ${ingrediente.nombre}</li>
+		<li class="list-group-item d-flex justify-content-between lh-condensed">${ingrediente.nombre} ${ingrediente.cantidadstring}</li>
 
 						            </c:forEach>    
 
@@ -151,8 +151,23 @@
 					              <h3 class="panel-title">Paso ${pasos.paso}</h3>
 					            </div>
 					            <div class="panel-body">
-					              ${pasos.descripcion}
-					            </div>
+					            <c:choose>
+	   							<c:when test="${not empty pasos.imagen}">
+	   								<div class="col-xs-8">
+			                          ${pasos.descripcion}
+			                        </div>
+			                    																													
+			                        <div class="col-xs-4">
+			                          <div class="pull-right"><a href="javascript:imagenPopUp(${pasos.paso});" id="${receta.carpeta}${pasos.paso}"><img id="${pasos.paso}" src="images/recetas/${receta.carpeta}/${pasos.imagen}" alt="receta" class="img-responsive img-thumbnail" style="width: 125px; height: 100px;" data-holder-rendered="true"/></a></div>
+			                        </div>   							
+		   						</c:when>
+		   						<c:otherwise>
+		   							<div class="col-xs-12">
+			                          ${pasos.descripcion}
+			                        </div>
+	   							</c:otherwise>
+	   							</c:choose>		
+			                   	</div>
 					          </div>
 					          </c:forEach> 
 						     						      
@@ -182,7 +197,7 @@
 		  </div>
 		</div>
 		
-		<div id="ModalCrear" class="modal fade" tabindex="-1" role="dialog"
+		<div id="ModalCreare" class="modal fade" tabindex="-1" role="dialog"
 			style="overflow-y: scroll;">
 			<div class="modal-dialog modal-sm">
 				<div class="modal-content">
@@ -206,7 +221,16 @@
 				</div>
 			</div>
 		</div>
-		
+		<div id="ModalCrear" class="modal fade" tabindex="-1" role="dialog"
+	      style="overflow-y: scroll;">
+	      <div class="modal-dialog modal-sm">
+	        <div class="modal-content">
+	
+	        <img src="" id="verimg" alt="verimg" class="img-responsive img-thumbnail" data-holder-rendered="true"/> 
+	
+	        </div>
+	      </div>
+	    </div>
 		<footer id="gtco-footer" role="contentinfo"
 			style="background-image: url(images/img_bg_1.jpg)"
 			data-stellar-background-ratio="0.5">
@@ -252,6 +276,14 @@
 		</footer>
 
 	</div>
+	
+	<script type="text/javascript">
+    function imagenPopUp(idimagen) { 
+    var imgsrc = document.getElementById(idimagen).src;    
+      $('#verimg').attr('src',''+imgsrc+'');   
+      $('#ModalCrear').modal('show');
+    }
+ 	</script>
 
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>

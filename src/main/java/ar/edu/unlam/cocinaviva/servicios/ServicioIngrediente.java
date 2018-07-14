@@ -68,6 +68,8 @@ public interface ServicioIngrediente {
 	List<Ingrediente> traerListaDeIngredientesNoVencidosDeUnUsuario(Usuario usuario);
 
 	void actualizarFVDeIngQuePerecen(Usuario usuario) throws ParseException;
+
+	Ingrediente traerUnIngredienteDelInventarioPorSuNombre(String nombre);
 	
 
 }

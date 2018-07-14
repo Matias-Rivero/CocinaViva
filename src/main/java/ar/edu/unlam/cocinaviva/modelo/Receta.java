@@ -29,6 +29,7 @@ public class Receta {
 	private String imagen;
 	private Integer calorias;
 	private Integer tiempo;
+	private String carpeta;
 	private String uso;
 	private String tipo;
 	private String descripcion;
@@ -107,7 +108,14 @@ public class Receta {
 		this.calorias = calorias;
 	}
 
+	public String getCarpeta() {
+		return carpeta;
+	}
 
+	public void setCarpeta(String carpeta) {
+		this.carpeta = carpeta;
+	}
+	
 	public String getUso() {
 		return uso;
 	}

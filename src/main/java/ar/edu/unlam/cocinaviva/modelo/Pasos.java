@@ -18,6 +18,7 @@ public class Pasos {
 	private Long id;
 	private Integer paso;
 	private String descripcion;
+	private String imagen;
 	
 	public Integer getPaso() {
 		return paso;
@@ -30,6 +31,12 @@ public class Pasos {
 	}
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+	public String getImagen() {
+		return imagen;
+	}
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 
 	

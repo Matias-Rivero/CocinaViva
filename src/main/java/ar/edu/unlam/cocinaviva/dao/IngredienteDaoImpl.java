@@ -85,4 +85,12 @@ public class IngredienteDaoImpl implements IngredienteDao {
 		session.update(ingredienteUs);
 	}
 
+	@Override
+	public Ingrediente traerUnIngredienteDelInventarioPorSuNombre(String nombre) {
+		return (Ingrediente) (sessionFactory.getCurrentSession().createCriteria(Ingrediente.class)
+				.add(Restrictions.eq("uso", "INVENTARIO"))
+				.add(Restrictions.eq("nombre", nombre))
+				.uniqueResult());
+	}
+
 }
