@@ -24,10 +24,8 @@
 <meta name="twitter:url" content="" />
 <meta name="twitter:card" content="" />
 
-<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700"
-	rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Kaushan+Script"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet">
 
 <!-- Animate.css -->
 <link rel="stylesheet" href="css/animate.css">
@@ -77,7 +75,7 @@
 				<div class="row">
 					<div class="col-sm-4 col-xs-12">
 						<div id="gtco-logo">
-							<a href="home">Cocina Viva <em>.</em></a>
+							<img src="images/logo.png" width="170px" height="60px" style="margin:-10px"/>
 						</div>
 					</div>
 
@@ -104,6 +102,9 @@
 											</c:forEach>
 										</ul>
 									</li>
+									<li class="btn-cta"><a href="home"><span>Inventario</span></a></li>
+									<li class="btn-cta"><a href="modificar"><span>Modificar Ingredientes</span></a></li>
+									<li class="btn-cta"><a href="recetas"><span>Buscar Recetas</span></a></li>
 									<li class="btn-cta"><a href="cerrarSesion"><span>Salir</span></a></li>
 								</ul>
 							</div>
@@ -121,6 +122,7 @@
 			<div class="py-5 text-center">
 				<h1>Mi Perfil</h1>
 			</div>
+						<input type="button" onclick="history.back()" value="Volver Atr�s" class="btn btn-light"></input>
 
 			<div class="row">
 				<!-- <h2>blabla</h2> -->
