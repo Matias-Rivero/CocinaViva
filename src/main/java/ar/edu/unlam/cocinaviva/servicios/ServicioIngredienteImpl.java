@@ -57,15 +57,15 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 			ingrediente.setPerece("SEPUDRE");
 			ingrediente.setEstado("SINAVISO");
 		}
-		if(ingrediente.getTipo() == "CONDIMENTOS" && ingrediente.getPerece() != "SEPUDRE"){
+		if(ingrediente.getTipo() == "CONDIMENTOS" && ingrediente.getPerece() != "SEPUDRE" && ingrediente.getPerece() != "SEVENCE"){
 			ingrediente.setPerece("SEVENCE");	
 			ingrediente.setEstado("NOVENCIDO");
 		}
-		if(ingrediente.getTipo() == "LACTEOS" && ingrediente.getPerece() != "SEPUDRE"){
+		if(ingrediente.getTipo() == "LACTEOS" && ingrediente.getPerece() != "SEPUDRE" && ingrediente.getPerece() != "SEVENCE"){
 			ingrediente.setPerece("SEVENCE");
 			ingrediente.setEstado("NOVENCIDO");
 		}
-		if(ingrediente.getTipo() == "VEGETALES" && ingrediente.getPerece() != "SEPUDRE"){
+		if(ingrediente.getTipo() == "VEGETALES" && ingrediente.getPerece() != "SEPUDRE" && ingrediente.getPerece() != "SEVENCE"){
 			ingrediente.setPerece("SEPUDRE");
 			ingrediente.setEstado("SINAVISO");
 		}	
@@ -511,8 +511,8 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 				  if(ingredienteUs.getDias() == null || (!ingredienteUs.getDias().equals(difDiasAvisoSePudre)) ){  
 					  ingredienteUs.setDias(difDiasAvisoSePudre);
 				  
-				  if(difDiasAvisoSePudre < 0 && difDiasAvisoSePudre <= -10){
-					  ingredienteUs.setEstado("AVISO");  // Aviso que hace 10 dias que lo compraste fijate porque se pudre
+				  if(difDiasAvisoSePudre < 0 && difDiasAvisoSePudre <= -5){
+					  ingredienteUs.setEstado("AVISO");  // Aviso que hace 5 dias que lo compraste fijate porque se pudre
 					  actualizarIngredientesAUsuario(ingredienteUs);
 					  servicioNotificacion.NuevaNotificacionIngredientePasado(usuario,ingredienteUs);
 					  servicioUsuarioDao.actualizarUsuario(usuario);
@@ -575,6 +575,17 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 		  }  
 		}		
 		
+	}
+
+	@Override
+	public Ingrediente traerCopiaDeUnIngredienteDelInventario(Ingrediente ingredienteDelInventario) {
+		Ingrediente ingrediente = new Ingrediente();
+		ingrediente.setNombre(ingredienteDelInventario.getNombre());		
+		ingrediente.setUnidad(ingredienteDelInventario.getUnidad());
+		ingrediente.setTipo(ingredienteDelInventario.getTipo());
+		ingrediente.setPerece(ingredienteDelInventario.getPerece());
+		ingrediente.setEstado(ingredienteDelInventario.getEstado());
+		return ingrediente;
 	}
 	
 }

@@ -70,6 +70,8 @@ public interface ServicioIngrediente {
 	void actualizarFVDeIngQuePerecen(Usuario usuario) throws ParseException;
 
 	Ingrediente traerUnIngredienteDelInventarioPorSuNombre(String nombre);
+
+	Ingrediente traerCopiaDeUnIngredienteDelInventario(Ingrediente ingredienteDelInventario);
 	
 
 

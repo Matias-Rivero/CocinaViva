@@ -130,10 +130,6 @@
 							data-to="${listaRecetasLargo}" data-speed="300" data-refresh-interval="50"></span>
 					
 					</h1>
-<<<<<<< HEAD
-=======
-
->>>>>>> mergeDevelop
 					<a href="trecetas"><span class="label label-warning pull-left">�Usalos Todos!</span></a>
 					<label class="label label-warning">Con:</label>
 					<form:form id="form1" method="POST" modelAttribute="lingrediente"
@@ -233,7 +229,12 @@
 				</div>
 				<br>
 				</c:if>
-
+				<c:if test="${empty listaRecetas}">
+				<div class="text-center">
+				<label class="label label-danger">Lo sentimos - todav�a no tenemos recetas con esos ingredientes.</label>				
+				</div>
+				<br>
+				</c:if>
 				<div class="row">
 					<c:choose>
 						<c:when test="${not empty listaRecetasBuscadas}">
