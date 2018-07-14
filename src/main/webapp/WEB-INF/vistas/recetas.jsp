@@ -24,10 +24,8 @@
 <meta name="twitter:url" content="" />
 <meta name="twitter:card" content="" />
 
-<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700"
-	rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Kaushan+Script"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet">
 
 <!-- Animate.css -->
 <link rel="stylesheet" href="css/animate.css">
@@ -77,7 +75,7 @@
 				<div class="row">
 					<div class="col-sm-4 col-xs-12">
 						<div id="gtco-logo">
-							<a href="home">Cocina Viva <em>.</em></a>
+							<img src="images/logo.png" width="170px" height="60px" style="margin:-10px"/>
 						</div>
 					</div>
 
@@ -85,8 +83,12 @@
 						<c:when test="${usuariologueado != null}">
 							<div class="col-xs-8 text-right menu-1">
 								<ul>
-									<li class="btn-cta"><a href="home"><span>Buscar
-												Recetas</span></a></li>
+									<li class="btn-cta"><a href="home"><span>Inventario</span></a></li>
+									<li class="btn-cta"><a href="modificar"><span>Modificar Ingredientes</span></a></li>
+									<li class="btn-cta"><a href="perfilcliente"><span>Mi
+												perfil: ${usuariologueado.alias}</span></a></li>
+<!-- 								<li class="btn-cta"><a href="home"><span>Buscar -->
+<!-- 												Recetas</span></a></li> -->
 									<li class="btn-cta"><a href="cerrarSesion"><span>Salir</span></a></li>
 								</ul>
 							</div>
@@ -107,8 +109,10 @@
 						Recetas Encontradas!<span
 							class="badge pull-right counter js-counter" data-from="0"
 							data-to="${listaRecetasLargo}" data-speed="300" data-refresh-interval="50"></span>
+					
 					</h1>
-					<a href="trecetas"><span class="label label-warning pull-left">¡Usalos Todos!</span></a>
+
+					<a href="trecetas"><span class="label label-warning pull-left">ï¿½Usalos Todos!</span></a>
 					<label class="label label-warning">Con:</label>
 					<form:form id="form1" method="POST" modelAttribute="lingrediente"
 									action="drecetas">
@@ -123,6 +127,8 @@
 						</c:forEach>
 					</form:form>
 				</div>
+										<input type="button" onclick="history.back()" value="Volver Atrï¿½s" class="btn btn-light"></input>
+				
 				<div class="row">
 		          <div class="col-md-12 order-md-12 mb-12">
 		          <br>
@@ -141,7 +147,7 @@
 		              <c:if test="${not empty loquebusco}"><li><a class="glyphicon glyphicon-remove" href="javascript:buscarRecetasVacio();"><span class="label label-info">${loquebusco}</span></a></li></c:if>
 		            </ul>
           </div>
-								
+
 				<div class="row">
 					<c:choose>
 						<c:when test="${not empty listaRecetasBuscadas}">
@@ -205,10 +211,11 @@
 				</div>
 				<br>
 				</c:if>
+
 				<div class="row">
 					<c:choose>
-						<c:when test="${not empty listaRecetas}">
-							<c:forEach items="${listaRecetas}" var="listaRecetas">
+						<c:when test="${not empty listaRecetasBuscadas}">
+							<c:forEach items="${listaRecetasBuscadas}" var="listaRecetas">
 								<div class="col-lg-4 col-md-4 col-sm-6">
 
 										<a href="leerRecetas?id=${listaRecetas.id}"
@@ -234,13 +241,15 @@
 												 
 												  <!-- Aplicadas en las celdas (<td> o <th>) -->
 												  <c:forEach items="${listaRecetas.listaIngrediente}" var="listaIngredientes">   
-												  <tr>               
+												  <tr>
 												    <td class="active">${listaIngredientes.nombre} ${listaIngredientes.cantidadstring}</td>
 												    <c:if test = "${listaIngredientes.faltante > 0}">
 												    <td class="success"><label class="label label-success">OK</label></td>
 												    </c:if>  
 												    <c:if test = "${listaIngredientes.faltante < 0}">
+
 												    <td class="info"><label class="label label-info">FALTAN ${listaIngredientes.faltante * -1}</label></td>
+
 												    </c:if>
 												    <c:if test = "${listaIngredientes.faltante == 0}">
 												    <td class="warning"><label class="label label-warning">OK</label></td>
@@ -262,7 +271,7 @@
 					</c:choose>
 
 				</div>
-				
+
 			</div>
 		</div>
 
