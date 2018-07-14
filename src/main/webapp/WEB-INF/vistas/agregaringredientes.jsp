@@ -155,40 +155,29 @@
 										</thead>
 										<tbody class="buscar" id="tlacteos" style="display:none">
 
-											<c:forEach items="${iflacteos}" var="iflacteos">
+											<c:forEach items="${iflacteos}" var="i">
 												<tr align="left">
-<th><form:checkbox path="seleccionados" class="${iflacteos.nombre}" id="${iflacteos.id}" value="${iflacteos.id}" name="valores[]" /><span class="lead"><a href="javascript:checkIngrediente(${iflacteos.id});">${iflacteos.nombre}
-													</a></span></th>
+<th><form:checkbox path="seleccionados" onclick="checkearIngrediente()" class="${i.nombre}" id="${i.id}" value="${i.id}" name="valores[]" /><span class="lead"><a href="javascript:checkIngrediente(${i.id});">${i.nombre}</a></span></th>
 												</tr>
 											</c:forEach>
-											<c:forEach items="${ifvegetales}" var="ifvegetales">
+											<c:forEach items="${ifvegetales}" var="i">
 												<tr align="left">
-<th><span class="lead"> <form:checkbox path="seleccionados" class="${ifvegetales.nombre}" id="${ifvegetales.id}" value="${ifvegetales.id}" name="valores[]" /> ${ifvegetales.nombre}
-													</span></th>
+<th><form:checkbox path="seleccionados" onclick="checkearIngrediente()" class="${i.nombre}" id="${i.id}" value="${i.id}" name="valores[]" /><span class="lead"><a href="javascript:checkIngrediente(${i.id});">${i.nombre}</a></span></th>
 												</tr>
 											</c:forEach>
-											<c:forEach items="${ifcarnes}" var="ifcarnes">
+											<c:forEach items="${ifcarnes}" var="i">
 												<tr align="left">
-													<th><span class="lead"> <form:checkbox
-																path="seleccionados" class="${ifcarnes.nombre}" id="${ifcarnes.id}"
-																value="${ifcarnes.id}" name="valores[]" /> ${ifcarnes.nombre}
-													</span></th>
+<th><form:checkbox path="seleccionados" onclick="checkearIngrediente()" class="${i.nombre}" id="${i.id}" value="${i.id}" name="valores[]" /><span class="lead"><a href="javascript:checkIngrediente(${i.id});">${i.nombre}</a></span></th>
 												</tr>
 											</c:forEach>
-											<c:forEach items="${ifpescado}" var="ifpescado">
+											<c:forEach items="${ifpescado}" var="i">
 												<tr align="left">
-													<th><span class="lead"> <form:checkbox
-																path="seleccionados" class="${ifpescado.nombre}" id="${ifpescado.id}"
-																value="${ifpescado.id}" name="valores[]" /> ${ifpescado.nombre}
-													</span></th>
+<th><form:checkbox path="seleccionados" onclick="checkearIngrediente()" class="${i.nombre}" id="${i.id}" value="${i.id}" name="valores[]" /><span class="lead"><a href="javascript:checkIngrediente(${i.id});">${i.nombre}</a></span></th>
 												</tr>
 											</c:forEach>
-											<c:forEach items="${ifcondimento}" var="ifcondimento">
+											<c:forEach items="${ifcondimento}" var="i">
 												<tr align="left">
-													<th><span class="lead"> <form:checkbox
-																path="seleccionados" class="${ifcondimento.nombre}" id="${ifcondimento.id}"
-																value="${ifcondimento.id}" name="valores[]" /> ${ifcondimento.nombre}
-													</span></th>
+<th><form:checkbox path="seleccionados" onclick="checkearIngrediente()" class="${i.nombre}" id="${i.id}" value="${i.id}" name="valores[]" /><span class="lead"><a href="javascript:checkIngrediente(${i.id});">${i.nombre}</a></span></th>
 												</tr>
 											</c:forEach>
 										</tbody>
@@ -427,18 +416,7 @@
 	<script type="text/javascript">
 		window.onload=function() {
 		var texto = document.getElementById("busco").value;
-		if($("#f1").length != 0) {
-			for (i=0;i<document.f1.elements.length;i++) {  		
-		          if(document.f1.elements[i].type == "checkbox") {
-				               if(document.f1.elements[i].checked == 1) {  
-				            	   document.f1.elements[i].checked = false;
-				            	   document.f1.elements[i].click();
-				                  
-				                  }
-				         
-		                  }
-		            } 
-				}
+		
 		if($("#busco").val() != '') {
 			$( "#filtrar" ).val(texto);
 			$( "#filtrar" ).focus();
@@ -468,25 +446,8 @@
 	}		
 </script>	
 	<script type="text/javascript">
-	function validaEnvia() {
-		
-		 var no = "no";
-		  for (i=0;i<document.f1.elements.length;i++) {  		
-		          if(document.f1.elements[i].type == "checkbox") {
-				               if(document.f1.elements[i].checked == 1) {  
-				                  document.getElementById("agregaringre").click();
-				                  no = "si";
-				                  
-				                  }
-				         
-		                  }
-		            }      
-		        if(no == "no") { 
-		          $('#almenosuno').modal('show');
-		          $( "#filtrar" ).focus();   
-		        }          
-        
-    
+	function validaEnvia() {	
+		        	document.getElementById("agregaringre").click(); 
 	}
 	</script>
 	
@@ -549,6 +510,13 @@
 	}
 	document.onkeypress = stopRKey; 
 	</script>
+	
+	<script type="text/javascript">
+		function checkearIngrediente() {
+			validaEnvia();						
+		}
+	</script>
+	
 </body>
 </html>
 

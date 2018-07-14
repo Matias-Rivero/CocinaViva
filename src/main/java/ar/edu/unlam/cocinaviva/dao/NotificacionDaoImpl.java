@@ -6,6 +6,7 @@ import ar.edu.unlam.cocinaviva.modelo.Usuario;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.UUID;
 
 @Repository("notificacionDao")
 public class NotificacionDaoImpl implements NotificacionDao {
@@ -36,5 +38,21 @@ public class NotificacionDaoImpl implements NotificacionDao {
 				.list());
 	}
 
+	@Override
+	public List<Notificacion> GetNotificacionesParaUnUsuario(Usuario usuario){
+		Long idUsuario = usuario.getId();
+
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		Date date = new Date();
+		String fecha = dateFormat.format(date);
+
+		return (List<Notificacion>) (sessionFactory.getCurrentSession().createCriteria(Notificacion.class)
+				.add(Restrictions.eq("idUsuario", idUsuario))
+				.addOrder(Order.desc("id"))
+				.setMaxResults(6)
+				.list());
+
+
+	}
 
 }

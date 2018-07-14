@@ -5,7 +5,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -22,7 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 import ar.edu.unlam.cocinaviva.dao.IngredienteDao;
 import ar.edu.unlam.cocinaviva.dao.UsuarioDao;
 import ar.edu.unlam.cocinaviva.modelo.Ingrediente;
-import ar.edu.unlam.cocinaviva.modelo.Receta;
 import ar.edu.unlam.cocinaviva.modelo.Usuario;
 
 @Service("servicioIngrediente")
@@ -39,7 +37,7 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 	private NotificacionDao servicioNotificacionDao;
 
 	@Inject
-	private  ServicioNotificacionImpl servicioNotificacionImpl;
+	private  ServicioNotificacion servicioNotificacion;
 
 	@Override
 	public void guardarIngredienteEnInventario(Ingrediente ingrediente) {
@@ -464,7 +462,7 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 
 					  ingredienteUs.setEstado("VENCIDO");
 					  actualizarIngredientesAUsuario(ingredienteUs);
-					  servicioNotificacionImpl.NuevaNotificacionVencimiento(usuario,ingredienteUs);
+					  servicioNotificacion.NuevaNotificacionVencimiento(usuario,ingredienteUs);
 					  servicioUsuarioDao.actualizarUsuario(usuario);
 
 				  }else if(ingredienteUs.getEstado().equals("VENCIDO")){
@@ -475,7 +473,7 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 
 					  ingredienteUs.setEstado("AVENCER"); 
 					  actualizarIngredientesAUsuario(ingredienteUs);
-					  servicioNotificacionImpl.NuevaNotificacionVencimiento(usuario,ingredienteUs);
+					  servicioNotificacion.NuevaNotificacionVencimiento(usuario,ingredienteUs);
 					  servicioUsuarioDao.actualizarUsuario(usuario);
 
 				  }else if(ingredienteUs.getEstado().equals("AVENCER")){
@@ -495,7 +493,7 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 
 					  ingredienteUs.setEstado("AVISO");  // Aviso que hace 10 dias que lo compraste fijate porque se pudre
 					  actualizarIngredientesAUsuario(ingredienteUs);
-					  servicioNotificacionImpl.NuevaNotificacionIngredientePasado(usuario,ingredienteUs);
+					  servicioNotificacion.NuevaNotificacionIngredientePasado(usuario,ingredienteUs);
 					  servicioUsuarioDao.actualizarUsuario(usuario);
 
 				  }else if(ingredienteUs.getEstado().equals("AVISO")){

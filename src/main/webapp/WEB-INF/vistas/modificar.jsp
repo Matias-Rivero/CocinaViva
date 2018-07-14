@@ -90,6 +90,23 @@
 								<ul>
 									<li class="btn-cta"><a href="perfilcliente"><span>Mi
 												perfil: ${usuariologueado.alias}</span></a></li>
+									<li class="has-dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-microphone"></i> <img src="../../images/notification-bell.png" alt="Notificaciones"></a>
+										<ul class="dropdown">
+											<c:forEach items="${notificacionesUsu}" var="notificacion">
+												<li>
+													<c:choose>
+														<c:when test="${notificacion.tipoNotificacion == 'SIN_STOCK'}">
+															<a href="ingredientes"><span class="label label-primary">${notificacion.fechaNotificacion}</span> ${notificacion.mensaje} </a>
+														</c:when>
+														<c:otherwise>
+															<a href="modificar"><span class="label label-primary">${notificacion.fechaNotificacion}</span> ${notificacion.mensaje} </a>
+														</c:otherwise>
+													</c:choose>
+												</li>
+												<li role="presentation" class="divider"></li>
+											</c:forEach>
+										</ul>
+									</li>
 									<li class="btn-cta"><a href="cerrarSesion"><span>Salir</span></a></li>
 								</ul>
 							</div>
@@ -246,7 +263,7 @@
 		      <div class="modal-header">
 		      	<div class="alert alert-danger" role="alert">
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>        
-				  <h3>¡La fecha es necesaria!</h3>
+				  <h3>ï¿½La fecha es necesaria!</h3>
 				</div>
 		      </div>  
 		    </div>

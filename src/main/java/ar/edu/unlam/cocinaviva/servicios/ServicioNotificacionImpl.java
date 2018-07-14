@@ -9,6 +9,8 @@ import ar.edu.unlam.cocinaviva.servicios.ServicioNotificacion;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import java.text.DateFormat;
@@ -17,7 +19,8 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-@Repository("servicioNotificacion")
+@Service("servicioNotificacion")
+@Transactional
 public class ServicioNotificacionImpl implements ServicioNotificacion {
 
 	@Inject
@@ -157,6 +160,13 @@ public class ServicioNotificacionImpl implements ServicioNotificacion {
 	public String MensajeParaIngredientePasado(Usuario usuario){
 		List<Ingrediente> ingredientesCarnes = usuario.getlistaIngrediente();
 		return "Mensaje";
+
+	}
+
+	@Override
+	public List<Notificacion> getNotificacionesParaUnUsuario(Usuario usuario){
+	List<Notificacion> notificacionesUsuario = notificacionDao.GetNotificacionesParaUnUsuario(usuario);
+	return notificacionesUsuario;
 
 	}
 

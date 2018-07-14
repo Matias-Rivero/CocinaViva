@@ -6,6 +6,8 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
+import ar.edu.unlam.cocinaviva.modelo.Notificacion;
+import ar.edu.unlam.cocinaviva.servicios.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,10 +19,6 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unlam.cocinaviva.modelo.Ingrediente;
 import ar.edu.unlam.cocinaviva.modelo.Receta;
 import ar.edu.unlam.cocinaviva.modelo.Usuario;
-import ar.edu.unlam.cocinaviva.servicios.ServicioIngrediente;
-import ar.edu.unlam.cocinaviva.servicios.ServicioLogin;
-import ar.edu.unlam.cocinaviva.servicios.ServicioReceta;
-import ar.edu.unlam.cocinaviva.servicios.ServicioUsuario;
 
 @Controller
 public class ControladorLogin {
@@ -36,6 +34,9 @@ public class ControladorLogin {
 	
 	@Inject
 	private ServicioIngrediente servicioIngrediente;
+
+    @Inject
+    private ServicioNotificacion servicioNotificacion;
 
 	@RequestMapping("/home")
 	public ModelAndView irAHome(HttpServletRequest request) throws ParseException {
@@ -66,7 +67,15 @@ public class ControladorLogin {
 					servicioIngrediente.traerLosIngredientesPescadoDeUnUsuario(usuario.getlistaIngrediente()));
 			modelo.put("ingredientescondimentodelusuario", servicioIngrediente
 					.traerLosIngredientesCondimentoDeUnUsuario(usuario.getlistaIngrediente()));
-			
+
+			List<Notificacion> notificacionesUsu = servicioNotificacion.getNotificacionesParaUnUsuario(usuariologueado);
+
+			if(!notificacionesUsu.isEmpty()){
+
+				request.getSession().setAttribute("notificacionesUsu", notificacionesUsu);
+				modelo.put("notificacionesUsu",notificacionesUsu);
+			}
+
 			Ingrediente checkingredientes = new Ingrediente();
 			modelo.put("checkingredientes", checkingredientes);
 			
@@ -124,6 +133,7 @@ public class ControladorLogin {
 
 			servicioUsuario.guardarUsuario(usuario);
 			request.getSession().setAttribute("usuariologueado", usuario);
+
 			return new ModelAndView("redirect:/home");
 		}
 	}
