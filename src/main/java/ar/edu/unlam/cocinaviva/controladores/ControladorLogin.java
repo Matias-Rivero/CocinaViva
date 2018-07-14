@@ -419,11 +419,15 @@ public class ControladorLogin {
 					
 		Usuario usuario = servicioUsuario.traerUnUsuarioPorSuId(usuariologueado.getId());
 
-		List<Ingrediente> ingredientesUs = usuario.getlistaIngrediente();
+		List<Ingrediente> ingredientesUs = servicioIngrediente.traerListaDeIngredientesNoVencidosDeUnUsuario(usuario);
 		Receta receta = servicioReceta.traerUnaRecetaPorSuId(id);
 		
-		Receta recetaConFaltantes = servicioReceta.traerRecetaConFaltantesDeIngredientes(receta,ingredientesUs);
+		Receta recetaConFaltantes = servicioReceta.traerRecetaConFaltantesDeIngredientes(receta,ingredientesUs); // receta ya esta procesada
+		List<Ingrediente> noHaceRecetaPorList = servicioReceta.traerListaDeIngredientesQueNoTiene(receta,ingredientesUs); 
+		List<Ingrediente> tieneTodosPeroAlgunosConFaltantes = servicioReceta.traerListaDeIngredientesQueTienePeroLeFalta(receta,ingredientesUs);
 		
+		modelo.put("todosconfaltante", tieneTodosPeroAlgunosConFaltantes);
+		modelo.put("notienes", noHaceRecetaPorList);
 		modelo.put("listaPasos", receta.getlistaPasos());
 		modelo.put("receta", recetaConFaltantes);
 		modelo.put("ingredientesUs", ingredientesUs);

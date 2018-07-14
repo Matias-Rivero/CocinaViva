@@ -205,6 +205,12 @@
 				</div>
 				<br>
 				</c:if>
+				<c:if test="${empty listaRecetas}">
+				<div class="text-center">
+				<label class="label label-danger">Lo sentimos - todavía no tenemos recetas con esos ingredientes.</label>				
+				</div>
+				<br>
+				</c:if>
 				<div class="row">
 					<c:choose>
 						<c:when test="${not empty listaRecetas}">

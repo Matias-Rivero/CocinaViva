@@ -190,7 +190,7 @@
 																					<td><label class="label label-success lead6">OK</label></td>																					
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVISO'}">
-																				<td><label class="label label-warning lead6">Mas de 10 dias</label></td>	
+																				<td><label class="label label-warning lead6">Tiene ${ingredientes.dias * -1} dias</label></td>	
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
 																				<td><label class="label label-danger lead6">Vencido</label></td>	
@@ -255,7 +255,7 @@
 																					<td><label class="label label-success lead6">OK</label></td>																					
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVISO'}">
-																				<td><label class="label label-warning lead6">Mas de 10 dias</label></td>	
+																				<td><label class="label label-warning lead6">Tiene ${ingredientes.dias * -1} dias</label></td>	
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
 																				<td><label class="label label-danger lead6">Vencido</label></td>	
@@ -320,7 +320,7 @@
 																					<td><label class="label label-success lead6">OK</label></td>																					
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVISO'}">
-																				<td><label class="label label-warning lead6">Mas de 10 dias</label></td>	
+																				<td><label class="label label-warning lead6">Tiene ${ingredientes.dias * -1} dias</label></td>	
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
 																				<td><label class="label label-danger lead6">Vencido</label></td>	
@@ -385,7 +385,7 @@
 																					<td><label class="label label-success lead6">OK</label></td>																					
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVISO'}">
-																				<td><label class="label label-warning lead6">Mas de 10 dias</label></td>	
+																				<td><label class="label label-warning lead6">Tiene ${ingredientes.dias * -1} dias</label></td>	
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
 																				<td><label class="label label-danger lead6">Vencido</label></td>	
@@ -450,7 +450,7 @@
 																					<td><label class="label label-success lead6">OK</label></td>																					
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVISO'}">
-																				<td><label class="label label-warning lead6">Mas de 10 dias</label></td>	
+																				<td><label class="label label-warning lead6">Tiene ${ingredientes.dias * -1} dias</label></td>	
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
 																				<td><label class="label label-danger lead6">Vencido</label></td>	

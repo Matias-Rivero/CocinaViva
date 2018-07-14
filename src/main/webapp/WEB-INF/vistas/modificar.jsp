@@ -174,7 +174,7 @@
 						                                <form:select class="form-control"
 						                                  path="listaIngredientes[${status.index}].cantidad">
 						                                  <c:forEach var="cantidad" begin="1" end="10">
-						                                    <form:option value="${cantidad}">${cantidad}</form:option>
+						                                    <form:option value="${cantidad * 1000}">${cantidad}</form:option>
 						                                  </c:forEach>
 						                                </form:select>                                
 						                              </th>

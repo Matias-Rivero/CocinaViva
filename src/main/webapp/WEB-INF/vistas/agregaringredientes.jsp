@@ -116,7 +116,7 @@
    							<c:choose>
    							<c:when test="${not empty tieneingredienteselusuario}">
    							<div class="py-5 text-center">		
-   								<h1>¿Ingredientes para agregar?  <c:if test="${not empty paso}"><span class="lead5">${paso}</span></c:if></h1>
+   								<h1>¿Ingredientes para agregar?</h1>
    							</div>
 	   						</c:when>
 	   						<c:otherwise>
@@ -246,7 +246,7 @@
 																<form:select class="form-control"
 																	path="listaIngredientes[${status.index}].cantidad">
 																	<c:forEach var="cantidad" begin="1" end="10">
-																		<form:option value="${cantidad}">${cantidad}</form:option>
+																		<form:option value="${cantidad * 1000}">${cantidad}</form:option>
 																	</c:forEach>
 																</form:select>																
 															</th>
