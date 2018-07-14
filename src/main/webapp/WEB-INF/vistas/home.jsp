@@ -89,7 +89,7 @@
 								<li class="btn-cta"><a href="perfilcliente"><span>Mi
 												perfil: ${usuariologueado.alias}</span></a></li>
 								<li class="has-dropdown"><a href="#" data-toggle="dropdown"><img src="../../images/notification-bell.png" alt="Notificaciones"></a>
-									<ul class="dropdown-menu pull-right">
+									<ul class="dropdown pull-right">
 										<c:forEach items="${notificacionesUsu}" var="notificacion">
 											<li>
 												<c:choose>
