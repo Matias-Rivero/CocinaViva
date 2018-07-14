@@ -1,3 +1,7 @@
+ul li{
+       list-style:none;
+   }
+
 @font-face {
   font-family: 'icomoon';
   src: url("../fonts/icomoon/icomoon.eot?srf3rx");
@@ -11,7 +15,8 @@
 *
 * ======================================================= */
 body {
-  font-family: "Lato", Arial, sans-serif;
+/*   font-family: "Lato", Arial, sans-serif; */
+font-family: 'Fira Sans', sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.7;
@@ -64,19 +69,21 @@ p {
 
 h1 {
   color: #36b338;
-  font-family: "Lato", Arial, sans-serif;
+font-family: 'Fira Sans', sans-serif;
   font-weight: 400;
   margin: 0 0 20px 0;
 }
 h3 {
   color: #000;
-  font-family: "Lato", Arial, sans-serif;
+font-family: 'Fira Sans', sans-serif;
+
   font-weight: 400;
   margin: 0 0 20px 0;
 }
 h2, h4, h5, h6, figure {
   color: #fab348;
-  font-family: "Lato", Arial, sans-serif;
+font-family: 'Fira Sans', sans-serif;
+
   font-weight: 400;
   margin: 0 0 20px 0;
 }
@@ -174,10 +181,11 @@ h2, h4, h5, h6, figure {
 }
 
 @media (min-width: 768px) {
-  .lead2 .leadco .leadp .leadc .leadv .leadl{
+  .lead2 .leadco .leadp .leadc .leadv .leadl .leadNombr{
     font-size: 21px;
   }
 }
+
 
 .gtco-container {
   max-width: 1100px;
@@ -353,7 +361,7 @@ h2, h4, h5, h6, figure {
   }
 }
 #gtco-header .mt-text {
-  margin-top: 7em;
+  margin-top: 9em;
   margin-bottom: 3em;
 }
 @media screen and (max-width: 768px) {
@@ -379,7 +387,7 @@ h2, h4, h5, h6, figure {
   font-size: 80px;
   line-height: 1.5;
   font-weight: 300;
-  font-family: "Kaushan Script", cursive !important;
+  font-family: 'Lobster Two', cursive;
 }
 @media screen and (max-width: 768px) {
   #gtco-header h1 {
@@ -403,7 +411,7 @@ h2, h4, h5, h6, figure {
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
 }
 #gtco-header .form-wrap h3 {
-  font-family: "Kaushan Script", cursive;
+ font-family: 'Lobster Two', cursive;
 }
 #gtco-header .form-wrap .tab-menu {
   padding: 0 !important;
@@ -752,7 +760,7 @@ form label {
 }
 
 .cursive-font {
-  font-family: "Kaushan Script", cursive;
+ font-family: 'Lobster Two', cursive;
 }
 
 .primary-color {
@@ -1420,7 +1428,8 @@ form label {
 .btn {
   margin-right: 4px;
   margin-bottom: 4px;
-  font-family: "Lato", Arial, sans-serif;
+font-family: 'Fira Sans', sans-serif;
+
   font-size: 16px;
   font-weight: 400;
   -webkit-border-radius: 4px;
@@ -2094,5 +2103,118 @@ display:none;
 	border:2px solid #03b1ce ;}
 	.tital{ font-size:16px; font-weight:500;}
 	 .bot-border{ border-bottom:1px #f8f8f8 solid;  margin:5px 0  5px 0}	
+	 
+.gototopo {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+.gototopo.active {
+  opacity: 1;
+  visibility: visible;
+}
+.gototopo a {
+  width: 50px;
+  height: 50px;
+  display: table;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  text-align: center;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+}
+.gototopo a i {
+  height: 50px;
+  display: table-cell;
+  vertical-align: middle;
+}
+.gototopo a:hover, .gototopo a:active, .gototopo a:focus {
+  text-decoration: none;
+  outline: none;
+}	 
+
+.gtco-nav ul li.btn-cta a {
+  color: #FBB448;
+}
+
+.btn-rece {
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  padding: 4px 20px;
+  color: #fff;
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+}
+.btn-rece {
+  background: green;
+  color: #36b338;
+}
+
+#altura{
+ height: 800px;	
+ background: url(../images/lareceta.jpg);
+ border-radius: 1%;
+ background-repeat: no-repeat;
+}
+
+.ulagreingre{
+ width: 180px;
+}
+
+.alturaulicon{
+ height: 60px;
+}
+#iconbusc{
+	margin-left: 40px;
+}
+
+.iconos{
+ height: 50px;	
+ width: 50px;
+ margin-left: 15px;
+}
+
+.table-fixed thead,
+.table-fixed tfoot{
+  width: 97%;
+}
+
+.table-fixed tbody {
+  height: 500px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.table-fixed thead,
+.table-fixed tbody,
+.table-fixed tfoot,
+.table-fixed tr,
+.table-fixed td,
+.table-fixed th {
+  display: block;
+}
+
+.table-fixed tbody td,
+.table-fixed thead > tr> th,
+.table-fixed tfoot > tr> td{
+  float: left;
+  border-bottom-width: 0;
+}
 
 /*# sourceMappingURL=style.css.map */
