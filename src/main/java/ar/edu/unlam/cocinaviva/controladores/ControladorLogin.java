@@ -450,6 +450,22 @@ public class ControladorLogin {
 		return new ModelAndView("redirect:/home");
 	}
 	
+	@RequestMapping(path = "/confirma-cocinar-receta")
+	public ModelAndView confirmaCocinarReceta(@RequestParam("id") Long id, HttpServletRequest request) {
+		
+		if (request.getSession().getAttribute("usuariologueado") != null) {
+			
+			Usuario usuariologueado = (Usuario) request.getSession().getAttribute("usuariologueado");	
+			
+			Usuario usuario = servicioUsuario.traerUnUsuarioPorSuId(usuariologueado.getId());
+			Receta receta = servicioReceta.traerUnaRecetaPorSuId(id);		
+			servicioReceta.cocinarRecetaPorElUsuario(receta,usuario);
+					
+		return new ModelAndView("redirect:/leerRecetas?id="+id+"");
+	}
+		return new ModelAndView("redirect:/home");
+	}
+	
 	
 // Si quieren acceder por GET	
 	@RequestMapping("/validar-login")

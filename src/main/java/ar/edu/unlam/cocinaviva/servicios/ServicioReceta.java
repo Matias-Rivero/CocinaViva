@@ -5,6 +5,7 @@ import java.util.List;
 import ar.edu.unlam.cocinaviva.modelo.Ingrediente;
 import ar.edu.unlam.cocinaviva.modelo.Pasos;
 import ar.edu.unlam.cocinaviva.modelo.Receta;
+import ar.edu.unlam.cocinaviva.modelo.Usuario;
 
 public interface ServicioReceta {
 	
@@ -31,5 +32,11 @@ public interface ServicioReceta {
 	List<Ingrediente> traerListaDeIngredientesQueNoTiene(Receta recetaConFaltantes, List<Ingrediente> ingredientesUs);
 
 	List<Ingrediente> traerListaDeIngredientesQueTienePeroLeFalta(Receta receta, List<Ingrediente> ingredientesUs);
+
+	void cocinarRecetaPorElUsuario(Receta receta, Usuario usuario);
+
+	Receta realizarCopiaDeUnaRecetaDelRecetario(Receta recetaDelRecetario);
+
+	void guardarRecetaCocinada(Receta receta);
 	
 }

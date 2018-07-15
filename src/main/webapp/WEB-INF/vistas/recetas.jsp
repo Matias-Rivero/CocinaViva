@@ -219,7 +219,7 @@
 				</div>
 				<c:if test="${not empty listaRecetas}">
 				<div class="text-left">
-				<label class="label label-info">Puedes hacer:</label>				
+				<label class="label label-info">Con lo que tienes puedes hacer:</label>				
 				</div>
 				<br>
 				</c:if>

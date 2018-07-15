@@ -65,7 +65,7 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 			ingrediente.setPerece("SEPUDRE");
 			ingrediente.setEstado("SINAVISO");
 		}	
-		if(ingrediente.getTipo() == "PESCADO"){
+		if(ingrediente.getTipo() == "PESCADO" && ingrediente.getUnidad() != "Unids"){
 			ingrediente.setUnidad("Grs");
 		}
 		servicioIngredienteDao.guardarIngredienteEnInventario(ingrediente);

@@ -266,7 +266,7 @@
 					</div>
 					<div class="modal-footer" id="despues">
 						<a type="button" class="btn btn-lg btn-primary btn-block" href=""
-							id="eliminar"><span class="glyphicon glyphicon-ok">Cocinar Igual</span></a>
+							id="cocinarconfaltantes"><span class="glyphicon glyphicon-ok">Cocinar Igual</span></a>
 						<a type="button" class="btn btn-lg btn-default btn-block" href=""
 							data-dismiss="modal"><span class="glyphicon glyphicon-remove">Cancelar</span></a>
 					</div>
@@ -290,7 +290,7 @@
 					</div>
 					<div class="modal-footer" id="despues">
 						<a type="button" class="btn btn-lg btn-primary btn-block" href=""
-							id="eliminar"><span class="glyphicon glyphicon-ok">Cocinar</span></a>
+							id="cocinar"><span class="glyphicon glyphicon-ok">Cocinar</span></a>
 						<a type="button" class="btn btn-lg btn-default btn-block" href=""
 							data-dismiss="modal"><span class="glyphicon glyphicon-remove">Cancelar</span></a>
 					</div>
@@ -349,8 +349,10 @@
     	lefalta=document.getElementById("lefalta");
     	if(consulta.value==""){	
     		if(lefalta.value==""){
+    			$('#cocinar').attr('href','confirma-cocinar-receta?id='+idreceta+'');
     			$('#todobien').modal('show');			
     	}else{
+    		$('#cocinarconfaltantes').attr('href','confirma-cocinar-receta?id='+idreceta+'');
     		$('#todoconfaltantes').modal('show');    		
     	}  
     		     	

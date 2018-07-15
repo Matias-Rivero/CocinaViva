@@ -11,7 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;	
+import javax.persistence.ManyToMany;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;	
 
 
 @Entity
@@ -40,6 +43,21 @@ public class Usuario {
 
 	public void setlistaIngrediente(List<Ingrediente> listaIngrediente) {
 		this.listaIngrediente = listaIngrediente;
+	}
+	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "usuarios_recetas", joinColumns = { @JoinColumn(name = "id_Usuario") }, inverseJoinColumns = {
+			@JoinColumn(name = "id_Receta") })
+	
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<Receta> listaRecetas = new LinkedList<Receta>();
+	
+	public List<Receta> getlistaRecetas() {
+		return listaRecetas;
+	}
+
+	public void setlistaRecetas(List<Receta> listaRecetas) {
+		this.listaRecetas = listaRecetas;
 	}
 	
 	public Long getId() {
