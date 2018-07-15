@@ -252,6 +252,13 @@ public class ControladorInsertar {
 		tomate.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(tomate);
 		
+		Ingrediente arrozblanco = new Ingrediente();
+		arrozblanco.setNombre("Arroz blanco");
+		arrozblanco.setTipo("VEGETALES");
+		arrozblanco.setUnidad("Grs");
+		arrozblanco.setPerece("SEVENCE");
+		servicioIngrediente.guardarIngredienteEnInventario(arrozblanco);
+		
 		Ingrediente papa = new Ingrediente();
 		papa.setNombre("Papa");
 		papa.setTipo("VEGETALES");
@@ -1148,79 +1155,74 @@ public class ControladorInsertar {
 
 	@RequestMapping("/insertar-ingre-usuarios")
 	public ModelAndView ingredientesAUsuarios() throws ParseException, CloneNotSupportedException {	
+		//Ingredientes
+		Ingrediente cebollarojaDelInventario = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Cebolla Roja");
+		Ingrediente cebollaDelInventario = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Cebolla");
+		Ingrediente polloenteroDelInventario = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Pollo entero");
+		Ingrediente arrozblancoDelInventario = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Arroz blanco");
+		Ingrediente tomateDelInventario = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Tomate");
+		Ingrediente lechugaDelInventario = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Lechuga");
 		
 		Usuario matias = servicioUsuario.traerUnUsuarioPorSuId((long) 1);
+			
+		Ingrediente cebollaDeMati = servicioIngrediente.traerCopiaDeUnIngredienteDelInventario(cebollaDelInventario);
+		cebollaDeMati.setCantidad(1000);
+		cebollaDeMati.setFcompra("08/07/2018");
+		servicioIngrediente.guardarIngredienteEnUsuario(cebollaDeMati);	
 		
-		Ingrediente cebollarojamatias = new Ingrediente();
-		cebollarojamatias.setNombre("cebolla roja");	
-		cebollarojamatias.setFcompra("28/06/2018");
-		cebollarojamatias.setCantidad(250);
-		cebollarojamatias.setUnidad("Grs");
-		cebollarojamatias.setTipo("VEGETALES");
-		cebollarojamatias.setPerece("SEPUDRE");
-		cebollarojamatias.setEstado("SINAVISO");
+		Ingrediente polloenteroDeMati = servicioIngrediente.traerCopiaDeUnIngredienteDelInventario(polloenteroDelInventario);
+		polloenteroDeMati.setCantidad(3000);
+		polloenteroDeMati.setFcompra("12/07/2018");
+		servicioIngrediente.guardarIngredienteEnUsuario(polloenteroDeMati);	
 		
-		Ingrediente manteca = new Ingrediente();
-		manteca.setNombre("manteca");
-		manteca.setFvencimiento("16/12/2018");
-		manteca.setCantidad(500);
-		manteca.setUnidad("Grs");
-		manteca.setTipo("LACTEOS");
-		manteca.setPerece("SEVENCE");
-		manteca.setEstado("NOVENCIDO");
+		Ingrediente arrozDeMati = servicioIngrediente.traerCopiaDeUnIngredienteDelInventario(arrozblancoDelInventario);
+		arrozDeMati.setCantidad(500);
+		arrozDeMati.setFvencimiento("21/07/2018");
+		servicioIngrediente.guardarIngredienteEnUsuario(arrozDeMati);	
 		
-		Ingrediente quesofresco = new Ingrediente();
-		quesofresco.setNombre("queso fresco");
-		quesofresco.setFvencimiento("25/06/2018");
-		quesofresco.setCantidad(250);
-		quesofresco.setUnidad("Grs");
-		quesofresco.setTipo("LACTEOS");
-		quesofresco.setPerece("SEVENCE");
-		quesofresco.setEstado("NOVENCIDO");
-
-		Ingrediente huevos = new Ingrediente();
-		huevos.setNombre("huevos");
-		huevos.setFcompra("26/06/2018");
-		huevos.setCantidad(24);
-		huevos.setUnidad("Unids");
-		huevos.setTipo("LACTEOS");
-		huevos.setPerece("SEPUDRE");
-		huevos.setEstado("SINAVISO");
-
+		Ingrediente tomateDeMati = servicioIngrediente.traerCopiaDeUnIngredienteDelInventario(tomateDelInventario);
+		tomateDeMati.setCantidad(1500);
+		tomateDeMati.setFcompra("14/07/2018");
+		servicioIngrediente.guardarIngredienteEnUsuario(tomateDeMati);	
+		
+		Ingrediente lechugaDeMati = servicioIngrediente.traerCopiaDeUnIngredienteDelInventario(lechugaDelInventario);
+		lechugaDeMati.setCantidad(3);
+		lechugaDeMati.setFcompra("13/07/2018");
+		servicioIngrediente.guardarIngredienteEnUsuario(lechugaDeMati);	
+		
 		List<Ingrediente> ingredientesdematias  = matias.getlistaIngrediente();
-		ingredientesdematias.add(cebollarojamatias);
-		ingredientesdematias.add(manteca);
-		ingredientesdematias.add(quesofresco);
-		ingredientesdematias.add(huevos);
+		ingredientesdematias.add(cebollaDeMati);
+		ingredientesdematias.add(polloenteroDeMati);
+		ingredientesdematias.add(arrozDeMati);
+		ingredientesdematias.add(tomateDeMati);
+		ingredientesdematias.add(lechugaDeMati);
 		
-		servicioIngrediente.guardarIngredienteEnUsuario(cebollarojamatias);		
-		servicioIngrediente.guardarIngredienteEnUsuario(manteca);		
-		servicioIngrediente.guardarIngredienteEnUsuario(quesofresco);		
-		servicioIngrediente.guardarIngredienteEnUsuario(huevos);		
 		matias.setlistaIngrediente(ingredientesdematias);
-		servicioUsuario.actualizarUsuario(matias);		
+		servicioUsuario.actualizarUsuario(matias);	
+		
 			
 		Usuario juanpablo = servicioUsuario.traerUnUsuarioPorSuId((long) 2);
-
+		
 		Ingrediente cebollarojajuanpi = new Ingrediente();
-		cebollarojajuanpi.setNombre("cebolla roja");
+		
+		cebollarojajuanpi.setNombre(cebollarojaDelInventario.getNombre());		
+		cebollarojajuanpi.setUnidad(cebollarojaDelInventario.getUnidad());
+		cebollarojajuanpi.setTipo(cebollarojaDelInventario.getTipo());
+		cebollarojajuanpi.setPerece(cebollarojaDelInventario.getPerece());
+		cebollarojajuanpi.setEstado(cebollarojaDelInventario.getEstado());
 		cebollarojajuanpi.setCantidad(1000);
-		cebollarojajuanpi.setUnidad("Grs");
-		cebollarojajuanpi.setTipo("VEGETALES");
-		cebollarojajuanpi.setPerece("SEPUDRE");
-		cebollarojajuanpi.setEstado("SINAVISO");
-		cebollarojajuanpi.setFcompra("26/06/2018");
+		cebollarojajuanpi.setFcompra("30/09/2018");
 		
 		List<Ingrediente> ingredientesdejuanpablo = juanpablo.getlistaIngrediente();
 		ingredientesdejuanpablo.add(cebollarojajuanpi);
-
+		
 		servicioIngrediente.guardarIngredienteEnUsuario(cebollarojajuanpi);
 		juanpablo.setlistaIngrediente(ingredientesdejuanpablo);
 		servicioUsuario.actualizarUsuario(juanpablo);	
 		
+		
 		Usuario flor = servicioUsuario.traerUnUsuarioPorSuId((long) 3);
 		
-		Ingrediente cebollarojaDelInventario = servicioIngrediente.traerUnIngredientePorSuId((long) 44);
 		Ingrediente cebollarojaflor = new Ingrediente();
 		
 		cebollarojaflor.setNombre(cebollarojaDelInventario.getNombre());		

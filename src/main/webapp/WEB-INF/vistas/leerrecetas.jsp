@@ -80,7 +80,7 @@
 				<div class="row">
 					<div class="col-sm-4 col-xs-12">
 						<div id="gtco-logo">
-							<a href="home">Cocina Viva<em>.</em></a>
+							<a href="home"><img src="images/logo.png" width="170px" height="60px" style="margin:-10px" /></a>
 						</div>
 					</div>
 
@@ -88,9 +88,28 @@
 						<c:when test="${usuariologueado != null}">
 							<div class="col-xs-8 text-right menu-1">
 								<ul>
+									<li><a href="home"><span>Inventario</span></a></li>
+									<li><a href="ingredientes"><span>Agregar ingredientes</span></a></li>								
+									<li class="has-dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-microphone"></i> <img src="images/notification-bell.png" alt="Notificaciones"></a>
+									<ul class="dropdown">
+										<c:forEach items="${notificacionesUsu}" var="notificacion">
+											<li>
+												<c:choose>
+													<c:when test="${notificacion.tipoNotificacion == 'SIN_STOCK'}">
+														<a href="ingredientes"><span class="label label-primary">${notificacion.fechaNotificacion}</span> ${notificacion.mensaje} </a>
+													</c:when>
+													<c:otherwise>
+														<a href="modificar"><span class="label label-primary">${notificacion.fechaNotificacion}</span> ${notificacion.mensaje} </a>
+													</c:otherwise>
+												</c:choose>
+											</li>
+											<li role="presentation" class="divider"></li>
+										</c:forEach>
+									</ul>
+									</li>		
 									<li class="btn-cta"><a href="perfilcliente"><span>Mi
-												perfil: ${usuariologueado.alias}</span></a></li>
-									<li class="btn-cta"><a href="cerrarSesion"><span>Salir</span></a></li>
+												perfil: ${usuariologueado.alias}</span></a></li>		
+									<li><a href="cerrarSesion"><span>Salir</span></a></li>
 								</ul>
 							</div>
 						</c:when>
@@ -122,17 +141,18 @@
 								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 								<div class="page-header">
 <!-- 								 <h1 style="visibility: hidden">.</h1> -->								 
-								 <h1 class="cursive-font"><a href="#" target=""><span class="dot">Cocinar</span></a></h1>
+								 <h1 class="cursive-font"><a href="javascript:cocinarReceta(${receta.id});" target=""><span class="dot">Cocinar</span></a></h1>
 								</div>
 									<ul class="list-group mb-3">
 						                
 									<c:forEach items="${receta.listaIngrediente}" var="ingrediente">	
 									
-		<li class="list-group-item d-flex justify-content-between lh-condensed">${ingrediente.nombre} ${ingrediente.cantidadstring}</li>
+		<li class="list-group-item d-flex justify-content-between lh-condensed">${ingrediente.nombre} ${ingrediente.cantidadstring}<c:if test = "${ingrediente.faltante > 0}"><label class="label label-success pull-right">OK</label></c:if><c:if test = "${ingrediente.faltante < 0}"><label class="label label-info pull-right">FALTAN ${ingrediente.faltante * -1} </label></c:if><c:if test = "${ingrediente.faltante == 0}"><label class="label label-warning pull-right">OK</label></c:if><c:if test="${empty ingrediente.faltante}"><label class="label label-danger pull-right">NO</label></c:if></li>
 
 						            </c:forEach>    
 
-						             </ul>																	
+						             </ul>	
+						             						             																
 								</div>
 								
 							</div>	
@@ -183,44 +203,33 @@
 
 			</c:when>
 		</c:choose>
-
-		<div id="datetimepickervacio" class="modal fade" tabindex="-1" role="dialog" style="overflow-y: scroll;">
+		
+		<label class="oculto"><input type="text" id="lefalta" value="<c:if test="${not empty todosconfaltante}">todosconfaltante</c:if>"/></label>
+		<label class="oculto"><input type="text" id="consulta" value="<c:if test="${not empty notienes}">notienetodos</c:if>"/></label>
+		
+		<div id="lefaltaningre" class="modal fade" tabindex="-1" role="dialog" style="overflow-y: scroll;">
 		  <div class="modal-dialog modal-sm">
 		    <div class="modal-content">
 		      <div class="modal-header">
 		      	<div class="alert alert-danger" role="alert">
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>        
-				  <h3>¡La fecha es necesaria!</h3>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <c:choose>
+                  <c:when test="${not empty notienes}">
+                       <h3>No puede hacer esta receta por que no tienes:</h3>        
+                            <ul class="list-group mb-3">                            
+                              <c:forEach items="${notienes}" var="i"> 
+                                  <li class="list-group-item d-flex justify-content-between lh-condensed">${i.nombre}</li>
+                               </c:forEach>    
+                            </ul>       
+                  </c:when>
+                  </c:choose>   
 				</div>
 		      </div>  
 		    </div>
 		  </div>
 		</div>
 		
-		<div id="ModalCreare" class="modal fade" tabindex="-1" role="dialog"
-			style="overflow-y: scroll;">
-			<div class="modal-dialog modal-sm">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<h4 class="modal-title" id="myModalLabel">¿Estas seguro de
-							elminar el ingrediente?</h4>
-					</div>
-					<div class="modal-body">
-						<span class="lead" id="ingred"></span>
-					</div>
-					<div class="modal-footer" id="despues">
-						<a type="button" class="btn btn-lg btn-primary btn-block" href=""
-							id="eliminar"><span class="glyphicon glyphicon-ok">Confirmar</span></a>
-						<a type="button" class="btn btn-lg btn-default btn-block" href=""
-							data-dismiss="modal"><span class="glyphicon glyphicon-remove">Cancelar</span></a>
-					</div>
-				</div>
-			</div>
-		</div>
+		
 		<div id="ModalCrear" class="modal fade" tabindex="-1" role="dialog"
 	      style="overflow-y: scroll;">
 	      <div class="modal-dialog modal-sm">
@@ -231,6 +240,64 @@
 	        </div>
 	      </div>
 	    </div>
+	    
+	    <div id="todoconfaltantes" class="modal fade" tabindex="-1" role="dialog"
+			style="overflow-y: scroll;">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">¿Quieres hacer esta receta con lo que tienes?</h4>
+					</div>
+					<div class="modal-body">
+						<c:choose>
+                 		 <c:when test="${not empty todosconfaltante}"> 
+                 		 	<h5>Ten en cuenta que</h5>                          
+                            <ul class="list-group mb-3">                            
+                              <c:forEach items="${todosconfaltante}" var="i"> 
+                                  <li class="list-group-item d-flex justify-content-between lh-condensed">FALTAN ${i.faltante * -1} ${i.nombre}</li>
+                               </c:forEach>    
+                            </ul>       
+		                  </c:when>
+		                  </c:choose>  
+					</div>
+					<div class="modal-footer" id="despues">
+						<a type="button" class="btn btn-lg btn-primary btn-block" href=""
+							id="eliminar"><span class="glyphicon glyphicon-ok">Cocinar Igual</span></a>
+						<a type="button" class="btn btn-lg btn-default btn-block" href=""
+							data-dismiss="modal"><span class="glyphicon glyphicon-remove">Cancelar</span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="todobien" class="modal fade" tabindex="-1" role="dialog"
+			style="overflow-y: scroll;">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">Bueno, parece que tienes todo para la receta ${receta.nombre}</h4>
+					</div>
+					<div class="modal-body">
+						<h5>Actualizaremos tu inventario luego...</h5> 					
+					</div>
+					<div class="modal-footer" id="despues">
+						<a type="button" class="btn btn-lg btn-primary btn-block" href=""
+							id="eliminar"><span class="glyphicon glyphicon-ok">Cocinar</span></a>
+						<a type="button" class="btn btn-lg btn-default btn-block" href=""
+							data-dismiss="modal"><span class="glyphicon glyphicon-remove">Cancelar</span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	    
 		<footer id="gtco-footer" role="contentinfo"
 			style="background-image: url(images/img_bg_1.jpg)"
 			data-stellar-background-ratio="0.5">
@@ -276,7 +343,22 @@
 		</footer>
 
 	</div>
-	
+	<script type="text/javascript">
+    function cocinarReceta(idreceta) { 
+    	consulta=document.getElementById("consulta");
+    	lefalta=document.getElementById("lefalta");
+    	if(consulta.value==""){	
+    		if(lefalta.value==""){
+    			$('#todobien').modal('show');			
+    	}else{
+    		$('#todoconfaltantes').modal('show');    		
+    	}  
+    		     	
+    }else{
+    	$('#lefaltaningre').modal('show');    		
+    }  
+    }	
+ 	</script>
 	<script type="text/javascript">
     function imagenPopUp(idimagen) { 
     var imgsrc = document.getElementById(idimagen).src;    

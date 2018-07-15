@@ -149,6 +149,34 @@ public class ServicioRecetaImpl implements ServicioReceta {
 		servicioRecetaDao.guardarPasoEnReceta(paso);
 	}
 
+	@Override
+	public List<Ingrediente> traerListaDeIngredientesQueNoTiene(Receta receta, List<Ingrediente> ingredientesUs) {
+		List<Ingrediente> ingredientesQueNoTiene = new LinkedList<Ingrediente>();
+
+			for (Ingrediente ingredienteRc : receta.getListaIngrediente()) {
+				if (ingredienteRc.getFaltante() == null) {
+					ingredientesQueNoTiene.add(ingredienteRc);
+				}
+			}
+		
+		return ingredientesQueNoTiene;
+	}
+
+	@Override
+	public List<Ingrediente> traerListaDeIngredientesQueTienePeroLeFalta(Receta receta,
+			List<Ingrediente> ingredientesUs) {
+		List<Ingrediente> ingredientes = new LinkedList<Ingrediente>();
+
+		for (Ingrediente ingredienteRc : receta.getListaIngrediente()) {
+			if (ingredienteRc.getFaltante() != null && ingredienteRc.getFaltante() < 0) {
+				ingredientes.add(ingredienteRc);
+			}
+		}
+	
+	return ingredientes;
+	}
+
+
 }
 // Tipos de recetas
 // Ensaladas

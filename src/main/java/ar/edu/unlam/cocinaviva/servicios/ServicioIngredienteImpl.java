@@ -31,6 +31,9 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 	
 	@Inject
 	private UsuarioDao servicioUsuarioDao;
+	
+	@Inject
+	private ServicioNotificacion servicioNotificacion;
 
 	@Override
 	public void guardarIngredienteEnInventario(Ingrediente ingrediente) {
@@ -50,15 +53,15 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 			ingrediente.setPerece("SEPUDRE");
 			ingrediente.setEstado("SINAVISO");
 		}
-		if(ingrediente.getTipo() == "CONDIMENTOS" && ingrediente.getPerece() != "SEPUDRE"){
+		if(ingrediente.getTipo() == "CONDIMENTOS" && ingrediente.getPerece() != "SEPUDRE" && ingrediente.getPerece() != "SEVENCE"){
 			ingrediente.setPerece("SEVENCE");	
 			ingrediente.setEstado("NOVENCIDO");
 		}
-		if(ingrediente.getTipo() == "LACTEOS" && ingrediente.getPerece() != "SEPUDRE"){
+		if(ingrediente.getTipo() == "LACTEOS" && ingrediente.getPerece() != "SEPUDRE" && ingrediente.getPerece() != "SEVENCE"){
 			ingrediente.setPerece("SEVENCE");
 			ingrediente.setEstado("NOVENCIDO");
 		}
-		if(ingrediente.getTipo() == "VEGETALES" && ingrediente.getPerece() != "SEPUDRE"){
+		if(ingrediente.getTipo() == "VEGETALES" && ingrediente.getPerece() != "SEPUDRE" && ingrediente.getPerece() != "SEVENCE"){
 			ingrediente.setPerece("SEPUDRE");
 			ingrediente.setEstado("SINAVISO");
 		}	
@@ -468,14 +471,16 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 					
 				  if(difDiasVence <= 0){
 					  ingredienteUs.setEstado("VENCIDO");
-					  actualizarIngredientesAUsuario(ingredienteUs);
+					  actualizarIngredientesAUsuario(ingredienteUs);					  
+					  servicioNotificacion.NuevaNotificacionVencimiento(usuario,ingredienteUs);
 					  servicioUsuarioDao.actualizarUsuario(usuario);
 				  }else if(ingredienteUs.getEstado().equals("VENCIDO")){
 					  ingredienteUs.setEstado("NOVENCIDO");
 				  }
 				  if(difDiasVence > 0 && difDiasVence <= 5){
 					  ingredienteUs.setEstado("AVENCER"); 
-					  actualizarIngredientesAUsuario(ingredienteUs);
+					  actualizarIngredientesAUsuario(ingredienteUs);					  
+					  servicioNotificacion.NuevaNotificacionVencimiento(usuario,ingredienteUs);
 					  servicioUsuarioDao.actualizarUsuario(usuario);
 				  }else if(ingredienteUs.getEstado().equals("AVENCER")){
 					  ingredienteUs.setEstado("NOVENCIDO");
@@ -496,9 +501,10 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 				  if(ingredienteUs.getDias() == null || (!ingredienteUs.getDias().equals(difDiasAvisoSePudre)) ){  
 					  ingredienteUs.setDias(difDiasAvisoSePudre);
 				  
-				  if(difDiasAvisoSePudre < 0 && difDiasAvisoSePudre <= -10){
-					  ingredienteUs.setEstado("AVISO");  // Aviso que hace 10 dias que lo compraste fijate porque se pudre
+				  if(difDiasAvisoSePudre < 0 && difDiasAvisoSePudre <= -5){
+					  ingredienteUs.setEstado("AVISO");  // Aviso que hace 5 dias que lo compraste fijate porque se pudre
 					  actualizarIngredientesAUsuario(ingredienteUs);
+					  servicioNotificacion.NuevaNotificacionVencimiento(usuario,ingredienteUs);
 					  servicioUsuarioDao.actualizarUsuario(usuario);	  
 				  }else if(ingredienteUs.getEstado().equals("AVISO")){
 					  ingredienteUs.setEstado("SINAVISO");
@@ -557,6 +563,17 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 		  }  
 		}		
 		
+	}
+
+	@Override
+	public Ingrediente traerCopiaDeUnIngredienteDelInventario(Ingrediente ingredienteDelInventario) {
+		Ingrediente ingrediente = new Ingrediente();
+		ingrediente.setNombre(ingredienteDelInventario.getNombre());		
+		ingrediente.setUnidad(ingredienteDelInventario.getUnidad());
+		ingrediente.setTipo(ingredienteDelInventario.getTipo());
+		ingrediente.setPerece(ingredienteDelInventario.getPerece());
+		ingrediente.setEstado(ingredienteDelInventario.getEstado());
+		return ingrediente;
 	}
 	
 }

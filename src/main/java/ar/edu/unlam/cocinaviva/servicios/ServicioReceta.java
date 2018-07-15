@@ -27,5 +27,9 @@ public interface ServicioReceta {
 	Receta traerRecetaConFaltantesDeIngredientes(Receta receta, List<Ingrediente> ingredientesUs);
 
 	void guardarPasoEnReceta(Pasos paso);
+
+	List<Ingrediente> traerListaDeIngredientesQueNoTiene(Receta recetaConFaltantes, List<Ingrediente> ingredientesUs);
+
+	List<Ingrediente> traerListaDeIngredientesQueTienePeroLeFalta(Receta receta, List<Ingrediente> ingredientesUs);
 	
 }

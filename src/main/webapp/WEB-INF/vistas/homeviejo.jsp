@@ -78,14 +78,16 @@
 				<div class="row">
 					<div class="col-sm-4 col-xs-12">
 						<div id="gtco-logo">
-							<img src="images/logo.png" width="170px" height="60px" style="margin:-10px" />
+							<a href="home">Cocina Viva<em>.</em></a>
 						</div>
 					</div>
 
 					<c:choose>
 						<c:when test="${usuariologueado != null}">
 							<div class="col-xs-8 text-right menu-1">
-								<ul>									
+								<ul>
+									<li class="btn-cta"><a href="perfilcliente"><span>Mi
+												perfil: ${usuariologueado.alias}</span></a></li>
 									<li class="has-dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-microphone"></i> <img src="images/notification-bell.png" alt="Notificaciones"></a>
 									<ul class="dropdown">
 										<c:forEach items="${notificacionesUsu}" var="notificacion">
@@ -102,10 +104,8 @@
 											<li role="presentation" class="divider"></li>
 										</c:forEach>
 									</ul>
-									</li>
-									<li class="btn-cta"><a href="perfilcliente"><span>Mi
-												perfil: ${usuariologueado.alias}</span></a></li>																					
-									<li><a href="cerrarSesion"><span>Salir</span></a></li>
+									</li>			
+									<li class="btn-cta"><a href="cerrarSesion"><span>Salir</span></a></li>
 								</ul>
 							</div>
 						</c:when>
@@ -146,16 +146,24 @@
 								</div>
 								<div class="row">
 									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+										<ul class="list-group mb-3 alturaulicon">
+
 										
-									<div class="btn-group" role="group" aria-label="Basic example">
-										<a href="javascript:seleccionarTodos();" id="todos" class="btn btn-primary btn-md "><i class="icon-check"></i> Seleccionar todos</a>
-										<a href="modificar" class="btn btn-primary btn-md "><i class="icon-pencil"></i> Modificar</a>
-										<a href="ingredientes" class="btn btn-primary btn-md "><i class="icon-plus"></i> Agregar ingredientes</a>
-										<a onclick="validaEnvia();" class="btn btn-primary btn-md "><i class="icon-search"></i> Buscar recetas</a>
-										<c:if test="${not empty exitomodificar}"><li>${exitomodificar}</li></c:if>
+
+												
+											<li><label class="pull-left iconos">Cambiar<a href="modificar"><input type=image src="images/modificar2.jpg" alt="mas" class="img-rounded img-responsive" /></a></label></li>	
+											<li><label class="pull-left iconos">Agregar<a href="ingredientes"><input type=image src="images/mas.jpg" alt="mas" class="img-rounded img-responsive" /></a></label></li>	
+											<li><label class="pull-left iconos">Todos<a href="javascript:seleccionarTodos();" id="todos"><input type=image src="images/cale.jpg" alt="mas" class="img-rounded img-responsive" /></a></label></li>
+											<li><label id="iconbusc" class="pull-left iconos">Buscar<a onclick="validaEnvia();"><input type=image src="images/play2.jpg" alt="BUSCAR RECETA" class="img-rounded img-responsive"></a></label></li>
+											<c:if test="${not empty exitomodificar}"><li>${exitomodificar}</li></c:if>
+												
+											
 										
-									</div>
-																					
+										</ul>
+										
+									
+										
+												
 									</div>	
 									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 										<ul class="list-group mb-3">
@@ -181,12 +189,12 @@
 																			var="ingredientes">
 																			<tr align="left">
 																				<c:if test="${ingredientes.estado != 'VENCIDO'}">
-																					<td style="width:255px;"><span class="lead"><form:checkbox
+																					<td><span class="lead"><form:checkbox
 																								path="seleccionados" value="${ingredientes.id}"
 																								class="check" />${ingredientes.nombre}</span></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
-																					<td style="width:255px;"><span class="lead"><input
+																					<td><span class="lead"><input
 																							type="checkbox" value="disabled" disabled>${ingredientes.nombre}</span></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'NOVENCIDO'}">
@@ -246,12 +254,12 @@
 																			var="ingredientes">
 																			<tr align="left">
 																				<c:if test="${ingredientes.estado != 'VENCIDO'}">
-																					<td style="width:255px;"><span class="lead"><form:checkbox
+																					<td><span class="lead"><form:checkbox
 																								path="seleccionados" value="${ingredientes.id}"
 																								class="check" />${ingredientes.nombre}</span></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
-																					<td style="width:255px;"><span class="lead"><input
+																					<td><span class="lead"><input
 																							type="checkbox" value="disabled" disabled>${ingredientes.nombre}</span></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'NOVENCIDO'}">
@@ -311,12 +319,12 @@
 																			var="ingredientes">
 																			<tr align="left">
 																				<c:if test="${ingredientes.estado != 'VENCIDO'}">
-																					<td style="width:255px;"><span class="lead"><form:checkbox
+																					<td><span class="lead"><form:checkbox
 																								path="seleccionados" value="${ingredientes.id}"
 																								class="check" />${ingredientes.nombre}</span></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
-																					<td style="width:255px;"><span class="lead"><input
+																					<td><span class="lead"><input
 																							type="checkbox" value="disabled" disabled>${ingredientes.nombre}</span></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'NOVENCIDO'}">
@@ -376,12 +384,12 @@
 																			var="ingredientes">
 																			<tr align="left">
 																				<c:if test="${ingredientes.estado != 'VENCIDO'}">
-																					<td style="width:255px;"><span class="lead"><form:checkbox
+																					<td><span class="lead"><form:checkbox
 																								path="seleccionados" value="${ingredientes.id}"
 																								class="check" />${ingredientes.nombre}</span></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
-																					<td style="width:255px;"><span class="lead"><input
+																					<td><span class="lead"><input
 																							type="checkbox" value="disabled" disabled>${ingredientes.nombre}</span></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'NOVENCIDO'}">
@@ -441,12 +449,12 @@
 																			var="ingredientes">
 																			<tr align="left">
 																				<c:if test="${ingredientes.estado != 'VENCIDO'}">
-																					<td style="width:255px;"><span class="lead"><form:checkbox
+																					<td><span class="lead"><form:checkbox
 																								path="seleccionados" value="${ingredientes.id}"
 																								class="check" />${ingredientes.nombre}</span></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
-																					<td style="width:255px;"><span class="lead"><input
+																					<td><span class="lead"><input
 																							type="checkbox" value="disabled" disabled>${ingredientes.nombre}</span></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'NOVENCIDO'}">

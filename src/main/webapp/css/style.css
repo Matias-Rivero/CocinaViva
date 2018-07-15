@@ -15,8 +15,7 @@ ul li{
 *
 * ======================================================= */
 body {
-/*   font-family: "Lato", Arial, sans-serif; */
-font-family: 'Fira Sans', sans-serif;
+  font-family: "Lato", Arial, sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.7;
@@ -69,21 +68,19 @@ p {
 
 h1 {
   color: #36b338;
-font-family: 'Fira Sans', sans-serif;
+  font-family: "Lato", Arial, sans-serif;
   font-weight: 400;
   margin: 0 0 20px 0;
 }
 h3 {
   color: #000;
-font-family: 'Fira Sans', sans-serif;
-
+  font-family: "Lato", Arial, sans-serif;
   font-weight: 400;
   margin: 0 0 20px 0;
 }
 h2, h4, h5, h6, figure {
   color: #fab348;
-font-family: 'Fira Sans', sans-serif;
-
+  font-family: "Lato", Arial, sans-serif;
   font-weight: 400;
   margin: 0 0 20px 0;
 }
@@ -175,11 +172,10 @@ font-family: 'Fira Sans', sans-serif;
 }
 
 @media (min-width: 768px) {
-  .lead2 .leadco .leadp .leadc .leadv .leadl .leadNombr{
+  .lead2 .leadco .leadp .leadc .leadv .leadl{
     font-size: 21px;
   }
 }
-
 
 .gtco-container {
   max-width: 1100px;
@@ -355,7 +351,7 @@ font-family: 'Fira Sans', sans-serif;
   }
 }
 #gtco-header .mt-text {
-  margin-top: 9em;
+  margin-top: 7em;
   margin-bottom: 3em;
 }
 @media screen and (max-width: 768px) {
@@ -381,7 +377,7 @@ font-family: 'Fira Sans', sans-serif;
   font-size: 80px;
   line-height: 1.5;
   font-weight: 300;
-  font-family: 'Lobster Two', cursive;
+  font-family: "Kaushan Script", cursive !important;
 }
 @media screen and (max-width: 768px) {
   #gtco-header h1 {
@@ -405,7 +401,7 @@ font-family: 'Fira Sans', sans-serif;
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
 }
 #gtco-header .form-wrap h3 {
- font-family: 'Lobster Two', cursive;
+  font-family: "Kaushan Script", cursive;
 }
 #gtco-header .form-wrap .tab-menu {
   padding: 0 !important;
@@ -754,7 +750,7 @@ form label {
 }
 
 .cursive-font {
- font-family: 'Lobster Two', cursive;
+  font-family: "Kaushan Script", cursive;
 }
 
 .primary-color {
@@ -1194,7 +1190,7 @@ form label {
   position: absolute;
   z-index: 1901;
   width: 270px;
-  background: black;
+  background: #136d07;
   top: 0;
   right: 0;
   top: 0;
@@ -1422,8 +1418,7 @@ form label {
 .btn {
   margin-right: 4px;
   margin-bottom: 4px;
-font-family: 'Fira Sans', sans-serif;
-
+  font-family: "Lato", Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
   -webkit-border-radius: 4px;
@@ -2211,6 +2206,15 @@ display:none;
   border-bottom-width: 0;
 }
 
+.notificacionItem{
+  padding: 30px;
+  margin: 5px;
+}
+
+.labelNotificacion{
+  padding: 5px;
+}
+
 .dot {
   height: 20px;
   width: 80px;
@@ -2218,6 +2222,5 @@ display:none;
   border-radius: 50%;
   display: inline-block;
 }
-
 
 /*# sourceMappingURL=style.css.map */
