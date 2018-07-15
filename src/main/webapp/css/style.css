@@ -1190,7 +1190,7 @@ form label {
   position: absolute;
   z-index: 1901;
   width: 270px;
-  background: black;
+  background: #136d07;
   top: 0;
   right: 0;
   top: 0;
@@ -2204,6 +2204,15 @@ display:none;
 .table-fixed tfoot > tr> td{
   float: left;
   border-bottom-width: 0;
+}
+
+.notificacionItem{
+  padding: 30px;
+  margin: 5px;
+}
+
+.labelNotificacion{
+  padding: 5px;
 }
 
 .dot {

@@ -78,7 +78,7 @@
 				<div class="row">
 					<div class="col-sm-4 col-xs-12">
 						<div id="gtco-logo">
-							<a href="home">Cocina Viva<em>.</em></a>
+							<a href="home"><img src="images/logo.png" width="170px" height="60px" style="margin:-10px" /></a>
 						</div>
 					</div>
 
@@ -118,14 +118,12 @@
 															<form:form action="validar-registro" method="POST"
 																modelAttribute="usuario" name="formregistro">
 																<div class="row form-group">
-																	<div class="col-md-12">
+																	<div class="col-md-6">
 																		<label for="date-start">Nombre </label>
 																		<form:input path="nombre" id="nombre" type="text" class="form-control" autocomplete="off"/>
 																		<label id="errornombre" class="label label-danger"></label>																	
 																	</div>
-																</div>
-																<div class="row form-group">
-																	<div class="col-md-12">
+																	<div class="col-md-6">
 																		<label for="date-start">Apellido</label>
 																		<form:input path="apellido" type="text" id="apellido"
 																			class="form-control" autocomplete="off"/>
@@ -142,16 +140,14 @@
 																	</div>
 																</div>
 																<div class="row form-group">
-																	<div class="col-md-12">
+																	<div class="col-md-6">
 																		<label for="date-start">Contraseña</label>
 																		<form:input path="password" type="password" id="password"
 																			class="form-control" autocomplete="off"/>
 																		<label id="errorpassword" class="label label-danger"></label>	
 																	</div>
-																</div>
-																
-																<div class="row form-group">
-																	<div class="col-md-12">
+
+																	<div class="col-md-6">
 																		<label for="date-start">Confirmar contraseña</label>
 																		<form:input path="repassword" type="password" id="repassword"
 																			class="form-control" autocomplete="off"/>
@@ -166,8 +162,7 @@
 																			class="form-control" autocomplete="off"/>
 																		<label id="erroralias" class="label label-danger"></label>	
 																	</div>
-																</div>
-									
+																</div>	
 																<div class="row form-group">
 																	<div class="col-md-12">
 																		<input type="button" class="btn btn-primary btn-block"

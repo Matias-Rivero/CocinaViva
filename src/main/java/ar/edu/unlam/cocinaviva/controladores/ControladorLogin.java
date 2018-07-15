@@ -15,11 +15,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.cocinaviva.modelo.Ingrediente;
+import ar.edu.unlam.cocinaviva.modelo.Notificacion;
 import ar.edu.unlam.cocinaviva.modelo.Pasos;
 import ar.edu.unlam.cocinaviva.modelo.Receta;
 import ar.edu.unlam.cocinaviva.modelo.Usuario;
 import ar.edu.unlam.cocinaviva.servicios.ServicioIngrediente;
 import ar.edu.unlam.cocinaviva.servicios.ServicioLogin;
+import ar.edu.unlam.cocinaviva.servicios.ServicioNotificacion;
 import ar.edu.unlam.cocinaviva.servicios.ServicioReceta;
 import ar.edu.unlam.cocinaviva.servicios.ServicioUsuario;
 
@@ -37,6 +39,9 @@ public class ControladorLogin {
 	
 	@Inject
 	private ServicioIngrediente servicioIngrediente;
+	
+    @Inject
+    private ServicioNotificacion servicioNotificacion;
 
 	@RequestMapping("/home")
 	public ModelAndView irAHome(HttpServletRequest request) throws ParseException {
@@ -69,6 +74,14 @@ public class ControladorLogin {
 					servicioIngrediente.traerLosIngredientesPescadoDeUnUsuario(usuario.getlistaIngrediente()));
 			modelo.put("ingredientescondimentodelusuario", servicioIngrediente
 					.traerLosIngredientesCondimentoDeUnUsuario(usuario.getlistaIngrediente()));
+			
+			List<Notificacion> notificacionesUsu = servicioNotificacion.getNotificacionesParaUnUsuario(usuariologueado);
+
+			if(!notificacionesUsu.isEmpty()){
+
+				request.getSession().setAttribute("notificacionesUsu", notificacionesUsu);
+				modelo.put("notificacionesUsu",notificacionesUsu);
+			}
 			
 			Ingrediente checkingredientes = new Ingrediente();
 			modelo.put("checkingredientes", checkingredientes);

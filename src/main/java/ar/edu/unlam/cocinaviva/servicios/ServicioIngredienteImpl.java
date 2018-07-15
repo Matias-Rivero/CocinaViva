@@ -31,6 +31,9 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 	
 	@Inject
 	private UsuarioDao servicioUsuarioDao;
+	
+	@Inject
+	private ServicioNotificacion servicioNotificacion;
 
 	@Override
 	public void guardarIngredienteEnInventario(Ingrediente ingrediente) {
@@ -468,14 +471,16 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 					
 				  if(difDiasVence <= 0){
 					  ingredienteUs.setEstado("VENCIDO");
-					  actualizarIngredientesAUsuario(ingredienteUs);
+					  actualizarIngredientesAUsuario(ingredienteUs);					  
+					  servicioNotificacion.NuevaNotificacionVencimiento(usuario,ingredienteUs);
 					  servicioUsuarioDao.actualizarUsuario(usuario);
 				  }else if(ingredienteUs.getEstado().equals("VENCIDO")){
 					  ingredienteUs.setEstado("NOVENCIDO");
 				  }
 				  if(difDiasVence > 0 && difDiasVence <= 5){
 					  ingredienteUs.setEstado("AVENCER"); 
-					  actualizarIngredientesAUsuario(ingredienteUs);
+					  actualizarIngredientesAUsuario(ingredienteUs);					  
+					  servicioNotificacion.NuevaNotificacionVencimiento(usuario,ingredienteUs);
 					  servicioUsuarioDao.actualizarUsuario(usuario);
 				  }else if(ingredienteUs.getEstado().equals("AVENCER")){
 					  ingredienteUs.setEstado("NOVENCIDO");
@@ -499,6 +504,7 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 				  if(difDiasAvisoSePudre < 0 && difDiasAvisoSePudre <= -5){
 					  ingredienteUs.setEstado("AVISO");  // Aviso que hace 5 dias que lo compraste fijate porque se pudre
 					  actualizarIngredientesAUsuario(ingredienteUs);
+					  servicioNotificacion.NuevaNotificacionVencimiento(usuario,ingredienteUs);
 					  servicioUsuarioDao.actualizarUsuario(usuario);	  
 				  }else if(ingredienteUs.getEstado().equals("AVISO")){
 					  ingredienteUs.setEstado("SINAVISO");
