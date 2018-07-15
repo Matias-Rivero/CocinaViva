@@ -74,5 +74,4 @@ public interface ServicioIngrediente {
 	Ingrediente traerCopiaDeUnIngredienteDelInventario(Ingrediente ingredienteDelInventario);
 	
 
-
 }

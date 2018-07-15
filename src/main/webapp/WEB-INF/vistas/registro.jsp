@@ -22,8 +22,10 @@
 <meta name="twitter:url" content="" />
 <meta name="twitter:card" content="" />
 
-<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700"
+	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Kaushan+Script"
+	rel="stylesheet">
 
 <!-- Animate.css -->
 <link rel="stylesheet" href="css/animate.css">
@@ -76,9 +78,7 @@
 				<div class="row">
 					<div class="col-sm-4 col-xs-12">
 						<div id="gtco-logo">
-
-							<img src="images/logo.png" width="170px" height="60px" style="margin:-10px"/>
-
+							<a href="home"><img src="images/logo.png" width="170px" height="60px" style="margin:-10px" /></a>
 						</div>
 					</div>
 
@@ -115,17 +115,14 @@
 												<div class="tab-content">
 													<div class="tab-content-inner active" data-content="signup">
 														<h1 class="cursive-font text-center">Registrate</h1>
-
 															<form:form action="validar-registro" method="POST"
 																modelAttribute="usuario" name="formregistro">
 																<div class="row form-group">
-																	<div class="col-md-12">
-
+																	<div class="col-md-6">
 																		<label for="date-start">Nombre </label>
 																		<form:input path="nombre" id="nombre" type="text" class="form-control" autocomplete="off"/>
 																		<label id="errornombre" class="label label-danger"></label>																	
 																	</div>
-																
 																	<div class="col-md-6">
 																		<label for="date-start">Apellido</label>
 																		<form:input path="apellido" type="text" id="apellido"
@@ -135,23 +132,23 @@
 																</div>
 																<div class="row form-group">
 																	<div class="col-md-12">
-																		<label for="date-start">Email</label>
+																		<label for="date-start">Usuario</label>
 																		<form:input path="email" id="email" type="email"
 																			placeholder="usuario@usuario.com.ar" class="form-control" autocomplete="off"/>
-																		<label id="erroremail" class="label label-danger"></label>	
+																		<label id="erroremail" class="label label-danger"></label>
+																		<c:if test="${not empty errors}"><label class="label label-danger">${errors}</label></c:if>		
 																	</div>
 																</div>
 																<div class="row form-group">
 																	<div class="col-md-6">
-																		<label for="date-start">Contraseï¿½a</label>
+																		<label for="date-start">Contraseña</label>
 																		<form:input path="password" type="password" id="password"
 																			class="form-control" autocomplete="off"/>
 																		<label id="errorpassword" class="label label-danger"></label>	
 																	</div>
-																
-																	<div class="col-md-6">
 
-																		<label for="date-start">Confirmar contraseï¿½a</label>
+																	<div class="col-md-6">
+																		<label for="date-start">Confirmar contraseña</label>
 																		<form:input path="repassword" type="password" id="repassword"
 																			class="form-control" autocomplete="off"/>
 																		<label id="errorrepassword" class="label label-danger"></label>	
@@ -165,18 +162,12 @@
 																			class="form-control" autocomplete="off"/>
 																		<label id="erroralias" class="label label-danger"></label>	
 																	</div>
-																</div>
-									
+																</div>	
 																<div class="row form-group">
-																	<div class="col-md-6">
-																		<input type="button" class="btn btn-primary btn-block"
-																			value="Cancelar"  onclick="location.href='home'">
-																	</div>
-																	<div class="col-md-6">
+																	<div class="col-md-12">
 																		<input type="button" class="btn btn-primary btn-block"
 																			value="Registrarme"  onclick="javascript:validarForm('nombre','apellido','email','password','repassword','alias')">
 																	</div>
-
 																</div>
 															</form:form>
 															

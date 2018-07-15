@@ -137,8 +137,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(quesosuizo);
 		
 		Ingrediente requeson = new Ingrediente();
-
-		requeson.setNombre("requesÃ³n");
+		requeson.setNombre("Requesón");
 		requeson.setTipo("LACTEOS");
 		requeson.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(requeson);
@@ -236,7 +235,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(ajo);
 		
 		Ingrediente limon = new Ingrediente();
-		limon.setNombre("Limï¿½n");
+		limon.setNombre("Limón");
 		limon.setTipo("VEGETALES");
 		limon.setUnidad("Unids");
 		servicioIngrediente.guardarIngredienteEnInventario(limon);
@@ -285,13 +284,13 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(perejil);
 		
 		Ingrediente brocoli = new Ingrediente();
-		brocoli.setNombre("brÃ³coli");
+		brocoli.setNombre("Brócoli");
 		brocoli.setTipo("VEGETALES");
 		brocoli.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(brocoli);
 		
 		Ingrediente maiz = new Ingrediente();
-		maiz.setNombre("maï¿½z");
+		maiz.setNombre("Maíz");
 		maiz.setTipo("VEGETALES");
 		maiz.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(maiz);
@@ -309,7 +308,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(jengibre);
 		
 		Ingrediente ajipicante = new Ingrediente();
-		ajipicante.setNombre("ajï¿½ picante");
+		ajipicante.setNombre("Ají picante");
 		ajipicante.setTipo("VEGETALES");
 		ajipicante.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(ajipicante);
@@ -345,7 +344,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(batata);
 		
 		Ingrediente calabacin = new Ingrediente();
-		calabacin.setNombre("calabacï¿½n");
+		calabacin.setNombre("Calabacín");
 		calabacin.setTipo("VEGETALES");
 		calabacin.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(calabacin);
@@ -425,7 +424,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(filetedeternera);
 		
 		Ingrediente jamon = new Ingrediente();
-		jamon.setNombre("jamÃ³n");
+		jamon.setNombre("Jamón");
 		jamon.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(jamon);
 		
@@ -512,7 +511,7 @@ public class ControladorInsertar {
 		// PESCADO
 		
 		Ingrediente atunenlatado = new Ingrediente();
-		atunenlatado.setNombre("atï¿½n enlatado");
+		atunenlatado.setNombre("Atún enlatado");
 		atunenlatado.setTipo("PESCADO");
 		atunenlatado.setPerece("SEVENCE");
 		servicioIngrediente.guardarIngredienteEnInventario(atunenlatado);
@@ -524,7 +523,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(filetesdepescado);
 		
 		Ingrediente salmon = new Ingrediente();
-		salmon.setNombre("salmÃ³n");
+		salmon.setNombre("Salmón");
 		salmon.setTipo("PESCADO");
 		salmon.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(salmon);
@@ -536,7 +535,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(tilapia);
 		
 		Ingrediente salmonenlatado = new Ingrediente();
-		salmonenlatado.setNombre("salmÃ³n enlatado");
+		salmonenlatado.setNombre("Salmón enlatado");
 		salmonenlatado.setTipo("PESCADO");
 		salmonenlatado.setPerece("SEVENCE");
 		servicioIngrediente.guardarIngredienteEnInventario(salmonenlatado);
@@ -548,7 +547,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(anchoas);
 		
 		Ingrediente salmonahumado = new Ingrediente();
-		salmonahumado.setNombre("salmï¿½n ahumado");
+		salmonahumado.setNombre("Salmón ahumado");
 		salmonahumado.setTipo("PESCADO");
 		salmonahumado.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(salmonahumado);
@@ -560,7 +559,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(sardinas);
 		
 		Ingrediente filetedeatun = new Ingrediente();
-		filetedeatun.setNombre("filete de atï¿½n");
+		filetedeatun.setNombre("Filete de atún");
 		filetedeatun.setTipo("PESCADO");
 		filetedeatun.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(filetedeatun);
@@ -608,7 +607,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(pezroca);
 		
 		Ingrediente sueladelimon = new Ingrediente();
-		sueladelimon.setNombre("suela de limï¿½n");
+		sueladelimon.setNombre("Suela de limón");
 		sueladelimon.setTipo("PESCADO");
 		sueladelimon.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(sueladelimon);
@@ -730,13 +729,13 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(mostaza);
 		
 		Ingrediente salsatartara = new Ingrediente();
-		salsatartara.setNombre("salsa tï¿½rtara");
+		salsatartara.setNombre("Salsa tártara");
 		salsatartara.setTipo("CONDIMENTOS");
 		salsatartara.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(salsatartara);
 		
 		Ingrediente salsadecoctel = new Ingrediente();
-		salsadecoctel.setNombre("salsa de cÃ³ctel");
+		salsadecoctel.setNombre("Salsa de cóctel");
 		salsadecoctel.setTipo("CONDIMENTOS");
 		salsadecoctel.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(salsadecoctel);
@@ -760,7 +759,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(ketchup);
 		
 		Ingrediente aderezodesesamo = new Ingrediente();
-		aderezodesesamo.setNombre("aderezo de sÃ³samo");
+		aderezodesesamo.setNombre("Aderezo de sésamo");
 		aderezodesesamo.setTipo("CONDIMENTOS");
 		aderezodesesamo.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(aderezodesesamo);
@@ -933,7 +932,7 @@ public class ControladorInsertar {
 	ipolloalhorno.add(zanahoria);
 	ipolloalhorno.add(calabaza);
 	ipolloalhorno.add(salfina);
-	polloalhorno.setDescripcion("Pollo al horno, Riquï¿½simo para compartir!");
+	polloalhorno.setDescripcion("Pollo al horno, Riquísimo para compartir!");
 	
 	List<Pasos> pasospolloalhorno = new LinkedList<Pasos>();
 	
@@ -963,7 +962,7 @@ public class ControladorInsertar {
 	
 	Pasos pahP5 = new Pasos();
 	pahP5.setPaso(5);
-	pahP5.setDescripcion("Llevarlo a horno fuerte, baï¿½ando con el mismo lï¿½quido de la cocciï¿½n si fuese necesario, para que no se reseque la carne.");
+	pahP5.setDescripcion("Llevarlo a horno fuerte, bañando con el mismo líquido de la cocción si fuese necesario, para que no se reseque la carne.");
 	pasospolloalhorno.add(pahP5);
 	servicioReceta.guardarPasoEnReceta(pahP5);
 	
@@ -975,7 +974,7 @@ public class ControladorInsertar {
 	
 	Pasos pahP7 = new Pasos();
 	pahP7.setPaso(7);
-	pahP7.setDescripcion("Cocinar la calabaza y hacer un purï¿½.");
+	pahP7.setDescripcion("Cocinar la calabaza y hacer un puré.");
 	pasospolloalhorno.add(pahP7);
 	servicioReceta.guardarPasoEnReceta(pahP7);
 	
@@ -987,7 +986,7 @@ public class ControladorInsertar {
 	
 	Pasos pahP9 = new Pasos();
 	pahP9.setPaso(9);
-	pahP9.setDescripcion("Servir decorado con las zanahorias y acompaï¿½ado del purï¿½ de calabaza.");
+	pahP9.setDescripcion("Servir decorado con las zanahorias y acompañado del puré de calabaza.");
 	pasospolloalhorno.add(pahP9);
 	servicioReceta.guardarPasoEnReceta(pahP9);
 	
@@ -1001,7 +1000,7 @@ public class ControladorInsertar {
 	public ModelAndView insertarPucherodecaracu() {	
 		Receta pucherodecaracu = new Receta();
 
-		pucherodecaracu.setNombre("Puchero de caracï¿½");
+		pucherodecaracu.setNombre("Puchero de caracú");
 
 		pucherodecaracu.setCalorias(750);
 		
@@ -1080,7 +1079,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnReceta(mayonesa);
 		ingredientes.add(mayonesa);
 
-		Ingrediente limon = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Limï¿½n");
+		Ingrediente limon = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Limón");
 		limon.setCantidad(0);
 		limon.setCantidadstring("A gusto");
 		servicioIngrediente.guardarIngredienteEnReceta(limon);
@@ -1098,33 +1097,33 @@ public class ControladorInsertar {
 		Pasos pahP2 = new Pasos();
 		pahP2.setPaso(2);
 		pahP2.setImagen("p2.jpg");
-		pahP2.setDescripcion("Pelamos las verduras, lavamos bien y las reservamos enteras (sin cortar), menos la calabaza que la cortamos en rodajas manteniendo su cï¿½scara.");
+		pahP2.setDescripcion("Pelamos las verduras, lavamos bien y las reservamos enteras (sin cortar), menos la calabaza que la cortamos en rodajas manteniendo su cáscara.");
 		pasos.add(pahP2);
 		servicioReceta.guardarPasoEnReceta(pahP2);
 		
 		Pasos pahP3 = new Pasos();
 		pahP3.setPaso(3);
 		pahP3.setImagen("p3.jpg");
-		pahP3.setDescripcion("Pasada la hora y media de hervor de nuestra carne chequeamos su cocciï¿½n, luego colocamos las zanahorias y las batatas.");
+		pahP3.setDescripcion("Pasada la hora y media de hervor de nuestra carne chequeamos su cocción, luego colocamos las zanahorias y las batatas.");
 		pasos.add(pahP3);
 		servicioReceta.guardarPasoEnReceta(pahP3);
 		
 		Pasos pahP4 = new Pasos();
 		pahP4.setPaso(4);
 		pahP4.setImagen("p4.jpg");
-		pahP4.setDescripcion("Pasados 10 minutos ponemos todas las demï¿½s verduras mï¿½s los dientes de ajo machacados, el perejil y el otro caldo saborizante, cocinamos a olla tapada y fuego fuerte por 20 minutos mï¿½s.");
+		pahP4.setDescripcion("Pasados 10 minutos ponemos todas las demás verduras más los dientes de ajo machacados, el perejil y el otro caldo saborizante, cocinamos a olla tapada y fuego fuerte por 20 minutos más.");
 		pasos.add(pahP4);
 		servicioReceta.guardarPasoEnReceta(pahP4);
 		
 		Pasos pahP5 = new Pasos();
 		pahP5.setPaso(5);
-		pahP5.setDescripcion("Por ulitmo, chequeamos pinchando con un cuchillo cada verdura para ver si ya estï¿½n a punto, y listo nuestro puchero de caracï¿½.");
+		pahP5.setDescripcion("Por ulitmo, chequeamos pinchando con un cuchillo cada verdura para ver si ya están a punto, y listo nuestro puchero de caracú.");
 		pasos.add(pahP5);
 		servicioReceta.guardarPasoEnReceta(pahP5);
 		
 		Pasos pahP6 = new Pasos();
 		pahP6.setPaso(6);
-		pahP6.setDescripcion("Tips 1 : Las verduras se pueden comer enteras o hacer un rico purï¿½ con mucho limï¿½n y aceite de oliva. (tambiï¿½n con mayonesa queda muy bien).");
+		pahP6.setDescripcion("Tips 1 : Las verduras se pueden comer enteras o hacer un rico puré con mucho limón y aceite de oliva. (también con mayonesa queda muy bien).");
 		pasos.add(pahP6);
 		servicioReceta.guardarPasoEnReceta(pahP6);
 		
@@ -1136,13 +1135,13 @@ public class ControladorInsertar {
 		
 		Pasos pahP8 = new Pasos();
 		pahP8.setPaso(8);
-		pahP8.setDescripcion("Tips 3: A no olvidarse de comer el tuetano del caracï¿½ con una rica tostada o bizcocho bien crocante.");
+		pahP8.setDescripcion("Tips 3: A no olvidarse de comer el tuetano del caracú con una rica tostada o bizcocho bien crocante.");
 		pasos.add(pahP8);
 		servicioReceta.guardarPasoEnReceta(pahP8);
 		
 		Pasos pahP9 = new Pasos();
 		pahP9.setPaso(9);
-		pahP9.setDescripcion("Tips 4: Con el tremendo caldo que nos queda al otro dï¿½a nos podemos hacer una fabulosa sopa de verduras. (opcional ponerle municiones).");
+		pahP9.setDescripcion("Tips 4: Con el tremendo caldo que nos queda al otro día nos podemos hacer una fabulosa sopa de verduras. (opcional ponerle municiones).");
 		pasos.add(pahP9);
 		servicioReceta.guardarPasoEnReceta(pahP9);
 		

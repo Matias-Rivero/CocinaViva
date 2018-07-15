@@ -24,8 +24,10 @@
 <meta name="twitter:url" content="" />
 <meta name="twitter:card" content="" />
 
-<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700"
+	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Kaushan+Script"
+	rel="stylesheet">
 
 <!-- Animate.css -->
 <link rel="stylesheet" href="css/animate.css">
@@ -73,39 +75,35 @@
 			<div class="gtco-container">
 
 				<div class="row">
-					<div class="col-sm-4 col-xs-12">
+					<div class="col-sm-1 col-xs-12">
 						<div id="gtco-logo">
-							<img src="images/logo.png" width="170px" height="60px" style="margin:-10px"/>
+							<a href="home"><img src="images/logo.png" width="170px" height="60px" style="margin:-10px" /></a>
 						</div>
 					</div>
 
 					<c:choose>
 						<c:when test="${usuariologueado != null}">
-							<div class="col-xs-8 text-right menu-1">
+							<div class="col-xs-11 text-right menu-1">
 								<ul>
-									<li class="btn-cta"><a href="home"><span>Buscar
-												Recetas</span></a></li>
-									<li class="has-dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-microphone"></i> <img src="../../images/notification-bell.png" alt="Notificaciones"></a>
-										<ul class="dropdown">
-											<c:forEach items="${notificacionesUsu}" var="notificacion">
-												<li>
-													<c:choose>
-														<c:when test="${notificacion.tipoNotificacion == 'SIN_STOCK'}">
-															<a href="ingredientes"><span class="label label-primary">${notificacion.fechaNotificacion}</span> ${notificacion.mensaje} </a>
-														</c:when>
-														<c:otherwise>
-															<a href="modificar"><span class="label label-primary">${notificacion.fechaNotificacion}</span> ${notificacion.mensaje} </a>
-														</c:otherwise>
-													</c:choose>
-												</li>
-												<li role="presentation" class="divider"></li>
-											</c:forEach>
-										</ul>
-									</li>
-									<li class="btn-cta"><a href="home"><span>Inventario</span></a></li>
-									<li class="btn-cta"><a href="modificar"><span>Modificar Ingredientes</span></a></li>
-									<li class="btn-cta"><a href="recetas"><span>Buscar Recetas</span></a></li>
-									<li class="btn-cta"><a href="cerrarSesion"><span>Salir</span></a></li>
+									<li><a href="home"><span>Inventario</span></a></li>
+									<li class="has-dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-microphone"></i> <img src="images/notification-bell.png" alt="Notificaciones"></a>
+									<ul class="dropdown">
+										<c:forEach items="${notificacionesUsu}" var="notificacion">
+											<li>
+												<c:choose>
+													<c:when test="${notificacion.tipoNotificacion == 'SIN_STOCK'}">
+														<a href="ingredientes"><span class="label label-primary">${notificacion.fechaNotificacion}</span> ${notificacion.mensaje} </a>
+													</c:when>
+													<c:otherwise>
+														<a href="modificar"><span class="label label-primary">${notificacion.fechaNotificacion}</span> ${notificacion.mensaje} </a>
+													</c:otherwise>
+												</c:choose>
+											</li>
+											<li role="presentation" class="divider"></li>
+										</c:forEach>
+									</ul>
+									</li>									
+									<li><a href="cerrarSesion"><span>Salir</span></a></li>
 								</ul>
 							</div>
 						</c:when>
@@ -122,7 +120,6 @@
 			<div class="py-5 text-center">
 				<h1>Mi Perfil</h1>
 			</div>
-						<input type="button" onclick="history.back()" value="Volver Atr�s" class="btn btn-light"></input>
 
 			<div class="row">
 				<!-- <h2>blabla</h2> -->

@@ -24,8 +24,10 @@
 <meta name="twitter:url" content="" />
 <meta name="twitter:card" content="" />
 
-<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700"
+	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Kaushan+Script"
+	rel="stylesheet">
 
 <!-- Animate.css -->
 <link rel="stylesheet" href="css/animate.css">
@@ -78,20 +80,36 @@
 				<div class="row">
 					<div class="col-sm-4 col-xs-12">
 						<div id="gtco-logo">
-							<img src="images/logo.png" width="170px" height="60px" style="margin:-10px" />
+							<a href="home"><img src="images/logo.png" width="170px" height="60px" style="margin:-10px" /></a>
 						</div>
 					</div>
 
 					<c:choose>
 						<c:when test="${usuariologueado != null}">
 							<div class="col-xs-8 text-right menu-1">
-								<ul>
-									<li class="btn-cta"><a href="home"><span>Inventario</span></a></li>
-									<li class="btn-cta"><a href="home"><span>Buscar
-												Recetas</span></a></li>
+								<ul>									
+									<li><a href="home"><span>Inventario</span></a></li>
+									<li><a href="modificar"><span>Modificar</span></a></li>
+									<li class="has-dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-microphone"></i> <img src="images/notification-bell.png" alt="Notificaciones"></a>
+									<ul class="dropdown">
+										<c:forEach items="${notificacionesUsu}" var="notificacion">
+											<li>
+												<c:choose>
+													<c:when test="${notificacion.tipoNotificacion == 'SIN_STOCK'}">
+														<a href="ingredientes"><span class="label label-primary">${notificacion.fechaNotificacion}</span> ${notificacion.mensaje} </a>
+													</c:when>
+													<c:otherwise>
+														<a href="modificar"><span class="label label-primary">${notificacion.fechaNotificacion}</span> ${notificacion.mensaje} </a>
+													</c:otherwise>
+												</c:choose>
+											</li>
+											<li role="presentation" class="divider"></li>
+										</c:forEach>
+									</ul>
+									</li>
 									<li class="btn-cta"><a href="perfilcliente"><span>Mi
-												perfil: ${usuariologueado.alias}</span></a></li>
-									<li class="btn-cta"><a href="cerrarSesion"><span>Salir</span></a></li>
+												perfil: ${usuariologueado.alias}</span></a></li>												
+									<li><a href="cerrarSesion"><span>Salir</span></a></li>
 								</ul>
 							</div>
 						</c:when>
@@ -108,19 +126,19 @@
 
 		<div class="overlay"></div>
 		<div class="gtco-section">
-		<div class="gtco-container" id="altura2">
+		<div class="gtco-container" id="altura">
 							
 			<div class="row">
  						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
    							<c:choose>
    							<c:when test="${not empty tieneingredienteselusuario}">
-   							<div class="py-5 text-center">
-   								<h1>Â¿Ingredientes para agregar?  <c:if test="${not empty paso}"><span class="lead5">${paso}</span></c:if></h1>
+   							<div class="py-5 text-center">		
+   								<h1>¿Ingredientes para agregar?</h1>
    							</div>
 	   						</c:when>
 	   						<c:otherwise>
 	   						<div class="py-5 text-center">			
-	   							<h1>Oops!...</h1><h2>Â¿No tienes ingredientes en tu heladera?</h2>
+	   							<h1>Oops!...</h1><h2>¿No tienes ingredientes en tu heladera?</h2>
 	   						</div>
    							</c:otherwise>
    							</c:choose>					
@@ -147,8 +165,7 @@
 
 									<table class="table table-fixed" >
 										<thead>
-											<tr>
-												<span>Inventario</span>
+											<tr>																															
 												<th><input type="text" id="filtrar" class="form-control" value="" placeholder="tomate" autocomplete="off"></th>
 											</tr>
 										</thead>
@@ -290,8 +307,7 @@
 												</tbody>
 
 											</table>
-											<button type="button" onclick="validaEnviaAltaIngre();" class="btn btn-primary btn-md ">Agregar</button>
-											<button type="button" onclick="validaEnviaAltaIngre();" class="btn btn-primary btn-md ">volver</button>	
+											<button type="button" onclick="validaEnviaAltaIngre();" class="btn btn-primary btn-lg btn-block">Agregar</button>	
 											<div style="visibility: hidden;">
 												<button id="altaingre" class="btn btn-primary" type="submit">agregaringre</button>
 											</div>	
@@ -317,7 +333,7 @@
 	      <div class="modal-header">
 	      	<div class="alert alert-danger" role="alert">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>        
-			  <h3>ï¿½Agrega al menos 1 ingrediente!</h3>
+			  <h3>¡Agrega al menos 1 ingrediente!</h3>
 			</div>
 	      </div>  
 	    </div>
@@ -329,7 +345,7 @@
 	      <div class="modal-header">
 	      	<div class="alert alert-danger" role="alert">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>        
-			  <h3>ï¿½La fecha es necesaria!</h3>
+			  <h3>¡La fecha es necesaria!</h3>
 			</div>
 	      </div>  
 	    </div>

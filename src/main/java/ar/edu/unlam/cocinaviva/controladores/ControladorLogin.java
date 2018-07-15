@@ -6,8 +6,6 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
-import ar.edu.unlam.cocinaviva.modelo.Notificacion;
-import ar.edu.unlam.cocinaviva.servicios.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,9 +15,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.cocinaviva.modelo.Ingrediente;
+import ar.edu.unlam.cocinaviva.modelo.Notificacion;
 import ar.edu.unlam.cocinaviva.modelo.Pasos;
 import ar.edu.unlam.cocinaviva.modelo.Receta;
 import ar.edu.unlam.cocinaviva.modelo.Usuario;
+import ar.edu.unlam.cocinaviva.servicios.ServicioIngrediente;
+import ar.edu.unlam.cocinaviva.servicios.ServicioLogin;
+import ar.edu.unlam.cocinaviva.servicios.ServicioNotificacion;
+import ar.edu.unlam.cocinaviva.servicios.ServicioReceta;
+import ar.edu.unlam.cocinaviva.servicios.ServicioUsuario;
 
 @Controller
 public class ControladorLogin {
@@ -35,7 +39,7 @@ public class ControladorLogin {
 	
 	@Inject
 	private ServicioIngrediente servicioIngrediente;
-
+	
     @Inject
     private ServicioNotificacion servicioNotificacion;
 
@@ -49,13 +53,13 @@ public class ControladorLogin {
 			Usuario usuariologueado = (Usuario) request.getSession().getAttribute("usuariologueado");	
 			
 			Usuario usuario = servicioUsuario.traerUnUsuarioPorSuId(usuariologueado.getId());
-
+			
 			modelo.put("tieneingredienteselusuario",usuario.getlistaIngrediente());	
 			
 			servicioIngrediente.verificarEstadoDelIngrediente(usuario);
 			
 			servicioIngrediente.actualizarFVDeIngQuePerecen(usuario);
-
+	
 			if(usuario.getlistaIngrediente().isEmpty()){
 				return new ModelAndView("redirect:/ingredientes");
 			}
@@ -70,7 +74,7 @@ public class ControladorLogin {
 					servicioIngrediente.traerLosIngredientesPescadoDeUnUsuario(usuario.getlistaIngrediente()));
 			modelo.put("ingredientescondimentodelusuario", servicioIngrediente
 					.traerLosIngredientesCondimentoDeUnUsuario(usuario.getlistaIngrediente()));
-
+			
 			List<Notificacion> notificacionesUsu = servicioNotificacion.getNotificacionesParaUnUsuario(usuariologueado);
 
 			if(!notificacionesUsu.isEmpty()){
@@ -78,7 +82,7 @@ public class ControladorLogin {
 				request.getSession().setAttribute("notificacionesUsu", notificacionesUsu);
 				modelo.put("notificacionesUsu",notificacionesUsu);
 			}
-
+			
 			Ingrediente checkingredientes = new Ingrediente();
 			modelo.put("checkingredientes", checkingredientes);
 			
@@ -136,7 +140,6 @@ public class ControladorLogin {
 
 			servicioUsuario.guardarUsuario(usuario);
 			request.getSession().setAttribute("usuariologueado", usuario);
-
 			return new ModelAndView("redirect:/home");
 		}
 	}
@@ -174,7 +177,7 @@ public class ControladorLogin {
 		if (request.getSession().getAttribute("usuariologueado") != null) {
 			
 			Usuario usuariologueado = (Usuario) request.getSession().getAttribute("usuariologueado");	
-
+			
 			Usuario usuario = servicioUsuario.traerUnUsuarioPorSuId(usuariologueado.getId());
 			
 			modelo.put("tieneingredienteselusuario",usuario.getlistaIngrediente());	
@@ -193,7 +196,7 @@ public class ControladorLogin {
 				
 				Ingrediente checkingrediente = new Ingrediente();
 				modelo.put("checkingredientes", checkingrediente);
-				modelo.put("paso", "	#1");
+				modelo.put("paso", "#1");
 		}else{
 			return new ModelAndView("redirect:/home");
 		}
