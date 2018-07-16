@@ -78,7 +78,7 @@
 			<div class="gtco-container">
 
 				<div class="row">
-					<div class="col-sm-4 col-xs-12">
+					<div class="col-sm-1 col-xs-12">
 						<div id="gtco-logo">
 							<a href="home"><img src="images/logo.png" width="170px" height="60px" style="margin:-10px" /></a>
 						</div>
@@ -86,12 +86,11 @@
 
 					<c:choose>
 						<c:when test="${usuariologueado != null}">
-							<div class="col-xs-8 text-right menu-1">
-								<ul>									
+							<div class="col-xs-11 text-right menu-1">
+								<ul>								
 									<li><a href="home"><span>Inventario</span></a></li>
-									<li><a href="modificar"><span>Modificar</span></a></li>
-									<li class="has-dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-microphone"></i> <img src="images/notification-bell.png" alt="Notificaciones"></a>
-									<ul class="dropdown">
+									<li><a href="modificar"><span>Modificar ingredientes</span></a></li>
+									<li class="has-dropdown">|<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-bell"></i></a>									<ul class="dropdown">
 										<c:forEach items="${notificacionesUsu}" var="notificacion">
 											<li>
 												<c:choose>
@@ -107,9 +106,12 @@
 										</c:forEach>
 									</ul>
 									</li>
-									<li class="btn-cta"><a href="perfilcliente"><span>Mi
-												perfil: ${usuariologueado.alias}</span></a></li>												
-									<li><a href="cerrarSesion"><span>Salir</span></a></li>
+									<li class="btn-cta has-dropdown"><a href="#" ><span><i class="glyphicon glyphicon-user"></i>
+												&nbsp;${usuariologueado.alias}</span></a>
+												<ul class="dropdown" style="display: none;">
+													<li><a href="perfilcliente">Mi Perfil</a></li>
+                									<li><a href="cerrarSesion">Cerrar Sesiòn</a></li>
+   									             </ul></li>			
 								</ul>
 							</div>
 						</c:when>
