@@ -504,7 +504,7 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 				  if(difDiasAvisoSePudre < 0 && difDiasAvisoSePudre <= -5){
 					  ingredienteUs.setEstado("AVISO");  // Aviso que hace 5 dias que lo compraste fijate porque se pudre
 					  actualizarIngredientesAUsuario(ingredienteUs);
-					  servicioNotificacion.NuevaNotificacionVencimiento(usuario,ingredienteUs);
+					  servicioNotificacion.NuevaNotificacionIngredientePasado(usuario,ingredienteUs);
 					  servicioUsuarioDao.actualizarUsuario(usuario);	  
 				  }else if(ingredienteUs.getEstado().equals("AVISO")){
 					  ingredienteUs.setEstado("SINAVISO");
