@@ -72,6 +72,10 @@ public interface ServicioIngrediente {
 	Ingrediente traerUnIngredienteDelInventarioPorSuNombre(String nombre);
 
 	Ingrediente traerCopiaDeUnIngredienteDelInventario(Ingrediente ingredienteDelInventario);
+
+	List<Ingrediente> traerListaDeIngredientesAgotadosDeUnUsuario(Usuario usuario);
+
+	List<Ingrediente> traerListaDeIngredientesVencidosDeUnUsuario(Usuario usuario);
 	
 
 }

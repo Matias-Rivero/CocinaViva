@@ -483,7 +483,7 @@
 																<table class="table table-hover">
 																	<thead>
 																		<tr class="bg-warning">
-																			<th><span class="lead"><strong>Condimento</strong></span></th>
+																			<th><span class="lead"><strong>Almacen</strong></span></th>
 																			<th><span class="lead">Estado</span></th>
 																			<th><span class="lead"></span></th>
 																			<th><span class="lead">Cantidad</span></th>

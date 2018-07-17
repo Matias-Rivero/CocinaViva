@@ -286,6 +286,29 @@ public class ControladorLogin {
 		return new ModelAndView("redirect:/home");
 	}
 	
+	@RequestMapping(path = "/eliminar-ingrediente-ayv")
+	public ModelAndView eliminarIngredienteAyV(@RequestParam("id") Long id, HttpServletRequest request) {
+		
+		if (request.getSession().getAttribute("usuariologueado") != null) {
+			
+			Usuario usuariologueado = (Usuario) request.getSession().getAttribute("usuariologueado");	
+					
+			servicioIngrediente.eliminarIngredienteAUsuario(usuariologueado.getId(),id);
+			
+			Usuario usuario = servicioUsuario.traerUnUsuarioPorSuId(usuariologueado.getId());
+			
+			List<Ingrediente> ingredientesV = servicioIngrediente.traerListaDeIngredientesVencidosDeUnUsuario(usuario);
+		    List<Ingrediente> ingredientesA = servicioIngrediente.traerListaDeIngredientesAgotadosDeUnUsuario(usuario);
+		      
+		      if(ingredientesV.isEmpty() && ingredientesA.isEmpty()){
+			        return new ModelAndView("redirect:/home");
+			  }
+						
+		return new ModelAndView("redirect:/agoyvenc");
+	}
+		return new ModelAndView("redirect:/home");
+	}
+	
 	@RequestMapping(path = "/modificar", method = RequestMethod.GET)
 	  public ModelAndView modificar(HttpServletRequest request) {
 	    
@@ -300,7 +323,13 @@ public class ControladorLogin {
 	      if(usuario.getlistaIngrediente().isEmpty()){
 	        return new ModelAndView("redirect:/ingredientes");
 	      }
-	      
+
+	      List<Ingrediente> ingredientesV = servicioIngrediente.traerListaDeIngredientesVencidosDeUnUsuario(usuario);
+		    List<Ingrediente> ingredientesA = servicioIngrediente.traerListaDeIngredientesAgotadosDeUnUsuario(usuario);
+		   
+		      if(!(ingredientesV.isEmpty() && ingredientesA.isEmpty())){
+		    	  modelo.put("tieneAyV", "tiene");
+			  }	      
 	      List<Ingrediente> ingredientesUs = servicioIngrediente.traerListaDeIngredientesNoVencidosYNoAgotadosDeUnUsuario(usuario);
 		 Ingrediente ingredientes = servicioIngrediente.generarListaDeIngredientes(ingredientesUs);
 	      
@@ -386,9 +415,11 @@ public class ControladorLogin {
 			
 			List<Receta> recetasConFaltantes = servicioReceta.traerRecetasConFaltantesDeIngredientes(recetas,Ingredientes); // IngredelUS
 			
-			cuantasrecetas = cuantasrecetas + recetas.size();
-			
+			if ((ingrediente.getNombre().isEmpty() || cuantasrecetas == 0)) {
 			modelo.put("listaRecetas", recetasConFaltantes);
+			cuantasrecetas = recetasConFaltantes.size();
+			}
+			
 			modelo.put("listaRecetasLargo", cuantasrecetas);
 			modelo.put("ingredinetesseleccionados", Ingredientes);
 
@@ -469,6 +500,37 @@ public class ControladorLogin {
 		return new ModelAndView("redirect:/home");
 	}
 	
+
+	@RequestMapping(path = "/agoyvenc", method = RequestMethod.GET)
+	  public ModelAndView agoYVenc(HttpServletRequest request) {
+	    
+	    ModelMap modelo = new ModelMap();
+	    
+	    if (request.getSession().getAttribute("usuariologueado") != null) {
+	      
+	      Usuario usuariologueado = (Usuario) request.getSession().getAttribute("usuariologueado");
+	      
+	      Usuario usuario = servicioUsuario.traerUnUsuarioPorSuId(usuariologueado.getId());
+	      
+	      List<Ingrediente> ingredientesV = servicioIngrediente.traerListaDeIngredientesVencidosDeUnUsuario(usuario);
+	      List<Ingrediente> ingredientesA = servicioIngrediente.traerListaDeIngredientesAgotadosDeUnUsuario(usuario);
+
+	      if(usuario.getlistaIngrediente().isEmpty()){
+	        return new ModelAndView("redirect:/ingredientes");
+	      }
+	      if(ingredientesV.isEmpty() && ingredientesA.isEmpty()){
+		        return new ModelAndView("redirect:/home");
+		  }
+	      modelo.put("estaenAyV", "estaenAyV");	           	           
+	      modelo.put("ingredientesagotadosdelusuario", ingredientesA); 
+	      modelo.put("ingredientesvencidosdelusuario", ingredientesV);    
+	    
+	    }else{
+	      return new ModelAndView("redirect:/home");
+	    }
+	    return new ModelAndView("modificar", modelo);
+	  }
+
 	
 // Si quieren acceder por GET	
 	@RequestMapping("/validar-login")

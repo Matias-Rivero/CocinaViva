@@ -114,8 +114,8 @@ public class ServicioNotificacionImpl implements ServicioNotificacion {
 		String nombreIngrediente = ingrediente.getNombre();
 		String fechaCompra = ingrediente.getFcompra();
 		//TODO COMPARAR LA FECHA DE COMPRA CON EL DIA DE LA FECHA, PARA SABER CUANDO PASARON CINCO DIAS.
-		String mensaje = "Usted compro este ingrediente: "+ nombreIngrediente +" , el dia " +fechaCompra + " lleva en la heladera cinco dias o mas.";
 
+		String mensaje = "Usted compro este ingrediente: "+ nombreIngrediente +" , el dia " +fechaCompra + " lleva en la heladera cinco dias o mas.";
 
 		notificacion.setMensaje(mensaje);
 

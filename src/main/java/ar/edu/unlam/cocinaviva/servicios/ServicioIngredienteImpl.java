@@ -98,9 +98,9 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 	public List<Ingrediente> traerLosIngredientesLacteosDeUnUsuario(List<Ingrediente> listaIngredientesUs) {
 		
 		List<Ingrediente> ingredientesLacteos = new LinkedList<Ingrediente>();
-		for (Ingrediente lacteos : listaIngredientesUs) {
-			if (lacteos.getTipo().equals("LACTEOS")) {
-				ingredientesLacteos.add(lacteos);
+		for (Ingrediente i : listaIngredientesUs) {
+			if (i.getTipo().equals("LACTEOS") && (!(i.getEstado().equals("VENCIDO"))) && (!(i.getEstado().equals("AGOTADO")))) {
+				ingredientesLacteos.add(i);
 			}
 		}
 		return ingredientesLacteos;
@@ -110,9 +110,9 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 	public List<Ingrediente> traerLosIngredientesVegetalesDeUnUsuario(List<Ingrediente> listaIngredientesUs) {
 		
 		List<Ingrediente> ingredientesVegetales = new LinkedList<Ingrediente>();
-		for (Ingrediente vegetales : listaIngredientesUs) {
-			if (vegetales.getTipo().equals("VEGETALES")) {
-				ingredientesVegetales.add(vegetales);
+		for (Ingrediente i : listaIngredientesUs) {
+			if (i.getTipo().equals("VEGETALES") && (!(i.getEstado().equals("VENCIDO"))) && (!(i.getEstado().equals("AGOTADO")))) {
+				ingredientesVegetales.add(i);
 			}
 		}
 		return ingredientesVegetales;
@@ -121,9 +121,9 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 	@Override
 	public List<Ingrediente> traerLosIngredientesCarnesDeUnUsuario(List<Ingrediente> listaIngredientesUs) {
 		List<Ingrediente> ingredientesCarnes = new LinkedList<Ingrediente>();
-		for (Ingrediente carnes : listaIngredientesUs) {
-			if (carnes.getTipo().equals("CARNES")) {
-				ingredientesCarnes.add(carnes);
+		for (Ingrediente i : listaIngredientesUs) {
+			if (i.getTipo().equals("CARNES") && (!(i.getEstado().equals("VENCIDO"))) && (!(i.getEstado().equals("AGOTADO")))) {
+				ingredientesCarnes.add(i);
 			}
 		}
 		return ingredientesCarnes;
@@ -132,9 +132,9 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 	@Override
 	public List<Ingrediente> traerLosIngredientesPescadoDeUnUsuario(List<Ingrediente> listaIngredientesUs) {
 		List<Ingrediente> ingredientesPescado = new LinkedList<Ingrediente>();
-		for (Ingrediente pescado : listaIngredientesUs) {
-			if (pescado.getTipo().equals("PESCADO")) {
-				ingredientesPescado.add(pescado);
+		for (Ingrediente i : listaIngredientesUs) {
+			if (i.getTipo().equals("PESCADO") && (!(i.getEstado().equals("VENCIDO"))) && (!(i.getEstado().equals("AGOTADO")))) {
+				ingredientesPescado.add(i);
 			}
 		}
 		return ingredientesPescado;
@@ -143,9 +143,9 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 	@Override
 	public List<Ingrediente> traerLosIngredientesCondimentoDeUnUsuario(List<Ingrediente> listaIngredientesUs) {
 		List<Ingrediente> ingredientesCondimento = new LinkedList<Ingrediente>();
-		for (Ingrediente condimento : listaIngredientesUs) {
-			if (condimento.getTipo().equals("CONDIMENTOS")) {
-				ingredientesCondimento.add(condimento);
+		for (Ingrediente i : listaIngredientesUs) {
+			if (i.getTipo().equals("CONDIMENTOS") && (!(i.getEstado().equals("VENCIDO"))) && (!(i.getEstado().equals("AGOTADO")))) {
+				ingredientesCondimento.add(i);
 			}
 		}
 		return ingredientesCondimento;
@@ -504,7 +504,9 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 				  if(difDiasAvisoSePudre < 0 && difDiasAvisoSePudre <= -5){
 					  ingredienteUs.setEstado("AVISO");  // Aviso que hace 5 dias que lo compraste fijate porque se pudre
 					  actualizarIngredientesAUsuario(ingredienteUs);
+
 					  servicioNotificacion.NuevaNotificacionIngredientePasado(usuario,ingredienteUs);
+
 					  servicioUsuarioDao.actualizarUsuario(usuario);	  
 				  }else if(ingredienteUs.getEstado().equals("AVISO")){
 					  ingredienteUs.setEstado("SINAVISO");
@@ -528,6 +530,31 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 		}
 		return ingUsuarioSinVencidos;		
 	}
+	
+	@Override
+	public List<Ingrediente> traerListaDeIngredientesVencidosDeUnUsuario(Usuario usuario) {
+		List<Ingrediente> ingUsuario  = usuario.getlistaIngrediente();
+		List<Ingrediente> ingUsuarioVencidos  = new LinkedList<Ingrediente>();
+		for (Ingrediente i : ingUsuario) {
+			if (((i.getEstado().equals("VENCIDO")))) {
+				ingUsuarioVencidos.add(i);
+			}
+		}
+		return ingUsuarioVencidos;		
+	}
+	
+	@Override
+	public List<Ingrediente> traerListaDeIngredientesAgotadosDeUnUsuario(Usuario usuario) {
+		List<Ingrediente> ingUsuario  = usuario.getlistaIngrediente();
+		List<Ingrediente> ingUsuarioAgotados  = new LinkedList<Ingrediente>();
+		for (Ingrediente i : ingUsuario) {
+			if (((i.getEstado().equals("AGOTADO")))) {
+				ingUsuarioAgotados.add(i);
+			}
+		}
+		return ingUsuarioAgotados;		
+	}
+	
 
 	@Override
 	public void actualizarFVDeIngQuePerecen(Usuario usuario) throws ParseException {

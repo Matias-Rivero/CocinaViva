@@ -161,7 +161,7 @@
 						 <form name="buscar" action="javascript:;" onsubmit="buscarRecetas(this)" method="get">	
 		                <div class="input-group">
 		               
-		                <span class="input-group-addon"><a href="javascript:buscarRecetas();">Buscar</a></span> <input type="text" id="buscarR" class="form-control" value="<c:if test="${not empty loquebusco}">${loquebusco}</c:if>" placeholder="estofado de pollo" autocomplete="off">
+		                <span class="input-group-addon"><a href="javascript:buscarRecetas();">Buscar</a></span> <input type="text" id="buscarR" class="form-control" minlength="4" maxlength="30" value="<c:if test="${not empty loquebusco}">${loquebusco}</c:if>" placeholder="estofado de pollo" autocomplete="off">
 		                	                
 		                </div>
 		                </form> 		              	
@@ -234,7 +234,7 @@
 				</div>
 				<br>
 				</c:if>
-				<c:if test="${empty listaRecetas}">
+				<c:if test="${empty listaRecetas && empty listaRecetasBuscadas}">
 				<div class="text-center">
 				<label class="label label-danger">Lo sentimos - todavía no tenemos recetas con esos ingredientes.</label>				
 				</div>

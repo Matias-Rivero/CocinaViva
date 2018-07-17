@@ -89,6 +89,15 @@
 							<div class="col-xs-11 text-right menu-1">
 								<ul>								
 									<li><a href="home"><span>Inventario</span></a></li>
+												
+													<c:if test="${not empty tieneAyV}">													
+														<li><a href="agoyvenc"><span>Agotados/Vencidos</span></a></li>
+													</c:if>																				
+												
+													<c:if test="${not empty estaenAyV}">	
+														<li><a href="modificar"><span>Modificar</span></a></li>
+													</c:if>		
+									
 									<li><a href="ingredientes"><span>Agregar ingredientes</span></a></li>
 									<li class="has-dropdown">|<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-bell"></i></a>
 										<ul class="dropdown">
@@ -134,13 +143,15 @@
 				<header id="gtco-header" class="gtco-cover gtco-cover-sm"></header>
 
 				<c:choose>
-					<c:when test="${not empty tieneingredienteselusuario}">
+					<c:when test="${not empty ingrediente}">
 
 						<div class="overlay"></div>
 						<div class="gtco-section">
 						<div class="gtco-container">
 							<div class="py-5 text-center">
-								<h1>Modificar Ingredientes</h1><a href="cerrarSesion"><span>vencidos y agotados</span></a>
+
+								<h1>Modificar Ingredientes</h1>
+
 							</div>
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -282,8 +293,113 @@
 				</c:choose>
 
 			</c:when>
-		<c:otherwise>			
-		</c:otherwise>
+		</c:choose>
+		
+		<c:choose>
+			<c:when test="${not empty ingredientesvencidosdelusuario || not empty ingredientesagotadosdelusuario}">
+					
+					<div class="overlay"></div>
+						<div class="gtco-section">
+						<div class="gtco-container" id="altura">
+							<div class="py-5 text-center">
+								<h1>Agotados y Vencidos</h1>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+									<ul class="list-group mb-3">
+
+						                   <c:choose>
+													<c:when test="${not empty ingredientesvencidosdelusuario}">
+														<li
+															class="list-group-item d-flex justify-content-between lh-condensed">
+															<div class="table-responsive">
+																<table class="table table-hover">
+																	<thead>
+																		<tr class="bg-danger">
+																			<th><span class="lead"><strong>Ingredientes</strong></span></th>
+																			<th><span class="lead">Estado</span></th>																			
+																			<th><span class="lead">Cantidad</span></th>
+																			<th><span class="lead">Fecha de vencimiento</span></th>
+																			<th><span class="lead">Eliminar</span></th>
+																		</tr>
+																	</thead>
+																	<tbody class="buscar">
+																		<c:forEach items="${ingredientesvencidosdelusuario}"
+																			var="ingredientes">
+																			<tr align="left">
+																				<td><span class="lead">${ingredientes.nombre}</span></td>
+																				
+																				<td><label class="label label-danger lead6">Vencido</label></td>																				
+
+																				<td><span class="lead4">${ingredientes.cantidad}</span></td>
+																																																									
+																				<td><span class="lead4">${ingredientes.fvencimiento}</span></td>
+																																						
+																				<td><a href='javascript:;'
+																					onclick="eliminarIngredienteAyV(${ingredientes.id},'${ingredientes.nombre}','${ingredientes.cantidad}','${ingredientes.unidad}');"><span
+																						class="lead glyphicon glyphicon-trash"></span></a></td>
+																			</tr>
+																		</c:forEach>
+																	</tbody>
+																</table>
+															</div>
+														</li>
+													</c:when>
+												</c:choose>
+						                    	
+						                    	 <c:choose>
+													<c:when test="${not empty ingredientesagotadosdelusuario}">
+														<li
+															class="list-group-item d-flex justify-content-between lh-condensed">
+															<div class="table-responsive">
+																<table class="table table-hover">
+																	<thead>
+																		<tr class="bg-danger">
+																			<th><span class="lead"><strong>Ingredientes</strong></span></th>
+																			<th><span class="lead">Estado</span></th>																			
+																			<th><span class="lead">Cantidad</span></th>
+																			<th><span class="lead">Fecha de vencimiento</span></th>
+																			<th><span class="lead">Eliminar</span></th>
+																		</tr>
+																	</thead>
+																	<tbody class="buscar">
+																		<c:forEach items="${ingredientesagotadosdelusuario}"
+																			var="ingredientes">
+																			<tr align="left">
+																				<td><span class="lead">${ingredientes.nombre}</span></td>
+																				
+																				<td><label class="label label-danger lead6">Agotado</label></td>																																				
+
+																				<td><span class="lead4">Oops!, Nada por aqui.</span></td>		
+																																																							
+																				<td><span class="lead4">${ingredientes.fvencimiento}</span></td>
+																				
+																				<td><a href='javascript:;'
+																					onclick="eliminarIngredienteAyV(${ingredientes.id},'${ingredientes.nombre}');"><span
+																						class="lead glyphicon glyphicon-trash"></span></a></td>
+																			</tr>
+																		</c:forEach>
+																	</tbody>
+																</table>
+															</div>
+														</li>
+													</c:when>
+												</c:choose>
+						               
+
+						              </ul>		
+															
+								</div>
+
+							</div>	
+							
+
+						</div>
+						</div>
+					
+					
+			</c:when>
 		</c:choose>
 
 		<div id="datetimepickervacio" class="modal fade" tabindex="-1" role="dialog" style="overflow-y: scroll;">
@@ -491,6 +607,20 @@
 
 		}
 	</script>
+	
+	<script type="text/javascript">
+     	function eliminarIngredienteAyV(ingrediente,nombre,cantidad,unidad) {		
+			var ingre = ingrediente;		
+			var nombr = nombre;	
+			var cant = cantidad;	
+			var unid = unidad;	
+			$('#eliminar').attr('href','eliminar-ingrediente-ayv?id='+ingre+'');
+			$('#ingred').text(''+nombr+' '+cant+' '+unid+'');		
+			$('#ModalCrear').modal('show');
+
+		}
+	</script>
+	
 </body>
 </html>
 

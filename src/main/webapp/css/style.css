@@ -2157,9 +2157,15 @@ display:none;
 
 #altura{
  height: 800px;	
- background: url(../images/lareceta.jpg);
+/*  background: url(../images/lareceta.jpg); */
  border-radius: 1%;
- background-repeat: no-repeat;
+/*  background-repeat: no-repeat; */
+}
+
+#altura2{
+  height: 800px;
+  border-radius: 1%;
+  background-repeat: no-repeat;
 }
 
 #altura2{
