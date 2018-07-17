@@ -113,16 +113,13 @@
 											</li>	
 										</ul>
 									</li>
-											<li role="presentation" class="divider"></li>
-										</c:forEach>
-									</ul>
-									</li>
 									<li class="btn-cta has-dropdown"><a href="#" ><span><i class="glyphicon glyphicon-user"></i>
 												&nbsp;${usuariologueado.alias}</span></a>
 												<ul class="dropdown" style="display: none;">
 													<li><a href="perfilcliente">Mi Perfil</a></li>
                 									<li><a href="cerrarSesion">Cerrar Sesiòn</a></li>
-   									             </ul></li>			
+   									             </ul>
+   									</li>			
 								</ul>
 							</div>
 						</c:when>
