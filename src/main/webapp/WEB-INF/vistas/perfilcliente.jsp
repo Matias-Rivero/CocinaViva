@@ -83,17 +83,16 @@
 
 					<c:choose>
 						<c:when test="${usuariologueado != null}">
-<<<<<<< HEAD
+
 							<div class="col-xs-8 text-right menu-1">
 								<ul>
-=======
-							<div class="col-xs-11 text-right menu-1">
-								<ul>								
->>>>>>> preEntregaFlor
+
 									<li><a href="home"><span>Inventario</span></a></li>
 									<li><a href="ingredientes"><span>Agregar Ingredientes</span></a></li>
 									<li><a href="modificar"><span>Modificar Ingredientes</span></a></li>
-									<li class="has-dropdown">|<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-bell"></i></a>									<ul class="dropdown">
+									<li class="has-dropdown">|<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-bell"></i></a>									
+									<ul class="dropdown">
+									<li class="page-header">Recordatorios</li>
 										<c:forEach items="${notificacionesUsu}" var="notificacion">
 											<li>
 												<c:choose>
