@@ -90,8 +90,7 @@
 								<ul>								
 									<li><a href="home"><span>Inventario</span></a></li>
 									<li><a href="ingredientes"><span>Agregar ingredientes</span></a></li>
-									<li class="has-dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-microphone"></i> <img src="images/notification-bell.png" alt="Notificaciones"></a>
-									<ul class="dropdown">
+									<li class="has-dropdown">|<a href="#" class="dropdown-toggle" data-toggle="dropdown" ><i class="glyphicon glyphicon-bell"></i></a>									<ul class="dropdown">
 										<c:forEach items="${notificacionesUsu}" var="notificacion">
 											<li>
 												<c:choose>
@@ -107,8 +106,12 @@
 										</c:forEach>
 									</ul>
 									</li>
-									<li class="btn-cta"><a href="perfilcliente"><span>Mi perfil: ${usuariologueado.alias}</span></a></li>												
-									<li><a href="cerrarSesion"><span>Salir</span></a></li>
+									<li class="btn-cta has-dropdown"><a href="#" ><span><i class="glyphicon glyphicon-user"></i>
+												&nbsp;${usuariologueado.alias}</span></a>
+												<ul class="dropdown" style="display: none;">
+													<li><a href="perfilcliente">Mi Perfil</a></li>
+                									<li><a href="cerrarSesion">Cerrar Sesiòn</a></li>
+   									             </ul></li>			
 								</ul>
 							</div>
 						</c:when>
@@ -141,7 +144,7 @@
 
 						                  <li class="list-group-item d-flex justify-content-between lh-condensed">
 
-						                    <div class="table-responsive">
+						                    <div>
 						                      <table class="table">
 						                        <thead>
 						                          <tr>
@@ -157,19 +160,19 @@
 						                            varStatus="status">
 						                            
 						                            <c:if test = "${i.tipo == 'LACTEOS'}">
-						                            <tr align="left" class="bg-info">
+						                            <tr align="left" >
 						                            </c:if>
 						                            <c:if test = "${i.tipo == 'VEGETALES'}">
-						                            <tr align="left" class="bg-success">
+						                            <tr align="left" >
 						                            </c:if>
 						                            <c:if test = "${i.tipo == 'CARNES'}">
-						                            <tr align="left" class="bg-danger">
+						                            <tr align="left">
 						                            </c:if>
 						                            <c:if test = "${i.tipo == 'PESCADO'}">
-						                            <tr align="left" class="bg-info">
+						                            <tr align="left" >
 						                            </c:if>
 						                            <c:if test = "${i.tipo == 'CONDIMENTOS'}">
-						                            <tr align="left" class="bg-warning">
+						                            <tr align="left">
 						                            </c:if>
 						                            
 						                              <th><span class="lead">${i.nombre}</span></th>
