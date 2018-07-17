@@ -97,9 +97,12 @@
 													<c:if test="${not empty estaenAyV}">	
 														<li><a href="modificar"><span>Modificar</span></a></li>
 													</c:if>		
-																		
+									
 									<li><a href="ingredientes"><span>Agregar ingredientes</span></a></li>
-									<li class="has-dropdown">|<a href="#" class="dropdown-toggle" data-toggle="dropdown" ><i class="glyphicon glyphicon-bell"></i></a>									<ul class="dropdown">
+									<li class="has-dropdown">|<a href="#" class="dropdown-toggle" data-toggle="dropdown" ><i class="glyphicon glyphicon-bell"></i></a>				
+									<ul class="dropdown">
+									<li class="page-header">Recordatorios</li>
+
 										<c:forEach items="${notificacionesUsu}" var="notificacion">
 											<li>
 												<c:choose>
@@ -142,7 +145,9 @@
 						<div class="gtco-section">
 						<div class="gtco-container">
 							<div class="py-5 text-center">
+
 								<h1>Modificar Ingredientes</h1>
+
 							</div>
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">

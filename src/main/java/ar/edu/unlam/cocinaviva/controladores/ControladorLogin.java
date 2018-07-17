@@ -323,15 +323,13 @@ public class ControladorLogin {
 	      if(usuario.getlistaIngrediente().isEmpty()){
 	        return new ModelAndView("redirect:/ingredientes");
 	      }
-	      
+
 	      List<Ingrediente> ingredientesV = servicioIngrediente.traerListaDeIngredientesVencidosDeUnUsuario(usuario);
 		    List<Ingrediente> ingredientesA = servicioIngrediente.traerListaDeIngredientesAgotadosDeUnUsuario(usuario);
 		   
 		      if(!(ingredientesV.isEmpty() && ingredientesA.isEmpty())){
 		    	  modelo.put("tieneAyV", "tiene");
-			  }
-	      
-	      
+			  }	      
 	      List<Ingrediente> ingredientesUs = servicioIngrediente.traerListaDeIngredientesNoVencidosYNoAgotadosDeUnUsuario(usuario);
 		 Ingrediente ingredientes = servicioIngrediente.generarListaDeIngredientes(ingredientesUs);
 	      
@@ -502,6 +500,7 @@ public class ControladorLogin {
 		return new ModelAndView("redirect:/home");
 	}
 	
+
 	@RequestMapping(path = "/agoyvenc", method = RequestMethod.GET)
 	  public ModelAndView agoYVenc(HttpServletRequest request) {
 	    
@@ -531,6 +530,7 @@ public class ControladorLogin {
 	    }
 	    return new ModelAndView("modificar", modelo);
 	  }
+
 	
 // Si quieren acceder por GET	
 	@RequestMapping("/validar-login")
