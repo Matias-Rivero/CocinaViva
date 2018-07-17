@@ -83,11 +83,14 @@
 
 					<c:choose>
 						<c:when test="${usuariologueado != null}">
+
 							<div class="col-xs-8 text-right menu-1">
 								<ul>
+
 									<li><a href="home"><span>Inventario</span></a></li>
-									<li class="has-dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-microphone"></i> <img src="images/notification-bell.png" alt="Notificaciones"></a>
-									<ul class="dropdown">
+									<li><a href="ingredientes"><span>Agregar Ingredientes</span></a></li>
+									<li><a href="modificar"><span>Modificar Ingredientes</span></a></li>
+									<li class="has-dropdown">|<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-bell"></i></a>									<ul class="dropdown">
 										<c:forEach items="${notificacionesUsu}" var="notificacion">
 											<li>
 												<c:choose>
@@ -102,8 +105,13 @@
 											<li role="presentation" class="divider"></li>
 										</c:forEach>
 									</ul>
-									</li>									
-									<li><a href="cerrarSesion"><span>Salir</span></a></li>
+									</li>
+									<li class="btn-cta has-dropdown"><a href="#" ><span><i class="glyphicon glyphicon-user"></i>
+												&nbsp;${usuariologueado.alias}</span></a>
+												<ul class="dropdown" style="display: none;">
+													<li><a href="perfilcliente">Mi Perfil</a></li>
+                									<li><a href="cerrarSesion">Cerrar Sesiòn</a></li>
+   									             </ul></li>			
 								</ul>
 							</div>
 						</c:when>
@@ -150,10 +158,7 @@
 
 										<!-- /input-group -->
 									</div>
-									<div class="col-sm-6">
-										<h4 style="color: #00b1b1;">Objetivo saludable:</h4>
-										</span> <span><p>Normal</p></span>
-									</div>
+									
 									<div class="clearfix"></div>
 									<hr style="margin: 5px 0 5px 0;">
 

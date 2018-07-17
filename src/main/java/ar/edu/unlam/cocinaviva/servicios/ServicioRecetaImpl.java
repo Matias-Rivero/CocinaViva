@@ -16,6 +16,7 @@ import javax.persistence.Transient;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ar.edu.unlam.cocinaviva.dao.IngredienteDao;
 import ar.edu.unlam.cocinaviva.dao.RecetaDao;
 import ar.edu.unlam.cocinaviva.dao.UsuarioDao;
 import ar.edu.unlam.cocinaviva.modelo.Ingrediente;
@@ -38,6 +39,9 @@ public class ServicioRecetaImpl implements ServicioReceta {
 
 	@Inject
 	private ServicioIngrediente servicioIngrediente;
+	
+	@Inject
+	private IngredienteDao servicioIngredienteDao;
 
 	@Override
 	public void guardarReceta(Receta receta) {
@@ -196,25 +200,41 @@ public class ServicioRecetaImpl implements ServicioReceta {
 	public void cocinarRecetaPorElUsuario(Receta receta, Usuario usuario) {
 		Receta recetaCocina = realizarCopiaDeUnaRecetaDelRecetario(receta);
 		guardarRecetaCocinada(recetaCocina);
-		List<Receta> recetascocinadasdelusuario  = usuario.getlistaRecetas();
+		List<Receta> recetascocinadasdelusuario  = usuario.getlistaRecetas();		
 		recetascocinadasdelusuario.add(recetaCocina);
-		List<Ingrediente> iNoVDeUnUsuario = servicioIngrediente.traerListaDeIngredientesNoVencidosDeUnUsuario(usuario);
-		List<Ingrediente> iQueLlevaLaReceta = receta.getListaIngrediente();
-		
-		for (Ingrediente ingredienteUs : iNoVDeUnUsuario) {
-			for (Ingrediente ingredienteRc : receta.getListaIngrediente()) {
-				if (ingredienteRc.getNombre().equals(ingredienteUs.getNombre())) {
-						Integer faltanteRc = ingredienteRc.getCantidad();
-						Integer sobranteUs = ingredienteUs.getCantidad(); // TERMINAR
-						Integer resultado = faltanteRc - faltanteRc; // Si hay otro ingrediente igual
-						ingredienteUs.setFaltante(resultado);
-				}
-			}
-		}
 		usuario.setlistaRecetas(recetascocinadasdelusuario);
-//		usuario.setlistaIngrediente(ingredientesdematias);
-		servicioUsuario.actualizarUsuario(usuario);
-	}
+
+				for (Ingrediente iReceta : receta.getListaIngrediente()) {
+					for (Ingrediente iUser : usuario.getlistaIngrediente()) {
+
+						if ((!(iUser.getEstado().equals("VENCIDO"))) && (!(iUser.getEstado().equals("AGOTADO")))) {
+
+							if (iReceta.getNombre().equals(iUser.getNombre()) && iReceta.getCantidad() > 0 && iUser.getCantidad() > 0) {
+							
+							if (iUser.getCantidad() >= iReceta.getCantidad()) {
+								iUser.setCantidad(iUser.getCantidad() - iReceta.getCantidad());
+								iUser.setGastouser(iUser.getCantidad() - iReceta.getCantidad());
+								iReceta.setCantidad(0);
+								if(iUser.getCantidad() == 0){
+								iUser.setEstado("AGOTADO");
+								}
+								servicioIngredienteDao.actualizarIngredientesAUsuario(iUser);
+							}else{
+								iReceta.setCantidad(iReceta.getCantidad() - iUser.getCantidad());
+								iUser.setGastouser(iUser.getCantidad());
+							    iUser.setCantidad(0);
+							    iUser.setEstado("AGOTADO");
+							    servicioIngredienteDao.actualizarIngredientesAUsuario(iUser);
+							}
+						}
+				 	 }	
+
+				 }
+				 servicioUsuario.actualizarUsuario(usuario);
+			  }
+				
+	}		
+	
 
 	@Override
 	public Receta realizarCopiaDeUnaRecetaDelRecetario(Receta recetaDelRecetario) {

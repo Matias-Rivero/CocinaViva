@@ -89,9 +89,17 @@
 							<div class="col-xs-11 text-right menu-1">
 								<ul>								
 									<li><a href="home"><span>Inventario</span></a></li>
+												
+													<c:if test="${not empty tieneAyV}">													
+														<li><a href="agoyvenc"><span>Agotados/Vencidos</span></a></li>
+													</c:if>																				
+												
+													<c:if test="${not empty estaenAyV}">	
+														<li><a href="modificar"><span>Modificar</span></a></li>
+													</c:if>		
+																		
 									<li><a href="ingredientes"><span>Agregar ingredientes</span></a></li>
-									<li class="has-dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-microphone"></i> <img src="images/notification-bell.png" alt="Notificaciones"></a>
-									<ul class="dropdown">
+									<li class="has-dropdown">|<a href="#" class="dropdown-toggle" data-toggle="dropdown" ><i class="glyphicon glyphicon-bell"></i></a>									<ul class="dropdown">
 										<c:forEach items="${notificacionesUsu}" var="notificacion">
 											<li>
 												<c:choose>
@@ -107,8 +115,12 @@
 										</c:forEach>
 									</ul>
 									</li>
-									<li class="btn-cta"><a href="perfilcliente"><span>Mi perfil: ${usuariologueado.alias}</span></a></li>												
-									<li><a href="cerrarSesion"><span>Salir</span></a></li>
+									<li class="btn-cta has-dropdown"><a href="#" ><span><i class="glyphicon glyphicon-user"></i>
+												&nbsp;${usuariologueado.alias}</span></a>
+												<ul class="dropdown" style="display: none;">
+													<li><a href="perfilcliente">Mi Perfil</a></li>
+                									<li><a href="cerrarSesion">Cerrar Sesiòn</a></li>
+   									             </ul></li>			
 								</ul>
 							</div>
 						</c:when>
@@ -124,13 +136,13 @@
 				<header id="gtco-header" class="gtco-cover gtco-cover-sm"></header>
 
 				<c:choose>
-					<c:when test="${not empty tieneingredienteselusuario}">
+					<c:when test="${not empty ingrediente}">
 
 						<div class="overlay"></div>
 						<div class="gtco-section">
 						<div class="gtco-container">
 							<div class="py-5 text-center">
-								<h1>Modificar Ingredientes <c:if test="${not empty modificar}">${modificar}</c:if></h1>
+								<h1>Modificar Ingredientes</h1>
 							</div>
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -141,13 +153,13 @@
 
 						                  <li class="list-group-item d-flex justify-content-between lh-condensed">
 
-						                    <div class="table-responsive">
+						                    <div>
 						                      <table class="table">
 						                        <thead>
 						                          <tr>
 						                            <th><span class="lead">Ingredientes</span></th>
 						                            <th><span class="lead">Fecha de vencimiento:</span></th>
-						                            <th><span class="lead">Cantidad</span></th>
+						                            <th><span class="lead">Me quedan:</span></th>
 						                            <th><span class="lead"></span></th>
 						                          </tr>
 						                        </thead>
@@ -157,19 +169,19 @@
 						                            varStatus="status">
 						                            
 						                            <c:if test = "${i.tipo == 'LACTEOS'}">
-						                            <tr align="left" class="bg-info">
+						                            <tr align="left" >
 						                            </c:if>
 						                            <c:if test = "${i.tipo == 'VEGETALES'}">
-						                            <tr align="left" class="bg-success">
+						                            <tr align="left" >
 						                            </c:if>
 						                            <c:if test = "${i.tipo == 'CARNES'}">
-						                            <tr align="left" class="bg-danger">
+						                            <tr align="left">
 						                            </c:if>
 						                            <c:if test = "${i.tipo == 'PESCADO'}">
-						                            <tr align="left" class="bg-info">
+						                            <tr align="left" >
 						                            </c:if>
 						                            <c:if test = "${i.tipo == 'CONDIMENTOS'}">
-						                            <tr align="left" class="bg-warning">
+						                            <tr align="left">
 						                            </c:if>
 						                            
 						                              <th><span class="lead">${i.nombre}</span></th>
@@ -181,7 +193,7 @@
 						                                  type="text" /></th> 
 						                              </c:if>
 						                              <c:if test = "${i.perece == 'SEPUDRE'}">
-						                              <th></th>
+						                              <th><span class="lead4">${i.fvencimiento}</span><a href="javascript:verDetalle('${i.nombre}','${i.fvencimiento}','${i.fcompra}','${i.dias * -1}');" >Detalle</a></th>
 						                           	 <label class="oculto"><form:input class="form-control datetimepicker1" autocomplete="off" 
 						                                  path="listaIngredientes[${status.index}].fcompra"
 						                                  type="text" /></label>
@@ -272,8 +284,113 @@
 				</c:choose>
 
 			</c:when>
-		<c:otherwise>			
-		</c:otherwise>
+		</c:choose>
+		
+		<c:choose>
+			<c:when test="${not empty ingredientesvencidosdelusuario || not empty ingredientesagotadosdelusuario}">
+					
+					<div class="overlay"></div>
+						<div class="gtco-section">
+						<div class="gtco-container" id="altura">
+							<div class="py-5 text-center">
+								<h1>Agotados y Vencidos</h1>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+									<ul class="list-group mb-3">
+
+						                   <c:choose>
+													<c:when test="${not empty ingredientesvencidosdelusuario}">
+														<li
+															class="list-group-item d-flex justify-content-between lh-condensed">
+															<div class="table-responsive">
+																<table class="table table-hover">
+																	<thead>
+																		<tr class="bg-danger">
+																			<th><span class="lead"><strong>Ingredientes</strong></span></th>
+																			<th><span class="lead">Estado</span></th>																			
+																			<th><span class="lead">Cantidad</span></th>
+																			<th><span class="lead">Fecha de vencimiento</span></th>
+																			<th><span class="lead">Eliminar</span></th>
+																		</tr>
+																	</thead>
+																	<tbody class="buscar">
+																		<c:forEach items="${ingredientesvencidosdelusuario}"
+																			var="ingredientes">
+																			<tr align="left">
+																				<td><span class="lead">${ingredientes.nombre}</span></td>
+																				
+																				<td><label class="label label-danger lead6">Vencido</label></td>																				
+
+																				<td><span class="lead4">${ingredientes.cantidad}</span></td>
+																																																									
+																				<td><span class="lead4">${ingredientes.fvencimiento}</span></td>
+																																						
+																				<td><a href='javascript:;'
+																					onclick="eliminarIngredienteAyV(${ingredientes.id},'${ingredientes.nombre}','${ingredientes.cantidad}','${ingredientes.unidad}');"><span
+																						class="lead glyphicon glyphicon-trash"></span></a></td>
+																			</tr>
+																		</c:forEach>
+																	</tbody>
+																</table>
+															</div>
+														</li>
+													</c:when>
+												</c:choose>
+						                    	
+						                    	 <c:choose>
+													<c:when test="${not empty ingredientesagotadosdelusuario}">
+														<li
+															class="list-group-item d-flex justify-content-between lh-condensed">
+															<div class="table-responsive">
+																<table class="table table-hover">
+																	<thead>
+																		<tr class="bg-danger">
+																			<th><span class="lead"><strong>Ingredientes</strong></span></th>
+																			<th><span class="lead">Estado</span></th>																			
+																			<th><span class="lead">Cantidad</span></th>
+																			<th><span class="lead">Fecha de vencimiento</span></th>
+																			<th><span class="lead">Eliminar</span></th>
+																		</tr>
+																	</thead>
+																	<tbody class="buscar">
+																		<c:forEach items="${ingredientesagotadosdelusuario}"
+																			var="ingredientes">
+																			<tr align="left">
+																				<td><span class="lead">${ingredientes.nombre}</span></td>
+																				
+																				<td><label class="label label-danger lead6">Agotado</label></td>																																				
+
+																				<td><span class="lead4">Oops!, Nada por aqui.</span></td>		
+																																																							
+																				<td><span class="lead4">${ingredientes.fvencimiento}</span></td>
+																				
+																				<td><a href='javascript:;'
+																					onclick="eliminarIngredienteAyV(${ingredientes.id},'${ingredientes.nombre}');"><span
+																						class="lead glyphicon glyphicon-trash"></span></a></td>
+																			</tr>
+																		</c:forEach>
+																	</tbody>
+																</table>
+															</div>
+														</li>
+													</c:when>
+												</c:choose>
+						               
+
+						              </ul>		
+															
+								</div>
+
+							</div>	
+							
+
+						</div>
+						</div>
+					
+					
+			</c:when>
 		</c:choose>
 
 		<div id="datetimepickervacio" class="modal fade" tabindex="-1" role="dialog" style="overflow-y: scroll;">
@@ -313,7 +430,47 @@
 				</div>
 			</div>
 		</div>
-		
+													<div id="verDetalle" class="modal fade" tabindex="-1" role="dialog"
+														style="overflow-y: scroll;">
+														<div class="modal-dialog modal-sm">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<button type="button" class="close" data-dismiss="modal"
+																		aria-label="Close">
+																		<span aria-hidden="true">&times;</span>
+																	</button>
+																	<h3 class="modal-title" id="detalleDeIngre"></h3>
+																</div>
+																<div class="modal-body">
+
+											                 		 	<div class="table-responsive">
+																			<table  class="table table-bordered">
+																			<thead>
+																			<tr class="active"><h5>Recuerda que calculamos 7 dias para alimentos perecederos.<h5></h5></tr>
+																			
+																			</thead>
+																			<tbody>	
+																																  
+																			  <tr>
+																			  	<td class="active">Estimamos vence:</td>   
+																			    <td class="danger"><label id="detalleVence"></label></td>  
+																			  </tr>
+																			  <tr>               
+																			    <td class="active">Comprado el:</td>   
+																			    <td class="danger"><label id="detalleComprado"></label></td>
+																			  </tr>  
+																			  <tr>
+																			    <td class="active">Ya lleva:</td>   
+																			    <td class="danger"><label id="detalleDias"></label></td>
+																			  </tr>
+																			  
+																			</tbody>
+																			</table>
+																		</div>
+																</div>	
+															</div>
+														</div>
+													</div>
 		<footer id="gtco-footer" role="contentinfo"
 			style="background-image: url(images/img_bg_1.jpg)"
 			data-stellar-background-ratio="0.5">
@@ -391,7 +548,17 @@
 
 	<!-- Main -->
 	<script src="js/main.js"></script>
-
+	
+	<script type="text/javascript">
+    function verDetalle(ingrediente,venci,compra,dias) { 
+    	document.getElementById("detalleDeIngre").innerHTML = ingrediente;
+    	document.getElementById("detalleVence").innerHTML = venci;
+    	document.getElementById("detalleComprado").innerHTML = compra;
+    	document.getElementById("detalleDias").innerHTML = dias+" dias";
+    	$('#verDetalle').modal('show');
+    }
+    </script>
+    
 	<script type="text/javascript">
 	function validaEnvia() {
 	var clases = document.getElementsByClassName("datetimepicker1");	
@@ -431,6 +598,20 @@
 
 		}
 	</script>
+	
+	<script type="text/javascript">
+     	function eliminarIngredienteAyV(ingrediente,nombre,cantidad,unidad) {		
+			var ingre = ingrediente;		
+			var nombr = nombre;	
+			var cant = cantidad;	
+			var unid = unidad;	
+			$('#eliminar').attr('href','eliminar-ingrediente-ayv?id='+ingre+'');
+			$('#ingred').text(''+nombr+' '+cant+' '+unid+'');		
+			$('#ModalCrear').modal('show');
+
+		}
+	</script>
+	
 </body>
 </html>
 

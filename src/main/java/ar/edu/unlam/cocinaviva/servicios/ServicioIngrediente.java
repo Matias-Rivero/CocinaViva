@@ -65,13 +65,17 @@ public interface ServicioIngrediente {
 
 	void verificarEstadoDelIngrediente(Usuario usuario) throws ParseException;
 
-	List<Ingrediente> traerListaDeIngredientesNoVencidosDeUnUsuario(Usuario usuario);
+	List<Ingrediente> traerListaDeIngredientesNoVencidosYNoAgotadosDeUnUsuario(Usuario usuario);
 
 	void actualizarFVDeIngQuePerecen(Usuario usuario) throws ParseException;
 
 	Ingrediente traerUnIngredienteDelInventarioPorSuNombre(String nombre);
 
 	Ingrediente traerCopiaDeUnIngredienteDelInventario(Ingrediente ingredienteDelInventario);
+
+	List<Ingrediente> traerListaDeIngredientesAgotadosDeUnUsuario(Usuario usuario);
+
+	List<Ingrediente> traerListaDeIngredientesVencidosDeUnUsuario(Usuario usuario);
 	
 
 }
