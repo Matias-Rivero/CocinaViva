@@ -2162,6 +2162,12 @@ display:none;
  background-repeat: no-repeat;
 }
 
+#altura2{
+  height: 800px;
+  border-radius: 1%;
+  background-repeat: no-repeat;
+}
+
 .ulagreingre{
  width: 180px;
 }
