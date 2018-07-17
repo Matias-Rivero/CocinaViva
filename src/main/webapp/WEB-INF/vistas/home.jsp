@@ -218,7 +218,7 @@
 																				<td><a href='javascript:;'
 																					onclick="eliminarIngrediente(${ingredientes.id},'${ingredientes.nombre}','${ingredientes.cantidad}','${ingredientes.unidad}');"><span
 																						class="lead glyphicon glyphicon-trash"></span></a></td>
-
+ 
 																				<c:choose>
 																					<c:when test="${ingredientes.cantidad == 0}">
 																						<td><span class="lead4">Oops!, Nada por aqui.</span></td>
