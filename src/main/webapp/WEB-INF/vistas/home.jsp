@@ -87,23 +87,27 @@
 							<div class="col-xs-8 text-right menu-1">
 								<ul>									
 									<li class="has-dropdown">|<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-bell"></i></a>
-									<ul class="dropdown">
-									<li class="page-header">Recordatorios</li>
-										<c:forEach items="${notificacionesUsu}" var="notificacion">
-										
-											<li>
-												<c:choose>
-													<c:when test="${notificacion.tipoNotificacion == 'SIN_STOCK'}">
-														<a href="ingredientes"><span class="label label-primary">${notificacion.fechaNotificacion}</span> ${notificacion.mensaje} </a>
-													</c:when>
-													<c:otherwise>
-														<a href="modificar"><span class="label label-primary">${notificacion.fechaNotificacion}</span> ${notificacion.mensaje} </a>
-													</c:otherwise>
-												</c:choose>
-											</li>
-											<li role="presentation" class="divider"></li>
-										</c:forEach>
-									</ul>
+										<ul class="dropdown">
+											<li class="page-header">Recordatorios</li>
+												<c:forEach items="${notificacionesUsu}" var="notificacion">
+												
+													<li>
+														<c:choose>
+															<c:when test="${notificacion.tipoNotificacion == 'SIN_STOCK'}">
+																<a href="agregaringredientes"><span class="label label-primary">${notificacion.fechaNotificacion}</span> ${notificacion.mensaje} </a>
+															</c:when>
+															<c:when test="${notificacion.tipoNotificacion == 'VENCIDO'}">
+																<a href="agoyvenc"><span class="label label-primary">${notificacion.fechaNotificacion}</span> ${notificacion.mensaje} </a>
+															</c:when>
+															<c:otherwise>
+																<a href="modificar"><span class="label label-primary">${notificacion.fechaNotificacion}</span> ${notificacion.mensaje} </a>
+															</c:otherwise>
+														</c:choose>
+													</li>
+													<li role="presentation" class="divider"></li>
+												</c:forEach>
+											</li>	
+										</ul>
 									</li>
 									<li class="btn-cta has-dropdown"><a href="#" ><span><i class="glyphicon glyphicon-user"></i>
 												&nbsp;${usuariologueado.alias}</span></a>
