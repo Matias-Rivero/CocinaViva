@@ -2185,7 +2185,7 @@ display:none;
 }
 
 .table-fixed tbody {
-  height: 500px;
+  height: 100px;
   overflow-y: auto;
   width: 100%;
 }

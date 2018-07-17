@@ -180,16 +180,16 @@
 																		<c:forEach items="${ingredienteslacteosdelusuario}"
 																			var="ingredientes">
 																			<tr align="left">
-																				<c:if test="${ingredientes.estado != 'VENCIDO'}">
+																				<c:if test="${ingredientes.estado != 'VENCIDO' && ingredientes.estado != 'AGOTADO'}">
 																					<td style="width:255px;"><span class="lead"><form:checkbox
 																								path="seleccionados" value="${ingredientes.id}"
 																								class="check" />${ingredientes.nombre}</span></td>
 																				</c:if>
-																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
+																				<c:if test="${ingredientes.estado == 'VENCIDO' || ingredientes.estado == 'AGOTADO'}">
 																					<td style="width:255px;"><span class="lead"><input
 																							type="checkbox" value="disabled" disabled>${ingredientes.nombre}</span></td>
 																				</c:if>
-																				<c:if test="${ingredientes.estado == 'NOVENCIDO'}">
+																				<c:if test="${ingredientes.estado == 'NOVENCIDO' && ingredientes.estado != 'AGOTADO'}">
 																					<td><label class="label label-success lead6">OK</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVENCER'}">
@@ -204,20 +204,30 @@
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
 																				<td><label class="label label-danger lead6">Vencido</label></td>	
 																				</c:if>
+																				<c:if test="${ingredientes.estado == 'AGOTADO'}">
+																				<td><label class="label label-danger lead6">Agotado</label></td>	
+																				</c:if>
 
 																				<td><a href='javascript:;'
 																					onclick="eliminarIngrediente(${ingredientes.id},'${ingredientes.nombre}','${ingredientes.cantidad}','${ingredientes.unidad}');"><span
 																						class="lead glyphicon glyphicon-trash"></span></a></td>
 
-																				<td><span class="lead4">${ingredientes.cantidad}</span>
-																					<c:if test="${ingredientes.unidad == 'Lts'}">
+																				<c:choose>
+																					<c:when test="${ingredientes.cantidad == 0}">
+																						<td><span class="lead4">Oops!, Nada por aqui.</span></td>
+																					</c:when>
+																					<c:otherwise>
+																						<td><span class="lead4">${ingredientes.cantidad}</span>
+																						<c:if test="${ingredientes.unidad == 'Lts'}">
 																						<label>Litros</label>
-																					</c:if> <c:if test="${ingredientes.unidad == 'Grs'}">
+																						</c:if> <c:if test="${ingredientes.unidad == 'Grs'}">
 																						<label>Gramos</label>
-																					</c:if> <c:if test="${ingredientes.unidad == 'Unids'}">
+																						</c:if> <c:if test="${ingredientes.unidad == 'Unids'}">
 																						<label>Unidades</label>
-																					</c:if></td>
-																					<td><span class="lead4">${ingredientes.fvencimiento}</span></td>
+																						</c:if></td>																						
+																					</c:otherwise>
+																				</c:choose>
+																				<td><span class="lead4">${ingredientes.fvencimiento}</span></td>
 																			</tr>
 																		</c:forEach>
 																	</tbody>
@@ -245,16 +255,16 @@
 																		<c:forEach items="${ingredientesvegetalesdelusuario}"
 																			var="ingredientes">
 																			<tr align="left">
-																				<c:if test="${ingredientes.estado != 'VENCIDO'}">
+																				<c:if test="${ingredientes.estado != 'VENCIDO' && ingredientes.estado != 'AGOTADO'}">
 																					<td style="width:255px;"><span class="lead"><form:checkbox
 																								path="seleccionados" value="${ingredientes.id}"
 																								class="check" />${ingredientes.nombre}</span></td>
 																				</c:if>
-																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
+																				<c:if test="${ingredientes.estado == 'VENCIDO' || ingredientes.estado == 'AGOTADO'}">
 																					<td style="width:255px;"><span class="lead"><input
 																							type="checkbox" value="disabled" disabled>${ingredientes.nombre}</span></td>
 																				</c:if>
-																				<c:if test="${ingredientes.estado == 'NOVENCIDO'}">
+																				<c:if test="${ingredientes.estado == 'NOVENCIDO' && ingredientes.estado != 'AGOTADO'}">
 																					<td><label class="label label-success lead6">OK</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVENCER'}">
@@ -269,20 +279,30 @@
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
 																				<td><label class="label label-danger lead6">Vencido</label></td>	
 																				</c:if>
+																				<c:if test="${ingredientes.estado == 'AGOTADO'}">
+																				<td><label class="label label-danger lead6">Agotado</label></td>	
+																				</c:if>
 
 																				<td><a href='javascript:;'
 																					onclick="eliminarIngrediente(${ingredientes.id},'${ingredientes.nombre}','${ingredientes.cantidad}','${ingredientes.unidad}');"><span
 																						class="lead glyphicon glyphicon-trash"></span></a></td>
 
-																				<td><span class="lead4">${ingredientes.cantidad}</span>
-																					<c:if test="${ingredientes.unidad == 'Lts'}">
+																				<c:choose>
+																					<c:when test="${ingredientes.cantidad == 0}">
+																						<td><span class="lead4">Oops!, Nada por aqui.</span></td>
+																					</c:when>
+																					<c:otherwise>
+																						<td><span class="lead4">${ingredientes.cantidad}</span>
+																						<c:if test="${ingredientes.unidad == 'Lts'}">
 																						<label>Litros</label>
-																					</c:if> <c:if test="${ingredientes.unidad == 'Grs'}">
+																						</c:if> <c:if test="${ingredientes.unidad == 'Grs'}">
 																						<label>Gramos</label>
-																					</c:if> <c:if test="${ingredientes.unidad == 'Unids'}">
+																						</c:if> <c:if test="${ingredientes.unidad == 'Unids'}">
 																						<label>Unidades</label>
-																					</c:if></td>
-																					<td><span class="lead4">${ingredientes.fvencimiento}</span></td>
+																						</c:if></td>																						
+																					</c:otherwise>
+																				</c:choose>
+																				<td><span class="lead4">${ingredientes.fvencimiento}</span></td>
 																			</tr>
 																		</c:forEach>
 																	</tbody>
@@ -310,16 +330,16 @@
 																		<c:forEach items="${ingredientescarnesdelusuario}"
 																			var="ingredientes">
 																			<tr align="left">
-																				<c:if test="${ingredientes.estado != 'VENCIDO'}">
+																				<c:if test="${ingredientes.estado != 'VENCIDO' && ingredientes.estado != 'AGOTADO'}">
 																					<td style="width:255px;"><span class="lead"><form:checkbox
 																								path="seleccionados" value="${ingredientes.id}"
 																								class="check" />${ingredientes.nombre}</span></td>
 																				</c:if>
-																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
+																				<c:if test="${ingredientes.estado == 'VENCIDO' || ingredientes.estado == 'AGOTADO'}">
 																					<td style="width:255px;"><span class="lead"><input
 																							type="checkbox" value="disabled" disabled>${ingredientes.nombre}</span></td>
 																				</c:if>
-																				<c:if test="${ingredientes.estado == 'NOVENCIDO'}">
+																				<c:if test="${ingredientes.estado == 'NOVENCIDO' && ingredientes.estado != 'AGOTADO'}">
 																					<td><label class="label label-success lead6">OK</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVENCER'}">
@@ -334,20 +354,30 @@
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
 																				<td><label class="label label-danger lead6">Vencido</label></td>	
 																				</c:if>
+																				<c:if test="${ingredientes.estado == 'AGOTADO'}">
+																				<td><label class="label label-danger lead6">Agotado</label></td>	
+																				</c:if>
 
 																				<td><a href='javascript:;'
 																					onclick="eliminarIngrediente(${ingredientes.id},'${ingredientes.nombre}','${ingredientes.cantidad}','${ingredientes.unidad}');"><span
 																						class="lead glyphicon glyphicon-trash"></span></a></td>
 
-																				<td><span class="lead4">${ingredientes.cantidad}</span>
-																					<c:if test="${ingredientes.unidad == 'Lts'}">
+																				<c:choose>
+																					<c:when test="${ingredientes.cantidad == 0}">
+																						<td><span class="lead4">Oops!, Nada por aqui.</span></td>
+																					</c:when>
+																					<c:otherwise>
+																						<td><span class="lead4">${ingredientes.cantidad}</span>
+																						<c:if test="${ingredientes.unidad == 'Lts'}">
 																						<label>Litros</label>
-																					</c:if> <c:if test="${ingredientes.unidad == 'Grs'}">
+																						</c:if> <c:if test="${ingredientes.unidad == 'Grs'}">
 																						<label>Gramos</label>
-																					</c:if> <c:if test="${ingredientes.unidad == 'Unids'}">
+																						</c:if> <c:if test="${ingredientes.unidad == 'Unids'}">
 																						<label>Unidades</label>
-																					</c:if></td>
-																					<td><span class="lead4">${ingredientes.fvencimiento}</span></td>
+																						</c:if></td>																						
+																					</c:otherwise>
+																				</c:choose>
+																				<td><span class="lead4">${ingredientes.fvencimiento}</span></td>
 																			</tr>
 																		</c:forEach>
 																	</tbody>
@@ -375,16 +405,16 @@
 																		<c:forEach items="${ingredientespescadodelusuario}"
 																			var="ingredientes">
 																			<tr align="left">
-																				<c:if test="${ingredientes.estado != 'VENCIDO'}">
+																				<c:if test="${ingredientes.estado != 'VENCIDO' && ingredientes.estado != 'AGOTADO'}">
 																					<td style="width:255px;"><span class="lead"><form:checkbox
 																								path="seleccionados" value="${ingredientes.id}"
 																								class="check" />${ingredientes.nombre}</span></td>
 																				</c:if>
-																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
+																				<c:if test="${ingredientes.estado == 'VENCIDO' || ingredientes.estado == 'AGOTADO'}">
 																					<td style="width:255px;"><span class="lead"><input
 																							type="checkbox" value="disabled" disabled>${ingredientes.nombre}</span></td>
 																				</c:if>
-																				<c:if test="${ingredientes.estado == 'NOVENCIDO'}">
+																				<c:if test="${ingredientes.estado == 'NOVENCIDO' && ingredientes.estado != 'AGOTADO'}">
 																					<td><label class="label label-success lead6">OK</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVENCER'}">
@@ -399,20 +429,30 @@
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
 																				<td><label class="label label-danger lead6">Vencido</label></td>	
 																				</c:if>
+																				<c:if test="${ingredientes.estado == 'AGOTADO'}">
+																				<td><label class="label label-danger lead6">Agotado</label></td>	
+																				</c:if>
 
 																				<td><a href='javascript:;'
 																					onclick="eliminarIngrediente(${ingredientes.id},'${ingredientes.nombre}','${ingredientes.cantidad}','${ingredientes.unidad}');"><span
 																						class="lead glyphicon glyphicon-trash"></span></a></td>
 
-																				<td><span class="lead4">${ingredientes.cantidad}</span>
-																					<c:if test="${ingredientes.unidad == 'Lts'}">
+																				<c:choose>
+																					<c:when test="${ingredientes.cantidad == 0}">
+																						<td><span class="lead4">Oops!, Nada por aqui.</span></td>
+																					</c:when>
+																					<c:otherwise>
+																						<td><span class="lead4">${ingredientes.cantidad}</span>
+																						<c:if test="${ingredientes.unidad == 'Lts'}">
 																						<label>Litros</label>
-																					</c:if> <c:if test="${ingredientes.unidad == 'Grs'}">
+																						</c:if> <c:if test="${ingredientes.unidad == 'Grs'}">
 																						<label>Gramos</label>
-																					</c:if> <c:if test="${ingredientes.unidad == 'Unids'}">
+																						</c:if> <c:if test="${ingredientes.unidad == 'Unids'}">
 																						<label>Unidades</label>
-																					</c:if></td>
-																					<td><span class="lead4">${ingredientes.fvencimiento}</span></td>
+																						</c:if></td>																						
+																					</c:otherwise>
+																				</c:choose>
+																				<td><span class="lead4">${ingredientes.fvencimiento}</span></td>
 																			</tr>
 																		</c:forEach>
 																	</tbody>
@@ -440,16 +480,16 @@
 																		<c:forEach items="${ingredientescondimentodelusuario}"
 																			var="ingredientes">
 																			<tr align="left">
-																				<c:if test="${ingredientes.estado != 'VENCIDO'}">
+																				<c:if test="${ingredientes.estado != 'VENCIDO' && ingredientes.estado != 'AGOTADO'}">
 																					<td style="width:255px;"><span class="lead"><form:checkbox
 																								path="seleccionados" value="${ingredientes.id}"
 																								class="check" />${ingredientes.nombre}</span></td>
 																				</c:if>
-																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
+																				<c:if test="${ingredientes.estado == 'VENCIDO' || ingredientes.estado == 'AGOTADO'}">
 																					<td style="width:255px;"><span class="lead"><input
 																							type="checkbox" value="disabled" disabled>${ingredientes.nombre}</span></td>
 																				</c:if>
-																				<c:if test="${ingredientes.estado == 'NOVENCIDO'}">
+																				<c:if test="${ingredientes.estado == 'NOVENCIDO' && ingredientes.estado != 'AGOTADO'}">
 																					<td><label class="label label-success lead6">OK</label></td>
 																				</c:if>
 																				<c:if test="${ingredientes.estado == 'AVENCER'}">
@@ -464,20 +504,30 @@
 																				<c:if test="${ingredientes.estado == 'VENCIDO'}">
 																				<td><label class="label label-danger lead6">Vencido</label></td>	
 																				</c:if>
+																				<c:if test="${ingredientes.estado == 'AGOTADO'}">
+																				<td><label class="label label-danger lead6">Agotado</label></td>	
+																				</c:if>
 
 																				<td><a href='javascript:;'
 																					onclick="eliminarIngrediente(${ingredientes.id},'${ingredientes.nombre}','${ingredientes.cantidad}','${ingredientes.unidad}');"><span
 																						class="lead glyphicon glyphicon-trash"></span></a></td>
 
-																				<td><span class="lead4">${ingredientes.cantidad}</span>
-																					<c:if test="${ingredientes.unidad == 'Lts'}">
+																				<c:choose>
+																					<c:when test="${ingredientes.cantidad == 0}">
+																						<td><span class="lead4">Oops!, Nada por aqui.</span></td>
+																					</c:when>
+																					<c:otherwise>
+																						<td><span class="lead4">${ingredientes.cantidad}</span>
+																						<c:if test="${ingredientes.unidad == 'Lts'}">
 																						<label>Litros</label>
-																					</c:if> <c:if test="${ingredientes.unidad == 'Grs'}">
+																						</c:if> <c:if test="${ingredientes.unidad == 'Grs'}">
 																						<label>Gramos</label>
-																					</c:if> <c:if test="${ingredientes.unidad == 'Unids'}">
+																						</c:if> <c:if test="${ingredientes.unidad == 'Unids'}">
 																						<label>Unidades</label>
-																					</c:if></td>
-																					<td><span class="lead4">${ingredientes.fvencimiento}</span></td>	
+																						</c:if></td>																						
+																					</c:otherwise>
+																				</c:choose>
+																				<td><span class="lead4">${ingredientes.fvencimiento}</span></td>
 																			</tr>
 																		</c:forEach>
 																	</tbody>

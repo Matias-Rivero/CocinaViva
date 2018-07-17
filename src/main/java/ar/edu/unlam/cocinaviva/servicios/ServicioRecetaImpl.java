@@ -1,14 +1,22 @@
 package ar.edu.unlam.cocinaviva.servicios;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Pattern;
 
 import javax.inject.Inject;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ar.edu.unlam.cocinaviva.dao.IngredienteDao;
 import ar.edu.unlam.cocinaviva.dao.RecetaDao;
 import ar.edu.unlam.cocinaviva.dao.UsuarioDao;
 import ar.edu.unlam.cocinaviva.modelo.Ingrediente;
@@ -25,16 +33,28 @@ public class ServicioRecetaImpl implements ServicioReceta {
 
 	@Inject
 	private RecetaDao servicioRecetaDao;
+	
+	@Inject
+	private ServicioUsuario servicioUsuario;
 
 	@Inject
 	private ServicioIngrediente servicioIngrediente;
+	
+	@Inject
+	private IngredienteDao servicioIngredienteDao;
 
 	@Override
 	public void guardarReceta(Receta receta) {
-		receta.setUso("GENERAL");
+		receta.setUso("RECETARIO");
 		servicioRecetaDao.guardarReceta(receta);
 	}
-
+	
+	@Override
+	public void guardarRecetaCocinada(Receta receta) {
+		receta.setUso("COCINOUSER");
+		servicioRecetaDao.guardarReceta(receta);
+	}
+	
 	@Override
 	public void guardarRecetaAUsuario(Long id, List<Receta> listaRecetas) {
 		Usuario usuario = servicioUsuarioDao.traerUnUsuarioPorSuId(id);
@@ -176,6 +196,70 @@ public class ServicioRecetaImpl implements ServicioReceta {
 	return ingredientes;
 	}
 
+	@Override // RECETARIO DEUSUARIO COCINOUSER
+	public void cocinarRecetaPorElUsuario(Receta receta, Usuario usuario) {
+		Receta recetaCocina = realizarCopiaDeUnaRecetaDelRecetario(receta);
+		guardarRecetaCocinada(recetaCocina);
+		List<Receta> recetascocinadasdelusuario  = usuario.getlistaRecetas();		
+		recetascocinadasdelusuario.add(recetaCocina);
+		usuario.setlistaRecetas(recetascocinadasdelusuario);
+
+				for (Ingrediente iReceta : receta.getListaIngrediente()) {
+					for (Ingrediente iUser : usuario.getlistaIngrediente()) {
+
+						if ((!(iUser.getEstado().equals("VENCIDO"))) && (!(iUser.getEstado().equals("AGOTADO")))) {
+
+							if (iReceta.getNombre().equals(iUser.getNombre()) && iReceta.getCantidad() > 0 && iUser.getCantidad() > 0) {
+							
+							if (iUser.getCantidad() >= iReceta.getCantidad()) {
+								iUser.setCantidad(iUser.getCantidad() - iReceta.getCantidad());
+								iUser.setGastouser(iUser.getCantidad() - iReceta.getCantidad());
+								iReceta.setCantidad(0);
+								if(iUser.getCantidad() == 0){
+								iUser.setEstado("AGOTADO");
+								}
+								servicioIngredienteDao.actualizarIngredientesAUsuario(iUser);
+							}else{
+								iReceta.setCantidad(iReceta.getCantidad() - iUser.getCantidad());
+								iUser.setGastouser(iUser.getCantidad());
+							    iUser.setCantidad(0);
+							    iUser.setEstado("AGOTADO");
+							    servicioIngredienteDao.actualizarIngredientesAUsuario(iUser);
+							}
+						}
+				 	 }	
+
+				 }
+				 servicioUsuario.actualizarUsuario(usuario);
+			  }
+				
+	}		
+	
+
+	@Override
+	public Receta realizarCopiaDeUnaRecetaDelRecetario(Receta recetaDelRecetario) {
+		
+		LocalDateTime fechaActual = LocalDateTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		String str = "1986-04-08 12:30";
+		fechaActual.parse(str, formatter);		
+		String fechaActualString = fechaActual.toString();
+		fechaActualString = fechaActualString.replace("-", "/").replace("T", " ");
+		fechaActualString = fechaActualString.substring(0, fechaActualString.length()-7); 
+		
+		Receta receta = new Receta();
+		receta.setIdfake(recetaDelRecetario.getId());
+		receta.setNombre(recetaDelRecetario.getNombre());
+		receta.setImagen(recetaDelRecetario.getImagen());
+		receta.setCalorias(recetaDelRecetario.getCalorias());
+		receta.setTiempo(recetaDelRecetario.getTiempo());
+		receta.setCarpeta(recetaDelRecetario.getCarpeta());
+		receta.setFecha(fechaActualString);
+		receta.setTipo(recetaDelRecetario.getTipo());
+		receta.setDescripcion(recetaDelRecetario.getDescripcion());
+		
+		return receta;
+	}
 
 }
 // Tipos de recetas

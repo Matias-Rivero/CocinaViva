@@ -23,6 +23,7 @@ public class Ingrediente implements Cloneable {
 	private Integer[] seleccionados;
 	private Integer faltante;
 	private Integer cantidad;
+	private Integer gastouser;
 	private String cantidadstring;
 	private String unidad;
 	private String tipo;
@@ -165,6 +166,14 @@ public class Ingrediente implements Cloneable {
 
 	public void setCantidadstring(String cantidadstring) {
 		this.cantidadstring = cantidadstring;
+	}
+
+	public Integer getGastouser() {
+		return gastouser;
+	}
+
+	public void setGastouser(Integer gastouser) {
+		this.gastouser = gastouser;
 	}
 
 

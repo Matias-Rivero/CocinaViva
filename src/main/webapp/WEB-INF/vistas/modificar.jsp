@@ -130,7 +130,7 @@
 						<div class="gtco-section">
 						<div class="gtco-container">
 							<div class="py-5 text-center">
-								<h1>Modificar Ingredientes <c:if test="${not empty modificar}">${modificar}</c:if></h1>
+								<h1>Modificar Ingredientes</h1><a href="cerrarSesion"><span>vencidos y agotados</span></a>
 							</div>
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -147,7 +147,7 @@
 						                          <tr>
 						                            <th><span class="lead">Ingredientes</span></th>
 						                            <th><span class="lead">Fecha de vencimiento:</span></th>
-						                            <th><span class="lead">Cantidad</span></th>
+						                            <th><span class="lead">Me quedan:</span></th>
 						                            <th><span class="lead"></span></th>
 						                          </tr>
 						                        </thead>
@@ -181,7 +181,7 @@
 						                                  type="text" /></th> 
 						                              </c:if>
 						                              <c:if test = "${i.perece == 'SEPUDRE'}">
-						                              <th></th>
+						                              <th><span class="lead4">${i.fvencimiento}</span><a href="javascript:verDetalle('${i.nombre}','${i.fvencimiento}','${i.fcompra}','${i.dias * -1}');" >Detalle</a></th>
 						                           	 <label class="oculto"><form:input class="form-control datetimepicker1" autocomplete="off" 
 						                                  path="listaIngredientes[${status.index}].fcompra"
 						                                  type="text" /></label>
@@ -313,7 +313,47 @@
 				</div>
 			</div>
 		</div>
-		
+													<div id="verDetalle" class="modal fade" tabindex="-1" role="dialog"
+														style="overflow-y: scroll;">
+														<div class="modal-dialog modal-sm">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<button type="button" class="close" data-dismiss="modal"
+																		aria-label="Close">
+																		<span aria-hidden="true">&times;</span>
+																	</button>
+																	<h3 class="modal-title" id="detalleDeIngre"></h3>
+																</div>
+																<div class="modal-body">
+
+											                 		 	<div class="table-responsive">
+																			<table  class="table table-bordered">
+																			<thead>
+																			<tr class="active"><h5>Recuerda que calculamos 7 dias para alimentos perecederos.<h5></h5></tr>
+																			
+																			</thead>
+																			<tbody>	
+																																  
+																			  <tr>
+																			  	<td class="active">Estimamos vence:</td>   
+																			    <td class="danger"><label id="detalleVence"></label></td>  
+																			  </tr>
+																			  <tr>               
+																			    <td class="active">Comprado el:</td>   
+																			    <td class="danger"><label id="detalleComprado"></label></td>
+																			  </tr>  
+																			  <tr>
+																			    <td class="active">Ya lleva:</td>   
+																			    <td class="danger"><label id="detalleDias"></label></td>
+																			  </tr>
+																			  
+																			</tbody>
+																			</table>
+																		</div>
+																</div>	
+															</div>
+														</div>
+													</div>
 		<footer id="gtco-footer" role="contentinfo"
 			style="background-image: url(images/img_bg_1.jpg)"
 			data-stellar-background-ratio="0.5">
@@ -391,7 +431,17 @@
 
 	<!-- Main -->
 	<script src="js/main.js"></script>
-
+	
+	<script type="text/javascript">
+    function verDetalle(ingrediente,venci,compra,dias) { 
+    	document.getElementById("detalleDeIngre").innerHTML = ingrediente;
+    	document.getElementById("detalleVence").innerHTML = venci;
+    	document.getElementById("detalleComprado").innerHTML = compra;
+    	document.getElementById("detalleDias").innerHTML = dias+" dias";
+    	$('#verDetalle').modal('show');
+    }
+    </script>
+    
 	<script type="text/javascript">
 	function validaEnvia() {
 	var clases = document.getElementsByClassName("datetimepicker1");	

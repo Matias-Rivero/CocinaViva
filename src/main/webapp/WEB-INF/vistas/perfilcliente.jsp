@@ -75,7 +75,7 @@
 			<div class="gtco-container">
 
 				<div class="row">
-					<div class="col-sm-1 col-xs-12">
+					<div class="col-sm-4 col-xs-12">
 						<div id="gtco-logo">
 							<a href="home"><img src="images/logo.png" width="170px" height="60px" style="margin:-10px" /></a>
 						</div>
@@ -83,7 +83,7 @@
 
 					<c:choose>
 						<c:when test="${usuariologueado != null}">
-							<div class="col-xs-11 text-right menu-1">
+							<div class="col-xs-8 text-right menu-1">
 								<ul>
 									<li><a href="home"><span>Inventario</span></a></li>
 									<li class="has-dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-microphone"></i> <img src="images/notification-bell.png" alt="Notificaciones"></a>

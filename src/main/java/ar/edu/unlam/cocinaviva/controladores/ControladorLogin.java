@@ -1,6 +1,7 @@
 package ar.edu.unlam.cocinaviva.controladores;
 
 import java.text.ParseException;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -300,8 +301,8 @@ public class ControladorLogin {
 	        return new ModelAndView("redirect:/ingredientes");
 	      }
 	      
-	      List<Ingrediente> ingredientesSelec = usuario.getlistaIngrediente();
-		 Ingrediente ingredientes = servicioIngrediente.generarListaDeIngredientes(ingredientesSelec);
+	      List<Ingrediente> ingredientesUs = servicioIngrediente.traerListaDeIngredientesNoVencidosYNoAgotadosDeUnUsuario(usuario);
+		 Ingrediente ingredientes = servicioIngrediente.generarListaDeIngredientes(ingredientesUs);
 	      
 	      modelo.put("tieneingredienteselusuario",usuario.getlistaIngrediente()); 
 	      modelo.put("listagramos", servicioIngrediente.traerListaDeGramos());
@@ -408,7 +409,7 @@ public class ControladorLogin {
 		modelo.put("receta", receta);
 		Ingrediente ingrediente = new Ingrediente();
 		modelo.put("lingrediente", ingrediente);	
-		List<Ingrediente> Ingredientes = servicioIngrediente.traerListaDeIngredientesNoVencidosDeUnUsuario(usuario);
+		List<Ingrediente> Ingredientes = servicioIngrediente.traerListaDeIngredientesNoVencidosYNoAgotadosDeUnUsuario(usuario);
 		List<Receta> recetas = servicioReceta.traerRecetasAPartirDeIngredientesDelUsuario(Ingredientes);
 		List<Receta> recetasConFaltantes = servicioReceta.traerRecetasConFaltantesDeIngredientes(recetas,Ingredientes); 
 		
@@ -432,7 +433,7 @@ public class ControladorLogin {
 					
 		Usuario usuario = servicioUsuario.traerUnUsuarioPorSuId(usuariologueado.getId());
 
-		List<Ingrediente> ingredientesUs = servicioIngrediente.traerListaDeIngredientesNoVencidosDeUnUsuario(usuario);
+		List<Ingrediente> ingredientesUs = servicioIngrediente.traerListaDeIngredientesNoVencidosYNoAgotadosDeUnUsuario(usuario);
 		Receta receta = servicioReceta.traerUnaRecetaPorSuId(id);
 		
 		Receta recetaConFaltantes = servicioReceta.traerRecetaConFaltantesDeIngredientes(receta,ingredientesUs); // receta ya esta procesada
@@ -446,6 +447,24 @@ public class ControladorLogin {
 		modelo.put("ingredientesUs", ingredientesUs);
 
 		return new ModelAndView("leerrecetas", modelo);
+	}
+		return new ModelAndView("redirect:/home");
+	}
+	
+	@RequestMapping(path = "/confirma-cocinar-receta")
+	public ModelAndView confirmaCocinarReceta(@RequestParam("id") Long id, HttpServletRequest request) {
+		
+		if (request.getSession().getAttribute("usuariologueado") != null) {
+			
+			Usuario usuariologueado = (Usuario) request.getSession().getAttribute("usuariologueado");	
+			
+			Usuario usuario = servicioUsuario.traerUnUsuarioPorSuId(usuariologueado.getId());
+			Receta receta = servicioReceta.traerUnaRecetaPorSuId(id);
+	
+			servicioReceta.cocinarRecetaPorElUsuario(receta,usuario);
+
+					
+		return new ModelAndView("redirect:/leerRecetas?id="+id+"");
 	}
 		return new ModelAndView("redirect:/home");
 	}

@@ -30,7 +30,9 @@ public class Receta {
 	private Integer calorias;
 	private Integer tiempo;
 	private String carpeta;
+	private Long idfake;
 	private String uso;
+	private String fecha;
 	private String tipo;
 	private String descripcion;
 	@Transient
@@ -138,6 +140,22 @@ public class Receta {
 
 	public void setPasosDeLaDescripcion(List<String> pasosDeLaDescripcion) {
 		this.pasosDeLaDescripcion = pasosDeLaDescripcion;
+	}
+
+	public String getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
+
+	public Long getIdfake() {
+		return idfake;
+	}
+
+	public void setIdfake(Long idfake) {
+		this.idfake = idfake;
 	}
 
 }

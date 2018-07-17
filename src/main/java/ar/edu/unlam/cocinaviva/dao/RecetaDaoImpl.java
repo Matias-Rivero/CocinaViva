@@ -41,7 +41,7 @@ public class RecetaDaoImpl implements RecetaDao {
 	@Override
 	  public List<Receta> buscarRecetasPorNombre(String nombre) {
 	    return (sessionFactory.getCurrentSession().createCriteria(Receta.class)
-	        .add(Restrictions.eq("uso", "GENERAL"))
+	        .add(Restrictions.eq("uso", "RECETARIO"))
 	        .add(Restrictions.like("nombre", "%"+nombre+"%"))
 	        .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list());
 	  }

@@ -65,7 +65,7 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 			ingrediente.setPerece("SEPUDRE");
 			ingrediente.setEstado("SINAVISO");
 		}	
-		if(ingrediente.getTipo() == "PESCADO"){
+		if(ingrediente.getTipo() == "PESCADO" && ingrediente.getUnidad() != "Unids"){
 			ingrediente.setUnidad("Grs");
 		}
 		servicioIngredienteDao.guardarIngredienteEnInventario(ingrediente);
@@ -518,11 +518,11 @@ public class ServicioIngredienteImpl implements ServicioIngrediente {
 	}
 
 	@Override
-	public List<Ingrediente> traerListaDeIngredientesNoVencidosDeUnUsuario(Usuario usuario) {
+	public List<Ingrediente> traerListaDeIngredientesNoVencidosYNoAgotadosDeUnUsuario(Usuario usuario) {
 		List<Ingrediente> ingUsuario  = usuario.getlistaIngrediente();
 		List<Ingrediente> ingUsuarioSinVencidos  = new LinkedList<Ingrediente>();
 		for (Ingrediente i : ingUsuario) {
-			if (!(i.getEstado().equals("VENCIDO"))) {
+			if ((!(i.getEstado().equals("VENCIDO"))) && (!(i.getEstado().equals("AGOTADO")))) {
 				ingUsuarioSinVencidos.add(i);
 			}
 		}
