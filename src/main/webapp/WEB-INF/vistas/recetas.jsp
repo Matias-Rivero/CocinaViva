@@ -2,7 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <html>
-<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script><head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Cocina Viva &mdash;</title>
@@ -28,6 +31,7 @@
 	rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Kaushan+Script"
 	rel="stylesheet">
+
 
 <!-- Animate.css -->
 <link rel="stylesheet" href="css/animate.css">
@@ -168,12 +172,12 @@
 		            </ul>
           </div>
 								
-				<div class="row">
+				<div class="container">
 					<c:choose>
 						<c:when test="${not empty listaRecetasBuscadas}">
 							<c:forEach items="${listaRecetasBuscadas}" var="listaRecetas">
-								<div class="col-lg-4 col-md-4 col-sm-6">
-									
+								<div class="card-columns">
+									<div class="card">
 										<a href="leerRecetas?id=${listaRecetas.id}"
 											class="fh5co-card-item">
 											<figure>
@@ -218,12 +222,12 @@
 												</div>									
 											</div>
 										</a>																			
-									
+									</div>
 								</div>
 							</c:forEach>
 						</c:when>
 					</c:choose>
-
+				</div>
 				</div>
 				<c:if test="${not empty listaRecetas}">
 				<div class="text-left">
