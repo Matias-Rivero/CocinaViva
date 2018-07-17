@@ -126,214 +126,240 @@
 
 		<div class="overlay"></div>
 		<div class="gtco-section">
-		<div class="gtco-container" id="altura">
-							
-			<div class="row">
- 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-   							<c:choose>
-   							<c:when test="${not empty tieneingredienteselusuario}">
-   							<div class="py-5 text-center">		
-   								<h1>¿Ingredientes para agregar?</h1>
-   							</div>
-	   						</c:when>
-	   						<c:otherwise>
-	   						<div class="py-5 text-center">			
-	   							<h1>Oops!...</h1><h2>¿No tienes ingredientes en tu heladera?</h2>
-	   						</div>
-   							</c:otherwise>
-   							</c:choose>					
-   						</div>	
-   			</div>					
-				
-			<div class="row">
-			
-				<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2" id="agringre">
- 
-				<ul class="list-group mb-3 ulagreingre">
-					<li class="list-group-item d-flex justify-content-between lh-condensed">
-					
-							
-				
-						
-				<form:form method="POST" name="f1" id="f1" modelAttribute="checkingredientes"
-					action="agregarIngredientes">
-					<label class="oculto"><form:input path="nombre" id="loquebusco" type="text" class="form-control" /></label>
-						<c:choose>
-							<c:when test="${not empty iflacteos}">
-			
-								<div id="lacteos">
+		<div class="gtco-container" id="altura2">
 
-									<table class="table table-fixed" >
-										<thead>
-											<tr>																															
-												<th><input type="text" id="filtrar" class="form-control" value="" placeholder="tomate" autocomplete="off"></th>
-											</tr>
-										</thead>
-										<tbody class="buscar" id="tlacteos" style="display:none">
+			<div class="row" id="agringre">
+				<div class="col-md-12 order-md-12 mb-12">
+					<ul class="list-group mb-3">
+						<li	class="list-group-item d-flex justify-content-between lh-condensed" style="padding-top: 2%;padding-bottom: 0%;">
 
-											<c:forEach items="${iflacteos}" var="i">
-												<tr align="left">
-<th><form:checkbox path="seleccionados" onclick="checkearIngrediente()" class="${i.nombre}" id="${i.id}" value="${i.id}" name="valores[]" /><span class="lead"><a href="javascript:checkIngrediente(${i.id});">${i.nombre}</a></span></th>
-												</tr>
-											</c:forEach>
-											<c:forEach items="${ifvegetales}" var="i">
-												<tr align="left">
-<th><form:checkbox path="seleccionados" onclick="checkearIngrediente()" class="${i.nombre}" id="${i.id}" value="${i.id}" name="valores[]" /><span class="lead"><a href="javascript:checkIngrediente(${i.id});">${i.nombre}</a></span></th>
-												</tr>
-											</c:forEach>
-											<c:forEach items="${ifcarnes}" var="i">
-												<tr align="left">
-<th><form:checkbox path="seleccionados" onclick="checkearIngrediente()" class="${i.nombre}" id="${i.id}" value="${i.id}" name="valores[]" /><span class="lead"><a href="javascript:checkIngrediente(${i.id});">${i.nombre}</a></span></th>
-												</tr>
-											</c:forEach>
-											<c:forEach items="${ifpescado}" var="i">
-												<tr align="left">
-<th><form:checkbox path="seleccionados" onclick="checkearIngrediente()" class="${i.nombre}" id="${i.id}" value="${i.id}" name="valores[]" /><span class="lead"><a href="javascript:checkIngrediente(${i.id});">${i.nombre}</a></span></th>
-												</tr>
-											</c:forEach>
-											<c:forEach items="${ifcondimento}" var="i">
-												<tr align="left">
-<th><form:checkbox path="seleccionados" onclick="checkearIngrediente()" class="${i.nombre}" id="${i.id}" value="${i.id}" name="valores[]" /><span class="lead"><a href="javascript:checkIngrediente(${i.id});">${i.nombre}</a></span></th>
-												</tr>
-											</c:forEach>
-										</tbody>
-									</table>
+							<div class="py-5 text-center">
+								<h4>Selecciona de nuestro Inventario.</h4>
+							</div>
 
-								</div>
+							<div class="input-group">
+								<span class="input-group-addon"></span> <input
+									type="text" id="filtrar" class="form-control" autocomplete="off"
+									placeholder="pure de tomate">
+							</div>
+							<div class="row">
+								<form:form method="POST" name="f1" id="f1" modelAttribute="checkingredientes"
+										   action="agregarIngredientes">
+									<label class="oculto"><form:input path="nombre" id="loquebusco" type="text" class="form-control" /></label>
+									<c:choose>
+										<c:when test="${not empty iflacteos}">
 
-							</c:when>
-						</c:choose>
+											<div id="lacteos">
 
-						<div style="visibility: hidden;">
-							<button id="agregaringre" class="btn btn-primary" type="submit">agregaringre</button>
-						</div>
-					
-				</form:form>
-				<input type="text" id="busco" class="oculto" value="<c:if test="${not empty loquebusco}">${loquebusco}</c:if>" >
-					
-					</li>
-				</ul>
-				</div>
-				<div class="col-xs-8 col-sm-8 col-md-10 col-lg-10">
-				
-					<c:choose>
-						<c:when test="${not empty ingrediente.listaIngredientes}">
-							<ul class="list-group mb-3">
-								<form:form method="POST" modelAttribute="ingrediente"
-									action="altaIngredientes">
+												<table class="table table-fixed" >
+														<%--<thead>
+														<span>Inventario!</span>
+															<tr>
+																<th><input type="text" id="filtrar" class="form-control" value="" placeholder="tomate" autocomplete="off"></th>
+															</tr>
+														</thead>--%>
+													<tbody class="buscar" id="tlacteos" style="display:none;height: 100px;margin-top: 2%;margin-left: 1px;">
 
-									<li
-										class="list-group-item d-flex justify-content-between lh-condensed">
-
-										<div class="table-responsive">
-											<table class="table table-hover">
-												<thead>
-													<tr>
-														<th><span class="lead">Nombre</span></th>
-														<th><span class="lead">Fecha de :</span></th>
-														<th><span class="lead">Cantidad</span></th>
-													</tr>
-												</thead>
-												<tbody>
-
-													<c:forEach items="${ingrediente.listaIngredientes}" var="i"
-														varStatus="status">
+													<c:forEach items="${iflacteos}" var="i">
 														<tr align="left">
-															<th><span class="lead">${i.nombre}</span></th>
-														
-															<c:if test = "${i.perece == 'SEVENCE'}">															
-																<th>
-																<label><strong>Vencimiento</strong></label>
-																<form:input class="form-control datetimepicker1" autocomplete="off"
-																	path="listaIngredientes[${status.index}].fvencimiento"
-																	type="text" />
-																</th>
-															</c:if>
-															<c:if test = "${i.perece == 'SEPUDRE'}">															
-																<th>
-																<label><strong>Compra</strong></label>
-																<form:input class="form-control datetimepicker1" autocomplete="off"
-																	path="listaIngredientes[${status.index}].fcompra"
-																	type="text" />
-																</th>
-															</c:if>
-																
-															<c:if test = "${i.unidad == 'Lts'}">																
-															<th><label><strong>Litros</strong></label>												
-																<form:select class="form-control"
-																	path="listaIngredientes[${status.index}].cantidad">
-																	<c:forEach var="cantidad" begin="1" end="10">
-																		<form:option value="${cantidad * 1000}">${cantidad}</form:option>
-																	</c:forEach>
-																</form:select>																
+															<th><form:checkbox path="seleccionados" onclick="checkearIngrediente()" class="${i.nombre}" id="${i.id}" value="${i.id}" name="valores[]" />
+																<span class="lead"><a href="javascript:checkIngrediente(${i.id});">${i.nombre}</a></span>
 															</th>
-															</c:if>
-															<c:if test = "${i.unidad == 'Unids'}">																
-															<th><label><strong>Unidades</strong></label>												
-																<form:select class="form-control"
-																	path="listaIngredientes[${status.index}].cantidad">
-																	<c:forEach var="cantidad" begin="1" end="24">
-																		<form:option value="${cantidad}">${cantidad}</form:option>
-																	</c:forEach>
-																</form:select>																
-															</th>
-															</c:if> 
-															<c:if test = "${i.unidad == 'Grs'}">																
-															<th><label><strong>Gramos</strong></label>												
-																<form:select class="form-control" path="listaIngredientes[${status.index}].cantidad">
-																<c:forEach items="${listagramos}" var="g" varStatus="estado">
-																		<form:option value="${(estado.index + 1)* 50}">${g}</form:option>
-																</c:forEach>
-																</form:select>														
-															</th>
-															</c:if>    
-															<label class="oculto"><form:input
-																	path="listaIngredientes[${status.index}].unidad"
-																	type="text" /></label>
-															<label class="oculto"><form:input
-																	path="listaIngredientes[${status.index}].perece"
-																	type="text" /></label>		
-															<label class="oculto"><form:input
-																	path="listaIngredientes[${status.index}].nombre"
-																	type="text" /></label>
-															<label class="oculto"><form:input
-																	path="listaIngredientes[${status.index}].estado"
-																	type="text" /></label>
-															<label class="oculto"><form:input
-																	path="listaIngredientes[${status.index}].tipo"
-																	type="text" /></label> 
 														</tr>
 													</c:forEach>
-												</tbody>
+													<c:forEach items="${ifvegetales}" var="i">
+														<tr align="left">
+															<th><form:checkbox path="seleccionados" onclick="checkearIngrediente()" class="${i.nombre}" id="${i.id}" value="${i.id}" name="valores[]" />
+																<span class="lead"><a href="javascript:checkIngrediente(${i.id});">${i.nombre}</a></span>
+															</th>
+														</tr>
+													</c:forEach>
+													<c:forEach items="${ifcarnes}" var="i">
+														<tr align="left">
+															<th><form:checkbox path="seleccionados" onclick="checkearIngrediente()" class="${i.nombre}" id="${i.id}" value="${i.id}" name="valores[]" />
+																<span class="lead"><a href="javascript:checkIngrediente(${i.id});">${i.nombre}</a></span>
+															</th>
+														</tr>
+													</c:forEach>
+													<c:forEach items="${ifpescado}" var="i">
+														<tr align="left">
+															<th><form:checkbox path="seleccionados" onclick="checkearIngrediente()" class="${i.nombre}" id="${i.id}" value="${i.id}" name="valores[]" />
+																<span class="lead"><a href="javascript:checkIngrediente(${i.id});">${i.nombre}</a></span>
+															</th>
+														</tr>
+													</c:forEach>
+													<c:forEach items="${ifcondimento}" var="i">
+														<tr align="left">
+															<th><form:checkbox path="seleccionados" onclick="checkearIngrediente()" class="${i.nombre}" id="${i.id}" value="${i.id}" name="valores[]" />
+																<span class="lead"><a href="javascript:checkIngrediente(${i.id});">${i.nombre}</a></span>
+															</th>
+														</tr>
+													</c:forEach>
+													</tbody>
+												</table>
+											</div>
 
-											</table>
-											<button type="button" onclick="validaEnviaAltaIngre();" class="btn btn-primary btn-lg btn-block">Agregar</button>	
-											<div style="visibility: hidden;">
-												<button id="altaingre" class="btn btn-primary" type="submit">agregaringre</button>
-											</div>	
-										</div>
-										
-									</li>
+										</c:when>
+									</c:choose>
+
+									<div style="visibility: hidden;">
+										<button id="agregaringre" type="submit"></button>
+									</div>
 
 								</form:form>
-								
-							</ul>
-						</c:when>
-					</c:choose>	
-				
+							</div>
+						</ul>
+					</div>
 				</div>
-			</div>
-			
-		
-	
-	</div>
+						<div id="ingredientesACargar">
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+									<c:choose>
+										<c:when test="${not empty ingrediente.listaIngredientes}">
+										<ul class="list-group mb-3">
+											<form:form method="POST" modelAttribute="ingrediente"
+													   action="altaIngredientes">
+
+												<li	class="list-group-item d-flex justify-content-between lh-condensed">
+
+													<div class="table-responsive">
+														<table class="table table-hover">
+															<thead>
+															<tr>
+																<th><span class="lead">Nombre</span></th>
+																<th><span class="lead">Fecha de :</span></th>
+																<th><span class="lead">Cantidad</span></th>
+															</tr>
+															</thead>
+															<tbody>
+
+															<c:forEach items="${ingrediente.listaIngredientes}" var="i"
+																	   varStatus="status">
+																<tr align="left">
+																	<th><span class="lead">${i.nombre}</span></th>
+
+																	<c:if test = "${i.perece == 'SEVENCE'}">
+																		<th>
+																			<label><strong>Vencimiento</strong></label>
+																			<form:input class="form-control datetimepicker1" autocomplete="off"
+																						path="listaIngredientes[${status.index}].fvencimiento"
+																						type="text" />
+																		</th>
+																	</c:if>
+																	<c:if test = "${i.perece == 'SEPUDRE'}">
+																		<th>
+																			<label><strong>Compra</strong></label>
+																			<form:input class="form-control datetimepicker1" autocomplete="off"
+																						path="listaIngredientes[${status.index}].fcompra"
+																						type="text" />
+																		</th>
+																	</c:if>
+
+																	<c:if test = "${i.unidad == 'Lts'}">
+																		<th><label><strong>Litros</strong></label>
+																			<form:select class="form-control"
+																						 path="listaIngredientes[${status.index}].cantidad">
+																				<c:forEach var="cantidad" begin="1" end="10">
+																					<form:option value="${cantidad * 1000}">${cantidad}</form:option>
+																				</c:forEach>
+																			</form:select>
+																		</th>
+																	</c:if>
+																	<c:if test = "${i.unidad == 'Unids'}">
+																		<th><label><strong>Unidades</strong></label>
+																			<form:select class="form-control"
+																						 path="listaIngredientes[${status.index}].cantidad">
+																				<c:forEach var="cantidad" begin="1" end="24">
+																					<form:option value="${cantidad}">${cantidad}</form:option>
+																				</c:forEach>
+																			</form:select>
+																		</th>
+																	</c:if>
+																	<c:if test = "${i.unidad == 'Grs'}">
+																		<th><label><strong>Gramos</strong></label>
+																			<form:select class="form-control" path="listaIngredientes[${status.index}].cantidad">
+																				<c:forEach items="${listagramos}" var="g" varStatus="estado">
+																					<form:option value="${(estado.index + 1)* 50}">${g}</form:option>
+																				</c:forEach>
+																			</form:select>
+																		</th>
+																	</c:if>
+																	<label class="oculto"><form:input
+																			path="listaIngredientes[${status.index}].unidad"
+																			type="text" /></label>
+																	<label class="oculto"><form:input
+																			path="listaIngredientes[${status.index}].perece"
+																			type="text" /></label>
+																	<label class="oculto"><form:input
+																			path="listaIngredientes[${status.index}].nombre"
+																			type="text" /></label>
+																	<label class="oculto"><form:input
+																			path="listaIngredientes[${status.index}].estado"
+																			type="text" /></label>
+																	<label class="oculto"><form:input
+																			path="listaIngredientes[${status.index}].tipo"
+																			type="text" /></label>
+																</tr>
+															</c:forEach>
+															</tbody>
+
+														</table>
+														<button type="button" onclick="validaEnviaAltaIngre();" class="btn btn-primary btn-lg btn-block">Agregar</button>
+														<div style="visibility: hidden;">
+															<button id="altaingre" class="btn btn-primary" type="submit">agregaringre</button>
+														</div>
+													</div>
+
+												</li>
+
+												</form:form>
+
+											</ul>
+										</c:when>
+										<c:otherwise>
+											<li class="list-group-item d-flex justify-content-between lh-condensed">
+												<div class="table-responsive">
+													<table class="table table-hover">
+														<thead>
+														<tr>
+															<th><span class="lead">Nombre</span></th>
+															<th><span class="lead">Fecha de :</span></th>
+															<th><span class="lead">Cantidad</span></th>
+														</tr>
+														</thead>
+													</table>
+													<button type="button" class="btn btn-danger btn-lg btn-block" >Seleccione un ingrediente para comenzar.</button>
+												</div>
+											</li>
+										</c:otherwise>
+									</c:choose>
+								</div>
+							</div>
+						</li>
+					</div>
+				</div>
+				<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<c:choose>
+								<c:when test="${not empty tieneingredienteselusuario}">
+								</c:when>
+								<c:otherwise>
+								<div class="py-5 text-center">
+									<h1>Oops!...</h1><h2>Â¿No tienes ingredientes en tu heladera?</h2>
+								</div>
+								</c:otherwise>
+								</c:choose>
+							</div>
+				</div>
+
 	<div id="almenosuno" class="modal fade" tabindex="-1" role="dialog" style="overflow-y: scroll;">
 	  <div class="modal-dialog modal-sm">
 	    <div class="modal-content">
 	      <div class="modal-header">
 	      	<div class="alert alert-danger" role="alert">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>        
-			  <h3>¡Agrega al menos 1 ingrediente!</h3>
+			  <h3>ï¿½Agrega al menos 1 ingrediente!</h3>
 			</div>
 	      </div>  
 	    </div>
@@ -345,7 +371,7 @@
 	      <div class="modal-header">
 	      	<div class="alert alert-danger" role="alert">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>        
-			  <h3>¡La fecha es necesaria!</h3>
+			  <h3>ï¿½La fecha es necesaria!</h3>
 			</div>
 	      </div>  
 	    </div>

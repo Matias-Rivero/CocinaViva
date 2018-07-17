@@ -2156,7 +2156,7 @@ display:none;
 }
 
 #altura{
- height: 800px;	
+ height: 800px;
  background: url(../images/lareceta.jpg);
  border-radius: 1%;
  background-repeat: no-repeat;
@@ -2221,6 +2221,12 @@ display:none;
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
+}
+
+#altura2{
+  height: 800px;
+  border-radius: 1%;
+  background-repeat: no-repeat;
 }
 
 /*# sourceMappingURL=style.css.map */
