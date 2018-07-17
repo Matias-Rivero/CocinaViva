@@ -56,7 +56,17 @@ public class ServicioNotificacionImpl implements ServicioNotificacion {
 		notificacion.setFechaNotificacion(fecha);
 		notificacion.setIdUsuario(usuario.getId());
 		notificacion.setIdIngrediente(ingrediente.getId());
-		notificacion.setTipoNotificacion("VENCIMIENTO");
+
+
+		if(estado.contains("VENCIDO")){
+
+			notificacion.setTipoNotificacion("VENCIMIENTO");
+
+		} else {
+
+			notificacion.setTipoNotificacion("AVENCER");
+		}
+
 
 		if(validarNotificacion(usuario,ingrediente,"VENCIMIENTO")){
 			final Session session = sessionFactory.getCurrentSession();
