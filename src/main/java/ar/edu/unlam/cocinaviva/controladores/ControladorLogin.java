@@ -399,8 +399,13 @@ public class ControladorLogin {
 	  public ModelAndView recetasDes(@ModelAttribute("lingrediente") Ingrediente ingrediente, HttpServletRequest request) {   
 	    
 	  if (request.getSession().getAttribute("usuariologueado") != null && (!(ingrediente.getSeleccionados().length == 1) || !(ingrediente.getNombre().isEmpty()))) {
-	      ModelMap modelo = new ModelMap(); 
+	      ModelMap modelo = new ModelMap();
 	      Integer posicion = 1;
+	      if (ingrediente.getGastouser() == null) {
+	          posicion = 1;
+	          }else{
+	          posicion = ingrediente.getGastouser();  
+	          }
 	      Integer partes = 1;
 	      Integer cuantasrecetas = 0;
 	      Receta receta = new Receta();
