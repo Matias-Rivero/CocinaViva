@@ -150,8 +150,18 @@
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 								<div class="page-header">
-<!-- 								 <h1 style="visibility: hidden">.</h1> -->								 
-								 <h1 class="cursive-font"><a href="javascript:cocinarReceta(${receta.id});" target=""><span class="dot">Cocinar</span></a></h1>
+<!-- 								 <h1 style="visibility: hidden">.</h1> -->	
+
+							  <c:choose>
+								 <c:when test = "${empty ok}">
+						     		<h1 class="cursive-font"><a href="javascript:cocinarReceta(${receta.id});" target=""><span class="dot">Cocinar</span></a></h1>
+						         </c:when>
+						
+						         <c:otherwise>
+						            <h1 class="cursive-font"><a><span class="dot">Cocinando....</span></a></h1>
+						         </c:otherwise>
+							 </c:choose> 
+								 
 								</div>
 									<ul class="list-group mb-3">
 						                
