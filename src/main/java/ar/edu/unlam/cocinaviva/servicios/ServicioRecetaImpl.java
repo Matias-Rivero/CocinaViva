@@ -46,6 +46,9 @@ public class ServicioRecetaImpl implements ServicioReceta {
 	@Inject
 	private IngredienteDao servicioIngredienteDao;
 
+	@Inject
+	private ServicioNotificacion servicioNotificacion;
+
 	@Override
 	public void guardarReceta(Receta receta) {
 		receta.setUso("RECETARIO");
@@ -250,12 +253,14 @@ public class ServicioRecetaImpl implements ServicioReceta {
 								iUser.setEstado("AGOTADO");
 								}
 								servicioIngredienteDao.actualizarIngredientesAUsuario(iUser);
+								servicioNotificacion.NuevaNotificacionSinStock(usuario,iUser);
 							}else{
 								iReceta.setCantidad(iReceta.getCantidad() - iUser.getCantidad());
 								iUser.setGastouser(iUser.getCantidad());
 							    iUser.setCantidad(0);
 							    iUser.setEstado("AGOTADO");
 							    servicioIngredienteDao.actualizarIngredientesAUsuario(iUser);
+								servicioNotificacion.NuevaNotificacionSinStock(usuario,iUser);
 							}
 						}
 				 	 }	
