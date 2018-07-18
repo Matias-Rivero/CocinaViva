@@ -3,6 +3,7 @@ package ar.edu.unlam.cocinaviva.controladores;
 import java.text.ParseException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map.Entry;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -364,7 +365,8 @@ public class ControladorLogin {
 		
 		if (request.getSession().getAttribute("usuariologueado") != null && (!(checkingredientes.getSeleccionados().equals(null)))) {
 		ModelMap modelo = new ModelMap();
-		
+		Integer posicion = 1;
+	    Integer partes = 1;
 		Receta receta = new Receta();
 		modelo.put("receta", receta);
 		Ingrediente ingrediente = new Ingrediente();
@@ -373,7 +375,18 @@ public class ControladorLogin {
 		List<Receta> recetas = servicioReceta.traerRecetasAPartirDeIngredientesDelUsuario(Ingredientes);
 		List<Receta> recetasConFaltantes = servicioReceta.traerRecetasConFaltantesDeIngredientes(recetas,Ingredientes); // IngredelUS
 		
-		modelo.put("listaRecetas", recetasConFaltantes);
+		java.util.Map<List<Receta>, Integer> mapRecetasBuscadasConFaltantesDeASeis = servicioReceta.traerRecetasConFaltantesDeIngredientesDeASeisElementos(recetasConFaltantes, posicion);
+        
+        List<Receta> listRecetasConFaltantesDeASeis = new LinkedList<Receta>();
+        
+        for (Entry<List<Receta>, Integer> rF : mapRecetasBuscadasConFaltantesDeASeis.entrySet()){
+          listRecetasConFaltantesDeASeis = rF.getKey();
+          partes = rF.getValue();
+        }  
+
+        modelo.put("partes", partes);  
+        modelo.put("posicion", posicion);						
+		modelo.put("listaRecetas", listRecetasConFaltantesDeASeis);
 		modelo.put("listaRecetasLargo", recetas.size());
 		modelo.put("ingredinetesseleccionados", Ingredientes);
 		
@@ -383,56 +396,98 @@ public class ControladorLogin {
 	}
 	
 	@RequestMapping(path = "/drecetas", method = RequestMethod.POST)
-	public ModelAndView recetasDes(@ModelAttribute("lingrediente") Ingrediente ingrediente, HttpServletRequest request) {		
-		
-	if (request.getSession().getAttribute("usuariologueado") != null && (!(ingrediente.getSeleccionados().length == 1) || !(ingrediente.getNombre().isEmpty()))) {
-			ModelMap modelo = new ModelMap();	
-			
-			Integer cuantasrecetas = 0;
-			Receta receta = new Receta();
-			modelo.put("receta", receta);	
-			Ingrediente ingre = new Ingrediente();
-			modelo.put("lingrediente", ingre);	
-			
-			List<Ingrediente> Ingredientes = servicioIngrediente.traerListaQuitandoIngrediente(ingrediente);
-			List<Receta> recetas = servicioReceta.traerRecetasAPartirDeIngredientesDelUsuario(Ingredientes);
-			
-								
-			if (!(ingrediente.getNombre().isEmpty())) {
-				  String buscarR = ingrediente.getNombre();
-				  List<Receta> recetasb = servicioReceta.buscarRecetasPorNombre(buscarR);
-				  				 
-			      cuantasrecetas = 	recetasb.size();
-			      
-			      if(recetasb.isEmpty()){
-			      modelo.put("nohayrecetascriterio", buscarR);	  
-			      }else{
-			      List<Receta> recetasBuscadasConFaltantes = servicioReceta.traerRecetasConFaltantesDeIngredientes(recetasb,Ingredientes);
-			      modelo.put("loquebusco", buscarR);
-			      modelo.put("listaRecetasBuscadas", recetasBuscadasConFaltantes);
-			      }
-			} 
-			
-			List<Receta> recetasConFaltantes = servicioReceta.traerRecetasConFaltantesDeIngredientes(recetas,Ingredientes); // IngredelUS
-			
-			if ((ingrediente.getNombre().isEmpty() || cuantasrecetas == 0)) {
-			modelo.put("listaRecetas", recetasConFaltantes);
-			cuantasrecetas = recetasConFaltantes.size();
-			}
-			
-			modelo.put("listaRecetasLargo", cuantasrecetas);
-			modelo.put("ingredinetesseleccionados", Ingredientes);
+	  public ModelAndView recetasDes(@ModelAttribute("lingrediente") Ingrediente ingrediente, HttpServletRequest request) {   
+	    
+	  if (request.getSession().getAttribute("usuariologueado") != null && (!(ingrediente.getSeleccionados().length == 1) || !(ingrediente.getNombre().isEmpty()))) {
+	      ModelMap modelo = new ModelMap(); 
+	      Integer posicion = 1;
+	      Integer partes = 1;
+	      Integer cuantasrecetas = 0;
+	      Receta receta = new Receta();
+	      modelo.put("receta", receta); 
+	      Ingrediente ingre = new Ingrediente();
+	      modelo.put("lingrediente", ingre);  
+	      
+	      List<Ingrediente> Ingredientes = servicioIngrediente.traerListaQuitandoIngrediente(ingrediente);
+	      List<Receta> recetas = servicioReceta.traerRecetasAPartirDeIngredientesDelUsuario(Ingredientes);
+	      
+	                
+	      if (!(ingrediente.getNombre().isEmpty())) {
+	          String buscarR = ingrediente.getNombre();
+	          List<Receta> recetasb = servicioReceta.buscarRecetasPorNombre(buscarR);
 
-			return new ModelAndView("recetas", modelo);
-	}
-	return new ModelAndView("redirect:/home");
-	}
+	          if (ingrediente.getGastouser() == null) {
+	          posicion = 1;
+	          }else{
+	          posicion = ingrediente.getGastouser();  
+	          }
+	                   
+	            cuantasrecetas =  recetasb.size();
+	            
+	            if(recetasb.isEmpty()){
+	            modelo.put("nohayrecetascriterio", buscarR);    
+	            }else{
+	            List<Receta> recetasBuscadasConFaltantes = servicioReceta.traerRecetasConFaltantesDeIngredientes(recetasb,Ingredientes);
+
+	            java.util.Map<List<Receta>, Integer> mapRecetasBuscadasConFaltantesDeASeis = servicioReceta.traerRecetasConFaltantesDeIngredientesDeASeisElementos(recetasBuscadasConFaltantes, posicion);
+	            
+	            List<Receta> listRecetasConFaltantesDeASeis = new LinkedList<Receta>();
+	            
+	            for (Entry<List<Receta>, Integer> rF : mapRecetasBuscadasConFaltantesDeASeis.entrySet()){
+	              listRecetasConFaltantesDeASeis = rF.getKey();
+	              partes = rF.getValue();
+	            }  
+
+	            modelo.put("partes", partes);  
+	            modelo.put("posicion", posicion);
+	            modelo.put("loquebusco", buscarR);
+	            modelo.put("listaRecetasBuscadas", listRecetasConFaltantesDeASeis);
+	            }
+	      } 
+	      
+	      if (ingrediente.getGastouser() == null) {
+	          posicion = 1;
+	          }else{
+	          posicion = ingrediente.getGastouser();  
+	          }
+	      
+	      List<Receta> recetasConFaltantes = servicioReceta.traerRecetasConFaltantesDeIngredientes(recetas,Ingredientes); // IngredelUS
+	      
+	      if ((ingrediente.getNombre().isEmpty() || cuantasrecetas == 0)) {
+	    	  
+	    	  java.util.Map<List<Receta>, Integer> mapRecetasConFaltantesDeASeis = servicioReceta.traerRecetasConFaltantesDeIngredientesDeASeisElementos(recetasConFaltantes, posicion);
+	            
+	            List<Receta> listRecetasConFaltantesDeASeis = new LinkedList<Receta>();
+	            
+	            for (Entry<List<Receta>, Integer> rF : mapRecetasConFaltantesDeASeis.entrySet()){
+	            listRecetasConFaltantesDeASeis = rF.getKey();
+	            partes = rF.getValue();
+	            }  
+	  
+	    	  
+	      modelo.put("partes", partes); 	  
+	      modelo.put("posicion", posicion);	  
+	      modelo.put("listaRecetas", listRecetasConFaltantesDeASeis);
+	      cuantasrecetas = recetasConFaltantes.size();
+	      }
+	      
+	      
+	      modelo.put("listaRecetasLargo", cuantasrecetas);
+	      modelo.put("ingredinetesseleccionados", Ingredientes);
+
+	      return new ModelAndView("recetas", modelo);
+	  }
+	  return new ModelAndView("redirect:/home");
+	  }
+	
 	
 	@RequestMapping(path = "/trecetas", method = RequestMethod.GET)
 	public ModelAndView usarTodos(HttpServletRequest request) {				
 		
 		if (request.getSession().getAttribute("usuariologueado") != null) {
 		ModelMap modelo = new ModelMap();
+		Integer posicion = 1;
+	    Integer partes = 1;
 		Usuario usuariologueado = (Usuario) request.getSession().getAttribute("usuariologueado");
 		Usuario usuario = servicioUsuario.traerUnUsuarioPorSuId(usuariologueado.getId());
 		
@@ -444,7 +499,18 @@ public class ControladorLogin {
 		List<Receta> recetas = servicioReceta.traerRecetasAPartirDeIngredientesDelUsuario(Ingredientes);
 		List<Receta> recetasConFaltantes = servicioReceta.traerRecetasConFaltantesDeIngredientes(recetas,Ingredientes); 
 		
-		modelo.put("listaRecetas", recetasConFaltantes);
+		java.util.Map<List<Receta>, Integer> mapRecetasConFaltantesDeASeis = servicioReceta.traerRecetasConFaltantesDeIngredientesDeASeisElementos(recetasConFaltantes, posicion);
+        
+        List<Receta> listRecetasConFaltantesDeASeis = new LinkedList<Receta>();
+        
+        for (Entry<List<Receta>, Integer> rF : mapRecetasConFaltantesDeASeis.entrySet()){
+        listRecetasConFaltantesDeASeis = rF.getKey();
+        partes = rF.getValue();
+        }  
+  
+		modelo.put("partes", partes); 	  
+		modelo.put("posicion", posicion);				
+		modelo.put("listaRecetas", listRecetasConFaltantesDeASeis);
 		modelo.put("listaRecetasLargo", recetas.size());
 		modelo.put("ingredinetesseleccionados", Ingredientes);
 		
@@ -452,6 +518,18 @@ public class ControladorLogin {
 		}
 	return new ModelAndView("redirect:/home");	
 	}
+	
+	/*
+	<jsp:useBean id="now" class="java.util.Date" />
+
+	<p><h5>Last Updated on: <c:out value="${now}"/></h5></p>
+
+	http://www.jtech.ua.es/j2ee/publico/spring-2012-13/sesion03-apuntes.html
+
+	public String procesar(@RequestParam(value="mes",required=false) int mes) {
+
+	} 
+	*/ 
 	
 	@RequestMapping(path = "/leerRecetas")
 	public ModelAndView leerReceta(@RequestParam("id") Long id, HttpServletRequest request) {

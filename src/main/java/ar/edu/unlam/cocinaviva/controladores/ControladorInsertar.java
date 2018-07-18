@@ -106,6 +106,12 @@ public class ControladorInsertar {
 		quesomozzarella.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(quesomozzarella);
 		
+		Ingrediente quesoralladogruyere = new Ingrediente();
+		quesoralladogruyere.setNombre("Queso rallado gruyere");
+		quesoralladogruyere.setTipo("LACTEOS");
+		quesoralladogruyere.setUnidad("Grs");
+		servicioIngrediente.guardarIngredienteEnInventario(quesoralladogruyere);
+		
 		Ingrediente yogurt  = new Ingrediente();
 		yogurt.setNombre("Yogurt");
 		yogurt.setTipo("LACTEOS");
@@ -435,6 +441,11 @@ public class ControladorInsertar {
 		pechugadepollo.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(pechugadepollo);
 		
+		Ingrediente carnepicada = new Ingrediente();
+		carnepicada.setNombre("Carne picada");
+		carnepicada.setTipo("CARNES");
+		servicioIngrediente.guardarIngredienteEnInventario(carnepicada);
+		
 		Ingrediente carnechurrasco = new Ingrediente();
 		carnechurrasco.setNombre("Carne churrasco");
 		carnechurrasco.setTipo("CARNES");
@@ -694,6 +705,12 @@ public class ControladorInsertar {
 		vinagre.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(vinagre);
 		
+		Ingrediente oregano = new Ingrediente();
+		oregano.setNombre("Orégano");
+		oregano.setTipo("CONDIMENTOS");
+		oregano.setUnidad("Grs");
+		servicioIngrediente.guardarIngredienteEnInventario(oregano);
+		
 		Ingrediente salsadesoja = new Ingrediente();
 		salsadesoja.setNombre("Salsa de soja");
 		salsadesoja.setTipo("CONDIMENTOS");
@@ -843,6 +860,12 @@ public class ControladorInsertar {
 		calditoverduras.setTipo("CONDIMENTOS");
 		calditoverduras.setUnidad("Unids");
 		servicioIngrediente.guardarIngredienteEnInventario(calditoverduras);
+		
+		Ingrediente pimienta = new Ingrediente();
+		pimienta.setNombre("Pimienta");
+		pimienta.setTipo("CONDIMENTOS");
+		pimienta.setUnidad("Grs");
+		servicioIngrediente.guardarIngredienteEnInventario(pimienta);
 
 		return new ModelAndView("redirect:/");
 	}
@@ -1442,8 +1465,109 @@ public class ControladorInsertar {
 		
 		servicioReceta.guardarReceta(receta);
 	
+	return new ModelAndView("redirect:/insertar-Tomaterellenoalhorno");
+	}
+	
+	@RequestMapping("/insertar-Tomaterellenoalhorno")
+	public ModelAndView insertarTomaterellenoalhorno() {	
+		Receta receta = new Receta();
+		receta.setNombre("Tomate relleno al horno");		
+		receta.setCalorias(600);		
+		receta.setCarpeta("tomaterellenoalhorno");		
+		receta.setImagen("tomaterellenoalhorno.jpg");		
+		receta.setDescripcion("Delicioso =)");
+
+		List<Ingrediente> ingredientes = new LinkedList<Ingrediente>();
+		
+		Ingrediente ing1 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Tomate");
+		ing1.setCantidad(500);
+		ing1.setCantidadstring("1/2 kg");
+		servicioIngrediente.guardarIngredienteEnReceta(ing1);
+		ingredientes.add(ing1);
+
+		Ingrediente ing2 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Carne picada");
+		ing2.setCantidad(200);
+		ing2.setCantidadstring("200g");
+		servicioIngrediente.guardarIngredienteEnReceta(ing2);
+		ingredientes.add(ing2);
+
+		Ingrediente ing3 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Zanahoria");
+		ing3.setCantidad(200);
+		ing3.setCantidadstring("200g ~ (2u)");
+		servicioIngrediente.guardarIngredienteEnReceta(ing3);
+		ingredientes.add(ing3);
+
+		Ingrediente ing4 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Cebolla");
+		ing4.setCantidad(100);
+		ing4.setCantidadstring("100g ~ (1u)");
+		servicioIngrediente.guardarIngredienteEnReceta(ing4);
+		ingredientes.add(ing4);
+
+		Ingrediente ing5 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Huevos");
+		ing5.setCantidad(2);
+		ing5.setCantidadstring("2u");
+		servicioIngrediente.guardarIngredienteEnReceta(ing5);
+		ingredientes.add(ing5);
+
+		Ingrediente ing6 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Queso rallado gruyere");
+		ing6.setCantidad(150);
+		ing6.setCantidadstring("150g ~ (1paquete)");
+		servicioIngrediente.guardarIngredienteEnReceta(ing6);
+		ingredientes.add(ing6);
+
+		Ingrediente ing7 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Orégano");
+		ing7.setCantidad(0);
+		ing7.setCantidadstring("A gusto");
+		servicioIngrediente.guardarIngredienteEnReceta(ing7);
+		ingredientes.add(ing7);
+
+		Ingrediente ing8 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Sal fina");
+		ing8.setCantidad(0);
+		ing8.setCantidadstring("A gusto");
+		servicioIngrediente.guardarIngredienteEnReceta(ing8);
+		ingredientes.add(ing8);
+
+		Ingrediente ing9 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Pimienta");
+		ing9.setCantidad(0);
+		ing9.setCantidadstring("A gusto");
+		servicioIngrediente.guardarIngredienteEnReceta(ing9);
+		ingredientes.add(ing9);
+		
+		List<Pasos> pasos = new LinkedList<Pasos>();
+		
+		Pasos p1 = new Pasos();
+		p1.setPaso(1); 
+		p1.setDescripcion("Vaciar los tomates.  Freír la cebolla y la zanahoria. Cuando ya esté añadir la carne de los tomates sal pimentar y poner orégano."); 
+		pasos.add(p1);
+		servicioReceta.guardarPasoEnReceta(p1);
+		
+		Pasos p2 = new Pasos();
+		p2.setPaso(2);
+		p2.setDescripcion("Que esté bien hecho no debe quedar caldo. En un bol grande mezclar el gruyere (150g) el huevo cortado pequeño con la carne sofrita.");
+		pasos.add(p2);
+		servicioReceta.guardarPasoEnReceta(p2);
+
+		Pasos p3 = new Pasos();
+		p3.setPaso(3);
+		p3.setDescripcion("En una bandeja de pyrex, rellenar los tomates y poner por encima gruyere y orégano.");
+		pasos.add(p3);
+		servicioReceta.guardarPasoEnReceta(p3);
+
+		Pasos p4 = new Pasos();
+		p4.setPaso(4);
+		p4.setDescripcion("Al horno el tiempo que se haga el tomate. Entre 25 y 30mn.  Sacar dejar reposar unos 10mn y servir. Una delicia.");
+		pasos.add(p4);
+		servicioReceta.guardarPasoEnReceta(p4);
+		
+		receta.setlistaPasos(pasos);
+
+		receta.setListaIngrediente(ingredientes);
+		
+		servicioReceta.guardarReceta(receta);
+	
 	return new ModelAndView("redirect:/");
 	}
+	
 /*	
     Molde 
 	@RequestMapping("/insertar-xxx")

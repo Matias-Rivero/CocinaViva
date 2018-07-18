@@ -2,6 +2,8 @@ package ar.edu.unlam.cocinaviva.servicios;
 
 import java.util.List;
 
+import org.hibernate.mapping.Map;
+
 import ar.edu.unlam.cocinaviva.modelo.Ingrediente;
 import ar.edu.unlam.cocinaviva.modelo.Pasos;
 import ar.edu.unlam.cocinaviva.modelo.Receta;
@@ -38,5 +40,7 @@ public interface ServicioReceta {
 	Receta realizarCopiaDeUnaRecetaDelRecetario(Receta recetaDelRecetario);
 
 	void guardarRecetaCocinada(Receta receta);
+
+	java.util.Map<List<Receta>, Integer> traerRecetasConFaltantesDeIngredientesDeASeisElementos(List<Receta> recetas, Integer posicion);
 	
 }

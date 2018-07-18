@@ -6,8 +6,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 import javax.inject.Inject;
@@ -15,6 +17,7 @@ import javax.persistence.Transient;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.ModelMap;
 
 import ar.edu.unlam.cocinaviva.dao.IngredienteDao;
 import ar.edu.unlam.cocinaviva.dao.RecetaDao;
@@ -181,6 +184,33 @@ public class ServicioRecetaImpl implements ServicioReceta {
 		
 		return ingredientesQueNoTiene;
 	}
+	
+	@Override
+	  public Map<List<Receta>, Integer> traerRecetasConFaltantesDeIngredientesDeASeisElementos(List<Receta> recetas, Integer posicion) {
+	  Map<List<Receta>, Integer> listRecePosicion = new HashMap<List<Receta>, Integer>();
+	  List<Receta> recetasdeseis = new LinkedList<Receta>();
+	  Integer empieza = (posicion * 6) - 6;
+	  Integer termina = posicion * 6;
+	  Double partesD = 0.0;
+	  Integer partes = 0;
+	  Integer cuantasrecetas = recetas.size();
+	  	  
+	  partesD =  (double) (cuantasrecetas / 6); 
+
+	  partes = (int) Math.ceil(partesD);    
+	  System.out.println("=======Partes: " +partes+"");
+	    for(int i = 0; i < recetas.size(); i = i + 1)
+	      {	    	
+	        if(i >= empieza && i < termina) {
+	       recetasdeseis.add(recetas.get(i));
+	        }
+	      }
+	   
+	  
+	  listRecePosicion.put(recetasdeseis, partes);
+	  return  listRecePosicion;
+	}
+	
 
 	@Override
 	public List<Ingrediente> traerListaDeIngredientesQueTienePeroLeFalta(Receta receta,

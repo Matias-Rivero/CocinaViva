@@ -164,7 +164,7 @@
 																<th><input type="text" id="filtrar" class="form-control" value="" placeholder="tomate" autocomplete="off"></th>
 															</tr>
 														</thead>--%>
-													<tbody class="buscar" id="tlacteos" style="display:none;height: 100px;margin-top: 2%;margin-left: 1px;">
+													<tbody class="buscar" id="tlacteos" style="display:none;height: 200px; left:20px; margin-top: 2%;margin-left: 1px;">
 
 													<c:forEach items="${iflacteos}" var="i">
 														<tr align="left">
@@ -352,7 +352,7 @@
 								</c:when>
 								<c:otherwise>
 								<div class="py-5 text-center">
-									<h1>Oops!...</h1><h2>Â¿No tienes ingredientes en tu heladera?</h2>
+									<h1>Oops!...</h1><h2>¿No tienes ingredientes en tu heladera?</h2>
 								</div>
 								</c:otherwise>
 								</c:choose>
