@@ -137,7 +137,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(quesosuizo);
 		
 		Ingrediente requeson = new Ingrediente();
-		requeson.setNombre("RequesÛn");
+		requeson.setNombre("Reques√≥n");
 		requeson.setTipo("LACTEOS");
 		requeson.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(requeson);
@@ -235,7 +235,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(ajo);
 		
 		Ingrediente limon = new Ingrediente();
-		limon.setNombre("LimÛn");
+		limon.setNombre("Lim√≥n");
 		limon.setTipo("VEGETALES");
 		limon.setUnidad("Unids");
 		servicioIngrediente.guardarIngredienteEnInventario(limon);
@@ -297,13 +297,13 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(perejil);
 		
 		Ingrediente brocoli = new Ingrediente();
-		brocoli.setNombre("BrÛcoli");
+		brocoli.setNombre("Br√≥coli");
 		brocoli.setTipo("VEGETALES");
 		brocoli.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(brocoli);
 		
 		Ingrediente maiz = new Ingrediente();
-		maiz.setNombre("MaÌz");
+		maiz.setNombre("Ma√≠z");
 		maiz.setTipo("VEGETALES");
 		maiz.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(maiz);
@@ -327,19 +327,19 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(zapalloverde);
 		
 		Ingrediente ajipicante = new Ingrediente();
-		ajipicante.setNombre("AjÌ picante");
+		ajipicante.setNombre("Aj√≠ picante");
 		ajipicante.setTipo("VEGETALES");
 		ajipicante.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(ajipicante);
 		
 		Ingrediente ajimolido = new Ingrediente();
-		ajimolido.setNombre("AjÌ molido");
+		ajimolido.setNombre("Aj√≠ molido");
 		ajimolido.setTipo("VEGETALES");
 		ajimolido.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(ajimolido);
 		
 		Ingrediente pimenton = new Ingrediente();
-		pimenton.setNombre("PimentÛn");
+		pimenton.setNombre("Piment√≥n");
 		pimenton.setTipo("VEGETALES");
 		pimenton.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(pimenton);
@@ -375,7 +375,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(batata);
 		
 		Ingrediente calabacin = new Ingrediente();
-		calabacin.setNombre("CalabacÌn");
+		calabacin.setNombre("Calabac√≠n");
 		calabacin.setTipo("VEGETALES");
 		calabacin.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(calabacin);
@@ -461,7 +461,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(filetedeternera);
 		
 		Ingrediente jamon = new Ingrediente();
-		jamon.setNombre("JamÛn");
+		jamon.setNombre("Jam√≥n");
 		jamon.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(jamon);
 		
@@ -544,11 +544,21 @@ public class ControladorInsertar {
 		conejo.setNombre("Conejo");
 		conejo.setTipo("CARNES");
 		servicioIngrediente.guardarIngredienteEnInventario(conejo);
+
+		Ingrediente milanesa = new Ingrediente();
+		milanesa.setNombre("Carne para Milanesas");
+		milanesa.setTipo("CARNES");
+		servicioIngrediente.guardarIngredienteEnInventario(milanesa);
+
+		Ingrediente paletaFiambre = new Ingrediente();
+		paletaFiambre.setNombre("Paleta (fiambre)");
+		paletaFiambre.setTipo("CARNES");
+		servicioIngrediente.guardarIngredienteEnInventario(milanesa);
 		
 		// PESCADO
 		
 		Ingrediente atunenlatado = new Ingrediente();
-		atunenlatado.setNombre("At˙n enlatado");
+		atunenlatado.setNombre("At√∫n enlatado");
 		atunenlatado.setTipo("PESCADO");
 		atunenlatado.setPerece("SEVENCE");
 		atunenlatado.setUnidad("Unids");
@@ -561,7 +571,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(filetesdepescado);
 		
 		Ingrediente salmon = new Ingrediente();
-		salmon.setNombre("SalmÛn");
+		salmon.setNombre("Salm√≥n");
 		salmon.setTipo("PESCADO");
 		salmon.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(salmon);
@@ -573,7 +583,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(tilapia);
 		
 		Ingrediente salmonenlatado = new Ingrediente();
-		salmonenlatado.setNombre("SalmÛn enlatado");
+		salmonenlatado.setNombre("Salm√≥n enlatado");
 		salmonenlatado.setTipo("PESCADO");
 		salmonenlatado.setPerece("SEVENCE");
 		servicioIngrediente.guardarIngredienteEnInventario(salmonenlatado);
@@ -585,7 +595,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(anchoas);
 		
 		Ingrediente salmonahumado = new Ingrediente();
-		salmonahumado.setNombre("SalmÛn ahumado");
+		salmonahumado.setNombre("Salm√≥n ahumado");
 		salmonahumado.setTipo("PESCADO");
 		salmonahumado.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(salmonahumado);
@@ -597,7 +607,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(sardinas);
 		
 		Ingrediente filetedeatun = new Ingrediente();
-		filetedeatun.setNombre("Filete de at˙n");
+		filetedeatun.setNombre("Filete de at√∫n");
 		filetedeatun.setTipo("PESCADO");
 		filetedeatun.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(filetedeatun);
@@ -645,7 +655,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(pezroca);
 		
 		Ingrediente sueladelimon = new Ingrediente();
-		sueladelimon.setNombre("Suela de limÛn");
+		sueladelimon.setNombre("Suela de lim√≥n");
 		sueladelimon.setTipo("PESCADO");
 		sueladelimon.setPerece("SEPUDRE");
 		servicioIngrediente.guardarIngredienteEnInventario(sueladelimon);
@@ -767,13 +777,13 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(mostaza);
 		
 		Ingrediente salsatartara = new Ingrediente();
-		salsatartara.setNombre("Salsa t·rtara");
+		salsatartara.setNombre("Salsa t√°rtara");
 		salsatartara.setTipo("CONDIMENTOS");
 		salsatartara.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(salsatartara);
 		
 		Ingrediente salsadecoctel = new Ingrediente();
-		salsadecoctel.setNombre("Salsa de cÛctel");
+		salsadecoctel.setNombre("Salsa de c√≥ctel");
 		salsadecoctel.setTipo("CONDIMENTOS");
 		salsadecoctel.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(salsadecoctel);
@@ -797,7 +807,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnInventario(ketchup);
 		
 		Ingrediente aderezodesesamo = new Ingrediente();
-		aderezodesesamo.setNombre("Aderezo de sÈsamo");
+		aderezodesesamo.setNombre("Aderezo de s√©samo");
 		aderezodesesamo.setTipo("CONDIMENTOS");
 		aderezodesesamo.setUnidad("Lts");
 		servicioIngrediente.guardarIngredienteEnInventario(aderezodesesamo);
@@ -843,6 +853,60 @@ public class ControladorInsertar {
 		calditoverduras.setTipo("CONDIMENTOS");
 		calditoverduras.setUnidad("Unids");
 		servicioIngrediente.guardarIngredienteEnInventario(calditoverduras);
+
+		Ingrediente polenta = new Ingrediente();
+		polenta.setNombre("Polenta");
+		polenta.setTipo("CONDIMENTOS");
+		polenta.setUnidad("Grs");
+		servicioIngrediente.guardarIngredienteEnInventario(polenta);
+
+		Ingrediente harina = new Ingrediente();
+		harina.setNombre("Harina");
+		harina.setTipo("CONDIMENTOS");
+		harina.setUnidad("Grs");
+		servicioIngrediente.guardarIngredienteEnInventario(harina);
+
+		Ingrediente puredetomate = new Ingrediente();
+		puredetomate.setNombre("Pure de Tomate");
+		puredetomate.setTipo("CONDIMENTOS");
+		puredetomate.setUnidad("Unids");
+		servicioIngrediente.guardarIngredienteEnInventario(puredetomate);
+
+		Ingrediente galletitasChocolinas = new Ingrediente();
+		galletitasChocolinas.setNombre("Chocolinas");
+		galletitasChocolinas.setTipo("CONDIMENTOS");
+		galletitasChocolinas.setUnidad("Unids");
+		servicioIngrediente.guardarIngredienteEnInventario(galletitasChocolinas);
+
+		Ingrediente calditopollo = new Ingrediente();
+		calditopollo.setNombre("Caldo de Pollo");
+		calditopollo.setTipo("CONDIMENTOS");
+		calditopollo.setUnidad("Unids");
+		servicioIngrediente.guardarIngredienteEnInventario(calditopollo);
+
+		Ingrediente calditocarne = new Ingrediente();
+		calditocarne.setNombre("Caldo de Carne");
+		calditocarne.setTipo("CONDIMENTOS");
+		calditocarne.setUnidad("Unids");
+		servicioIngrediente.guardarIngredienteEnInventario(calditocarne);
+
+		Ingrediente fideosTirabuzon = new Ingrediente();
+		fideosTirabuzon.setNombre("Fideos Tirabuzon");
+		fideosTirabuzon.setTipo("CONDIMENTOS");
+		fideosTirabuzon.setUnidad("Grs");
+		servicioIngrediente.guardarIngredienteEnInventario(fideosTirabuzon);
+
+		Ingrediente fideosSpaghetti = new Ingrediente();
+		fideosTirabuzon.setNombre("Fideos spaghetti");
+		fideosTirabuzon.setTipo("CONDIMENTOS");
+		fideosTirabuzon.setUnidad("Grs");
+		servicioIngrediente.guardarIngredienteEnInventario(fideosTirabuzon);
+
+		Ingrediente panRallado = new Ingrediente();
+		panRallado.setNombre("Pan Rallado");
+		panRallado.setTipo("CONDIMENTOS");
+		panRallado.setUnidad("Grs");
+		servicioIngrediente.guardarIngredienteEnInventario(panRallado);
 
 		return new ModelAndView("redirect:/");
 	}
@@ -931,9 +995,9 @@ public class ControladorInsertar {
 	public ModelAndView insertarRecetas() {
 		/* Tenemos
 		 * 
-		 * Puchero de carac˙
+		 * Puchero de carac√∫
 		 * Pollo al horno
-		 * Arroz con at˙n
+		 * Arroz con at√∫n
 		 * Arroz con pollo light
 		 * Arroz con vegetales
 		 * 
@@ -945,7 +1009,7 @@ public class ControladorInsertar {
 	public ModelAndView insertarPucherodecaracu() {	
 		Receta pucherodecaracu = new Receta();
 
-		pucherodecaracu.setNombre("Puchero de carac˙");
+		pucherodecaracu.setNombre("Puchero de carac√∫");
 
 		pucherodecaracu.setCalorias(750);
 		
@@ -1024,7 +1088,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnReceta(mayonesa);
 		ingredientes.add(mayonesa);
 
-		Ingrediente limon = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("LimÛn");
+		Ingrediente limon = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Lim√≥n");
 		limon.setCantidad(0);
 		limon.setCantidadstring("A gusto");
 		servicioIngrediente.guardarIngredienteEnReceta(limon);
@@ -1042,33 +1106,33 @@ public class ControladorInsertar {
 		Pasos pahP2 = new Pasos();
 		pahP2.setPaso(2);
 		pahP2.setImagen("p2.jpg");
-		pahP2.setDescripcion("Pelamos las verduras, lavamos bien y las reservamos enteras (sin cortar), menos la calabaza que la cortamos en rodajas manteniendo su c·scara.");
+		pahP2.setDescripcion("Pelamos las verduras, lavamos bien y las reservamos enteras (sin cortar), menos la calabaza que la cortamos en rodajas manteniendo su c√°scara.");
 		pasos.add(pahP2);
 		servicioReceta.guardarPasoEnReceta(pahP2);
 		
 		Pasos pahP3 = new Pasos();
 		pahP3.setPaso(3);
 		pahP3.setImagen("p3.jpg");
-		pahP3.setDescripcion("Pasada la hora y media de hervor de nuestra carne chequeamos su cocciÛn, luego colocamos las zanahorias y las batatas.");
+		pahP3.setDescripcion("Pasada la hora y media de hervor de nuestra carne chequeamos su cocci√≥n, luego colocamos las zanahorias y las batatas.");
 		pasos.add(pahP3);
 		servicioReceta.guardarPasoEnReceta(pahP3);
 		
 		Pasos pahP4 = new Pasos();
 		pahP4.setPaso(4);
 		pahP4.setImagen("p4.jpg");
-		pahP4.setDescripcion("Pasados 10 minutos ponemos todas las dem·s verduras m·s los dientes de ajo machacados, el perejil y el otro caldo saborizante, cocinamos a olla tapada y fuego fuerte por 20 minutos m·s.");
+		pahP4.setDescripcion("Pasados 10 minutos ponemos todas las dem√°s verduras m√°s los dientes de ajo machacados, el perejil y el otro caldo saborizante, cocinamos a olla tapada y fuego fuerte por 20 minutos m√°s.");
 		pasos.add(pahP4);
 		servicioReceta.guardarPasoEnReceta(pahP4);
 		
 		Pasos pahP5 = new Pasos();
 		pahP5.setPaso(5);
-		pahP5.setDescripcion("Por ulitmo, chequeamos pinchando con un cuchillo cada verdura para ver si ya est·n a punto, y listo nuestro puchero de carac˙.");
+		pahP5.setDescripcion("Por ulitmo, chequeamos pinchando con un cuchillo cada verdura para ver si ya est√°n a punto, y listo nuestro puchero de carac√∫.");
 		pasos.add(pahP5);
 		servicioReceta.guardarPasoEnReceta(pahP5);
 		
 		Pasos pahP6 = new Pasos();
 		pahP6.setPaso(6);
-		pahP6.setDescripcion("Tips 1 : Las verduras se pueden comer enteras o hacer un rico purÈ con mucho limÛn y aceite de oliva. (tambiÈn con mayonesa queda muy bien).");
+		pahP6.setDescripcion("Tips 1 : Las verduras se pueden comer enteras o hacer un rico pur√© con mucho lim√≥n y aceite de oliva. (tambi√©n con mayonesa queda muy bien).");
 		pasos.add(pahP6);
 		servicioReceta.guardarPasoEnReceta(pahP6);
 		
@@ -1080,13 +1144,13 @@ public class ControladorInsertar {
 		
 		Pasos pahP8 = new Pasos();
 		pahP8.setPaso(8);
-		pahP8.setDescripcion("Tips 3: A no olvidarse de comer el tuetano del carac˙ con una rica tostada o bizcocho bien crocante.");
+		pahP8.setDescripcion("Tips 3: A no olvidarse de comer el tuetano del carac√∫ con una rica tostada o bizcocho bien crocante.");
 		pasos.add(pahP8);
 		servicioReceta.guardarPasoEnReceta(pahP8);
 		
 		Pasos pahP9 = new Pasos();
 		pahP9.setPaso(9);
-		pahP9.setDescripcion("Tips 4: Con el tremendo caldo que nos queda al otro dÌa nos podemos hacer una fabulosa sopa de verduras. (opcional ponerle municiones).");
+		pahP9.setDescripcion("Tips 4: Con el tremendo caldo que nos queda al otro d√≠a nos podemos hacer una fabulosa sopa de verduras. (opcional ponerle municiones).");
 		pasos.add(pahP9);
 		servicioReceta.guardarPasoEnReceta(pahP9);
 		
@@ -1137,7 +1201,7 @@ public class ControladorInsertar {
 	ipolloalhorno.add(zanahoria);
 	ipolloalhorno.add(calabaza);
 	ipolloalhorno.add(salfina);
-	polloalhorno.setDescripcion("Pollo al horno, RiquÌsimo para compartir!");
+	polloalhorno.setDescripcion("Pollo al horno, Riqu√≠simo para compartir!");
 	
 	List<Pasos> pasospolloalhorno = new LinkedList<Pasos>();
 	
@@ -1167,7 +1231,7 @@ public class ControladorInsertar {
 	
 	Pasos pahP5 = new Pasos();
 	pahP5.setPaso(5);
-	pahP5.setDescripcion("Llevarlo a horno fuerte, baÒando con el mismo lÌquido de la cocciÛn si fuese necesario, para que no se reseque la carne.");
+	pahP5.setDescripcion("Llevarlo a horno fuerte, ba√±ando con el mismo l√≠quido de la cocci√≥n si fuese necesario, para que no se reseque la carne.");
 	pasospolloalhorno.add(pahP5);
 	servicioReceta.guardarPasoEnReceta(pahP5);
 	
@@ -1179,7 +1243,7 @@ public class ControladorInsertar {
 	
 	Pasos pahP7 = new Pasos();
 	pahP7.setPaso(7);
-	pahP7.setDescripcion("Cocinar la calabaza y hacer un purÈ.");
+	pahP7.setDescripcion("Cocinar la calabaza y hacer un pur√©.");
 	pasospolloalhorno.add(pahP7);
 	servicioReceta.guardarPasoEnReceta(pahP7);
 	
@@ -1191,7 +1255,7 @@ public class ControladorInsertar {
 	
 	Pasos pahP9 = new Pasos();
 	pahP9.setPaso(9);
-	pahP9.setDescripcion("Servir decorado con las zanahorias y acompaÒado del purÈ de calabaza.");
+	pahP9.setDescripcion("Servir decorado con las zanahorias y acompa√±ado del pur√© de calabaza.");
 	pasospolloalhorno.add(pahP9);
 	servicioReceta.guardarPasoEnReceta(pahP9);
 	
@@ -1205,7 +1269,7 @@ public class ControladorInsertar {
 	@RequestMapping("/insertar-arrozconatun")
 	public ModelAndView insertarArrozconatun() {	
 		Receta arrozconatun = new Receta();
-		arrozconatun.setNombre("Arroz con at˙n");		
+		arrozconatun.setNombre("Arroz con at√∫n");		
 		arrozconatun.setCalorias(500);		
 		arrozconatun.setCarpeta("arrozconatun");		
 		arrozconatun.setImagen("arrozconatun.jpg");		
@@ -1225,25 +1289,25 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnReceta(cebolla);
 		ingredientes.add(cebolla);
 		
-		Ingrediente atun = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("At˙n enlatado");
+		Ingrediente atun = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("At√∫n enlatado");
 		atun.setCantidad(3);
 		atun.setCantidadstring("3u");
 		servicioIngrediente.guardarIngredienteEnReceta(atun);
 		ingredientes.add(atun);
 		
-		Ingrediente aceite = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("LimÛn");
+		Ingrediente aceite = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Lim√≥n");
 		aceite.setCantidad(0);
 		aceite.setCantidadstring("A gusto");
 		servicioIngrediente.guardarIngredienteEnReceta(aceite);
 		ingredientes.add(aceite);
 		
-		Ingrediente sal = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("LimÛn");
+		Ingrediente sal = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Lim√≥n");
 		sal.setCantidad(0);
 		sal.setCantidadstring("A gusto");
 		servicioIngrediente.guardarIngredienteEnReceta(sal);
 		ingredientes.add(sal);
 		
-		Ingrediente mayonesa = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("LimÛn");
+		Ingrediente mayonesa = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Lim√≥n");
 		mayonesa.setCantidad(0);
 		mayonesa.setCantidadstring("A gusto");
 		servicioIngrediente.guardarIngredienteEnReceta(mayonesa);
@@ -1253,13 +1317,13 @@ public class ControladorInsertar {
 		
 		Pasos p1 = new Pasos();
 		p1.setPaso(1);
-		p1.setDescripcion("Poner a rehogar la cebolla con el aceite.. rehogar hasta que dore y agregar el at˙n colado, (le deje un poco del agua) muentras este caliente y revolver. Separar."); // contactar los caracteres que no pase los 255 sino dividir en dos pasos
+		p1.setDescripcion("Poner a rehogar la cebolla con el aceite.. rehogar hasta que dore y agregar el at√∫n colado, (le deje un poco del agua) muentras este caliente y revolver. Separar."); // contactar los caracteres que no pase los 255 sino dividir en dos pasos
 		pasos.add(p1);
 		servicioReceta.guardarPasoEnReceta(p1);
 		
 		Pasos p2 = new Pasos();
 		p2.setPaso(2);
-		p2.setDescripcion("Hervir agua y agregar el arroz. Cocinar como dice el paquete. Colar y esperar a que enfrÌe un poco.");
+		p2.setDescripcion("Hervir agua y agregar el arroz. Cocinar como dice el paquete. Colar y esperar a que enfr√≠e un poco.");
 		pasos.add(p2);
 		servicioReceta.guardarPasoEnReceta(p2);
 		
@@ -1328,7 +1392,7 @@ public class ControladorInsertar {
 		
 		Pasos p2 = new Pasos();
 		p2.setPaso(2); 
-		p2.setDescripcion("En la misma sartÈn poner el resto de aceite m·s el pollo. Dejar cocinar. Poner la cebolla el arroz y las arvejas. Por ˙ltimo la sal");
+		p2.setDescripcion("En la misma sart√©n poner el resto de aceite m√°s el pollo. Dejar cocinar. Poner la cebolla el arroz y las arvejas. Por √∫ltimo la sal");
 		pasos.add(p2);
 		servicioReceta.guardarPasoEnReceta(p2);
 		
@@ -1338,8 +1402,351 @@ public class ControladorInsertar {
 		
 		servicioReceta.guardarReceta(receta);
 		
-		return new ModelAndView("redirect:/insertar-arrozconvegetales");
-	}	
+		return new ModelAndView("redirect:/insertar-malfatisespinaca");
+	}
+
+//recetasJp
+	/*@RequestMapping("/insertar-milanesasNapolitanas")
+	public ModelAndView insertarMilanesasNapolitanas() {	
+		Receta receta = new Receta();
+		receta.setNombre("Milanesas Napolitanas");		
+		receta.setCalorias(600);		
+		receta.setCarpeta("milanesasnapolitanas");		
+		receta.setImagen("milanesasnapolitanas.jpg");		
+		receta.setDescripcion("");
+		
+		List<Ingrediente> ingredientes = new LinkedList<Ingrediente>();
+		
+		Ingrediente carneMilanesa = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Carne para Milanesas");
+		carneMilanesa.setCantidad(1);
+		carneMilanesa.setCantidadstring("1 kg");
+		servicioIngrediente.guardarIngredienteEnReceta(carneMilanesa);
+		ingredientes.add(carneMilanesa);
+		
+		Ingrediente dientesdeajo = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Dientes de ajo");
+		dientesdeajo.setCantidad(2);
+		dientesdeajo.setCantidadstring("2u");
+		servicioIngrediente.guardarIngredienteEnReceta(dientesdeajo);
+		ingredientes.add(dientesdeajo);
+
+		Ingrediente perejil = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Perejil");
+		dientesdeajo.setCantidad(0);
+		dientesdeajo.setCantidadstring("A gusto");
+		servicioIngrediente.guardarIngredienteEnReceta(dientesdeajo);
+		ingredientes.add(dientesdeajo);
+		
+		Ingrediente huevos = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Huevos");
+		huevos.setCantidad(2);
+		huevos.setCantidadstring("2u");
+		servicioIngrediente.guardarIngredienteEnReceta(huevos);
+		ingredientes.add(huevos);
+		
+		Ingrediente paletaFiambre = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Paleta (fiambre)");
+		paletaFiambre.setCantidad(300);
+		paletaFiambre.setCantidadstring("300gr");
+		servicioIngrediente.guardarIngredienteEnReceta(paletaFiambre);
+		ingredientes.add(paletaFiambre);
+
+		Ingrediente panRallado = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Pan Rallado");
+		panRallado.setCantidad(300);
+		panRallado.setCantidadstring("300gr");
+		servicioIngrediente.guardarIngredienteEnReceta(panRallado);
+		ingredientes.add(panRallado);
+		
+		Ingrediente quesoMantecoso = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Queso Fresco");
+		quesoMantecoso.setCantidad(300);
+		quesoMantecoso.setCantidadstring("300gr");
+		servicioIngrediente.guardarIngredienteEnReceta(quesoMantecoso);
+		ingredientes.add(quesoMantecoso);
+
+		Ingrediente salsaDeTomate = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Salsa de tomate");
+		salsaDeTomate.setCantidad(0);
+		salsaDeTomate.setCantidadstring("A gusto");
+		servicioIngrediente.guardarIngredienteEnReceta(salsaDeTomate);
+		ingredientes.add(salsaDeTomate);
+		
+		List<Pasos> pasos = new LinkedList<Pasos>();
+		
+		Pasos p1 = new Pasos();
+		p1.setPaso(1); 
+		p1.setDescripcion("Picamos el ajo y el perejil chiquito y lo ponemos en un bol. Agregar los huevos,sal, condimentos, y leche. Mezclar Bien.");
+		pasos.add(p1);
+		servicioReceta.guardarPasoEnReceta(p1);
+		
+		Pasos p2 = new Pasos();
+		p2.setPaso(2); 
+		p2.setDescripcion("Agregar la carne y dejar reposar unos minutos. En un contenedor aparte, ponemos el pan rallado, y empanamos la milanesas vuelta y vuelta.");
+		pasos.add(p2);
+		servicioReceta.guardarPasoEnReceta(p2);
+
+		Pasos p3= new Pasos();
+		p3.setPaso(3); 
+		p3.setDescripcion("Calentar aceite en una sarten, y freir las milanesas. Retirar unos minutos antes de estar listas.");
+		pasos.add(p3);
+		servicioReceta.guardarPasoEnReceta(p3);
+
+		Pasos p4= new Pasos();
+		p4.setPaso(4); 
+		p4.setDescripcion("Precalentar el horno. Agregar a cada milanesa, un poco de salsa de tomate, una feta de paleta, y un poco de queso freso.");
+		pasos.add(p4);
+		servicioReceta.guardarPasoEnReceta(p4);
+
+		Pasos p5 = new Pasos();
+		p5.setPaso(5); 
+		p5.setDescripcion("Llevar al horno hasta que el quso este totalmente derretido.");
+		pasos.add(p5);
+		servicioReceta.guardarPasoEnReceta(p5);
+		
+		receta.setlistaPasos(pasos);
+
+		receta.setListaIngrediente(ingredientes);
+		
+		servicioReceta.guardarReceta(receta);
+		
+		return new ModelAndView("redirect:/insertar-malfatisespinaca");
+	}*/
+
+	@RequestMapping("/insertar-malfatisespinaca")
+	public ModelAndView insertarMalfatisEspinaca() {	
+		Receta malfatisespinaca= new Receta();
+		malfatisespinaca.setNombre("Malfatis de espinacas y ricota");		
+		malfatisespinaca.setCalorias(360);		
+		malfatisespinaca.setCarpeta("malfatisespinaca");		
+		malfatisespinaca.setImagen("malfatisespinaca.jpg");		
+		malfatisespinaca.setDescripcion("Malfatis quiere decir mal hecho y b√°sicamente son √±oquis r√∫sticos. R√≠quisimos y sencillos de hacer");
+
+		List<Ingrediente> ingredientes = new LinkedList<Ingrediente>();
+		
+		Ingrediente ing1 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Espinacas");
+		ing1.setCantidad(500);
+		ing1.setCantidadstring("1/2 kg");
+		servicioIngrediente.guardarIngredienteEnReceta(ing1);
+		ingredientes.add(ing1);
+
+		Ingrediente ing2 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Reques√≥n");
+		ing2.setCantidad(200);
+		ing2.setCantidadstring("200gr");
+		servicioIngrediente.guardarIngredienteEnReceta(ing2);
+		ingredientes.add(ing2);
+		
+		Ingrediente ing3 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Queso parmesano");
+		ing3.setCantidad(50);
+		ing3.setCantidadstring("50gr");
+		servicioIngrediente.guardarIngredienteEnReceta(ing3);
+		ingredientes.add(ing3);
+
+		Ingrediente ing4 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Huevos");
+		ing4.setCantidad(2);
+		ing4.setCantidadstring("2u");
+		servicioIngrediente.guardarIngredienteEnReceta(ing4);
+		ingredientes.add(ing4);
+
+		Ingrediente ing5 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Harina");
+		ing5.setCantidad(250);
+		ing5.setCantidadstring("250grs");
+		servicioIngrediente.guardarIngredienteEnReceta(ing5);
+		ingredientes.add(ing5);
+
+
+
+		List<Pasos> pasos = new LinkedList<Pasos>();
+		
+		Pasos p1 = new Pasos();
+		p1.setPaso(1); 
+		p1.setDescripcion("Picar las espinacas para que no queden pedazos demasiado grandes"); 
+		pasos.add(p1);
+		servicioReceta.guardarPasoEnReceta(p1);
+		
+		Pasos p2 = new Pasos();
+		p2.setPaso(2);
+		p2.setDescripcion("En un bowl, incorporar la espinaca, con la ricota desmenuzada, los huevos y el parmesano.Ir agregando la harina de a poco. Terminar con la nuez moscada, la sal y la pimienta");
+		pasos.add(p2);
+		servicioReceta.guardarPasoEnReceta(p2);
+		
+		Pasos p3 = new Pasos();
+		p3.setPaso(3); 
+		p3.setDescripcion("Armar bollitos del tama√±o de un pelotito de golf.Pueden pasar los bollitos en un poquito de harina para que no se peguen.");
+		pasos.add(p3);
+		servicioReceta.guardarPasoEnReceta(p3);
+		
+	
+		Pasos p4 = new Pasos();
+		p4.setPaso(4); 
+		p4.setDescripcion("En una olla, hervir agua.Una vez el agua hervido, ir tirando los bollitos cuidadosamente y de a uno.Cuando los malfatis est√°n listos flotan en la superficie del agua. Es tiempo de retirarlos.");
+		pasos.add(p4);
+		servicioReceta.guardarPasoEnReceta(p4);
+
+		Pasos p5 = new Pasos();
+		p5.setPaso(5); 
+		p5.setDescripcion("Ponerlos en una fuente apta para horno con una salsa de tomate (puede ser aromatizada con ajo, cebolla, y/o hierbas arom√°ticas).Calentarlos a horno fuerte y servir espolvoreando queso en hebra.");
+		pasos.add(p5);
+		servicioReceta.guardarPasoEnReceta(p5);		
+
+
+		malfatisespinaca.setlistaPasos(pasos);
+		malfatisespinaca.setListaIngrediente(ingredientes);
+		
+		servicioReceta.guardarReceta(malfatisespinaca);
+
+
+		
+	
+	return new ModelAndView("redirect:/insertar-croquetaarroz");
+	}
+
+
+@RequestMapping("/insertar-croquetaarroz")
+	public ModelAndView insertarcroquetaarroz() {	
+		Receta croquetaarroz= new Receta();
+		croquetaarroz.setNombre("Croquetas de Arroz");		
+		croquetaarroz.setCalorias(360);		
+		croquetaarroz.setCarpeta("croquetaarroz");		
+		croquetaarroz.setImagen("croquetaarroz.jpg");		
+		croquetaarroz.setDescripcion("¬øTe ha sobrado arroz del d√≠a de ayer y no sabes qu√© hacer con √©l? Entonces prepar√† unas croquetas de arroz. Son deliciosas y nada complicadas de hacer.");
+
+		List<Ingrediente> ingredientes = new LinkedList<Ingrediente>();
+		
+		Ingrediente ing1 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Arroz blanco");
+		ing1.setCantidad(450);
+		ing1.setCantidadstring("450gr");
+		servicioIngrediente.guardarIngredienteEnReceta(ing1);
+		ingredientes.add(ing1);
+
+		Ingrediente ing2 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Queso mozzarella");
+		ing2.setCantidad(100);
+		ing2.setCantidadstring("100gr");
+		servicioIngrediente.guardarIngredienteEnReceta(ing2);
+		ingredientes.add(ing2);
+		
+		Ingrediente ing3 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Queso parmesano");
+		ing3.setCantidad(25);
+		ing3.setCantidadstring("25gr");
+		servicioIngrediente.guardarIngredienteEnReceta(ing3);
+		ingredientes.add(ing3);
+
+		Ingrediente ing4 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Huevos");
+		ing4.setCantidad(2);
+		ing4.setCantidadstring("2u");
+		servicioIngrediente.guardarIngredienteEnReceta(ing4);
+		ingredientes.add(ing4);
+
+		List<Pasos> pasos = new LinkedList<Pasos>();
+		
+		Pasos p1 = new Pasos();
+		p1.setPaso(1); 
+		p1.setDescripcion("Coloca el arroz en un recipiente grande. A√±ade los huevos primero y comienza a mezclar con el arroz. Debes conseguir una consistencia adecuada como para crear bolas.");
+		pasos.add(p1);
+		servicioReceta.guardarPasoEnReceta(p1);
+		
+		Pasos p2 = new Pasos();
+		p2.setPaso(2);
+		p2.setDescripcion("Mezcla hasta que el arroz est√© todo cubierto de huevo. Luego agrega el queso parmesano y mezcla bien. Si lo deseas, puedes agregar otros ingredientes como jam√≥n picado.");
+		pasos.add(p2);
+		servicioReceta.guardarPasoEnReceta(p2);
+		
+		Pasos p3 = new Pasos();
+		p3.setPaso(3); 
+		p3.setDescripcion("Toma una parte del arroz con tu mano y coloca unos dados de mozzarrella en √©l. Cierra la croqueta en el interior haciendo una bola con el arroz. Luego hazla rodar sobre el pan rallado. Aplasta un poco la bola asegur√°ndote de que no se quiebre.");
+		pasos.add(p3);
+		servicioReceta.guardarPasoEnReceta(p3);
+		
+	
+		Pasos p4 = new Pasos();
+		p4.setPaso(4); 
+		p4.setDescripcion("Calienta el aceite. Agrega las croquetas a la sart√©n. Remueve suavemente para que no se peguen al fondo. Fr√≠e hasta que las croquetas est√©n doradas. Luego transfi√©relas a una fuente forrada con papel de cocina para absorber el exceso de aceite.");
+		pasos.add(p4);
+		servicioReceta.guardarPasoEnReceta(p4);
+
+		
+
+		croquetaarroz.setlistaPasos(pasos);
+
+		croquetaarroz.setListaIngrediente(ingredientes);
+		
+		servicioReceta.guardarReceta(croquetaarroz);
+	
+	return new ModelAndView("redirect:/insertar-budinespinacas");
+	}
+
+
+@RequestMapping("/insertar-budinespinacas")
+	public ModelAndView insertarbudinespinacas() {	
+		Receta budinespinacas= new Receta();
+		budinespinacas.setNombre("Bud√¨n de Espinacas");		
+		budinespinacas.setCalorias(43060);		
+		budinespinacas.setCarpeta("budinespinacas");		
+		budinespinacas.setImagen("budinespinacas.jpg");		
+		budinespinacas.setDescripcion("Un bud√≠n salado muy f√°cil de preparar, y de tip, viene con versi√≥n para microondas");
+
+		List<Ingrediente> ingredientes = new LinkedList<Ingrediente>();
+		
+		Ingrediente ing1 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Espinacas");
+		ing1.setCantidad(400);
+		ing1.setCantidadstring("400gr");
+		servicioIngrediente.guardarIngredienteEnReceta(ing1);
+		ingredientes.add(ing1);
+
+		Ingrediente ing2 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Cebolla");
+		ing2.setCantidad(2);
+		ing2.setCantidadstring("2u");
+		servicioIngrediente.guardarIngredienteEnReceta(ing2);
+		ingredientes.add(ing2);
+		
+		Ingrediente ing3 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Queso parmesano");
+		ing3.setCantidad(25);
+		ing3.setCantidadstring("25gr");
+		servicioIngrediente.guardarIngredienteEnReceta(ing3);
+		ingredientes.add(ing3);
+
+		Ingrediente ing4 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Huevos");
+		ing4.setCantidad(3);
+		ing4.setCantidadstring("3u");
+		servicioIngrediente.guardarIngredienteEnReceta(ing4);
+		ingredientes.add(ing4);
+
+		Ingrediente ing5 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Harina");
+		ing5.setCantidad(150);
+		ing5.setCantidadstring("150gr");
+		servicioIngrediente.guardarIngredienteEnReceta(ing5);
+		ingredientes.add(ing5);
+
+		List<Pasos> pasos = new LinkedList<Pasos>();
+		
+		Pasos p1 = new Pasos();
+		p1.setPaso(1); 
+		p1.setDescripcion("Dor√° las cebollas en una sart√©n con aceite. Dej√° enfriar.Agreg√°  las espinaca con los huevos y el queso rallado. Mezcl√° bien y condiment√° con sal, pimienta y nuez moscada.");
+		pasos.add(p1);
+		servicioReceta.guardarPasoEnReceta(p1);
+		
+		Pasos p2 = new Pasos();
+		p2.setPaso(2);
+		p2.setDescripcion("Agreg√° la harina. Mezcla.");
+		pasos.add(p2);
+		servicioReceta.guardarPasoEnReceta(p2);
+		
+		Pasos p3 = new Pasos();
+		p3.setPaso(3); 
+		p3.setDescripcion("Volc√° la preparaci√≥n en una budinera alargada, enmantecada y enharinada");
+		pasos.add(p3);
+		servicioReceta.guardarPasoEnReceta(p3);
+		
+	
+		Pasos p4 = new Pasos();
+		p4.setPaso(4); 
+		p4.setDescripcion("Llev√° a horno de temperatura mediana hasta que pinchando con un palillo en el centro salga limpio.");
+		pasos.add(p4);
+		servicioReceta.guardarPasoEnReceta(p4);
+
+		
+
+		budinespinacas.setlistaPasos(pasos);
+
+		budinespinacas.setListaIngrediente(ingredientes);
+		
+		servicioReceta.guardarReceta(budinespinacas);
+	
+	return new ModelAndView("redirect:/insertar-arrozconvegetales");
+	}
 	
 	@RequestMapping("/insertar-arrozconvegetales")
 	public ModelAndView insertarxxx() {	
@@ -1348,7 +1755,7 @@ public class ControladorInsertar {
 		receta.setCalorias(650);		
 		receta.setCarpeta("arrozconvegetales");		
 		receta.setImagen("arrozconvegetales.jpg");		
-		receta.setDescripcion("Muy rico, f·cil y saludable");
+		receta.setDescripcion("Muy rico, f√°cil y saludable");
 
 		List<Ingrediente> ingredientes = new LinkedList<Ingrediente>();
 		
@@ -1388,19 +1795,19 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnReceta(zanahoria);
 		ingredientes.add(zanahoria);
 		
-		Ingrediente ajimolido = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("AjÌ molido");
+		Ingrediente ajimolido = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Aj√≠ molido");
 		ajimolido.setCantidad(20);
 		ajimolido.setCantidadstring("1 cdita");
 		servicioIngrediente.guardarIngredienteEnReceta(ajimolido);
 		ingredientes.add(ajimolido);
 		
-		Ingrediente pimenton = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("PimentÛn");
+		Ingrediente pimenton = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Piment√≥n");
 		pimenton.setCantidad(40);
 		pimenton.setCantidadstring("2 cditas");
 		servicioIngrediente.guardarIngredienteEnReceta(pimenton);
 		ingredientes.add(pimenton);
 		
-		Ingrediente sal = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("LimÛn");
+		Ingrediente sal = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Lim√≥n");
 		sal.setCantidad(0);
 		sal.setCantidadstring("A gusto");
 		servicioIngrediente.guardarIngredienteEnReceta(sal);
@@ -1418,21 +1825,21 @@ public class ControladorInsertar {
 		Pasos p2 = new Pasos();
 		p2.setPaso(2); 
 		p2.setImagen("p2.jpg");
-		p2.setDescripcion("Cortamos el morrÛn y la cebolla en juliana, rallamos la zanahoria, y cortamos el zapallito verde y el zuchini en cuadradaitos.");
+		p2.setDescripcion("Cortamos el morr√≥n y la cebolla en juliana, rallamos la zanahoria, y cortamos el zapallito verde y el zuchini en cuadradaitos.");
 		pasos.add(p2);
 		servicioReceta.guardarPasoEnReceta(p2);
 		
 		Pasos p3 = new Pasos();
 		p3.setPaso(3); 
 		p3.setImagen("p3.jpg");
-		p3.setDescripcion("Colocamos todo en un wok o en una sartÈn grande con un poco de aceite (preferentemente oliva). Cocinamos aprox. Durante 20 min, hasta que el zapallito se haya ablandado. Condimentamos con ajÌ molido, pimentÛn y sal.");
+		p3.setDescripcion("Colocamos todo en un wok o en una sart√©n grande con un poco de aceite (preferentemente oliva). Cocinamos aprox. Durante 20 min, hasta que el zapallito se haya ablandado. Condimentamos con aj√≠ molido, piment√≥n y sal.");
 		pasos.add(p3);
 		servicioReceta.guardarPasoEnReceta(p3);
 		
 		Pasos p4 = new Pasos();
 		p4.setPaso(4); 
 		p4.setImagen("p4.jpg");
-		p4.setDescripcion("Mezclamos con el arroz, servimos y a disfrutar de una comida r·pida y saludable!");
+		p4.setDescripcion("Mezclamos con el arroz, servimos y a disfrutar de una comida r√°pida y saludable!");
 		pasos.add(p4);
 		servicioReceta.guardarPasoEnReceta(p4);
 		

@@ -148,7 +148,7 @@
 							</div>
 
 							<div class="input-group">
-								<span class="input-group-addon"></span> <input
+								<span class="input-group-addon">Buscar</span> <input
 									type="text" id="filtrar" class="form-control" autocomplete="off"
 									placeholder="pure de tomate">
 							</div>
