@@ -278,6 +278,12 @@ public class ControladorInsertar {
 		papa.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(papa);
 		
+		Ingrediente banana = new Ingrediente();
+		banana.setNombre("Banana");
+		banana.setTipo("VEGETALES");
+		banana.setUnidad("Unids");
+		servicioIngrediente.guardarIngredienteEnInventario(banana);
+		
 		Ingrediente morronrojo = new Ingrediente();
 		morronrojo.setNombre("Morron rojo");
 		morronrojo.setTipo("VEGETALES");
@@ -366,7 +372,7 @@ public class ControladorInsertar {
 		cebollaroja.setNombre("Cebolla morada");
 		cebollaroja.setTipo("VEGETALES");
 		cebollaroja.setUnidad("Grs");
-		servicioIngrediente.guardarIngredienteEnInventario(cebollaroja);
+		servicioIngrediente.guardarIngredienteEnInventario(cebollaroja);	
 		
 		Ingrediente pepino = new Ingrediente();
 		pepino.setNombre("Pepino");
@@ -872,6 +878,30 @@ public class ControladorInsertar {
 		harina.setTipo("CONDIMENTOS");
 		harina.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(harina);
+		
+		Ingrediente panlactar = new Ingrediente();
+		panlactar.setNombre("Pan lactar");
+		panlactar.setTipo("CONDIMENTOS");
+		panlactar.setUnidad("Grs");
+		servicioIngrediente.guardarIngredienteEnInventario(panlactar);
+		
+		Ingrediente avena = new Ingrediente();
+		avena.setNombre("Avena");
+		avena.setTipo("CONDIMENTOS");
+		avena.setUnidad("Grs");
+		servicioIngrediente.guardarIngredienteEnInventario(avena);
+		
+		Ingrediente mfrutassecas = new Ingrediente();
+		mfrutassecas.setNombre("Mix de frutas secas");
+		mfrutassecas.setTipo("CONDIMENTOS");
+		mfrutassecas.setUnidad("Grs");
+		servicioIngrediente.guardarIngredienteEnInventario(mfrutassecas);
+		
+		Ingrediente granola = new Ingrediente();
+		granola.setNombre("Granola");
+		granola.setTipo("CONDIMENTOS");
+		granola.setUnidad("Grs");
+		servicioIngrediente.guardarIngredienteEnInventario(granola);
 		
 		return new ModelAndView("redirect:/");
 	}
@@ -1708,15 +1738,12 @@ public class ControladorInsertar {
 	    p3.setDescripcion("Volcá la preparación en una budinera alargada, enmantecada y enharinada");
 	    pasos.add(p3);
 	    servicioReceta.guardarPasoEnReceta(p3);
-	    
-	  
+	      
 	    Pasos p4 = new Pasos();
 	    p4.setPaso(4); 
 	    p4.setDescripcion("Llevá a horno de temperatura mediana hasta que pinchando con un palillo en el centro salga limpio.");
 	    pasos.add(p4);
-	    servicioReceta.guardarPasoEnReceta(p4);
-
-	    
+	    servicioReceta.guardarPasoEnReceta(p4);	    
 
 	    budinespinacas.setlistaPasos(pasos);
 
@@ -1726,9 +1753,10 @@ public class ControladorInsertar {
 	  
 	  return new ModelAndView("redirect:/insertar-tortilladepapa");
 	  }
+	
 	@RequestMapping("/insertar-tortilladepapa")
 	  public ModelAndView insertartortilladepapa() {  
-	    Receta tortilladepapa= new Receta();
+	    Receta tortilladepapa = new Receta();
 	    tortilladepapa.setNombre("Tortilla de Papa");   
 	    tortilladepapa.setCalorias(43060);    
 	    tortilladepapa.setCarpeta("tortilladepapa");    
@@ -1780,8 +1808,7 @@ public class ControladorInsertar {
 	    p3.setDescripcion("Una vez listo, escurrirles el excedente de aceite y volcar sobre los huevos ligeramente batidos. Agregar también el jamón cortado en tiritas,Mezclar");
 	    pasos.add(p3);
 	    servicioReceta.guardarPasoEnReceta(p3);
-	    
-	  
+	     
 	    Pasos p4 = new Pasos();
 	    p4.setPaso(4); 
 	    p4.setDescripcion("Calentar una sartén de teflón con apenas un chorro de aceite a fuego medio, ni suave ni fuerte, y volcar en ella la preparación cuidando de llegar bien a todos los bordes");
@@ -1794,8 +1821,6 @@ public class ControladorInsertar {
 	    pasos.add(p5);
 	    servicioReceta.guardarPasoEnReceta(p5);
 
-	    
-
 	    tortilladepapa.setlistaPasos(pasos);
 
 	    tortilladepapa.setListaIngrediente(ingredientes);
@@ -1807,11 +1832,11 @@ public class ControladorInsertar {
 
 	@RequestMapping("/insertar-tartaratatouille")
 	  public ModelAndView insertartartaratatouille() {  
-	    Receta tartaratatouille= new Receta();
+	    Receta tartaratatouille = new Receta();
 	    tartaratatouille.setNombre("Tarta ratatouille");   
 	    tartaratatouille.setCalorias(43060);    
 	    tartaratatouille.setCarpeta("tartaratatouille");    
-	    tartaratatouille.setImagen("tartaratatouille	.jpg");   
+	    tartaratatouille.setImagen("tartaratatouille.jpg");   
 	    tartaratatouille.setDescripcion("Una tarta sana y muy sabrosa");
 
 	    List<Ingrediente> ingredientes = new LinkedList<Ingrediente>();
@@ -1823,13 +1848,13 @@ public class ControladorInsertar {
 	    ingredientes.add(ing1);
 
 	    Ingrediente ing2 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Cebolla");
-	    ing2.setCantidad(1);
+	    ing2.setCantidad(100);
 	    ing2.setCantidadstring("1u");
 	    servicioIngrediente.guardarIngredienteEnReceta(ing2);
 	    ingredientes.add(ing2);
 	    
 	    Ingrediente ing3 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Berenjena");
-	    ing3.setCantidad(2);
+	    ing3.setCantidad(200);
 	    ing3.setCantidadstring("2u");
 	    servicioIngrediente.guardarIngredienteEnReceta(ing3);
 	    ingredientes.add(ing3);
@@ -1860,24 +1885,147 @@ public class ControladorInsertar {
 	    pasos.add(p3);
 	    servicioReceta.guardarPasoEnReceta(p3);
 	    
-	  
-	  
-	    
-	   
-
-	    
-
 	    tartaratatouille.setlistaPasos(pasos);
 
 	    tartaratatouille.setListaIngrediente(ingredientes);
 	    
 	    servicioReceta.guardarReceta(tartaratatouille);
 	  
-	  return new ModelAndView("redirect:/");
+	  return new ModelAndView("redirect:/insertar-sandwichrapidoylight");
 	  }
 
+	@RequestMapping("/insertar-sandwichrapidoylight")
+	public ModelAndView insertarSandwichrapidoylight() {	
+		Receta receta = new Receta();
+		receta.setNombre("Sándwich rápido y light");		
+		receta.setCalorias(80);		
+		receta.setCarpeta("sandwichrapidoylight");		
+		receta.setImagen("sandwichrapidoylight.jpg");		
+		receta.setDescripcion("Simple y rapido");
 
-	   
+		List<Ingrediente> ingredientes = new LinkedList<Ingrediente>();
+		
+		Ingrediente ing1 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Pan lactar");
+		ing1.setCantidad(200);
+		ing1.setCantidadstring("2u");
+		servicioIngrediente.guardarIngredienteEnReceta(ing1);
+		ingredientes.add(ing1);
+
+		Ingrediente ing2 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Huevos");
+		ing2.setCantidad(1);
+		ing2.setCantidadstring("1u");
+		servicioIngrediente.guardarIngredienteEnReceta(ing2);
+		ingredientes.add(ing2);
+		
+		Ingrediente ing3 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Tomate");
+		ing3.setCantidad(100);
+		ing3.setCantidadstring("1u");
+		servicioIngrediente.guardarIngredienteEnReceta(ing3);
+		ingredientes.add(ing3);
+		
+		Ingrediente ing4 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Perejil");
+		ing4.setCantidad(0);
+		ing4.setCantidadstring("A gusto");
+		servicioIngrediente.guardarIngredienteEnReceta(ing4);
+		ingredientes.add(ing4);
+		
+		List<Pasos> pasos = new LinkedList<Pasos>();
+		
+		Pasos p1 = new Pasos();
+		p1.setPaso(1); 
+		p1.setDescripcion("Vamos a tostar el pan de los dos lados poner el tomate y el huevo decorar con el perejil y a comer");
+		pasos.add(p1);
+		servicioReceta.guardarPasoEnReceta(p1);
+		
+		receta.setlistaPasos(pasos);
+
+		receta.setListaIngrediente(ingredientes);
+		
+		servicioReceta.guardarReceta(receta);
+	
+	return new ModelAndView("redirect:/insertar-desayunogym");
+	}
+	
+	@RequestMapping("/insertar-desayunogym")
+	public ModelAndView insertarDesayunogym() {	
+		Receta receta = new Receta();
+		receta.setNombre("Desayuno rápido para después del gym");		
+		receta.setCalorias(430);		
+		receta.setCarpeta("desayunorapidoparaelgym");		
+		receta.setImagen("desayunorapidoparaelgym.jpg");		
+		receta.setDescripcion("Rico.");
+
+		List<Ingrediente> ingredientes = new LinkedList<Ingrediente>();
+		
+		Ingrediente ing1 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Yogurt");
+		ing1.setCantidad(1);
+		ing1.setCantidadstring("1lts");
+		servicioIngrediente.guardarIngredienteEnReceta(ing1);
+		ingredientes.add(ing1);
+
+		Ingrediente ing2 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Banana");
+		ing2.setCantidad(1);
+		ing2.setCantidadstring("1u");
+		servicioIngrediente.guardarIngredienteEnReceta(ing2);
+		ingredientes.add(ing2);
+		
+		Ingrediente ing3 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Avena");
+		ing3.setCantidad(100);
+		ing3.setCantidadstring("100g");
+		servicioIngrediente.guardarIngredienteEnReceta(ing3);
+		ingredientes.add(ing3);
+		
+		Ingrediente ing4 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Mix de frutas secas");
+		ing4.setCantidad(50);
+		ing4.setCantidadstring("50g");
+		servicioIngrediente.guardarIngredienteEnReceta(ing4);
+		ingredientes.add(ing4);
+		
+		Ingrediente ing5 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Granola");
+		ing5.setCantidad(50);
+		ing5.setCantidadstring("50g");
+		servicioIngrediente.guardarIngredienteEnReceta(ing5);
+		ingredientes.add(ing5);
+		
+		List<Pasos> pasos = new LinkedList<Pasos>();
+		
+		Pasos p1 = new Pasos();
+		p1.setPaso(1); 
+		p1.setImagen("p1.jpg");	
+		p1.setDescripcion("Ingredientes listo ahora a cocinar"); 
+		pasos.add(p1);
+		servicioReceta.guardarPasoEnReceta(p1);
+		
+		Pasos p2 = new Pasos();
+		p2.setPaso(2); 
+		p2.setImagen("p2.jpg");	
+		p2.setDescripcion("Poner la granola. La avena y las frutas secas."); 
+		pasos.add(p2);
+		servicioReceta.guardarPasoEnReceta(p2);
+		
+		Pasos p3 = new Pasos();
+		p3.setPaso(3); 
+		p3.setImagen("p3.jpg");	
+		p3.setDescripcion("Ahora el yogur"); 
+		pasos.add(p3);
+		servicioReceta.guardarPasoEnReceta(p3);
+		
+		Pasos p4 = new Pasos();
+		p4.setPaso(4); 
+		p4.setImagen("p4.jpg");	
+		p4.setDescripcion("Y por último las bananas, y los copos de cereales del yogur"); 
+		pasos.add(p4);
+		servicioReceta.guardarPasoEnReceta(p4);
+		
+		receta.setlistaPasos(pasos);
+
+		receta.setListaIngrediente(ingredientes);
+		
+		servicioReceta.guardarReceta(receta);
+	
+	return new ModelAndView("redirect:/");
+	}
+	
 /*	
     Molde 
 	@RequestMapping("/insertar-xxx")
@@ -1935,6 +2083,7 @@ public class ControladorInsertar {
 		Ingrediente cebollaDelInventario = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Cebolla");
 		Ingrediente polloenteroDelInventario = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Pollo entero");
 		Ingrediente arrozblancoDelInventario = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Arroz blanco");
+		Ingrediente arrozintegralDelInventario = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Arroz integral");
 		Ingrediente tomateDelInventario = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Tomate");
 		Ingrediente lechugaDelInventario = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Lechuga");
 		Ingrediente pdepolloDelInventario = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Pechuga de pollo");
@@ -1973,6 +2122,11 @@ public class ControladorInsertar {
 		arrozDeMati.setFvencimiento("21/07/2018");
 		servicioIngrediente.guardarIngredienteEnUsuario(arrozDeMati);	
 		
+		Ingrediente arrozIntegralDeMati = servicioIngrediente.traerCopiaDeUnIngredienteDelInventario(arrozintegralDelInventario);
+		arrozIntegralDeMati.setCantidad(500);
+		arrozIntegralDeMati.setFvencimiento("17/07/2018");
+		servicioIngrediente.guardarIngredienteEnUsuario(arrozIntegralDeMati);
+		
 		Ingrediente tomateDeMati = servicioIngrediente.traerCopiaDeUnIngredienteDelInventario(tomateDelInventario);
 		tomateDeMati.setCantidad(1500);
 		tomateDeMati.setFcompra("14/07/2018");
@@ -1987,6 +2141,7 @@ public class ControladorInsertar {
 		ingredientesdematias.add(cebollaDeMati);
 		ingredientesdematias.add(polloenteroDeMati);
 		ingredientesdematias.add(arrozDeMati);
+		ingredientesdematias.add(arrozIntegralDeMati); // VENCIDO
 		ingredientesdematias.add(tomateDeMati);
 		ingredientesdematias.add(lechugaDeMati);  
 		ingredientesdematias.add(pdepollo);
