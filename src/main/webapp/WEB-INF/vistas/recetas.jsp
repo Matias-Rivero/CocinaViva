@@ -194,6 +194,60 @@
 									href="javascript:buscarRecetasVacio();"><span
 										class="label label-info">${loquebusco}</span></a></li>
 							</c:if>
+							
+							
+					
+					
+					<section style="text-align: left;">
+						
+							<ul class="pagination  pagination-lg">
+
+
+								<c:choose>
+									<c:when test="${posicion != 1}">
+										<li><a href="javascript:iraParte('${posicion - 1}');">Anterior</a></li>
+									</c:when>
+
+									<c:otherwise>
+										<li class="disabled"><a href="#">Anterior</a></li>
+									</c:otherwise>
+								</c:choose>
+
+								<c:forEach var="i" begin="1" end="${partes}">
+
+
+									<c:choose>
+										<c:when test="${i == posicion}">
+											<li class="active"><a>${i}<span class="sr-only">(current)</span></a></li>
+										</c:when>
+
+										<c:otherwise>
+											<li><a href="javascript:iraParte('${i}');">${i}</a></li>
+										</c:otherwise>
+									</c:choose>
+
+
+
+
+								</c:forEach>
+
+
+								<c:choose>
+									<c:when test="${posicion != partes}">
+										<li><a href="javascript:iraParte('${posicion + 1}');">Siguiente</a></li>
+									</c:when>
+
+									<c:otherwise>
+										<li class="disabled"><a href="#">Siguiente</a></li>
+									</c:otherwise>
+								</c:choose>
+
+							</ul>
+						
+					</section>
+					
+					
+					
 						</ul>
 						
 					</div>
@@ -202,7 +256,7 @@
 						<c:choose>
 							<c:when test="${not empty listaRecetasBuscadas}">
 								<c:forEach items="${listaRecetasBuscadas}" var="listaRecetas">
-									<div class="col-lg-4 col-md-4 col-sm-6">
+									<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
 
 										<a href="leerRecetas?id=${listaRecetas.id}"
 											class="fh5co-card-item">
@@ -261,9 +315,10 @@
 						</c:choose>
 
 					</div>
+					
 					<c:if test="${not empty listaRecetas}">
 						<div class="text-left">
-							<label class="label label-info">Con lo que tienes puedes
+							<label class="lead4 label-info">Con lo que tienes puedes
 								hacer:</label>
 						</div>
 						<br>
@@ -275,11 +330,12 @@
 						</div>
 						<br>
 					</c:if>
+					
 					<div class="row">
 						<c:choose>
 							<c:when test="${not empty listaRecetas}">
 								<c:forEach items="${listaRecetas}" var="listaRecetas">
-									<div class="col-lg-4 col-md-4 col-sm-6">
+									<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
 
 										<a href="leerRecetas?id=${listaRecetas.id}"
 											class="fh5co-card-item">
@@ -339,59 +395,7 @@
 										
 					</div>
 
-					<div class="row">
 					
-					
-					<section class="container" style="text-align: center;">
-						<div class="row">
-							<ul class="pagination  pagination-lg">
-
-
-								<c:choose>
-									<c:when test="${partes > 0 && posicion != 1}">
-										<li><a href="javascript:iraParte('${posicion - 1}');">Anterior</a></li>
-									</c:when>
-
-									<c:otherwise>
-										<li class="disabled"><a href="#">Anterior</a></li>
-									</c:otherwise>
-								</c:choose>
-
-								<c:forEach var="i" begin="1" end="${partes}">
-
-
-									<c:choose>
-										<c:when test="${i == posicion}">
-											<li class="active"><a>${i}<span class="sr-only">(current)</span></a></li>
-										</c:when>
-
-										<c:otherwise>
-											<li><a href="javascript:iraParte('${i}');">${i}</a></li>
-										</c:otherwise>
-									</c:choose>
-
-
-
-
-								</c:forEach>
-
-
-								<c:choose>
-									<c:when test="${posicion != partes || posicion < partes}">
-										<li><a href="javascript:iraParte('${posicion + 1}');">Siguiente</a></li>
-									</c:when>
-
-									<c:otherwise>
-										<li class="disabled"><a href="#">Siguiente</a></li>
-									</c:otherwise>
-								</c:choose>
-
-							</ul>
-						</div>
-					</section>
-					
-					
-					</div>
 
 				</div>
 

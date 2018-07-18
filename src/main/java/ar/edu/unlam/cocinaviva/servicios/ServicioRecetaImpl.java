@@ -189,16 +189,17 @@ public class ServicioRecetaImpl implements ServicioReceta {
 	  public Map<List<Receta>, Integer> traerRecetasConFaltantesDeIngredientesDeASeisElementos(List<Receta> recetas, Integer posicion) {
 	  Map<List<Receta>, Integer> listRecePosicion = new HashMap<List<Receta>, Integer>();
 	  List<Receta> recetasdeseis = new LinkedList<Receta>();
-	  Integer empieza = (posicion * 6) - 6;
-	  Integer termina = posicion * 6;
-	  Double partesD = 0.0;
+	  Integer empieza = (posicion * 4) - 4;
+	  Integer termina = posicion * 4;
+	  Double partesD = 0.0;	  
+	  Double cuantasrecetas = (double) recetas.size();
+	  Double seis = 4.0;
 	  Integer partes = 0;
-	  Integer cuantasrecetas = recetas.size();
-	  	  
-	  partesD =  (double) (cuantasrecetas / 6); 
+	  
+	  partesD = (cuantasrecetas/seis); 
 
 	  partes = (int) Math.ceil(partesD);    
-	  System.out.println("=======Partes: " +partes+"");
+	  System.out.println("=======Partes: " + partes +"");
 	    for(int i = 0; i < recetas.size(); i = i + 1)
 	      {	    	
 	        if(i >= empieza && i < termina) {

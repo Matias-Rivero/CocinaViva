@@ -144,7 +144,7 @@
 							</div>
 
 							<div class="input-group">
-								<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span> <input
+								<span class="input-group-addon"></span> <input
 									type="text" id="filtrar" class="form-control" autocomplete="off"
 									placeholder="pure de tomate">
 							</div>
@@ -155,9 +155,9 @@
 									<c:choose>
 										<c:when test="${not empty iflacteos}">
 
-											<div id="lacteos" class="col-md-12">
+											<div id="lacteos">
 
-												<table class="table table-fixed " style="position: absolute;z-index: 999;background-color: #e2e2e2f0;">
+												<table class="table table-fixed" >
 														<%--<thead>
 														<span>Inventario!</span>
 															<tr>
@@ -169,35 +169,35 @@
 													<c:forEach items="${iflacteos}" var="i">
 														<tr align="left">
 															<th><form:checkbox path="seleccionados" onclick="checkearIngrediente()" class="${i.nombre}" id="${i.id}" value="${i.id}" name="valores[]" />
-																<span class="lead"><a href="javascript:checkIngrediente(${i.id});" style="color:#000;">${i.nombre}</a></span>
+																<span class="lead"><a href="javascript:checkIngrediente(${i.id});">${i.nombre}</a></span>
 															</th>
 														</tr>
 													</c:forEach>
 													<c:forEach items="${ifvegetales}" var="i">
 														<tr align="left">
 															<th><form:checkbox path="seleccionados" onclick="checkearIngrediente()" class="${i.nombre}" id="${i.id}" value="${i.id}" name="valores[]" />
-																<span class="lead"><a href="javascript:checkIngrediente(${i.id});" style="color:#000;">${i.nombre}</a></span>
+																<span class="lead"><a href="javascript:checkIngrediente(${i.id});">${i.nombre}</a></span>
 															</th>
 														</tr>
 													</c:forEach>
 													<c:forEach items="${ifcarnes}" var="i">
 														<tr align="left">
 															<th><form:checkbox path="seleccionados" onclick="checkearIngrediente()" class="${i.nombre}" id="${i.id}" value="${i.id}" name="valores[]" />
-																<span class="lead"><a href="javascript:checkIngrediente(${i.id});" style="color:#000;">${i.nombre}</a></span>
+																<span class="lead"><a href="javascript:checkIngrediente(${i.id});">${i.nombre}</a></span>
 															</th>
 														</tr>
 													</c:forEach>
 													<c:forEach items="${ifpescado}" var="i">
 														<tr align="left">
 															<th><form:checkbox path="seleccionados" onclick="checkearIngrediente()" class="${i.nombre}" id="${i.id}" value="${i.id}" name="valores[]" />
-																<span class="lead"><a href="javascript:checkIngrediente(${i.id});" style="color:#000;">${i.nombre}</a></span>
+																<span class="lead"><a href="javascript:checkIngrediente(${i.id});">${i.nombre}</a></span>
 															</th>
 														</tr>
 													</c:forEach>
 													<c:forEach items="${ifcondimento}" var="i">
 														<tr align="left">
 															<th><form:checkbox path="seleccionados" onclick="checkearIngrediente()" class="${i.nombre}" id="${i.id}" value="${i.id}" name="valores[]" />
-																<span class="lead"><a href="javascript:checkIngrediente(${i.id});" style="color:#000;">${i.nombre}</a></span>
+																<span class="lead"><a href="javascript:checkIngrediente(${i.id});">${i.nombre}</a></span>
 															</th>
 														</tr>
 													</c:forEach>
