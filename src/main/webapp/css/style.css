@@ -26,10 +26,6 @@ body {
     background-color: white;
 /*     height: 200px; */
 }
-#lacteos {
- position: absolute;
- z-index: 999;
-}
 
 #page {
   position: relative;
