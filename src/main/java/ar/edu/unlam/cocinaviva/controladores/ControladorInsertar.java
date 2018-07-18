@@ -686,6 +686,12 @@ public class ControladorInsertar {
 		mayonesa.setTipo("CONDIMENTOS");
 		mayonesa.setUnidad("Grs");
 		servicioIngrediente.guardarIngredienteEnInventario(mayonesa);
+
+		Ingrediente harina = new Ingrediente();
+		harina.setNombre("Harina");
+		harina.setTipo("CONDIMENTOS");
+		harina.setUnidad("Grs");
+		servicioIngrediente.guardarIngredienteEnInventario(harina);
 		
 		Ingrediente salfina = new Ingrediente();
 		salfina.setNombre("Sal fina");
@@ -1465,8 +1471,253 @@ public class ControladorInsertar {
 		
 		servicioReceta.guardarReceta(receta);
 	
-	return new ModelAndView("redirect:/insertar-Tomaterellenoalhorno");
+	return new ModelAndView("redirect:/insertar-malfatisespinaca");
 	}
+
+	//recetas de flor
+
+	@RequestMapping("/insertar-malfatisespinaca")
+	public ModelAndView insertarMalfatisEspinaca() {
+		Receta malfatisespinaca= new Receta();
+		malfatisespinaca.setNombre("Malfatis de espinacas y ricota");
+		malfatisespinaca.setCalorias(360);
+		malfatisespinaca.setCarpeta("malfatisespinaca");
+		malfatisespinaca.setImagen("malfatisespinaca.jpg");
+		malfatisespinaca.setDescripcion("Malfatis quiere decir mal hecho y básicamente son ñoquis rústicos. Ríquisimos y sencillos de hacer");
+
+		List<Ingrediente> ingredientes = new LinkedList<Ingrediente>();
+
+		Ingrediente ing1 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Espinacas");
+		ing1.setCantidad(500);
+		ing1.setCantidadstring("1/2 kg");
+		servicioIngrediente.guardarIngredienteEnReceta(ing1);
+		ingredientes.add(ing1);
+
+		Ingrediente ing2 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Requesón");
+		ing2.setCantidad(200);
+		ing2.setCantidadstring("200gr");
+		servicioIngrediente.guardarIngredienteEnReceta(ing2);
+		ingredientes.add(ing2);
+
+		Ingrediente ing3 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Queso parmesano");
+		ing3.setCantidad(50);
+		ing3.setCantidadstring("50gr");
+		servicioIngrediente.guardarIngredienteEnReceta(ing3);
+		ingredientes.add(ing3);
+
+		Ingrediente ing4 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Huevos");
+		ing4.setCantidad(2);
+		ing4.setCantidadstring("2u");
+		servicioIngrediente.guardarIngredienteEnReceta(ing4);
+		ingredientes.add(ing4);
+
+		Ingrediente ing5 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Harina");
+		ing5.setCantidad(250);
+		ing5.setCantidadstring("250grs");
+		servicioIngrediente.guardarIngredienteEnReceta(ing5);
+		ingredientes.add(ing5);
+
+
+
+		List<Pasos> pasos = new LinkedList<Pasos>();
+
+		Pasos p1 = new Pasos();
+		p1.setPaso(1);
+		p1.setDescripcion("Picar las espinacas para que no queden pedazos demasiado grandes");
+		pasos.add(p1);
+		servicioReceta.guardarPasoEnReceta(p1);
+
+		Pasos p2 = new Pasos();
+		p2.setPaso(2);
+		p2.setDescripcion("En un bowl, incorporar la espinaca, con la ricota desmenuzada, los huevos y el parmesano.Ir agregando la harina de a poco. Terminar con la nuez moscada, la sal y la pimienta");
+		pasos.add(p2);
+		servicioReceta.guardarPasoEnReceta(p2);
+
+		Pasos p3 = new Pasos();
+		p3.setPaso(3);
+		p3.setDescripcion("Armar bollitos del tamaño de un pelotito de golf.Pueden pasar los bollitos en un poquito de harina para que no se peguen.");
+		pasos.add(p3);
+		servicioReceta.guardarPasoEnReceta(p3);
+
+
+		Pasos p4 = new Pasos();
+		p4.setPaso(4);
+		p4.setDescripcion("En una olla, hervir agua.Una vez el agua hervido, ir tirando los bollitos cuidadosamente y de a uno.Cuando los malfatis están listos flotan en la superficie del agua. Es tiempo de retirarlos.");
+		pasos.add(p4);
+		servicioReceta.guardarPasoEnReceta(p4);
+
+		Pasos p5 = new Pasos();
+		p5.setPaso(5);
+		p5.setDescripcion("Ponerlos en una fuente apta para horno con una salsa de tomate (puede ser aromatizada con ajo, cebolla, y/o hierbas aromáticas).Calentarlos a horno fuerte y servir espolvoreando queso en hebra.");
+		pasos.add(p5);
+		servicioReceta.guardarPasoEnReceta(p5);
+
+
+		malfatisespinaca.setlistaPasos(pasos);
+		malfatisespinaca.setListaIngrediente(ingredientes);
+
+		servicioReceta.guardarReceta(malfatisespinaca);
+
+
+
+
+		return new ModelAndView("redirect:/insertar-croquetaarroz");
+	}
+
+
+	@RequestMapping("/insertar-croquetaarroz")
+	public ModelAndView insertarcroquetaarroz() {
+		Receta croquetaarroz= new Receta();
+		croquetaarroz.setNombre("Croquetas de Arroz");
+		croquetaarroz.setCalorias(360);
+		croquetaarroz.setCarpeta("croquetaarroz");
+		croquetaarroz.setImagen("croquetaarroz.jpg");
+		croquetaarroz.setDescripcion("¿Te ha sobrado arroz del día de ayer y no sabes qué hacer con él? Entonces preparà unas croquetas de arroz. Son deliciosas y nada complicadas de hacer.");
+
+		List<Ingrediente> ingredientes = new LinkedList<Ingrediente>();
+
+		Ingrediente ing1 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Arroz blanco");
+		ing1.setCantidad(450);
+		ing1.setCantidadstring("450gr");
+		servicioIngrediente.guardarIngredienteEnReceta(ing1);
+		ingredientes.add(ing1);
+
+		Ingrediente ing2 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Queso mozzarella");
+		ing2.setCantidad(100);
+		ing2.setCantidadstring("100gr");
+		servicioIngrediente.guardarIngredienteEnReceta(ing2);
+		ingredientes.add(ing2);
+
+		Ingrediente ing3 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Queso parmesano");
+		ing3.setCantidad(25);
+		ing3.setCantidadstring("25gr");
+		servicioIngrediente.guardarIngredienteEnReceta(ing3);
+		ingredientes.add(ing3);
+
+		Ingrediente ing4 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Huevos");
+		ing4.setCantidad(2);
+		ing4.setCantidadstring("2u");
+		servicioIngrediente.guardarIngredienteEnReceta(ing4);
+		ingredientes.add(ing4);
+
+		List<Pasos> pasos = new LinkedList<Pasos>();
+
+		Pasos p1 = new Pasos();
+		p1.setPaso(1);
+		p1.setDescripcion("Coloca el arroz en un recipiente grande. Añade los huevos primero y comienza a mezclar con el arroz. Debes conseguir una consistencia adecuada como para crear bolas.");
+		pasos.add(p1);
+		servicioReceta.guardarPasoEnReceta(p1);
+
+		Pasos p2 = new Pasos();
+		p2.setPaso(2);
+		p2.setDescripcion("Mezcla hasta que el arroz esté todo cubierto de huevo. Luego agrega el queso parmesano y mezcla bien. Si lo deseas, puedes agregar otros ingredientes como jamón picado.");
+		pasos.add(p2);
+		servicioReceta.guardarPasoEnReceta(p2);
+
+		Pasos p3 = new Pasos();
+		p3.setPaso(3);
+		p3.setDescripcion("Toma una parte del arroz con tu mano y coloca unos dados de mozzarrella en él. Cierra la croqueta en el interior haciendo una bola con el arroz. Luego hazla rodar sobre el pan rallado. Aplasta un poco la bola asegurándote de que no se quiebre.");
+		pasos.add(p3);
+		servicioReceta.guardarPasoEnReceta(p3);
+
+
+		Pasos p4 = new Pasos();
+		p4.setPaso(4);
+		p4.setDescripcion("Calienta el aceite. Agrega las croquetas a la sartén. Remueve suavemente para que no se peguen al fondo.Fríe hasta que las croquetas estén doradas. Luego transfiérelas a una fuente forrada con papel de cocina para absorber el exceso de aceite.");
+		pasos.add(p4);
+		servicioReceta.guardarPasoEnReceta(p4);
+
+
+
+		croquetaarroz.setlistaPasos(pasos);
+
+		croquetaarroz.setListaIngrediente(ingredientes);
+
+		servicioReceta.guardarReceta(croquetaarroz);
+
+		return new ModelAndView("redirect:/insertar-budinespinacas");
+	}
+
+
+	@RequestMapping("/insertar-budinespinacas")
+	public ModelAndView insertarbudinespinacas() {
+		Receta budinespinacas= new Receta();
+		budinespinacas.setNombre("Budìn de Espinacas");
+		budinespinacas.setCalorias(43060);
+		budinespinacas.setCarpeta("budinespinacas");
+		budinespinacas.setImagen("budinespinacas.jpg");
+		budinespinacas.setDescripcion("Un budín salado muy fácil de preparar, y de tip, viene con versión para microondas");
+
+		List<Ingrediente> ingredientes = new LinkedList<Ingrediente>();
+
+		Ingrediente ing1 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Espinacas");
+		ing1.setCantidad(400);
+		ing1.setCantidadstring("400gr");
+		servicioIngrediente.guardarIngredienteEnReceta(ing1);
+		ingredientes.add(ing1);
+
+		Ingrediente ing2 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Cebolla");
+		ing2.setCantidad(2);
+		ing2.setCantidadstring("2u");
+		servicioIngrediente.guardarIngredienteEnReceta(ing2);
+		ingredientes.add(ing2);
+
+		Ingrediente ing3 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Queso parmesano");
+		ing3.setCantidad(25);
+		ing3.setCantidadstring("25gr");
+		servicioIngrediente.guardarIngredienteEnReceta(ing3);
+		ingredientes.add(ing3);
+
+		Ingrediente ing4 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Huevos");
+		ing4.setCantidad(3);
+		ing4.setCantidadstring("3u");
+		servicioIngrediente.guardarIngredienteEnReceta(ing4);
+		ingredientes.add(ing4);
+
+		Ingrediente ing5 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Harina");
+		ing5.setCantidad(150);
+		ing5.setCantidadstring("150gr");
+		servicioIngrediente.guardarIngredienteEnReceta(ing5);
+		ingredientes.add(ing5);
+
+		List<Pasos> pasos = new LinkedList<Pasos>();
+
+		Pasos p1 = new Pasos();
+		p1.setPaso(1);
+		p1.setDescripcion("Dorá las cebollas en una sartén con aceite. Dejá enfriar.Agregá  las espinaca con los huevos y el queso rallado. Mezclá bien y condimentá con sal, pimienta y nuez moscada.");
+		pasos.add(p1);
+		servicioReceta.guardarPasoEnReceta(p1);
+
+		Pasos p2 = new Pasos();
+		p2.setPaso(2);
+		p2.setDescripcion("Agregá la harina. Mezcla.");
+		pasos.add(p2);
+		servicioReceta.guardarPasoEnReceta(p2);
+
+		Pasos p3 = new Pasos();
+		p3.setPaso(3);
+		p3.setDescripcion("Volcá la preparación en una budinera alargada, enmantecada y enharinada");
+		pasos.add(p3);
+		servicioReceta.guardarPasoEnReceta(p3);
+
+
+		Pasos p4 = new Pasos();
+		p4.setPaso(4);
+		p4.setDescripcion("Llevá a horno de temperatura mediana hasta que pinchando con un palillo en el centro salga limpio.");
+		pasos.add(p4);
+		servicioReceta.guardarPasoEnReceta(p4);
+
+
+
+		budinespinacas.setlistaPasos(pasos);
+
+		budinespinacas.setListaIngrediente(ingredientes);
+
+		servicioReceta.guardarReceta(budinespinacas);
+
+		return new ModelAndView("redirect:/insertar-Tomaterellenoalhorno");
+	}
+
 	
 	@RequestMapping("/insertar-Tomaterellenoalhorno")
 	public ModelAndView insertarTomaterellenoalhorno() {	
