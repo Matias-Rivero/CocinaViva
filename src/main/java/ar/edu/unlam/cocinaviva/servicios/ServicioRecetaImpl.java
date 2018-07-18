@@ -251,9 +251,9 @@ public class ServicioRecetaImpl implements ServicioReceta {
 								iReceta.setCantidad(0);
 								if(iUser.getCantidad() == 0){
 								iUser.setEstado("AGOTADO");
+								servicioNotificacion.NuevaNotificacionSinStock(usuario,iUser);
 								}
 								servicioIngredienteDao.actualizarIngredientesAUsuario(iUser);
-								servicioNotificacion.NuevaNotificacionSinStock(usuario,iUser);
 							}else{
 								iReceta.setCantidad(iReceta.getCantidad() - iUser.getCantidad());
 								iUser.setGastouser(iUser.getCantidad());

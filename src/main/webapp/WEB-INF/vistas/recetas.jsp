@@ -98,7 +98,7 @@
 											<li>
 												<c:choose>
 													<c:when test="${notificacion.tipoNotificacion == 'SIN_STOCK'}">
-														<a href="agregaringredientes"><span class="label label-primary">${notificacion.fechaNotificacion}</span> ${notificacion.mensaje} </a>
+														<a href="/ingredientes"><span class="label label-primary">${notificacion.fechaNotificacion}</span> ${notificacion.mensaje} </a>
 													</c:when>
 													<c:when test="${notificacion.tipoNotificacion == 'VENCIDO'}">
 														<a href="agoyvenc"><span class="label label-primary">${notificacion.fechaNotificacion}</span> ${notificacion.mensaje} </a>
