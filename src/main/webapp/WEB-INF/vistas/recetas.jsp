@@ -118,7 +118,7 @@
 												&nbsp;${usuariologueado.alias}</span></a>
 									<ul class="dropdown" style="display: none;">
 										<li><a href="perfilcliente">Mi Perfil</a></li>
-										<li><a href="cerrarSesion">Cerrar Sesi?n</a></li>
+										<li><a href="cerrarSesion">Cerrar Sesión</a></li>
 									</ul></li>
 							</ul>
 						</div>
@@ -141,7 +141,7 @@
 						data-to="${listaRecetasLargo}" data-speed="300"
 						data-refresh-interval="50"></span>
 				</h1>
-				<a href="trecetas"><span class="label label-warning pull-left">?Usalos
+				<a href="trecetas"><span class="label label-warning pull-left">¡Usalos
 							Todos!</span></a> <label class="label label-warning">Con:</label>
 				<form:form id="form1" method="POST" modelAttribute="lingrediente"
 						   action="drecetas">

@@ -537,7 +537,7 @@ public class ControladorLogin {
 	*/ 
 	
 	@RequestMapping(path = "/leerRecetas")
-	public ModelAndView leerReceta(@RequestParam("id") Long id, HttpServletRequest request) {
+	public ModelAndView leerReceta(@RequestParam("id") Long id, @RequestParam(value = "ok", required=false) String ok, HttpServletRequest request) {
 		
 		if (request.getSession().getAttribute("usuariologueado") != null) {
 			
@@ -559,7 +559,9 @@ public class ControladorLogin {
 		modelo.put("listaPasos", receta.getlistaPasos());
 		modelo.put("receta", recetaConFaltantes);
 		modelo.put("ingredientesUs", ingredientesUs);
-
+		if(ok != null){
+		modelo.put("ok", "ok");
+		}
 		return new ModelAndView("leerrecetas", modelo);
 	}
 		return new ModelAndView("redirect:/home");
@@ -576,9 +578,9 @@ public class ControladorLogin {
 			Receta receta = servicioReceta.traerUnaRecetaPorSuId(id);
 	
 			servicioReceta.cocinarRecetaPorElUsuario(receta,usuario);
-
+			String ok = "ok";
 					
-		return new ModelAndView("redirect:/leerRecetas?id="+id+"");
+		return new ModelAndView("redirect:/leerRecetas?id="+id+"&"+ok+"=ok");
 	}
 		return new ModelAndView("redirect:/home");
 	}
