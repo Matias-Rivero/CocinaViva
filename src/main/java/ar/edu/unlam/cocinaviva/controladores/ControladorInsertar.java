@@ -1608,7 +1608,7 @@ public class ControladorInsertar {
 	  public ModelAndView insertarcroquetaarroz() { 
 	    Receta croquetaarroz= new Receta();
 	    croquetaarroz.setNombre("Croquetas de Arroz");    
-	    croquetaarroz.setCalorias(360);   
+	    croquetaarroz.setCalorias(420);   
 	    croquetaarroz.setCarpeta("croquetaarroz");    
 	    croquetaarroz.setImagen("croquetaarroz.jpg");   
 	    croquetaarroz.setDescripcion("¿Te ha sobrado arroz del día de ayer y no sabes qué hacer con él? Entonces preparà unas croquetas de arroz. Son deliciosas y nada complicadas de hacer.");
@@ -1682,7 +1682,7 @@ public class ControladorInsertar {
 	  public ModelAndView insertarbudinespinacas() {  
 	    Receta budinespinacas= new Receta();
 	    budinespinacas.setNombre("Budìn de Espinacas");   
-	    budinespinacas.setCalorias(43060);    
+	    budinespinacas.setCalorias(360);    
 	    budinespinacas.setCarpeta("budinespinacas");    
 	    budinespinacas.setImagen("budinespinacas.jpg");   
 	    budinespinacas.setDescripcion("Un budín salado muy fácil de preparar, y de tip, viene con versión para microondas");
@@ -1751,149 +1751,9 @@ public class ControladorInsertar {
 	    
 	    servicioReceta.guardarReceta(budinespinacas);
 	  
-	  return new ModelAndView("redirect:/insertar-tortilladepapa");
-	  }
-	
-	@RequestMapping("/insertar-tortilladepapa")
-	  public ModelAndView insertartortilladepapa() {  
-	    Receta tortilladepapa = new Receta();
-	    tortilladepapa.setNombre("Tortilla de Papa");   
-	    tortilladepapa.setCalorias(43060);    
-	    tortilladepapa.setCarpeta("tortilladepapa");    
-	    tortilladepapa.setImagen("tortilladepapa.jpg");   
-	    tortilladepapa.setDescripcion("Tortilla de papa muy fácil de preparar");
-
-	    List<Ingrediente> ingredientes = new LinkedList<Ingrediente>();
-	    
-	    Ingrediente ing1 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Papa");
-	    ing1.setCantidad(800);
-	    ing1.setCantidadstring("800gr");
-	    servicioIngrediente.guardarIngredienteEnReceta(ing1);
-	    ingredientes.add(ing1);
-
-	    Ingrediente ing2 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Cebolla");
-	    ing2.setCantidad(1);
-	    ing2.setCantidadstring("1u");
-	    servicioIngrediente.guardarIngredienteEnReceta(ing2);
-	    ingredientes.add(ing2);
-	    
-	    Ingrediente ing3 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Jamón");
-	    ing3.setCantidad(150);
-	    ing3.setCantidadstring("150gr");
-	    servicioIngrediente.guardarIngredienteEnReceta(ing3);
-	    ingredientes.add(ing3);
-
-	    Ingrediente ing4 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Huevos");
-	    ing4.setCantidad(6);
-	    ing4.setCantidadstring("6u");
-	    servicioIngrediente.guardarIngredienteEnReceta(ing4);
-	    ingredientes.add(ing4);
-
-	    List<Pasos> pasos = new LinkedList<Pasos>();
-	    
-	    Pasos p1 = new Pasos();
-	    p1.setPaso(1); 
-	    p1.setDescripcion("Elegir papas medianas, cortarlas en cubos y rehogarlas en un poco aceite junto con la cebolla picada");
-	    pasos.add(p1);
-	    servicioReceta.guardarPasoEnReceta(p1);
-	    
-	    Pasos p2 = new Pasos();
-	    p2.setPaso(2);
-	    p2.setDescripcion("Tapar la sartén y cocinar hasta que estén blandas las papas");
-	    pasos.add(p2);
-	    servicioReceta.guardarPasoEnReceta(p2);
-	    
-	    Pasos p3 = new Pasos();
-	    p3.setPaso(3); 
-	    p3.setDescripcion("Una vez listo, escurrirles el excedente de aceite y volcar sobre los huevos ligeramente batidos. Agregar también el jamón cortado en tiritas,Mezclar");
-	    pasos.add(p3);
-	    servicioReceta.guardarPasoEnReceta(p3);
-	     
-	    Pasos p4 = new Pasos();
-	    p4.setPaso(4); 
-	    p4.setDescripcion("Calentar una sartén de teflón con apenas un chorro de aceite a fuego medio, ni suave ni fuerte, y volcar en ella la preparación cuidando de llegar bien a todos los bordes");
-	    pasos.add(p4);
-	    servicioReceta.guardarPasoEnReceta(p4);
-	    
-	    Pasos p5 = new Pasos();
-	    p5.setPaso(5); 
-	    p5.setDescripcion("Cocinar por 10 minutos hasta que la mezcla de huevos coagule y la tortilla haya hecho base");
-	    pasos.add(p5);
-	    servicioReceta.guardarPasoEnReceta(p5);
-
-	    tortilladepapa.setlistaPasos(pasos);
-
-	    tortilladepapa.setListaIngrediente(ingredientes);
-	    
-	    servicioReceta.guardarReceta(tortilladepapa);
-	  
-	  return new ModelAndView("redirect:/insertar-tartaratatouille");
-	  }
-
-	@RequestMapping("/insertar-tartaratatouille")
-	  public ModelAndView insertartartaratatouille() {  
-	    Receta tartaratatouille = new Receta();
-	    tartaratatouille.setNombre("Tarta ratatouille");   
-	    tartaratatouille.setCalorias(43060);    
-	    tartaratatouille.setCarpeta("tartaratatouille");    
-	    tartaratatouille.setImagen("tartaratatouille.jpg");   
-	    tartaratatouille.setDescripcion("Una tarta sana y muy sabrosa");
-
-	    List<Ingrediente> ingredientes = new LinkedList<Ingrediente>();
-	    
-	    Ingrediente ing1 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Morron rojo");
-	    ing1.setCantidad(1);
-	    ing1.setCantidadstring("1u");
-	    servicioIngrediente.guardarIngredienteEnReceta(ing1);
-	    ingredientes.add(ing1);
-
-	    Ingrediente ing2 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Cebolla");
-	    ing2.setCantidad(100);
-	    ing2.setCantidadstring("1u");
-	    servicioIngrediente.guardarIngredienteEnReceta(ing2);
-	    ingredientes.add(ing2);
-	    
-	    Ingrediente ing3 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Berenjena");
-	    ing3.setCantidad(200);
-	    ing3.setCantidadstring("2u");
-	    servicioIngrediente.guardarIngredienteEnReceta(ing3);
-	    ingredientes.add(ing3);
-
-	    Ingrediente ing4 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Huevos");
-	    ing4.setCantidad(3);
-	    ing4.setCantidadstring("3u");
-	    servicioIngrediente.guardarIngredienteEnReceta(ing4);
-	    ingredientes.add(ing4);
-
-	    List<Pasos> pasos = new LinkedList<Pasos>();
-	    
-	    Pasos p1 = new Pasos();
-	    p1.setPaso(1); 
-	    p1.setDescripcion("Cortar las verduras en cubitos, agregar un poco de tomillo, saltear en un poco de aceite hasta tiernizar. Enfriar.");
-	    pasos.add(p1);
-	    servicioReceta.guardarPasoEnReceta(p1);
-	    
-	    Pasos p2 = new Pasos();
-	    p2.setPaso(2);
-	    p2.setDescripcion("Batir los huevos con el yogur, sal, pimienta y una pizca de azúcar.");
-	    pasos.add(p2);
-	    servicioReceta.guardarPasoEnReceta(p2);
-	    
-	    Pasos p3 = new Pasos();
-	    p3.setPaso(3); 
-	    p3.setDescripcion("Cubrir una tartera con la masa, volcar el relleno y hornear a fuego mediano durante 40 minutos. Servir.");
-	    pasos.add(p3);
-	    servicioReceta.guardarPasoEnReceta(p3);
-	    
-	    tartaratatouille.setlistaPasos(pasos);
-
-	    tartaratatouille.setListaIngrediente(ingredientes);
-	    
-	    servicioReceta.guardarReceta(tartaratatouille);
-	  
 	  return new ModelAndView("redirect:/insertar-sandwichrapidoylight");
 	  }
-
+	
 	@RequestMapping("/insertar-sandwichrapidoylight")
 	public ModelAndView insertarSandwichrapidoylight() {	
 		Receta receta = new Receta();
@@ -2023,8 +1883,207 @@ public class ControladorInsertar {
 		
 		servicioReceta.guardarReceta(receta);
 	
+	return new ModelAndView("redirect:/insertar-tartaratatouille");
+	}
+		
+	@RequestMapping("/insertar-tartaratatouille")
+	  public ModelAndView insertartartaratatouille() {  
+	    Receta tartaratatouille = new Receta();
+	    tartaratatouille.setNombre("Tarta ratatouille");   
+	    tartaratatouille.setCalorias(630);    
+	    tartaratatouille.setCarpeta("tartaratatouille");    
+	    tartaratatouille.setImagen("tartaratatouille.jpg");   
+	    tartaratatouille.setDescripcion("Una tarta sana y muy sabrosa");
+
+	    List<Ingrediente> ingredientes = new LinkedList<Ingrediente>();
+	    
+	    Ingrediente ing1 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Morron rojo");
+	    ing1.setCantidad(1);
+	    ing1.setCantidadstring("1u");
+	    servicioIngrediente.guardarIngredienteEnReceta(ing1);
+	    ingredientes.add(ing1);
+
+	    Ingrediente ing2 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Cebolla");
+	    ing2.setCantidad(100);
+	    ing2.setCantidadstring("1u");
+	    servicioIngrediente.guardarIngredienteEnReceta(ing2);
+	    ingredientes.add(ing2);
+	    
+	    Ingrediente ing3 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Berenjena");
+	    ing3.setCantidad(200);
+	    ing3.setCantidadstring("2u");
+	    servicioIngrediente.guardarIngredienteEnReceta(ing3);
+	    ingredientes.add(ing3);
+
+	    Ingrediente ing4 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Huevos");
+	    ing4.setCantidad(3);
+	    ing4.setCantidadstring("3u");
+	    servicioIngrediente.guardarIngredienteEnReceta(ing4);
+	    ingredientes.add(ing4);
+
+	    List<Pasos> pasos = new LinkedList<Pasos>();
+	    
+	    Pasos p1 = new Pasos();
+	    p1.setPaso(1); 
+	    p1.setDescripcion("Cortar las verduras en cubitos, agregar un poco de tomillo, saltear en un poco de aceite hasta tiernizar. Enfriar.");
+	    pasos.add(p1);
+	    servicioReceta.guardarPasoEnReceta(p1);
+	    
+	    Pasos p2 = new Pasos();
+	    p2.setPaso(2);
+	    p2.setDescripcion("Batir los huevos con el yogur, sal, pimienta y una pizca de azúcar.");
+	    pasos.add(p2);
+	    servicioReceta.guardarPasoEnReceta(p2);
+	    
+	    Pasos p3 = new Pasos();
+	    p3.setPaso(3); 
+	    p3.setDescripcion("Cubrir una tartera con la masa, volcar el relleno y hornear a fuego mediano durante 40 minutos. Servir.");
+	    pasos.add(p3);
+	    servicioReceta.guardarPasoEnReceta(p3);
+	    
+	    tartaratatouille.setlistaPasos(pasos);
+
+	    tartaratatouille.setListaIngrediente(ingredientes);
+	    
+	    servicioReceta.guardarReceta(tartaratatouille);
+	  
+	  return new ModelAndView("redirect:/insertar-tortilladepapa");
+	  }
+	
+	@RequestMapping("/insertar-tortilladepapa")
+	  public ModelAndView insertartortilladepapa() {  
+	    Receta tortilladepapa = new Receta();
+	    tortilladepapa.setNombre("Tortilla de Papa");   
+	    tortilladepapa.setCalorias(430);    
+	    tortilladepapa.setCarpeta("tortilladepapa");    
+	    tortilladepapa.setImagen("tortilladepapa.jpg");   
+	    tortilladepapa.setDescripcion("Tortilla de papa muy fácil de preparar");
+
+	    List<Ingrediente> ingredientes = new LinkedList<Ingrediente>();
+	    
+	    Ingrediente ing1 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Papa");
+	    ing1.setCantidad(800);
+	    ing1.setCantidadstring("800gr");
+	    servicioIngrediente.guardarIngredienteEnReceta(ing1);
+	    ingredientes.add(ing1);
+
+	    Ingrediente ing2 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Cebolla");
+	    ing2.setCantidad(1);
+	    ing2.setCantidadstring("1u");
+	    servicioIngrediente.guardarIngredienteEnReceta(ing2);
+	    ingredientes.add(ing2);
+	    
+	    Ingrediente ing3 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Jamón");
+	    ing3.setCantidad(150);
+	    ing3.setCantidadstring("150gr");
+	    servicioIngrediente.guardarIngredienteEnReceta(ing3);
+	    ingredientes.add(ing3);
+
+	    Ingrediente ing4 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Huevos");
+	    ing4.setCantidad(6);
+	    ing4.setCantidadstring("6u");
+	    servicioIngrediente.guardarIngredienteEnReceta(ing4);
+	    ingredientes.add(ing4);
+
+	    List<Pasos> pasos = new LinkedList<Pasos>();
+	    
+	    Pasos p1 = new Pasos();
+	    p1.setPaso(1); 
+	    p1.setDescripcion("Elegir papas medianas, cortarlas en cubos y rehogarlas en un poco aceite junto con la cebolla picada");
+	    pasos.add(p1);
+	    servicioReceta.guardarPasoEnReceta(p1);
+	    
+	    Pasos p2 = new Pasos();
+	    p2.setPaso(2);
+	    p2.setDescripcion("Tapar la sartén y cocinar hasta que estén blandas las papas");
+	    pasos.add(p2);
+	    servicioReceta.guardarPasoEnReceta(p2);
+	    
+	    Pasos p3 = new Pasos();
+	    p3.setPaso(3); 
+	    p3.setDescripcion("Una vez listo, escurrirles el excedente de aceite y volcar sobre los huevos ligeramente batidos. Agregar también el jamón cortado en tiritas,Mezclar");
+	    pasos.add(p3);
+	    servicioReceta.guardarPasoEnReceta(p3);
+	     
+	    Pasos p4 = new Pasos();
+	    p4.setPaso(4); 
+	    p4.setDescripcion("Calentar una sartén de teflón con apenas un chorro de aceite a fuego medio, ni suave ni fuerte, y volcar en ella la preparación cuidando de llegar bien a todos los bordes");
+	    pasos.add(p4);
+	    servicioReceta.guardarPasoEnReceta(p4);
+	    
+	    Pasos p5 = new Pasos();
+	    p5.setPaso(5); 
+	    p5.setDescripcion("Cocinar por 10 minutos hasta que la mezcla de huevos coagule y la tortilla haya hecho base");
+	    pasos.add(p5);
+	    servicioReceta.guardarPasoEnReceta(p5);
+
+	    tortilladepapa.setlistaPasos(pasos);
+
+	    tortilladepapa.setListaIngrediente(ingredientes);
+	    
+	    servicioReceta.guardarReceta(tortilladepapa);
+	  
+	  return new ModelAndView("redirect:/");
+	  }
+
+	@RequestMapping("/insertar-omeletterapido")
+	public ModelAndView insertarOmeletterapido() {	
+		Receta receta = new Receta();
+		receta.setNombre("Omelette rápido");		
+		receta.setCalorias(200);		
+		receta.setCarpeta("omeletterapido");		
+		receta.setImagen("omeletterapido.jpg");		
+		receta.setDescripcion("Sencillo.");
+
+		List<Ingrediente> ingredientes = new LinkedList<Ingrediente>();
+		
+		Ingrediente ing1 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Huevos");
+		ing1.setCantidad(1);
+		ing1.setCantidadstring("1u");
+		servicioIngrediente.guardarIngredienteEnReceta(ing1);
+		ingredientes.add(ing1);
+		
+		Ingrediente ing2 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Queso fresco");
+		ing2.setCantidad(200);
+		ing2.setCantidadstring("200g");
+		servicioIngrediente.guardarIngredienteEnReceta(ing2);
+		ingredientes.add(ing2);
+		
+		Ingrediente ing3 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Aceite de oliva");
+		ing3.setCantidad(30);
+		ing3.setCantidadstring("30cc ~ (1 cdita)");
+		servicioIngrediente.guardarIngredienteEnReceta(ing3);
+		ingredientes.add(ing3);
+		
+		Ingrediente ing4 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Perejil");
+		ing4.setCantidad(0);
+		ing4.setCantidadstring("A gusto");
+		servicioIngrediente.guardarIngredienteEnReceta(ing4);
+		ingredientes.add(ing4);
+		
+		Ingrediente ing5 = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Sal fina");
+		ing5.setCantidad(0);
+		ing5.setCantidadstring("A gusto");
+		servicioIngrediente.guardarIngredienteEnReceta(ing5);
+		ingredientes.add(ing5);
+		
+		List<Pasos> pasos = new LinkedList<Pasos>();
+		
+		Pasos p1 = new Pasos();
+		p1.setPaso(1); 
+		p1.setDescripcion("Vamos a batir el huevo a penas con la sal. Poner en una sartén con el aceite dejar cocinar un 1 minuto poner el queso, y ahora le ponemos el huevo casi cocinado por arriba. Cocinar 3 minutos más y listo"); 
+		pasos.add(p1);
+		servicioReceta.guardarPasoEnReceta(p1);
+		
+		receta.setlistaPasos(pasos);
+
+		receta.setListaIngrediente(ingredientes);
+		
+		servicioReceta.guardarReceta(receta);
+	
 	return new ModelAndView("redirect:/");
 	}
+	
 	
 /*	
     Molde 
@@ -2089,13 +2148,20 @@ public class ControladorInsertar {
 		Ingrediente pdepolloDelInventario = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Pechuga de pollo");
 		Ingrediente arrozintDelInventario = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Arroz integral");
 		Ingrediente arvejasDelInventario = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Arvejas");
-				
+		Ingrediente salfinaDelInventario = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Sal fina");
+		
 		Usuario matias = servicioUsuario.traerUnUsuarioPorSuId((long) 1);
 		
 		Ingrediente pdepollo = servicioIngrediente.traerCopiaDeUnIngredienteDelInventario(pdepolloDelInventario);
 		pdepollo.setCantidad(1000);
 		pdepollo.setFcompra("12/07/2018");
 		servicioIngrediente.guardarIngredienteEnUsuario(pdepollo);	
+		
+		Ingrediente sfina = servicioIngrediente.traerCopiaDeUnIngredienteDelInventario(salfinaDelInventario);
+		sfina.setCantidad(500);
+		sfina.setFcompra("12/07/2018");
+		sfina.setFvencimiento("07/09/2018");
+		servicioIngrediente.guardarIngredienteEnUsuario(sfina);	
 		
 		Ingrediente arrozintDeMati = servicioIngrediente.traerCopiaDeUnIngredienteDelInventario(arrozintDelInventario);
 		arrozintDeMati.setCantidad(1000);
@@ -2142,6 +2208,7 @@ public class ControladorInsertar {
 		ingredientesdematias.add(polloenteroDeMati);
 		ingredientesdematias.add(arrozDeMati);
 		ingredientesdematias.add(arrozIntegralDeMati); // VENCIDO
+		ingredientesdematias.add(sfina);
 		ingredientesdematias.add(tomateDeMati);
 		ingredientesdematias.add(lechugaDeMati);  
 		ingredientesdematias.add(pdepollo);
