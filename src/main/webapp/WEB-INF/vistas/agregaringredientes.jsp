@@ -354,9 +354,6 @@
 								<c:when test="${not empty tieneingredienteselusuario}">
 								</c:when>
 								<c:otherwise>
-								<div class="py-5 text-center">
-									<h1>Oops!...</h1><h2>¿No tienes ingredientes en tu heladera?</h2>
-								</div>
 								</c:otherwise>
 								</c:choose>
 							</div>

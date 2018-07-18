@@ -25,4 +25,6 @@ public interface ServicioNotificacion {
 
 	List<Notificacion> getNotificacionesParaUnUsuario(Usuario usuario);
 
+	void NuevaNotificacionUsuarioNuevo(Usuario usuario);
+
 }

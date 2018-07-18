@@ -113,9 +113,11 @@ public class ServicioNotificacionImpl implements ServicioNotificacion {
 		notificacion.setEstado("SIN_LEER");
 		String nombreIngrediente = ingrediente.getNombre();
 		String fechaCompra = ingrediente.getFcompra();
+		Long diasDeCompra = ingrediente.getDias() * -1;
+		String diasCasteado = diasDeCompra.toString();
 		//TODO COMPARAR LA FECHA DE COMPRA CON EL DIA DE LA FECHA, PARA SABER CUANDO PASARON CINCO DIAS.
 
-		String mensaje = "Usted compro este ingrediente: "+ nombreIngrediente +" , el dia " +fechaCompra + " lleva en la heladera cinco dias o mas.";
+		String mensaje = "Usted compro este ingrediente: "+ nombreIngrediente +" , el dia " +fechaCompra + " lleva en la heladera " +diasCasteado+ " dias.";
 
 		notificacion.setMensaje(mensaje);
 
@@ -133,6 +135,29 @@ public class ServicioNotificacionImpl implements ServicioNotificacion {
 			session.save(notificacion);
 		}
 
+
+	}
+
+	@Override
+	public void NuevaNotificacionUsuarioNuevo(Usuario usuario){
+
+		Notificacion notificacion = new Notificacion();
+		notificacion.setEstado("SIN_LEER");
+
+
+		String mensaje = "Bienvenido a Cocina Viva. Estamos para ayudarte!";
+
+		notificacion.setMensaje(mensaje);
+
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		Date date = new Date();
+		String fecha = dateFormat.format(date);
+		notificacion.setFechaNotificacion(fecha);
+		notificacion.setIdUsuario(usuario.getId());
+		notificacion.setTipoNotificacion("BIENVENIDA");
+
+			final Session session = sessionFactory.getCurrentSession();
+			session.save(notificacion);
 
 	}
 

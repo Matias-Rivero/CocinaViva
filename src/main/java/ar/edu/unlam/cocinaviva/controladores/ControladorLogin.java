@@ -141,6 +141,10 @@ public class ControladorLogin {
 		} else {
 
 			servicioUsuario.guardarUsuario(usuario);
+			servicioNotificacion.NuevaNotificacionUsuarioNuevo(usuario);
+			List<Notificacion> notificacionesUsu = servicioNotificacion.getNotificacionesParaUnUsuario(usuario);
+			request.getSession().setAttribute("notificacionesUsu", notificacionesUsu);
+			modelo.put("notificacionesUsu",notificacionesUsu);
 			request.getSession().setAttribute("usuariologueado", usuario);
 			return new ModelAndView("redirect:/home");
 		}
