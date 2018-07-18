@@ -988,14 +988,20 @@ public class ControladorInsertar {
 
 	@RequestMapping("/insertar-recetas")
 	public ModelAndView insertarRecetas() {
-		/* Tenemos
-		 * 
-		 * Puchero de caracú
-		 * Pollo al horno
-		 * Arroz con atún
-		 * Arroz con pollo light
-		 * Arroz con vegetales
-		 * 
+		/* Tenemos		 
+		 	Puchero de caracú
+			Pollo al horno
+			Arroz con atún
+			Arroz con pollo light
+			Arroz con vegetales
+			Tomate relleno al horno
+			Croquetas de Arroz
+			Budìn de Espinacas
+			Sándwich rápido y light
+			Desayuno rápido para después del gym
+			Tarta ratatouille  
+			Tortilla de Papa 
+			Omelette rápido
 		 */
 	return new ModelAndView("redirect:/insertar-pucherodecaracu");
 }	
@@ -2023,7 +2029,7 @@ public class ControladorInsertar {
 	    
 	    servicioReceta.guardarReceta(tortilladepapa);
 	  
-	  return new ModelAndView("redirect:/");
+	  return new ModelAndView("redirect:/insertar-omeletterapido");
 	  }
 
 	@RequestMapping("/insertar-omeletterapido")
