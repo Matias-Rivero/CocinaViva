@@ -325,7 +325,7 @@
 				</c:if>
 				<c:if test="${empty listaRecetas && empty listaRecetasBuscadas}">
 					<div class="text-center">
-						<label class="label label-danger">Lo sentimos - todav?a
+						<label class="label label-danger">Lo sentimos - todavia
 							no tenemos recetas con esos ingredientes.</label>
 					</div>
 					<br>

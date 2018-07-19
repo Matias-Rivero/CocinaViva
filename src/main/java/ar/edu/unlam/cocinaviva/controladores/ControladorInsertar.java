@@ -65,7 +65,7 @@ public class ControladorInsertar {
 
 		Ingrediente huevos = new Ingrediente();
 		huevos.setNombre("Huevos");
-		huevos.setTipo("LACTEOS");
+		huevos.setTipo("CONDIMENTOS");
 		huevos.setPerece("SEPUDRE");
 		huevos.setUnidad("Unids");
 		servicioIngrediente.guardarIngredienteEnInventario(huevos);
@@ -1302,13 +1302,13 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnReceta(aceite);
 		ingredientes.add(aceite);
 		
-		Ingrediente sal = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Limón");
+		Ingrediente sal = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Sal fina");
 		sal.setCantidad(0);
 		sal.setCantidadstring("A gusto");
 		servicioIngrediente.guardarIngredienteEnReceta(sal);
 		ingredientes.add(sal);
 		
-		Ingrediente mayonesa = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Limón");
+		Ingrediente mayonesa = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Mayonesa");
 		mayonesa.setCantidad(0);
 		mayonesa.setCantidadstring("A gusto");
 		servicioIngrediente.guardarIngredienteEnReceta(mayonesa);
@@ -2155,12 +2155,17 @@ public class ControladorInsertar {
 		Ingrediente arrozintDelInventario = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Arroz integral");
 		Ingrediente arvejasDelInventario = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Arvejas");
 		Ingrediente salfinaDelInventario = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Sal fina");
+		Ingrediente mayonesaDelInventario = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Mayonesa");
+		Ingrediente limonDelInventario = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Limón");
+		Ingrediente huevoDelInventario = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Huevos");
+		Ingrediente atunDelInventario = servicioIngrediente.traerUnIngredienteDelInventarioPorSuNombre("Atún enlatado");
+
 		
 		Usuario matias = servicioUsuario.traerUnUsuarioPorSuId((long) 1);
 		
 		Ingrediente pdepollo = servicioIngrediente.traerCopiaDeUnIngredienteDelInventario(pdepolloDelInventario);
 		pdepollo.setCantidad(1000);
-		pdepollo.setFcompra("12/07/2018");
+		pdepollo.setFcompra("18/07/2018");
 		servicioIngrediente.guardarIngredienteEnUsuario(pdepollo);	
 		
 		Ingrediente sfina = servicioIngrediente.traerCopiaDeUnIngredienteDelInventario(salfinaDelInventario);
@@ -2175,7 +2180,7 @@ public class ControladorInsertar {
 		servicioIngrediente.guardarIngredienteEnUsuario(arrozintDeMati);	
 		
 		Ingrediente arvejasDeMati = servicioIngrediente.traerCopiaDeUnIngredienteDelInventario(arvejasDelInventario);
-		arvejasDeMati.setCantidad(1000);
+		arvejasDeMati.setCantidad(150);
 		arvejasDeMati.setFcompra("15/07/2018");
 		servicioIngrediente.guardarIngredienteEnUsuario(arvejasDeMati);	
 			
@@ -2186,7 +2191,7 @@ public class ControladorInsertar {
 		
 		Ingrediente polloenteroDeMati = servicioIngrediente.traerCopiaDeUnIngredienteDelInventario(polloenteroDelInventario);
 		polloenteroDeMati.setCantidad(3000);
-		polloenteroDeMati.setFcompra("12/07/2018");
+		polloenteroDeMati.setFcompra("18/07/2018");
 		servicioIngrediente.guardarIngredienteEnUsuario(polloenteroDeMati);	
 		
 		Ingrediente arrozDeMati = servicioIngrediente.traerCopiaDeUnIngredienteDelInventario(arrozblancoDelInventario);
@@ -2207,7 +2212,27 @@ public class ControladorInsertar {
 		Ingrediente lechugaDeMati = servicioIngrediente.traerCopiaDeUnIngredienteDelInventario(lechugaDelInventario);
 		lechugaDeMati.setCantidad(3);
 		lechugaDeMati.setFcompra("13/07/2018");
-		servicioIngrediente.guardarIngredienteEnUsuario(lechugaDeMati);	
+		servicioIngrediente.guardarIngredienteEnUsuario(lechugaDeMati);
+
+		Ingrediente mayonesaDeMati = servicioIngrediente.traerCopiaDeUnIngredienteDelInventario(mayonesaDelInventario);
+		mayonesaDeMati.setCantidad(500);
+		mayonesaDeMati.setFvencimiento("17/11/2018");
+		servicioIngrediente.guardarIngredienteEnUsuario(mayonesaDeMati);
+
+		Ingrediente limonDeMati = servicioIngrediente.traerCopiaDeUnIngredienteDelInventario(limonDelInventario);
+		limonDeMati.setCantidad(3);
+		limonDeMati.setFcompra("17/07/2018");
+		servicioIngrediente.guardarIngredienteEnUsuario(limonDeMati);
+
+		Ingrediente huevoDeMati = servicioIngrediente.traerCopiaDeUnIngredienteDelInventario(huevoDelInventario);
+		huevoDeMati.setCantidad(1);
+		huevoDeMati.setFcompra("17/07/2018");
+		servicioIngrediente.guardarIngredienteEnUsuario(huevoDeMati);
+
+		Ingrediente atunDeMati = servicioIngrediente.traerCopiaDeUnIngredienteDelInventario(atunDelInventario);
+		atunDeMati.setCantidad(1);
+		atunDeMati.setFvencimiento("31/12/2018");
+		servicioIngrediente.guardarIngredienteEnUsuario(atunDeMati);
 		
 		List<Ingrediente> ingredientesdematias  = matias.getlistaIngrediente();
 		ingredientesdematias.add(cebollaDeMati);
@@ -2220,6 +2245,11 @@ public class ControladorInsertar {
 		ingredientesdematias.add(pdepollo);
 		ingredientesdematias.add(arrozintDeMati);
 		ingredientesdematias.add(arvejasDeMati);
+		ingredientesdematias.add(mayonesaDeMati);
+		ingredientesdematias.add(limonDeMati);
+		ingredientesdematias.add(huevoDeMati);
+		ingredientesdematias.add(atunDeMati);
+
 		
 		matias.setlistaIngrediente(ingredientesdematias);
 		servicioUsuario.actualizarUsuario(matias);	

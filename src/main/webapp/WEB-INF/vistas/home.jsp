@@ -230,7 +230,7 @@
 																					<c:otherwise>
 																						<td><span class="lead4">${ingredientes.cantidad}</span>
 																						<c:if test="${ingredientes.unidad == 'Lts'}">
-																						<label>Litros</label>
+																						<label>CC</label>
 																						</c:if> <c:if test="${ingredientes.unidad == 'Grs'}">
 																						<label>Gramos</label>
 																						</c:if> <c:if test="${ingredientes.unidad == 'Unids'}">
@@ -306,7 +306,7 @@
 																					<c:otherwise>
 																						<td><span class="lead4">${ingredientes.cantidad}</span>
 																						<c:if test="${ingredientes.unidad == 'Lts'}">
-																						<label>Litros</label>
+																						<label>CC</label>
 																						</c:if> <c:if test="${ingredientes.unidad == 'Grs'}">
 																						<label>Gramos</label>
 																						</c:if> <c:if test="${ingredientes.unidad == 'Unids'}">
@@ -382,7 +382,7 @@
 																					<c:otherwise>
 																						<td><span class="lead4">${ingredientes.cantidad}</span>
 																						<c:if test="${ingredientes.unidad == 'Lts'}">
-																						<label>Litros</label>
+																						<label>CC</label>
 																						</c:if> <c:if test="${ingredientes.unidad == 'Grs'}">
 																						<label>Gramos</label>
 																						</c:if> <c:if test="${ingredientes.unidad == 'Unids'}">
@@ -458,7 +458,7 @@
 																					<c:otherwise>
 																						<td><span class="lead4">${ingredientes.cantidad}</span>
 																						<c:if test="${ingredientes.unidad == 'Lts'}">
-																						<label>Litros</label>
+																						<label>CC</label>
 																						</c:if> <c:if test="${ingredientes.unidad == 'Grs'}">
 																						<label>Gramos</label>
 																						</c:if> <c:if test="${ingredientes.unidad == 'Unids'}">
@@ -534,7 +534,7 @@
 																					<c:otherwise>
 																						<td><span class="lead4">${ingredientes.cantidad}</span>
 																						<c:if test="${ingredientes.unidad == 'Lts'}">
-																						<label>Litros</label>
+																						<label>CC</label>
 																						</c:if> <c:if test="${ingredientes.unidad == 'Grs'}">
 																						<label>Gramos</label>
 																						</c:if> <c:if test="${ingredientes.unidad == 'Unids'}">
